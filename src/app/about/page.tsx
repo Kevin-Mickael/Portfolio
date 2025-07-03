@@ -12,22 +12,24 @@ import {
   Meta,
   Schema
 } from "@once-ui-system/core";
-import { baseURL, about, person, social } from "@/resources";
+import { baseURL, person, social } from "@/resources";
+import { about as aboutContent } from "@/resources/content";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
 
 export async function generateMetadata() {
   return Meta.generate({
-    title: "À propos – " + about.title.replace('About – ', ''),
-    description: about.description.replace('Meet', 'Rencontrez'),
+    title: "À propos – " + aboutContent.title.replace('About – ', ''),
+    description: aboutContent.description.replace('Meet', 'Rencontrez'),
     baseURL: baseURL,
-    image: `/api/og/generate?title=${encodeURIComponent(about.title)}`,
-    path: about.path,
+    image: `/api/og/generate?title=${encodeURIComponent(aboutContent.title)}`,
+    path: aboutContent.path,
   });
 }
 
 export default function About() {
+  const about = aboutContent;
   const structure = [
     {
       title: about.intro.title,
@@ -151,6 +153,8 @@ export default function About() {
                                 size="s"
                                 weight="default"
                                 variant="secondary"
+                                target={item.name === 'Resume' ? '_blank' : undefined}
+                                rel={item.name === 'Resume' ? 'noopener noreferrer' : undefined}
                             />
                             <IconButton
                                 className="s-flex-show"
@@ -159,6 +163,8 @@ export default function About() {
                                 href={item.link}
                                 icon={item.icon}
                                 variant="secondary"
+                                target={item.name === 'Resume' ? '_blank' : undefined}
+                                rel={item.name === 'Resume' ? 'noopener noreferrer' : undefined}
                             />
                         </React.Fragment>
                     ),
@@ -299,6 +305,41 @@ export default function About() {
                       </Flex>
                     )}
                   </Column>
+                ))}
+              </Column>
+            </>
+          )}
+
+          {/* Section Accomplissements */}
+          {about.accomplishments && about.accomplishments.display && (
+            <>
+              <Heading
+                as="h2"
+                id={about.accomplishments.title}
+                variant="display-strong-s"
+                marginBottom="40"
+              >
+                {about.accomplishments.title}
+              </Heading>
+              <Column fillWidth gap="l">
+                {about.accomplishments.items.map((item, index) => (
+                  <Flex key={index} gap="24" align="center">
+                    <Media
+                      src={item.image.src}
+                      alt={item.image.alt}
+                      width={item.image.width}
+                      height={item.image.height}
+                      radius="m"
+                    />
+                    <Column>
+                      <Text variant="heading-strong-l">{item.title}</Text>
+                      <a href={item.pdf} target="_blank" rel="noopener noreferrer">
+                        <Text variant="body-default-m" color="brand">
+                          Voir le certificat
+                        </Text>
+                      </a>
+                    </Column>
+                  </Flex>
                 ))}
               </Column>
             </>

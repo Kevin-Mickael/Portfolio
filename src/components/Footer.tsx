@@ -24,7 +24,7 @@ export const Footer = () => {
       >
         <Text variant="body-default-s" onBackground="neutral-strong">
           <Text onBackground="neutral-weak">© {currentYear} /</Text>
-          <Text paddingX="4">{person.name}</Text>
+          <Text paddingX="4">{person.name} / +230 54593145</Text>
         </Text>
         <Flex gap="16">
           {social.map(

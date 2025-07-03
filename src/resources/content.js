@@ -8,7 +8,7 @@ const person = {
   },
   role: "IT Support Engineer · Software Engineer",
   avatar: "/images/avatar.jpeg",
-  email: "example@gmail.com",
+  email: "Andriatsilavokevin@gmail.com",
   location: "Indian/Mauritius", // Identifiant IANA correct pour la timezone
   locationLabel: "Madagascar/Maurice", // Affichage utilisateur
   languages: ["Français", "Anglais"], // optionnel : Laisser vide si vous ne souhaitez pas afficher de langues
@@ -35,17 +35,22 @@ const social = [
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/andriatsilavokevin/",
   },
   {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    name: "Resume",
+    icon: "document",
+    link: "https://docs.google.com/document/d/1HvyuqkGyeOfPC-H-hGiZ726bS5ih2MOY-oOQTaYL8Po/edit?usp=sharing",
   },
   {
     name: "Email",
     icon: "email",
-    link: `mailto:${person.email}`,
+    link: `mailto:Andriatsilavokevin@gmail.com`,
+  },
+  {
+    name: "WhatsApp",
+    icon: "whatsapp",
+    link: "https://wa.me/23054593145",
   },
 ];
 
@@ -105,7 +110,45 @@ const about = {
           <>Contribution au développement et à l'amélioration de l'interface utilisateur (UI/UX) du système de laboratoire <a href="https://openelis-global.org/" target="_blank" rel="noopener noreferrer">OpenELIS</a>, adapté et déployé à Maurice, avec ReactJS, en réponse aux besoins exprimés par les utilisateurs.</>,
           <>Support technique et assistance aux utilisateurs du système eHealth, avec des retours et recommandations sur la structure et l'ergonomie du système pour améliorer l'expérience globale.</>,
         ],
-        images: [],
+        images: [
+          {
+            src: "https://yop.l-frii.com/wp-content/uploads/2023/06/Le-PNUD-recrute-pour-ce-poste-27-Decembre-2021-4.png",
+            alt: "PNUD Logo",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      {
+        company: "Freelance",
+        timeframe: "2021 - Présent",
+        role: "Web developer, Designer, IT Support",
+        achievements: [
+          <>Création de <a href="https://craftle.pages.dev" target="_blank" rel="noopener noreferrer">Craftle</a>, une plateforme e-commerce de vente de templates, avec un backend robuste en Go pour la gestion des utilisateurs et une base de données PostgreSQL performante. Le site propose également des services, des plugins et des tutoriels. Il s'agit d'un de mes plus gros projets développés à ce jour.
+          </>,
+          <>Développement de <a href="https://money-link.pages.dev" target="_blank" rel="noopener noreferrer">MoneyLink</a>, un site web de transfert d'argent entre Madagascar et Maurice, conçu en ReactJS. Il intègre un calculateur de taux de change en temps réel et un formulaire de demande de transfert pour les agents.</>,
+          <>Réalisation de <a href="https://wholesale-broker-shop.pages.dev/" target="_blank" rel="noopener noreferrer">CommerceProPlus</a>, un site web pour un client souhaitant recevoir et traiter des commandes en ligne. La plateforme présente ses produits sur un frontend développé en ReactJS.</>,
+        ],
+        images: [
+          {
+            src: "/images/projects/craftlelogo.png",
+            alt: "craftle Logo",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/moneylink.png",
+            alt: "Moneylink Logo",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/commerceproplus.png",
+            alt: "e-commerce Logo",
+            width: 16,
+            height: 9,
+          },
+        ],
       },
       {
         company: "Attitude Hotels",
@@ -115,7 +158,31 @@ const about = {
           <>Assistance technique aux collaborateurs concernant les équipements informatiques, incluant ordinateurs, imprimantes et périphériques associés.</>,
           <>Diagnostic et résolution des problèmes liés aux logiciels de réservation, aux systèmes de point de vente (POS), et autres outils hôteliers.</>,
         ],
-        images: [],
+        images: [
+          {
+            src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7Uxe4KGD-s5h-kfVEmL54y3Cun3r9rDVZvA&s",
+            alt: "Attitude Hotel logo",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      {
+        company: "Ministère de l'Intérieur",
+        timeframe: "2022",
+        role: "Stagiaire en conception de bases de données",
+        achievements: [
+          <>Conception de bases de données pour le ministère de l'Intérieur, avec Microsoft SQL Server et Microsoft Access.</>,
+          <>Diagnostic et résolution des problèmes liés aux logiciels de réservation, aux systèmes de point de vente (POS), et autres outils hôteliers.</>,
+        ],
+        images: [
+          {
+            src: "https://www.ivotoro.mg/wp-content/themes/hueman/images/rep-logo.jpg",
+            alt: "Ministère de l'Intérieur logo",
+            width: 16,
+            height: 9,
+          },
+        ],
       },
     ],
   },
@@ -134,30 +201,52 @@ const about = {
     title: "Compétences techniques",
     skills: [
       {
+        title: "SQL",
+        description: <>Excellente maîtrise du langage SQL pour la conception, l'interrogation et l'optimisation de bases de données relationnelles, incluant la création de schémas, les jointures complexes, les sous-requêtes, les fonctions d'agrégation ainsi que l'optimisation des performances avec des index et des vues.</>,
+        images: [
+          {
+            src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBn9djlMmqMEnNhETDtAZUaVMxhO5jvldqqA&s",
+            alt: "MySQL Logo",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "https://techvify-software.com/wp-content/uploads/2024/03/what-is-postgresql-used-for.png",
+            alt: "PostgreSQL logo",
+            width: 16,
+            height: 9,
+          },
+        ],
+        link: undefined,
+      },      
+      {
+        title: "Git",
+        description: <>Solide maîtrise de Git pour la gestion de versions et la collaboration en équipe, incluant la création et la gestion de branches, la résolution de conflits, l'utilisation avancée de commandes (rebase, cherry-pick, stash) ainsi que l'intégration avec des plateformes comme GitHub et GitLab.</>,
+        images: [],
+        link: undefined,
+      },
+      {
         title: "Excel",
-        description: <>Capable de prototyper dans Figma avec Once UI à une vitesse impressionnante.</>,
+        description: <>Maîtrise avancée d'Excel pour l'analyse et la visualisation de données, incluant la création de tableaux croisés dynamiques, l'utilisation de formules complexes (recherche, logiques, financières) ainsi que des fonctions matricielles et dynamiques telles que LET, LAMBDA, FILTER et SEQUENCE.</>,
         images: [],
         link: undefined,
       },
       {
         title: "React avec le framework Next.js",
-        description: <>Développement d’applications web e-commerce avec React (framework Next.js), backend Go et PostgreSQL.</>,
+        description: <>Développement d'applications web e-commerce avec React (framework Next.js), backend Go et PostgreSQL.</>,
         images: [
           {
-            src: "/images/projects/homecraftle.png",
-            alt: "Image projet",
+            src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFYUMxwjoJUgk-Bv9mwUGhi6uhAIKOfWZHw&s",
+            alt: "React Logo",
             width: 16,
             height: 9,
           },
         ],
-        link: {
-          url: "https://craftle.pages.dev",
-          label: "Visiter",
-          icon: "arrowUpRightFromSquare"
-        },
+        link: {},
       },
     ],
   },
+  
 };
 
 const blog = {
