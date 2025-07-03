@@ -1,43 +1,43 @@
 ---
-title: "Automating Design Handovers with a Figma to Code Pipeline"
+title: "Automatiser le passage du design au code avec un pipeline Figma-to-Code"
 publishedAt: "2024-04-01"
-summary: "Explore the enduring debate between using spaces and tabs for code indentation, and why this choice matters more than you might think."
+summary: "Découvrez comment automatiser le transfert des maquettes Figma vers du code prêt pour la production, et pourquoi ce choix améliore la cohérence et la rapidité."
 images:
   - "/images/projects/project-01/cover-02.jpg"
   - "/images/projects/project-01/image-03.jpg"
 team:
-  - name: "John Doe"
-    role: "Software Engineer"
-    avatar: "/images/avatar.jpg"
+  - name: "Kevin Mickael"
+    role: "Développeur web"
+    avatar: "/images/avatar.jpeg"
     linkedIn: "https://www.linkedin.com/company/once-ui/"
 link: "https://once-ui.com/"
 ---
 
-## Overview
+## Présentation
 
-In this project, I focused on automating the often tedious design handover process. The goal was to create a pipeline that converts Figma designs directly into clean, production-ready code. By integrating design tokens, component libraries, and automated workflows, this solution significantly reduced the time spent on translating design assets into code, while maintaining design consistency across the product.
+Dans ce projet, je me suis concentré sur l'automatisation du processus souvent fastidieux de transfert du design vers le développement. L'objectif était de créer un pipeline qui convertit directement les maquettes Figma en code propre et prêt pour la production. Grâce à l'intégration de design tokens, de bibliothèques de composants et de workflows automatisés, cette solution a considérablement réduit le temps consacré à la traduction des assets design en code, tout en maintenant la cohérence graphique du produit.
 
-## Key Features
+## Fonctionnalités clés
 
-- **Figma Plugin Integration**: Developed a custom Figma plugin that extracts design tokens such as colors, typography, and spacing values, and exports them in a format compatible with our codebase.
-- **Code Generation**: Integrated an automated process that translates Figma components into React code using a combination of design tokens and pre-built component templates. This allowed developers to focus more on logic and less on repetitive UI coding.
-- **Continuous Sync**: Established a CI/CD pipeline that continuously synchronizes design changes from Figma to the codebase, ensuring design updates are reflected instantly without manual intervention.
-- **Scalable Design System**: Leveraged a design system that remains the single source of truth for both designers and developers, making it easy to maintain consistency even as the product evolves.
+- **Intégration d'un plugin Figma** : Développement d'un plugin Figma sur mesure pour extraire les design tokens (couleurs, typographies, espacements) et les exporter dans un format compatible avec la base de code.
+- **Génération de code** : Mise en place d'un processus automatisé qui traduit les composants Figma en code React à l'aide des design tokens et de templates de composants. Les développeurs peuvent ainsi se concentrer sur la logique métier plutôt que sur la répétition de l'UI.
+- **Synchronisation continue** : Création d'un pipeline CI/CD qui synchronise en continu les changements design de Figma vers la base de code, garantissant que les mises à jour sont instantanément reflétées sans intervention manuelle.
+- **Design system évolutif** : Utilisation d'un design system comme source unique de vérité pour les designers et développeurs, facilitant la cohérence même lors de l'évolution du produit.
 
-## Technologies Used
+## Technologies utilisées
 
-- **Figma API**: For extracting design tokens and component data directly from the Figma designs.
-- **React and Next.js**: For building the front-end codebase with clean, reusable components.
-- **Styled-Components**: For managing styles dynamically using design tokens.
-- **GitHub Actions**: For automating the pipeline and syncing design changes to the repository.
+- **Figma API** : Pour extraire les design tokens et les données des composants directement depuis Figma.
+- **React et Next.js** : Pour construire la base front-end avec des composants réutilisables et propres.
+- **Styled-Components** : Pour gérer dynamiquement les styles à partir des design tokens.
+- **GitHub Actions** : Pour automatiser le pipeline et synchroniser les changements design dans le dépôt.
 
-## Challenges and Learnings
+## Défis et apprentissages
 
-One of the biggest challenges was ensuring that the generated code was clean and maintainable. This involved setting up intelligent mapping between Figma components and React code structures, as well as managing edge cases like responsive design and conditional rendering. Additionally, the continuous synchronization required a robust error-handling system to prevent conflicts during development.
+L'un des plus grands défis a été de garantir que le code généré soit propre et maintenable. Cela a nécessité la mise en place d'un mapping intelligent entre les composants Figma et la structure React, ainsi que la gestion des cas particuliers comme le responsive et le rendu conditionnel. De plus, la synchronisation continue a demandé un système de gestion d'erreurs robuste pour éviter les conflits lors du développement.
 
-## Outcome
+## Résultat
 
-The automated Figma to code pipeline has streamlined the handoff process, cutting down design-to-development time by 40%. Designers now have more confidence that their designs will be accurately translated into code, and developers can focus on more complex logic and feature development. This project has proven the value of automation in bridging the gap between design and development.
+Le pipeline automatisé Figma-to-Code a grandement simplifié le passage du design au développement, réduisant de 40% le temps de transfert. Les designers ont désormais l'assurance que leurs maquettes seront fidèlement traduites en code, et les développeurs peuvent se concentrer sur la logique et les fonctionnalités avancées. Ce projet démontre la valeur de l'automatisation pour rapprocher design et développement.
 
 ---
 

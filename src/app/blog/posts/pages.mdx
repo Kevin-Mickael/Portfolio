@@ -1,13 +1,13 @@
 ---
-title: "Enable or disable pages for your portfolio"
-summary: "Magic Portfolio's RouteGuard component takes care of conditionally rendering pages based on your settings."
+title: "Activer ou désactiver des pages pour votre portfolio"
+summary: "Le composant RouteGuard de Magic Portfolio gère l’affichage conditionnel des pages selon vos réglages."
 publishedAt: "2025-04-22"
 tag: "Magic Portfolio"
 ---
 
-## Enable or disable pages
+## Activer ou désactiver des pages
 
-Magic Portfolio's `RouteGuard` component takes care of conditionally rendering pages based on the `routes` object in the `resources/config.js` file.
+Le composant `RouteGuard` de Magic Portfolio gère l’affichage conditionnel des pages selon l’objet `routes` du fichier `resources/config.js`.
 
 <CodeBlock
     marginBottom="16"
@@ -27,11 +27,11 @@ Magic Portfolio's `RouteGuard` component takes care of conditionally rendering p
   }
 ]} />
 
-The code above will ensure that the `/gallery` page is not accessible and is not displayed in the navigation.
+Le code ci-dessus garantit que la page `/gallery` n’est pas accessible et n’apparaît pas dans la navigation.
 
-## Add new pages
+## Ajouter de nouvelles pages
 
-When creating a new page, it needs to be added to the `routes` object in the `resources/config.js` file.
+Lorsque vous créez une nouvelle page, il faut l’ajouter à l’objet `routes` dans le fichier `resources/config.js`.
 
 <CodeBlock
     marginBottom="16"
@@ -52,4 +52,4 @@ When creating a new page, it needs to be added to the `routes` object in the `re
   }
 ]} />
 
-The code above will ensure that the `/music` page is accessible. Users will be able to navigate to it after adding it to the navigation menu in the `components/Header.tsx` file.
+Le code ci-dessus garantit que la page `/music` est accessible. Les utilisateurs pourront y accéder après l’avoir ajoutée au menu de navigation dans le fichier `components/Header.tsx`.

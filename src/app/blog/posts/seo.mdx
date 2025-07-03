@@ -1,28 +1,26 @@
 ---
-title: "SEO settings for Magic Portfolio"
-summary: "Manage your Magic Portfolio's SEO settings."
-publishedAt: "2025-04-14"
-tag: "Magic Portfolio"
+title: "SEO et métadonnées"
+summary: "Optimisez le référencement de votre portfolio Magic Portfolio."
+publishedAt: "2025-04-18"
+tag: "SEO"
 ---
 
-## Meta tags
+## Balises meta
 
-Magic Portfolio automatically generates meta- and open graph tags for your pages based on the `content.js` file.
+Magic Portfolio génère automatiquement les balises meta et open graph pour vos pages à partir du fichier `content.js`.
 
-## Schema
+## Schéma
 
-Magic Portfolio automatically generates schema tags for your pages based on the `content.js` file.
+Magic Portfolio génère automatiquement les balises schema pour vos pages à partir du fichier `content.js`.
 
-## Open Graph image
+## Image Open Graph
 
-Social sharing images (open-graph and twitter) are automatically generated with `next/og`.
+Les images de partage social (open-graph et twitter) sont générées automatiquement avec `next/og`.
 
 <Feedback
     icon
     marginBottom="16"
-    description={<>
-        Make sure you have updated the <InlineCode>content.js</InlineCode> file with your own information and the <InlineCode>baseURL</InlineCode> variable in the <InlineCode>config.js</InlineCode> file.
-    </>}
+    description={<>Assurez-vous d'avoir mis à jour le fichier <InlineCode>content.js</InlineCode> avec vos informations et la variable <InlineCode>baseURL</InlineCode> dans le fichier <InlineCode>config.js</InlineCode>.</>}
 />
 
 <CodeBlock
@@ -43,4 +41,4 @@ Social sharing images (open-graph and twitter) are automatically generated with 
     ]}
 />
 
-The above declaration generates the social image with the title of the page. You can use a static image by replacing the `ogImage` value with a path to an image in the `public` directory.
+La déclaration ci-dessus génère l'image sociale avec le titre de la page. Vous pouvez utiliser une image statique en remplaçant la valeur de `ogImage` par un chemin vers une image dans le dossier `public`.

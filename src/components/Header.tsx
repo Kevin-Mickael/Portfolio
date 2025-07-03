@@ -84,7 +84,7 @@ export const Header = () => {
                     className="s-flex-hide"
                     prefixIcon="person"
                     href="/about"
-                    label={about.label}
+                    label="À propos"
                     selected={pathname === "/about"}
                   />
                   <ToggleButton
@@ -101,7 +101,7 @@ export const Header = () => {
                     className="s-flex-hide"
                     prefixIcon="grid"
                     href="/work"
-                    label={work.label}
+                    label="Projets"
                     selected={pathname.startsWith("/work")}
                   />
                   <ToggleButton
@@ -118,7 +118,7 @@ export const Header = () => {
                     className="s-flex-hide"
                     prefixIcon="book"
                     href="/blog"
-                    label={blog.label}
+                    label="Blog"
                     selected={pathname.startsWith("/blog")}
                   />
                   <ToggleButton
@@ -135,7 +135,7 @@ export const Header = () => {
                     className="s-flex-hide"
                     prefixIcon="gallery"
                     href="/gallery"
-                    label={gallery.label}
+                    label="Galerie"
                     selected={pathname.startsWith("/gallery")}
                   />
                   <ToggleButton

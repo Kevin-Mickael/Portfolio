@@ -1,17 +1,17 @@
 ---
-title: "Create, edit and delete blog posts"
-summary: "Create, edit and delete posts in the blog section of your Magic Portfolio."
+title: "Créer, éditer et supprimer des articles de blog"
+summary: "Créez, éditez et supprimez des articles dans la section blog de votre Magic Portfolio."
 publishedAt: "2025-03-17"
 tag: "Magic Portfolio"
 ---
 
-## Manage posts
+## Gérer les articles
 
-You can create, edit and delete posts by adding, modifying or removing `*.mdx` files in the `src/app/blog/posts` directory.
+Vous pouvez créer, éditer et supprimer des articles en ajoutant, modifiant ou supprimant des fichiers `*.mdx` dans le dossier `src/app/blog/posts`.
 
 ## Frontmatter
 
-The frontmatter is used to set the post's metadata: title, description, image, and tags. It's used in the post's page and in meta- and open graph tags.
+Le frontmatter sert à définir les métadonnées de l'article : titre, description, image et tags. Ces informations sont utilisées sur la page de l'article ainsi que dans les balises meta et open graph.
 
 <CodeBlock
     marginBottom="16"
@@ -19,10 +19,10 @@ The frontmatter is used to set the post's metadata: title, description, image, a
       {
         code:
 `---
-title: "Arriving to a new milestone in my career"
+title: "Une nouvelle étape dans ma carrière"
 publishedAt: "2024-04-08"
 image: "/images/gallery/img-02.jpg"
-summary: "Every career is a journey, filled with challenges, growth, and those significant moments that mark a shift in our path."
+summary: "Chaque carrière est un voyage, ponctué de défis, de croissance et de moments clés qui marquent un tournant."
 tag: "Journal"
 ---`,
         language: "tsx",
@@ -31,13 +31,13 @@ tag: "Journal"
     ]}
 />
 
-## MDX syntax
+## Syntaxe MDX
 
-You can use MDX to write the content of your posts. It helps you write rich and dynamic content with minimal code. Some MDX elements will be automatically transformed to Once UI components to integrate better in the design and add additional functionality.
+Vous pouvez utiliser MDX pour rédiger le contenu de vos articles. Cela permet d'écrire du contenu riche et dynamique avec un minimum de code. Certains éléments MDX seront automatiquement transformés en composants Once UI pour une meilleure intégration au design et des fonctionnalités supplémentaires.
 
-## Custom components
+## Composants personnalisés
 
-You can use custom components in MDX files, but you need to import them first in the `src/components/mdx.tsx` file.
+Vous pouvez utiliser des composants personnalisés dans les fichiers MDX, mais il faut d'abord les importer dans le fichier `src/components/mdx.tsx`.
 
 <CodeBlock
     marginBottom="16"
@@ -64,8 +64,8 @@ You can use custom components in MDX files, but you need to import them first in
     ]}
 />
 
-As you can see, the `Table` and `CodeBlock` components are already imported and available for use. You can add more by simply importing them to this file and passing them to the `components` object.
+Comme vous pouvez le voir, les composants `Table` et `CodeBlock` sont déjà importés et disponibles. Vous pouvez en ajouter d'autres en les important simplement dans ce fichier et en les passant à l'objet `components`.
 
-## Hot reload
+## Rechargement à chaud
 
-Hot reload of MDX files is currently not supported, but we're working on it.
+Le rechargement à chaud des fichiers MDX n'est pas encore supporté, mais c'est en cours de développement.

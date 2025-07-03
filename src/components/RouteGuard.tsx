@@ -97,7 +97,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
         <Column fillWidth gap="8" horizontal="center">
           <PasswordInput
             id="password"
-            label="Password"
+            label="Mot de passe"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             errorMessage={error}

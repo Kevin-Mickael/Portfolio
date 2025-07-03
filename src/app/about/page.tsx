@@ -19,8 +19,8 @@ import React from "react";
 
 export async function generateMetadata() {
   return Meta.generate({
-    title: about.title,
-    description: about.description,
+    title: "À propos – " + about.title.replace('About – ', ''),
+    description: about.description.replace('Meet', 'Rencontrez'),
     baseURL: baseURL,
     image: `/api/og/generate?title=${encodeURIComponent(about.title)}`,
     path: about.path,
@@ -92,7 +92,7 @@ export default function About() {
             <Avatar src={person.avatar} size="xl" />
             <Flex gap="8" vertical="center">
               <Icon onBackground="accent-weak" name="globe" />
-              {person.location}
+              {person.locationLabel}
             </Flex>
             {person.languages.length > 0 && (
               <Flex wrap gap="8">
