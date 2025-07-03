@@ -113,12 +113,6 @@ const about = {
         ],
         images: [
           {
-            src: "https://yop.l-frii.com/wp-content/uploads/2023/06/Le-PNUD-recrute-pour-ce-poste-27-Decembre-2021-4.png",
-            alt: "PNUD Logo",
-            width: 16,
-            height: 9,
-          },
-          {
             src: "https://yt3.googleusercontent.com/xamtiH56sPu5qm65ONu_LuoxoBcNkEzh6Oqr6ZCClbYLN6olA7vCD-dTdFE8q1G3716_0CV3=s900-c-k-c0x00ffffff-no-rj",
             alt: "eHealth",
             width: 16,
