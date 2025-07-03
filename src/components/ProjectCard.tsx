@@ -30,15 +30,31 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   avatars,
   link,
 }) => {
+  const isIframe = images.length === 1 && images[0].startsWith('iframe:');
   return (
     <Column fillWidth gap="m">
-      <Carousel
-        sizes="(max-width: 960px) 100vw, 960px"
-        items={images.map((image) => ({
-          slide: image,
-          alt: title,
-        }))}
-      />
+      {isIframe && (
+        <div
+          style={{
+            width: '110%',
+            height: '600px',
+            background: '#eee',
+            borderRadius: 'var(--radius-l)',
+            overflow: 'auto',
+            overflowX: 'hidden',
+            scrollbarWidth: 'none', // Firefox
+          }}
+          className="hide-scrollbar"
+        >
+          <iframe
+            src={images[0].replace('iframe:', '')}
+            style={{ width: '100%', height: '100%', border: 'none' }}
+            allowFullScreen
+            loading="lazy"
+            title={title}
+          />
+        </div>
+      )}
       <Flex
         mobileDirection="column"
         fillWidth

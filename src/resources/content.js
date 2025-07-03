@@ -30,7 +30,7 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/Kevin-Mickael",
   },
   {
     name: "LinkedIn",
@@ -60,7 +60,7 @@ const home = {
   label: "Accueil",
   title: `Portfolio de ${person.name}`,
   description: `Site portfolio présentant mon travail en tant que ${person.role}`,
-  headline: <>Créer des ponts entre design et code</>,
+  headline: <>Création de sites web professionnels et intuitifs</>,
   featured: {
     display: true,
     title: <>Projet récent : <strong className="ml-4">Once UI</strong></>,
@@ -68,7 +68,8 @@ const home = {
   },
   subline: (
     <>
-      Je suis {person.name}, un développeur web passionné par la création d'expériences utilisateurs intuitives.<br /> Après le travail, je développe mes propres projets.
+      Je suis {person.name}, un développeur web basé à l’Île Maurice, passionné par la création d’expériences utilisateurs intuitives et professionnelles.<br />  
+      Je conçois des portfolios et des sites web modernes pour aider mes clients à se démarquer et à gagner en visibilité en ligne.
     </>
   ),
 };
@@ -114,6 +115,12 @@ const about = {
           {
             src: "https://yop.l-frii.com/wp-content/uploads/2023/06/Le-PNUD-recrute-pour-ce-poste-27-Decembre-2021-4.png",
             alt: "PNUD Logo",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "https://yt3.googleusercontent.com/xamtiH56sPu5qm65ONu_LuoxoBcNkEzh6Oqr6ZCClbYLN6olA7vCD-dTdFE8q1G3716_0CV3=s900-c-k-c0x00ffffff-no-rj",
+            alt: "eHealth",
             width: 16,
             height: 9,
           },
@@ -172,9 +179,11 @@ const about = {
         timeframe: "2022",
         role: "Stagiaire en conception de bases de données",
         achievements: [
-          <>Conception de bases de données pour le ministère de l'Intérieur, avec Microsoft SQL Server et Microsoft Access.</>,
-          <>Diagnostic et résolution des problèmes liés aux logiciels de réservation, aux systèmes de point de vente (POS), et autres outils hôteliers.</>,
-        ],
+          <>Élaboration du Modèle Conceptuel des Traitements (MCT) pour définir les traitements et flux d'informations.</>,
+          <>Élaboration du Modèle Conceptuel de Données (MCD) pour identifier les entités et leurs relations.</>,
+          <>Définition du Modèle Logique de Données (MLD) en vue de la normalisation et de la structure relationnelle.</>,
+          <>Réalisation du Modèle Physique de Données (MPD) adapté à Microsoft SQL Server et Microsoft Access.</>,
+        ],        
         images: [
           {
             src: "https://www.ivotoro.mg/wp-content/themes/hueman/images/rep-logo.jpg",
