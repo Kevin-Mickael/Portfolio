@@ -18,7 +18,7 @@ interface ProjectCardProps {
   content: string;
   description: string;
   avatars: { src: string }[];
-  link: string;
+  link: string | { label?: string; url: string; icon?: string };
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -72,7 +72,15 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   <Text variant="body-default-s">Read case study</Text>
                 </SmartLink>
               )}
-              {link && (
+              {link && (typeof link === 'object' ? (
+                <SmartLink
+                  suffixIcon={link.icon || undefined}
+                  style={{ margin: "0", width: "fit-content" }}
+                  href={link.url}
+                >
+                  <Text variant="body-default-s">{link.label || 'Visiter'}</Text>
+                </SmartLink>
+              ) : (
                 <SmartLink
                   suffixIcon="arrowUpRightFromSquare"
                   style={{ margin: "0", width: "fit-content" }}
@@ -80,7 +88,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 >
                   <Text variant="body-default-s">View project</Text>
                 </SmartLink>
-              )}
+              ))}
             </Flex>
           </Column>
         )}

@@ -6,7 +6,7 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Web Developer · IT Support Engineer · Software Engineer",
+  role: "IT Support Engineer · Software Engineer",
   avatar: "/images/avatar.jpeg",
   email: "example@gmail.com",
   location: "Indian/Mauritius", // Identifiant IANA correct pour la timezone
@@ -89,7 +89,7 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        {person.name} est un développeur web basé à Madagascar/Maurice, passionné par la transformation de défis complexes en solutions design simples et élégantes. Son travail couvre les interfaces numériques, les expériences interactives et la convergence entre design et technologie.
+        Basé à Madagascar et à Maurice, Kevin Mickael est un spécialiste IT support et développement logiciel, toujours curieux et passionné par l'innovation. Il conçoit des solutions aux problèmes techniques et crée des applications web et mobiles sur des bases solides, pour des projets utiles et à impact positif.
       </>
     ),
   },
@@ -98,29 +98,22 @@ const about = {
     title: "Expérience professionnelle",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Présent",
-        role: "Ingénieur design senior",
+        company: "Nations Unies pour le développement international",
+        timeframe: "2024 - Présent",
+        role: "eHealth IT Assistant",
         achievements: [
-          <>Refonte de l'UI/UX de la plateforme FLY, entraînant une augmentation de 20% de l'engagement utilisateur et des temps de chargement 30% plus rapides.</>,
-          <>Intégration d'outils IA dans les workflows de design, permettant aux designers d'itérer 50% plus rapidement.</>,
+          <>Contribution au développement et à l'amélioration de l'interface utilisateur (UI/UX) du système de laboratoire <a href="https://openelis-global.org/" target="_blank" rel="noopener noreferrer">OpenELIS</a>, adapté et déployé à Maurice, avec ReactJS, en réponse aux besoins exprimés par les utilisateurs.</>,
+          <>Support technique et assistance aux utilisateurs du système eHealth, avec des retours et recommandations sur la structure et l'ergonomie du système pour améliorer l'expérience globale.</>,
         ],
-        images: [
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Projet Once UI",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Attitude Hotels",
+        timeframe: "2023 - 2024",
+        role: "Technicien IT Support",
         achievements: [
-          <>Développement d'un design system unifiant la marque sur plusieurs plateformes, améliorant la cohérence graphique de 40%.</>,
-          <>Direction d'une équipe pluridisciplinaire pour lancer une nouvelle gamme de produits, contribuant à une augmentation de 15% du chiffre d'affaires global.</>,
+          <>Assistance technique aux collaborateurs concernant les équipements informatiques, incluant ordinateurs, imprimantes et périphériques associés.</>,
+          <>Diagnostic et résolution des problèmes liés aux logiciels de réservation, aux systèmes de point de vente (POS), et autres outils hôteliers.</>,
         ],
         images: [],
       },
@@ -141,34 +134,27 @@ const about = {
     title: "Compétences techniques",
     skills: [
       {
-        title: "Figma",
+        title: "Excel",
         description: <>Capable de prototyper dans Figma avec Once UI à une vitesse impressionnante.</>,
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Image projet",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Image projet",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
+        link: undefined,
       },
       {
-        title: "Next.js",
-        description: <>Développement d'applications nouvelle génération avec Next.js + Once UI + Supabase.</>,
+        title: "React avec le framework Next.js",
+        description: <>Développement d’applications web e-commerce avec React (framework Next.js), backend Go et PostgreSQL.</>,
         images: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
+            src: "/images/projects/homecraftle.png",
             alt: "Image projet",
             width: 16,
             height: 9,
           },
         ],
+        link: {
+          url: "https://craftle.pages.dev",
+          label: "Visiter",
+          icon: "arrowUpRightFromSquare"
+        },
       },
     ],
   },
