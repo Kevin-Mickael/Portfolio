@@ -63,12 +63,12 @@ const home = {
   headline: <>Création de sites web professionnels et intuitifs</>,
   featured: {
     display: true,
-    title: <>Projet récent : <strong className="ml-4">Once UI</strong></>,
-    href: "/work/building-once-ui-a-customizable-design-system",
+    title: <><strong>Création de site web à l'Île Maurice</strong></>,
+    href: undefined,
   },
   subline: (
     <>
-      Je suis {person.name}, un développeur web basé à l’Île Maurice, passionné par la création d’expériences utilisateurs intuitives et professionnelles.<br />  
+      Je suis {person.name}, un développeur web basé à l'Île Maurice, passionné par la création d'expériences utilisateurs intuitives et professionnelles.<br />  
       Je conçois des portfolios et des sites web modernes pour aider mes clients à se démarquer et à gagner en visibilité en ligne.
     </>
   ),
