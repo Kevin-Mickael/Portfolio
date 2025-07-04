@@ -3,19 +3,14 @@ import '@once-ui-system/core/css/tokens.css';
 import '@/resources/custom.css'
 
 import classNames from "classnames";
-
-import { Background, Column, Flex, Meta, opacity, SpacingToken } from "@once-ui-system/core";
+import { defaultMetadata } from './metadata.config';
+import { Background, Column, Flex, opacity, SpacingToken } from "@once-ui-system/core";
 import { Footer, Header, RouteGuard, Providers } from '@/components';
-import { baseURL, effects, fonts, style, dataStyle, home } from '@/resources';
+import { effects, fonts, style, dataStyle } from '@/resources';
+import { Metadata } from 'next';
 
-export async function generateMetadata() {
-  return Meta.generate({
-    title: home.title,
-    description: home.description,
-    baseURL: baseURL,
-    path: home.path,
-    image: home.image,
-  });
+export async function generateMetadata(): Promise<Metadata> {
+  return defaultMetadata;
 }
 
 export default async function RootLayout({
@@ -37,6 +32,31 @@ export default async function RootLayout({
       )}
     >
       <head>
+        {/* Preload des polices critiques */}
+        <link
+          rel="preload"
+          href="/fonts/your-main-font.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        {/* DNS Prefetch pour les domaines externes */}
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        
+        {/* Preconnect pour les ressources critiques */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
+        {/* Meta tags pour PWA */}
+        <meta name="application-name" content="Portfolio Kevin" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Portfolio Kevin" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="theme-color" content="#000000" />
+        
         <script
           id="theme-init"
           dangerouslySetInnerHTML={{
@@ -96,7 +116,21 @@ export default async function RootLayout({
         />
       </head>
       <Providers>
-        <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center">
+        <Column 
+          as="body" 
+          background="page" 
+          fillWidth 
+          style={{
+            minHeight: "100vh",
+            scrollBehavior: 'smooth',
+            textRendering: 'optimizeLegibility',
+            WebkitFontSmoothing: 'antialiased',
+            MozOsxFontSmoothing: 'grayscale',
+          }} 
+          margin="0" 
+          padding="0" 
+          horizontal="center"
+        >
           <Background
             position="fixed"
             mask={{
@@ -139,23 +173,23 @@ export default async function RootLayout({
             }}
           />
           <Flex fillWidth minHeight="16" hide="s"/>
-            <Header />
-            <Flex
-              zIndex={0}
-              fillWidth
-              padding="l"
-              horizontal="center"
-              flex={1}
-            >
-              <Flex horizontal="center" fillWidth minHeight="0">
-                <RouteGuard>
-                  {children}
-                </RouteGuard>
-              </Flex>
+          <Header />
+          <Flex
+            zIndex={0}
+            fillWidth
+            padding="l"
+            horizontal="center"
+            flex={1}
+          >
+            <Flex horizontal="center" fillWidth minHeight="0">
+              <RouteGuard>
+                {children}
+              </RouteGuard>
             </Flex>
-            <Footer/>
-          </Column>
-        </Providers>
-      </Flex>
+          </Flex>
+          <Footer/>
+        </Column>
+      </Providers>
+    </Flex>
   );
 }
