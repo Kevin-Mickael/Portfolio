@@ -22,8 +22,13 @@ export const Footer = () => {
         horizontal="space-between"
         vertical="center"
       >
-        <Text variant="body-default-s" onBackground="neutral-strong">
-          <Text onBackground="neutral-weak">© {currentYear} /</Text>
+        <Text 
+          variant="body-default-s" 
+          style={{
+            color: 'var(--neutral-on-background-strong)'
+          }}
+        >
+          <Text style={{ color: 'var(--neutral-on-background-weak)' }}>© {currentYear} /</Text>
           <Text paddingX="4">{person.name} / +230 54593145</Text>
         </Text>
         <Flex gap="16">
@@ -37,6 +42,9 @@ export const Footer = () => {
                   tooltip={item.name}
                   size="s"
                   variant="ghost"
+                  style={{
+                    color: 'var(--neutral-on-background-strong)'
+                  }}
                 />
               ),
           )}

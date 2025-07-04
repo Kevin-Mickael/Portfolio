@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import { Fade, Flex, Line, ToggleButton } from "@once-ui-system/core";
 
-import { routes, display, person, about, blog, work, gallery } from "@/resources";
+import { routes, display, person, about, blog, work, contact } from "@/resources";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Header.module.scss";
 
@@ -44,6 +44,10 @@ export default TimeDisplay;
 
 export const Header = () => {
   const pathname = usePathname() ?? "";
+  
+  console.log("Routes:", routes);
+  console.log("Contact route:", routes["/contact"]);
+  console.log("Pathname:", pathname);
 
   return (
     <>
@@ -129,20 +133,20 @@ export const Header = () => {
                   />
                 </>
               )}
-              {routes["/gallery"] && (
+              {routes["/contact"] && (
                 <>
                   <ToggleButton
                     className="s-flex-hide"
-                    prefixIcon="gallery"
-                    href="/gallery"
-                    label="Galerie"
-                    selected={pathname.startsWith("/gallery")}
+                    prefixIcon="email"
+                    href="/contact"
+                    label="Contact"
+                    selected={pathname.startsWith("/contact")}
                   />
                   <ToggleButton
                     className="s-flex-show"
-                    prefixIcon="gallery"
-                    href="/gallery"
-                    selected={pathname.startsWith("/gallery")}
+                    prefixIcon="email"
+                    href="/contact"
+                    selected={pathname.startsWith("/contact")}
                   />
                 </>
               )}

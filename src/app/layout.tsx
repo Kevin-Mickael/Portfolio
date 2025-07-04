@@ -6,6 +6,7 @@ import classNames from "classnames";
 import { defaultMetadata } from './metadata.config';
 import { Background, Column, Flex, opacity, SpacingToken } from "@once-ui-system/core";
 import { Footer, Header, RouteGuard, Providers } from '@/components';
+import { CookieBanner } from '@/components/CookieBanner';
 import { effects, fonts, style, dataStyle } from '@/resources';
 import { Metadata } from 'next';
 
@@ -121,6 +122,8 @@ export default async function RootLayout({
             textRendering: 'optimizeLegibility',
             WebkitFontSmoothing: 'antialiased',
             MozOsxFontSmoothing: 'grayscale',
+            overflowX: 'hidden',
+            maxWidth: '100vw'
           }} 
           margin="0" 
           padding="0" 
@@ -183,6 +186,7 @@ export default async function RootLayout({
               </Flex>
             </Flex>
             <Footer/>
+            <CookieBanner />
           </Column>
         </Providers>
       </Flex>

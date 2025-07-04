@@ -8,8 +8,11 @@ import {
   Heading,
   SmartLink,
   Text,
+  Button,
 } from "@once-ui-system/core";
 import ImageSlider from "./ImageSlider";
+import { projects } from "@/resources/projects-data";
+import { useState } from "react";
 
 interface ProjectCardProps {
   href: string;
@@ -22,8 +25,15 @@ interface ProjectCardProps {
   link: string | { label?: string; url: string; icon?: string };
 }
 
-// Composant pour le slider horizontal illimité
-const InfiniteSlider: React.FC<{ images: string[] }> = ({ images }) => {
+// Composant pour le slider horizontal illimité avec hover
+const InfiniteSlider: React.FC<{ images: string[]; projects: any[] }> = ({ images, projects }) => {
+  const [hoveredImageIndex, setHoveredImageIndex] = useState<number | null>(null);
+
+  // Trouver le projet correspondant à l'image par son chemin
+  const findProjectByImage = (imagePath: string) => {
+    return projects.find(project => project.image === imagePath);
+  };
+
   return (
     <div style={{ 
       width: '100%', 
@@ -31,28 +41,117 @@ const InfiniteSlider: React.FC<{ images: string[] }> = ({ images }) => {
       overflow: 'hidden',
       borderRadius: '12px',
       position: 'relative'
-    }}>
+    }}
+    >
       <div style={{
         display: 'flex',
-        animation: 'scroll 40s linear infinite',
-        width: 'fit-content',
-        transform: 'translateX(0)'
+        animation: hoveredImageIndex !== null ? 'none' : 'scroll 40s linear infinite',
+        width: 'fit-content'
       }}>
         {/* Dupliquer les images pour un défilement illimité */}
-        {[...images, ...images, ...images].map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt={`Slide ${index + 1}`}
-            style={{
-              width: '300px',
-              height: '200px',
-              objectFit: 'cover',
-              marginRight: '16px',
-              borderRadius: '8px'
-            }}
-          />
-        ))}
+        {[...images, ...images, ...images].map((image, globalIndex) => {
+          const originalIndex = globalIndex % images.length;
+          const project = findProjectByImage(image);
+          // Utiliser l'index original de l'image plutôt que l'index global
+          const isThisImageHovered = hoveredImageIndex === originalIndex;
+          
+          return (
+            <div
+              key={`${originalIndex}-${Math.floor(globalIndex / images.length)}`}
+              style={{
+                position: 'relative',
+                marginRight: '16px'
+              }}
+              onMouseEnter={() => {
+                setHoveredImageIndex(originalIndex); // Utiliser l'index original
+              }}
+              onMouseLeave={() => {
+                setHoveredImageIndex(null);
+              }}
+            >
+              <img
+                src={image}
+                alt={`Slide ${originalIndex + 1}`}
+                style={{
+                  width: '300px',
+                  height: '200px',
+                  objectFit: 'cover',
+                  borderRadius: '8px',
+                  transition: 'filter 0.3s ease'
+                }}
+              />
+              
+              {/* Overlay avec bouton "Visiter" - seulement pour l'image survolée */}
+              {isThisImageHovered && project && (
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  background: 'rgba(0, 0, 0, 0.3)',
+                  borderRadius: '8px',
+                  display: 'flex',
+                  alignItems: 'flex-end',
+                  justifyContent: 'flex-end',
+                  padding: '16px',
+                  opacity: 0,
+                  animation: 'fadeIn 0.3s ease-out forwards'
+                }}>
+                  <div style={{ 
+                    textAlign: 'right', 
+                    color: 'white',
+                    transform: 'translateY(20px)',
+                    animation: 'slideUp 0.4s ease-out 0.1s forwards'
+                  }}>
+                    <Text variant="heading-strong-s" style={{ 
+                      color: 'white', 
+                      marginBottom: '4px',
+                      textShadow: '0 2px 4px rgba(0,0,0,0.5)'
+                    }}>
+                      {project.name}
+                    </Text>
+                    <Text variant="body-default-s" style={{ 
+                      color: 'rgba(255, 255, 255, 0.8)', 
+                      marginBottom: '12px',
+                      textShadow: '0 1px 2px rgba(0,0,0,0.5)'
+                    }}>
+                      {project.category}
+                    </Text>
+                    <SmartLink
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        background: 'white',
+                        color: 'black',
+                        border: 'none',
+                        fontWeight: '600',
+                        boxShadow: '0 4px 8px rgba(0,0,0,0.3)',
+                        padding: '8px 16px',
+                        borderRadius: '6px',
+                        textDecoration: 'none',
+                        display: 'inline-block',
+                        transform: 'scale(0.9)',
+                        animation: 'buttonPop 0.4s ease-out 0.2s forwards'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'scale(1.05)';
+                        e.currentTarget.style.boxShadow = '0 6px 12px rgba(0,0,0,0.4)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'scale(1)';
+                        e.currentTarget.style.boxShadow = '0 4px 8px rgba(0,0,0,0.3)';
+                      }}
+                    >
+                      Visiter
+                    </SmartLink>
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
       
       <style jsx>{`
@@ -62,6 +161,33 @@ const InfiniteSlider: React.FC<{ images: string[] }> = ({ images }) => {
           }
           100% {
             transform: translateX(-${images.length * 316}px);
+          }
+        }
+        
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        
+        @keyframes slideUp {
+          from {
+            transform: translateY(20px);
+          }
+          to {
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes buttonPop {
+          from {
+            transform: scale(0.9);
+          }
+          to {
+            transform: scale(1);
           }
         }
       `}</style>
@@ -125,7 +251,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           {!isSliderProject && avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />}
           
           {isSliderProject && images.length > 1 ? (
-            <InfiniteSlider images={images} />
+            <InfiniteSlider images={images} projects={projects} />
           ) : (
             <>
               {description?.trim() && (

@@ -12,7 +12,7 @@ const person = {
   location: "Indian/Mauritius", // Timezone IANA valide pour le fonctionnement technique
   locationDisplay: "Mauritius", // Affichage simple pour l'interface
   locationLabel: "Madagascar/Maurice", // Affichage utilisateur
-  languages: ["Français", "Anglais"], // optionnel : Laisser vide si vous ne souhaitez pas afficher de langues
+  languages: ["Français", "Anglais","Malagasy"], // optionnel : Laisser vide si vous ne souhaitez pas afficher de langues
 };
 
 const newsletter = {
@@ -271,55 +271,11 @@ const work = {
   // All projects will be listed on the /home and /work routes
 };
 
-const gallery = {
-  path: "/gallery",
-  label: "Galerie",
-  title: "Galerie",
-  description: "Une sélection de mes images et créations.",
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
-  images: [
-    {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-  ],
+const contact = {
+  path: "/contact",
+  label: "Contact",
+  title: "Contact",
+  description: "Contactez-moi pour discuter de vos projets et collaborations.",
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, social, newsletter, home, about, blog, work, contact };

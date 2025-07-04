@@ -10,7 +10,7 @@ const routes = {
   "/about": true,
   "/work": true,
   "/blog": true,
-  "/gallery": true,
+  "/contact": true,
 };
 
 const display = {

@@ -53,6 +53,18 @@
   /*
 }*/
 
+/* Empêcher le scroll horizontal global */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+}
+
+/* S'assurer que tous les conteneurs respectent la largeur */
+* {
+  box-sizing: border-box;
+}
+
 .hide-scrollbar {
   scrollbar-width: none; /* Firefox */
 }

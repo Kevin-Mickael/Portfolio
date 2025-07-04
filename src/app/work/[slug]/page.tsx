@@ -108,6 +108,7 @@ export default async function Project({
           />
         ) : post.metadata.images.length > 1 ? (
           <ImageSlider 
+            key={`slider-${post.slug}`}
             images={post.metadata.images}
             title="Galerie du projet"
             autoPlay={true}
