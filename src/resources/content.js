@@ -9,7 +9,8 @@ const person = {
   role: "IT Support Engineer · Software Engineer",
   avatar: "/images/avatar.jpeg",
   email: "Andriatsilavokevin@gmail.com",
-  location: "Indian/Mauritius", // Identifiant IANA correct pour la timezone
+  location: "Indian/Mauritius", // Timezone IANA valide pour le fonctionnement technique
+  locationDisplay: "Mauritius", // Affichage simple pour l'interface
   locationLabel: "Madagascar/Maurice", // Affichage utilisateur
   languages: ["Français", "Anglais"], // optionnel : Laisser vide si vous ne souhaitez pas afficher de langues
 };
