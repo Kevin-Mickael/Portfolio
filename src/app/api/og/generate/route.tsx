@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { baseURL, person } from "@/resources";
+import Image from "next/image";
 
 export const runtime = "nodejs";
 
@@ -62,8 +63,11 @@ export async function GET(request: Request) {
             gap: "5rem",
           }}
         >
-          <img
+          <Image
             src={baseURL + person.avatar}
+            alt="Avatar de {person.name}"
+            width={192}
+            height={192}
             style={{
               width: "12rem",
               height: "12rem",

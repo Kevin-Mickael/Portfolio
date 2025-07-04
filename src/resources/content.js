@@ -19,7 +19,7 @@ const newsletter = {
   title: <>Abonnez-vous à la newsletter de {person.firstName}</>,
   description: (
     <>
-      J'écris occasionnellement sur le design, la technologie, et je partage des réflexions sur l'intersection entre créativité et ingénierie.
+      J&apos;écris occasionnellement sur le design, la technologie, et je partage des réflexions sur l&apos;intersection entre créativité et ingénierie.
     </>
   ),
 };
@@ -63,12 +63,12 @@ const home = {
   headline: <>Création de sites web professionnels et intuitifs</>,
   featured: {
     display: true,
-    title: <><strong>Création de site web à l'Île Maurice</strong></>,
+    title: <><strong>Création de site web à l&apos;île Maurice</strong></>,
     href: undefined,
   },
   subline: (
     <>
-      Je suis {person.name}, un développeur web basé à l'Île Maurice, passionné par la création d'expériences utilisateurs intuitives et professionnelles.<br />  
+      Je suis {person.name}, un développeur web basé à l&apos;île Maurice, passionné par la création d&apos;expériences utilisateurs intuitives et professionnelles.<br />  
       Je conçois des portfolios et des sites web modernes pour aider mes clients à se démarquer et à gagner en visibilité en ligne.
     </>
   ),
@@ -95,7 +95,7 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Basé à Madagascar et à Maurice, Kevin Mickael est un spécialiste IT support et développement logiciel, toujours curieux et passionné par l'innovation. Il conçoit des solutions aux problèmes techniques et crée des applications web et mobiles sur des bases solides, pour des projets utiles et à impact positif.
+        Basé à Madagascar et à Maurice, Kevin Mickael est un spécialiste IT support et développement logiciel, toujours curieux et passionné par l&apos;innovation. Il conçoit des solutions aux problèmes techniques et crée des applications web et mobiles sur des bases solides, pour des projets utiles et à impact positif.
       </>
     ),
   },
@@ -108,8 +108,8 @@ const about = {
         timeframe: "2024 - Présent",
         role: "eHealth IT Assistant",
         achievements: [
-          <>Contribution au développement et à l'amélioration de l'interface utilisateur (UI/UX) du système de laboratoire <a href="https://openelis-global.org/" target="_blank" rel="noopener noreferrer">OpenELIS</a>, adapté et déployé à Maurice, avec ReactJS, en réponse aux besoins exprimés par les utilisateurs.</>,
-          <>Support technique et assistance aux utilisateurs du système eHealth, avec des retours et recommandations sur la structure et l'ergonomie du système pour améliorer l'expérience globale.</>,
+          <>Contribution au développement et à l&apos;amélioration de l&apos;interface utilisateur (UI/UX) du système de laboratoire <a href="https://openelis-global.org/" target="_blank" rel="noopener noreferrer">OpenELIS</a>, adapté et déployé à Maurice, avec ReactJS, en réponse aux besoins exprimés par les utilisateurs.</>,
+          <>Support technique et assistance aux utilisateurs du système eHealth, avec des retours et recommandations sur la structure et l&apos;ergonomie du système pour améliorer l&apos;expérience globale.</>,
         ],
         images: [
           {
@@ -125,9 +125,9 @@ const about = {
         timeframe: "2021 - Présent",
         role: "Web developer, Designer, IT Support",
         achievements: [
-          <>Création de <a href="https://craftle.pages.dev" target="_blank" rel="noopener noreferrer">Craftle</a>, une plateforme e-commerce de vente de templates, avec un backend robuste en Go pour la gestion des utilisateurs et une base de données PostgreSQL performante. Le site propose également des services, des plugins et des tutoriels. Il s'agit d'un de mes plus gros projets développés à ce jour.
+          <>Création de <a href="https://craftle.pages.dev" target="_blank" rel="noopener noreferrer">Craftle</a>, une plateforme e-commerce de vente de templates, avec un backend robuste en Go pour la gestion des utilisateurs et une base de données PostgreSQL performante. Le site propose également des services, des plugins et des tutoriels. Il s&apos;agit d&apos;un de mes plus gros projets développés à ce jour.
           </>,
-          <>Développement de <a href="https://money-link.pages.dev" target="_blank" rel="noopener noreferrer">MoneyLink</a>, un site web de transfert d'argent entre Madagascar et Maurice, conçu en ReactJS. Il intègre un calculateur de taux de change en temps réel et un formulaire de demande de transfert pour les agents.</>,
+          <>Développement de <a href="https://money-link.pages.dev" target="_blank" rel="noopener noreferrer">MoneyLink</a>, un site web de transfert d&apos;argent entre Madagascar et Maurice, conçu en ReactJS. Il intègre un calculateur de taux de change en temps réel et un formulaire de demande de transfert pour les agents.</>,
           <>Réalisation de <a href="https://wholesale-broker-shop.pages.dev/" target="_blank" rel="noopener noreferrer">CommerceProPlus</a>, un site web pour un client souhaitant recevoir et traiter des commandes en ligne. La plateforme présente ses produits sur un frontend développé en ReactJS.</>,
         ],
         images: [
@@ -173,7 +173,7 @@ const about = {
         timeframe: "2022",
         role: "Stagiaire en conception de bases de données",
         achievements: [
-          <>Élaboration du Modèle Conceptuel des Traitements (MCT) pour définir les traitements et flux d'informations.</>,
+          <>Élaboration du Modèle Conceptuel des Traitements (MCT) pour définir les traitements et flux d&apos;informations.</>,
           <>Élaboration du Modèle Conceptuel de Données (MCD) pour identifier les entités et leurs relations.</>,
           <>Définition du Modèle Logique de Données (MLD) en vue de la normalisation et de la structure relationnelle.</>,
           <>Réalisation du Modèle Physique de Données (MPD) adapté à Microsoft SQL Server et Microsoft Access.</>,
@@ -205,7 +205,7 @@ const about = {
     skills: [
       {
         title: "SQL",
-        description: <>Excellente maîtrise du langage SQL pour la conception, l'interrogation et l'optimisation de bases de données relationnelles, incluant la création de schémas, les jointures complexes, les sous-requêtes, les fonctions d'agrégation ainsi que l'optimisation des performances avec des index et des vues.</>,
+        description: <>Excellente maîtrise du langage SQL pour la conception, l&apos;interrogation et l&apos;optimisation de bases de données relationnelles, incluant la création de schémas, les jointures complexes, les sous-requêtes, les fonctions d&apos;agrégation ainsi que l&apos;optimisation des performances avec des index et des vues.</>,
         images: [
           {
             src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBn9djlMmqMEnNhETDtAZUaVMxhO5jvldqqA&s",
@@ -224,19 +224,19 @@ const about = {
       },      
       {
         title: "Git",
-        description: <>Solide maîtrise de Git pour la gestion de versions et la collaboration en équipe, incluant la création et la gestion de branches, la résolution de conflits, l'utilisation avancée de commandes (rebase, cherry-pick, stash) ainsi que l'intégration avec des plateformes comme GitHub et GitLab.</>,
+        description: <>Solide maîtrise de Git pour la gestion de versions et la collaboration en équipe, incluant la création et la gestion de branches, la résolution de conflits, l&apos;utilisation avancée de commandes (rebase, cherry-pick, stash) ainsi que l&apos;intégration avec des plateformes comme GitHub et GitLab.</>,
         images: [],
         link: undefined,
       },
       {
         title: "Excel",
-        description: <>Maîtrise avancée d'Excel pour l'analyse et la visualisation de données, incluant la création de tableaux croisés dynamiques, l'utilisation de formules complexes (recherche, logiques, financières) ainsi que des fonctions matricielles et dynamiques telles que LET, LAMBDA, FILTER et SEQUENCE.</>,
+        description: <>Maîtrise avancée d&apos;Excel pour l&apos;analyse et la visualisation de données, incluant la création de tableaux croisés dynamiques, l&apos;utilisation de formules complexes (recherche, logiques, financières) ainsi que des fonctions matricielles et dynamiques telles que LET, LAMBDA, FILTER et SEQUENCE.</>,
         images: [],
         link: undefined,
       },
       {
         title: "React avec le framework Next.js",
-        description: <>Développement d'applications web e-commerce avec React (framework Next.js), backend Go et PostgreSQL.</>,
+        description: <>Développement d&apos;applications web e-commerce avec React (framework Next.js), backend Go et PostgreSQL.</>,
         images: [
           {
             src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFYUMxwjoJUgk-Bv9mwUGhi6uhAIKOfWZHw&s",

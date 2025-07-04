@@ -58,6 +58,18 @@ function createImage({ alt, src, ...props }: MediaProps & { src: string }) {
     return null;
   }
 
+  // Gestion spéciale pour les iframes
+  if (src.startsWith('iframe:')) {
+    const iframeSrc = src.replace('iframe:', '');
+    return (
+      <IframeWrapper
+        src={iframeSrc}
+        title={alt || 'Embedded content'}
+        {...props}
+      />
+    );
+  }
+
   return (
     <Media
       marginTop="8"
@@ -151,6 +163,26 @@ function createCodeBlock(props: any) {
   return <pre {...props} />;
 }
 
+// Composant pour gérer les iframes de manière robuste
+function IframeWrapper({ src, title, ...props }: { src: string; title?: string; [key: string]: any }) {
+  return (
+    <div style={{ position: 'relative', width: '100%', height: '400px', margin: '16px 0' }}>
+      <iframe
+        src={src}
+        title={title || 'Embedded content'}
+        style={{
+          width: '100%',
+          height: '100%',
+          border: 'none',
+          borderRadius: '8px',
+        }}
+        loading="lazy"
+        {...props}
+      />
+    </div>
+  );
+}
+
 const components = {
   p: createParagraph as any,
   h1: createHeading("h1") as any,
@@ -163,6 +195,7 @@ const components = {
   a: CustomLink as any,
   code: createInlineCode as any,
   pre: createCodeBlock as any,
+  iframe: IframeWrapper as any,
   Heading,
   Text,
   CodeBlock,
@@ -179,6 +212,7 @@ const components = {
   Icon,
   Media,
   SmartLink,
+  IframeWrapper,
 };
 
 type CustomMDXProps = MDXRemoteProps & {

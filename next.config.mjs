@@ -32,6 +32,20 @@ const nextConfig = {
     maxInactiveAge: 60 * 60 * 1000, // 1 heure
     pagesBufferLength: 5,
   },
+  // Configuration pour éviter les timeouts
+  experimental: {
+    serverComponentsExternalPackages: [],
+  },
+  // Timeout plus long pour le développement
+  webpack: (config, { dev, isServer }) => {
+    if (dev) {
+      config.watchOptions = {
+        poll: 1000,
+        aggregateTimeout: 300,
+      };
+    }
+    return config;
+  },
 };
 
 export default withMDX(nextConfig);
