@@ -20,7 +20,7 @@ import React from "react";
 
 export async function generateMetadata() {
   return Meta.generate({
-    title: "À propos – " + aboutContent.title.replace('About – ', ''),
+    title: aboutContent.title.replace('About', 'À propos'),
     description: aboutContent.description.replace('Meet', 'Rencontrez'),
     baseURL: baseURL,
     image: `/api/og/generate?title=${encodeURIComponent(aboutContent.title)}`,
@@ -305,41 +305,6 @@ export default function About() {
                       </Flex>
                     )}
                   </Column>
-                ))}
-              </Column>
-            </>
-          )}
-
-          {/* Section Accomplissements */}
-          {about.accomplishments && about.accomplishments.display && (
-            <>
-              <Heading
-                as="h2"
-                id={about.accomplishments.title}
-                variant="display-strong-s"
-                marginBottom="40"
-              >
-                {about.accomplishments.title}
-              </Heading>
-              <Column fillWidth gap="l">
-                {about.accomplishments.items.map((item, index) => (
-                  <Flex key={index} gap="24" align="center">
-                    <Media
-                      src={item.image.src}
-                      alt={item.image.alt}
-                      width={item.image.width}
-                      height={item.image.height}
-                      radius="m"
-                    />
-                    <Column>
-                      <Text variant="heading-strong-l">{item.title}</Text>
-                      <a href={item.pdf} target="_blank" rel="noopener noreferrer">
-                        <Text variant="body-default-m" color="brand">
-                          Voir le certificat
-                        </Text>
-                      </a>
-                    </Column>
-                  </Flex>
                 ))}
               </Column>
             </>
