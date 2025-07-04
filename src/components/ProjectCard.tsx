@@ -9,6 +9,7 @@ import {
   SmartLink,
   Text,
 } from "@once-ui-system/core";
+import ImageSlider from "./ImageSlider";
 
 interface ProjectCardProps {
   href: string;
@@ -21,6 +22,53 @@ interface ProjectCardProps {
   link: string | { label?: string; url: string; icon?: string };
 }
 
+// Composant pour le slider horizontal illimité
+const InfiniteSlider: React.FC<{ images: string[] }> = ({ images }) => {
+  return (
+    <div style={{ 
+      width: '100%', 
+      height: '200px',
+      overflow: 'hidden',
+      borderRadius: '12px',
+      position: 'relative'
+    }}>
+      <div style={{
+        display: 'flex',
+        animation: 'scroll 40s linear infinite',
+        width: 'fit-content',
+        transform: 'translateX(0)'
+      }}>
+        {/* Dupliquer les images pour un défilement illimité */}
+        {[...images, ...images, ...images].map((image, index) => (
+          <img
+            key={index}
+            src={image}
+            alt={`Slide ${index + 1}`}
+            style={{
+              width: '300px',
+              height: '200px',
+              objectFit: 'cover',
+              marginRight: '16px',
+              borderRadius: '8px'
+            }}
+          />
+        ))}
+      </div>
+      
+      <style jsx>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-${images.length * 316}px);
+          }
+        }
+      `}</style>
+    </div>
+  );
+};
+
 export const ProjectCard: React.FC<ProjectCardProps> = ({
   href,
   images = [],
@@ -31,6 +79,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   link,
 }) => {
   const isIframe = images.length === 1 && images[0].startsWith('iframe:');
+  const isSliderProject = title.includes("🎨 Galerie d'inspiration créative");
+  
   return (
     <Column fillWidth gap="m">
       {isIframe && (
@@ -55,6 +105,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           />
         </div>
       )}
+      
       <Flex
         mobileDirection="column"
         fillWidth
@@ -70,44 +121,49 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             </Heading>
           </Flex>
         )}
-        {(avatars?.length > 0 || description?.trim() || content?.trim()) && (
-          <Column flex={7} gap="16">
-            {avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />}
-            {description?.trim() && (
-              <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak">
-                {description}
-              </Text>
-            )}
-            <Flex gap="24" wrap>
-              {content?.trim() && (
-                <SmartLink
-                  suffixIcon="arrowRight"
-                  style={{ margin: "0", width: "fit-content" }}
-                  href={href}
-                >
-                  <Text variant="body-default-s">Read case study</Text>
-                </SmartLink>
+        <Column flex={7} gap="16">
+          {!isSliderProject && avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />}
+          
+          {isSliderProject && images.length > 1 ? (
+            <InfiniteSlider images={images} />
+          ) : (
+            <>
+              {description?.trim() && (
+                <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak">
+                  {description}
+                </Text>
               )}
-              {link && (typeof link === 'object' ? (
-                <SmartLink
-                  suffixIcon={link.icon || undefined}
-                  style={{ margin: "0", width: "fit-content" }}
-                  href={link.url}
-                >
-                  <Text variant="body-default-s">{link.label || 'Visiter'}</Text>
-                </SmartLink>
-              ) : (
-                <SmartLink
-                  suffixIcon="arrowUpRightFromSquare"
-                  style={{ margin: "0", width: "fit-content" }}
-                  href={link}
-                >
-                  <Text variant="body-default-s">View project</Text>
-                </SmartLink>
-              ))}
-            </Flex>
-          </Column>
-        )}
+              <Flex gap="24" wrap>
+                {content?.trim() && (
+                  <SmartLink
+                    suffixIcon="arrowRight"
+                    style={{ margin: "0", width: "fit-content" }}
+                    href={href}
+                  >
+                    <Text variant="body-default-s">Read case study</Text>
+                  </SmartLink>
+                )}
+                {link && (typeof link === 'object' ? (
+                  <SmartLink
+                    suffixIcon={link.icon || undefined}
+                    style={{ margin: "0", width: "fit-content" }}
+                    href={link.url}
+                  >
+                    <Text variant="body-default-s">{link.label || 'Visiter'}</Text>
+                  </SmartLink>
+                ) : (
+                  <SmartLink
+                    suffixIcon="arrowUpRightFromSquare"
+                    style={{ margin: "0", width: "fit-content" }}
+                    href={link}
+                  >
+                    <Text variant="body-default-s">View project</Text>
+                  </SmartLink>
+                ))}
+              </Flex>
+            </>
+          )}
+        </Column>
       </Flex>
     </Column>
   );

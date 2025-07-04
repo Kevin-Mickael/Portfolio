@@ -3,8 +3,33 @@ import { getPosts } from "@/utils/utils";
 import { Meta, Schema, AvatarGroup, Button, Column, Flex, Heading, Media, Text } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
-import { ScrollToHash, CustomMDX } from "@/components";
+import { ScrollToHash, CustomMDX, ImageSlider } from "@/components";
 import { Metadata } from "next";
+
+// Composant pour afficher les iframes
+function IframeDisplay({ src, title }: { src: string; title?: string }) {
+  return (
+    <div style={{ 
+      position: 'relative', 
+      width: '100%', 
+      height: '400px', 
+      margin: '16px 0',
+      borderRadius: '8px',
+      overflow: 'hidden'
+    }}>
+      <iframe
+        src={src}
+        title={title || 'Embedded content'}
+        style={{
+          width: '100%',
+          height: '100%',
+          border: 'none',
+        }}
+        loading="lazy"
+      />
+    </div>
+  );
+}
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const posts = getPosts(["src", "app", "work", "projects"]);
@@ -76,13 +101,27 @@ export default async function Project({
         <Heading variant="display-strong-s">{post.metadata.title}</Heading>
       </Column>
       {post.metadata.images.length > 0 && (
-        <Media
-          priority
-          aspectRatio="16 / 9"
-          radius="m"
-          alt="image"
-          src={post.metadata.images[0]}
-        />
+        post.metadata.images[0].startsWith('iframe:') ? (
+          <IframeDisplay 
+            src={post.metadata.images[0].replace('iframe:', '')} 
+            title={post.metadata.title}
+          />
+        ) : post.metadata.images.length > 1 ? (
+          <ImageSlider 
+            images={post.metadata.images}
+            title="Galerie du projet"
+            autoPlay={true}
+            interval={4000}
+          />
+        ) : (
+          <Media
+            priority
+            aspectRatio="16 / 9"
+            radius="m"
+            alt="image"
+            src={post.metadata.images[0]}
+          />
+        )
       )}
       <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
         <Flex gap="12" marginBottom="24" vertical="center">
