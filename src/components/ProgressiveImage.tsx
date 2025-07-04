@@ -7,7 +7,7 @@ interface ProgressiveImageProps {
   width?: number;
   height?: number;
   className?: string;
-  radius?: string;
+  radius?: "xs" | "s" | "m" | "l" | "xl" | "full" | "m-4" | "m-8" | "l-4" | "l-8" | "xs-4" | "xs-8" | "xl-4" | "xl-8" | "full-4" | "full-8" | undefined;
 }
 
 const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
@@ -16,13 +16,20 @@ const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
   width,
   height,
   className,
-  radius = 'm',
+  radius = "m",
 }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [currentSrc, setCurrentSrc] = useState(
     // Créer une version miniature pour le chargement initial
     src.replace(/\.(jpg|jpeg|png)$/, '-thumbnail.$1')
   );
+
+  // Validation du radius pour ne passer que des valeurs autorisées
+  const validRadius = [
+    "xs", "s", "m", "l", "xl", "full",
+    "m-4", "m-8", "l-4", "l-8", "xs-4", "xs-8", "xl-4", "xl-8", "full-4", "full-8"
+  ];
+  const safeRadius = validRadius.includes(radius as string) ? radius : "m";
 
   useEffect(() => {
     // Précharger l'image en haute qualité
@@ -50,7 +57,7 @@ const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
         style={{
           transition: 'filter 0.3s ease-in-out',
         }}
-        radius={radius}
+        radius={safeRadius}
       />
     </div>
   );

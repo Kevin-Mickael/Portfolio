@@ -32,14 +32,6 @@ export default async function RootLayout({
       )}
     >
       <head>
-        {/* Preload des polices critiques */}
-        <link
-          rel="preload"
-          href="/fonts/your-main-font.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
         {/* DNS Prefetch pour les domaines externes */}
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
@@ -173,23 +165,23 @@ export default async function RootLayout({
             }}
           />
           <Flex fillWidth minHeight="16" hide="s"/>
-          <Header />
-          <Flex
-            zIndex={0}
-            fillWidth
-            padding="l"
-            horizontal="center"
-            flex={1}
-          >
-            <Flex horizontal="center" fillWidth minHeight="0">
-              <RouteGuard>
-                {children}
-              </RouteGuard>
+            <Header />
+            <Flex
+              zIndex={0}
+              fillWidth
+              padding="l"
+              horizontal="center"
+              flex={1}
+            >
+              <Flex horizontal="center" fillWidth minHeight="0">
+                <RouteGuard>
+                  {children}
+                </RouteGuard>
+              </Flex>
             </Flex>
-          </Flex>
-          <Footer/>
-        </Column>
-      </Providers>
-    </Flex>
+            <Footer/>
+          </Column>
+        </Providers>
+      </Flex>
   );
 }
