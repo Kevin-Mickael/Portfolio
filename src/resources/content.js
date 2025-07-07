@@ -1,5 +1,6 @@
 import { Logo } from "@once-ui-system/core";
 
+
 const person = {
   firstName: "Kevin Mickael",
   lastName: "",
@@ -40,9 +41,9 @@ const social = [
     link: "https://www.linkedin.com/in/andriatsilavokevin/",
   },
   {
-    name: "Resume",
-    icon: "document",
-    link: "https://docs.google.com/document/d/1HvyuqkGyeOfPC-H-hGiZ726bS5ih2MOY-oOQTaYL8Po/edit?usp=sharing",
+    name: "Facebook",
+    icon: "facebook",
+    link: "https://facebook.com/kevin.mickael.dev",
   },
   {
     name: "Email",
@@ -54,6 +55,16 @@ const social = [
     icon: "whatsapp",
     link: "https://wa.me/23054593145",
   },
+];
+
+// Réseaux sociaux spécifiques à la page À propos
+const socialAbout = [
+  {
+    name: "Resume",
+    icon: "document",
+    link: "https://docs.google.com/document/d/1HvyuqkGyeOfPC-H-hGiZ726bS5ih2MOY-oOQTaYL8Po/edit?usp=sharing",
+  },
+  // Tu peux ajouter d'autres liens spécifiques à la page À propos ici
 ];
 
 const home = {
@@ -279,4 +290,4 @@ const contact = {
   description: "Contactez-moi pour discuter de vos projets et collaborations.",
 };
 
-export { person, social, newsletter, home, about, blog, work, contact };
+export { person, social, socialAbout, newsletter, home, about, blog, work, contact };

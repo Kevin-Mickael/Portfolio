@@ -12,7 +12,7 @@ import {
   Meta,
   Schema
 } from "@once-ui-system/core";
-import { baseURL, person, social } from "@/resources";
+import { baseURL, person, social, socialAbout } from "@/resources";
 import { about as aboutContent } from "@/resources/content";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
@@ -165,6 +165,35 @@ export default function About() {
                                 variant="secondary"
                                 target={item.name === 'Resume' ? '_blank' : undefined}
                                 rel={item.name === 'Resume' ? 'noopener noreferrer' : undefined}
+                            />
+                        </React.Fragment>
+                    ),
+                )}
+                {socialAbout.map(
+                  (item) =>
+                    item.link && (
+                        <React.Fragment key={item.name}>
+                            <Button
+                                className="s-flex-hide"
+                                key={item.name}
+                                href={item.link}
+                                prefixIcon={item.icon}
+                                label={item.name}
+                                size="s"
+                                weight="default"
+                                variant="secondary"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            />
+                            <IconButton
+                                className="s-flex-show"
+                                size="l"
+                                key={`${item.name}-icon`}
+                                href={item.link}
+                                icon={item.icon}
+                                variant="secondary"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             />
                         </React.Fragment>
                     ),

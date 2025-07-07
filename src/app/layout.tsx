@@ -45,16 +45,16 @@ export default async function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
         
         {/* Favicons et icônes PWA */}
-        <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=3" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=3" />
-        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
-        <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-180x180.png?v=3" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png?v=3" />
-        <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png?v=3" />
-        <link rel="manifest" href="/manifest.json?v=3" />
-        <link rel="mask-icon" href="/favicon.png?v=3" color="#000000" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico?v=4" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=4" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=4" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png?v=4" />
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=4" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=4" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png?v=4" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png?v=4" />
+        <link rel="manifest" href="/manifest.json?v=4" />
+        <link rel="mask-icon" href="/favicon-32x32.png?v=4" color="#000000" />
         
         {/* Meta tags pour PWA */}
         <meta name="application-name" content="Portfolio Kevin Mickael" />

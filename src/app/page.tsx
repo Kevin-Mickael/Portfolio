@@ -1,12 +1,18 @@
 import React from "react";
+import Image from "next/image";
 
 import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row, Meta, Schema } from "@once-ui-system/core";
 import { home, about, person, newsletter, baseURL, routes } from "@/resources";
 import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
+import { getPosts } from '@/utils/utils';
 
 export default function Home() {
+  // Récupérer l'article épinglé
+  const pinnedPost = getPosts(['src', 'app', 'blog', 'posts']).find(
+    (post) => post.metadata.tag === 'epingle'
+  );
   return (
     <Column maxWidth="m" gap="xl" horizontal="center">
       <Schema
@@ -83,6 +89,38 @@ export default function Home() {
         </Flex>
       )}
       <Projects range={[2]} />
+      {/* Section article épinglé */}
+      {pinnedPost && (
+        <RevealFx translateY="16" delay={0.7}>
+          <Column fillWidth paddingY="32" gap="m" style={{ background: 'var(--surface-strong)', borderRadius: 'var(--radius-l)' }}>
+            <Heading as="h2" variant="display-strong-m" wrap="balance">
+              {pinnedPost.metadata.title}
+            </Heading>
+            {pinnedPost.metadata.image && (
+              <Image
+                src={pinnedPost.metadata.image}
+                alt={pinnedPost.metadata.title}
+                width={800}
+                height={450}
+                style={{ maxWidth: '100%', height: 'auto', borderRadius: 'var(--radius-l)', marginBottom: 24 }}
+                priority
+              />
+            )}
+            <Text variant="body-default-l" onBackground="neutral-medium" style={{ marginBottom: 16 }}>
+              {pinnedPost.metadata.summary}
+            </Text>
+            <Button
+              href="/blog/presentation"
+              variant="primary"
+              size="l"
+              weight="strong"
+              arrowIcon
+            >
+              Lire l&apos;article
+            </Button>
+          </Column>
+        </RevealFx>
+      )}
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
     </Column>
   );

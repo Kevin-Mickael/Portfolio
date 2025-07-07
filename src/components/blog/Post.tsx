@@ -3,6 +3,7 @@
 import { Column, Flex, Heading, Media, SmartLink, Tag, Text } from '@once-ui-system/core';
 import styles from './Posts.module.scss';
 import { formatDate } from '@/utils/formatDate';
+import Image from "next/image";
 
 interface PostProps {
     post: any;
@@ -27,16 +28,21 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
                 mobileDirection="column"
                 fillWidth>
                 {post.metadata.image && thumbnail && (
-                    <Media
-                        priority
-                        className={styles.image}
-                        sizes="(max-width: 768px) 100vw, 640px"
-                        border="neutral-alpha-weak"
-                        cursor="interactive"
-                        radius="l"
-                        src={post.metadata.image}
-                        alt={'Thumbnail of ' + post.metadata.title}
-                        aspectRatio="16 / 9"
+                    <Image
+                      className={styles.image}
+                      src={post.metadata.image}
+                      alt={'Thumbnail of ' + post.metadata.title}
+                      width={640}
+                      height={360}
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                        objectFit: 'cover',
+                        borderRadius: 'var(--radius-l)',
+                        border: '1px solid var(--neutral-alpha-weak)',
+                        cursor: 'pointer'
+                      }}
+                      priority
                     />
                 )}
                 <Column

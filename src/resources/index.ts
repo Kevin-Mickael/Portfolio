@@ -2,6 +2,7 @@
 export {
   person,
   social,
+  socialAbout,
   newsletter,
   home,
   about,
