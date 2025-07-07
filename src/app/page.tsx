@@ -78,7 +78,7 @@ export default function Home() {
             </Heading>
           </Flex>
           <Flex flex={3} paddingX="20">
-            <Posts range={[1, 2]} columns="2" />
+            <Posts range={[1, 2]} columns="2" thumbnail />
           </Flex>
         </Flex>
       )}
