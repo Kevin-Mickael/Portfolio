@@ -9,7 +9,6 @@ interface FormData {
   email: string;
   subject: string;
   message: string;
-  agree: boolean;
 }
 
 const ContactPage: React.FC = () => {
@@ -83,17 +82,12 @@ const ContactPage: React.FC = () => {
     email: '',
     subject: '',
     message: '',
-    agree: false,
   });
   const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({ ...prev, agree: e.target.checked }));
   };
 
   const handleSubmit = async (e: FormEvent) => {
@@ -114,7 +108,6 @@ const ContactPage: React.FC = () => {
         email: '',
         subject: '',
         message: '',
-        agree: false,
       });
     } catch (error) {
       console.error('Form submission failed:', error);
@@ -175,7 +168,7 @@ const ContactPage: React.FC = () => {
             margin: '0',
             textAlign: 'center'
           }}>
-            Contactez-moi
+            Contact
           </h1>
           <p style={{
             fontSize: '16px',
@@ -510,37 +503,6 @@ const ContactPage: React.FC = () => {
             alignItems: 'center',
             marginTop: '46px'
           }}>
-            <label style={{
-              display: 'flex',
-              alignItems: 'center',
-              columnGap: '12px'
-            }}>
-              <input
-                type="checkbox"
-                style={{
-                  width: '18px',
-                  height: '18px',
-                  backgroundColor: 'var(--light-purple-200)',
-                  border: '1px solid var(--light-purple-600)',
-                  cursor: 'pointer'
-                }}
-                name="agree"
-                checked={formData.agree}
-                onChange={handleCheckbox}
-                required
-              />
-              <span style={{
-                fontSize: '14px',
-                fontFamily: 'var(--font-family)',
-                lineHeight: '18px',
-                fontWeight: '500',
-                color: 'var(--text-medium)',
-                margin: '0'
-              }}>
-                J&apos;accepte les conditions générales et la politique de confidentialité
-              </span>
-            </label>
-            
             <div style={{
               display: 'flex',
               alignItems: 'center',

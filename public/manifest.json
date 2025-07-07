@@ -1,13 +1,22 @@
 {
-  "name": "Portfolio Kevin",
-  "short_name": "Portfolio",
-  "description": "Portfolio de Kevin Mickael - Développeur Web",
+  "name": "Portfolio Kevin Mickael - Développeur Web Full Stack",
+  "short_name": "Portfolio Kevin",
+  "description": "Portfolio de Kevin Mickael - Développeur Web Full Stack & IT Support Engineer basé à Maurice",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
   "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "fr",
+  "dir": "ltr",
   "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
     {
       "src": "/icons/icon-72x72.png",
       "sizes": "72x72",

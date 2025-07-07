@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import Image from 'next/image';
 import { Flex, Button, Text } from '@once-ui-system/core';
 import { Icon } from '@once-ui-system/core';
 
@@ -135,15 +136,16 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
         onMouseLeave={handleMouseLeave}
       >
         {/* Main Image */}
-        <img
+        <Image
           src={images[currentIndex]}
           alt={`Slide ${currentIndex + 1}`}
+          fill
           style={{
-            width: '100%',
-            height: '100%',
             objectFit: 'cover',
             transition: 'opacity 0.5s ease-in-out'
           }}
+          priority={currentIndex === 0}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
         />
 
         {/* Navigation Buttons - Only show if more than 1 image */}

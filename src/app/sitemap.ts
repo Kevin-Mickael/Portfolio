@@ -6,7 +6,7 @@ export default async function sitemap() {
   const blogs = getPosts(["src", "app", "blog", "posts"]).map((post) => ({
     url: `${baseURL}/blog/${post.slug}`,
     lastModified: post.metadata.publishedAt,
-    changeFrequency: 'weekly',
+    changeFrequency: 'weekly' as const,
     priority: 0.7
   }));
 
@@ -14,7 +14,7 @@ export default async function sitemap() {
   const works = getPosts(["src", "app", "work", "projects"]).map((post) => ({
     url: `${baseURL}/work/${post.slug}`,
     lastModified: post.metadata.publishedAt,
-    changeFrequency: 'monthly',
+    changeFrequency: 'monthly' as const,
     priority: 0.8
   }));
 
@@ -25,7 +25,7 @@ export default async function sitemap() {
 
   const routes = activeRoutes.map((route) => {
     let priority = 0.5; // Priorité par défaut
-    let changeFrequency = 'monthly'; // Fréquence par défaut
+    let changeFrequency: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never' = 'monthly'; // Fréquence par défaut
 
     // Personnalisation des priorités et fréquences selon la route
     switch(route) {

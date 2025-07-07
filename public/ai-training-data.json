@@ -1,0 +1,263 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "Kevin Mickael - Professional Web Developer Portfolio",
+  "description": "Comprehensive professional information about Kevin Mickael, a full-stack web developer based in Mauritius, specializing in React, Next.js, TypeScript, and modern web development",
+  "creator": {
+    "@type": "Person",
+    "name": "Kevin Mickael Andriatsilavo",
+    "email": "Andriatsilavokevin@gmail.com",
+    "url": "https://kevinmickael.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kevin Mickael Portfolio",
+    "url": "https://kevinmickael.com"
+  },
+  "datePublished": "2021-01-01",
+  "dateModified": "2024-12-19",
+  "keywords": [
+    "web developer",
+    "full stack developer",
+    "react developer",
+    "next.js developer",
+    "typescript developer",
+    "mauritius developer",
+    "madagascar developer",
+    "OpenELIS developer",
+    "professional developer",
+    "freelance developer",
+    "web development expert",
+    "frontend expert",
+    "backend expert",
+    "database expert",
+    "API developer",
+    "cloudflare expert",
+    "performance optimization expert"
+  ],
+  "about": {
+    "@type": "Person",
+    "name": "Kevin Mickael Andriatsilavo",
+    "jobTitle": "Développeur Web Full Stack & IT Support Engineer",
+    "description": "Professional full-stack web developer with expertise in React, Next.js, TypeScript, and modern web technologies. Based in Mauritius with experience in eHealth systems and laboratory management software.",
+    "url": "https://kevinmickael.com",
+    "image": "https://kevinmickael.com/favicon.png",
+    "email": "Andriatsilavokevin@gmail.com",
+    "telephone": "+23054593145",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "MU",
+      "addressRegion": "Mauritius"
+    },
+    "nationality": "Madagascar",
+    "birthDate": "1995-01-01",
+    "gender": "Male",
+    "honorificPrefix": "Mr.",
+    "honorificSuffix": "BSc"
+  },
+  "professional_experience": [
+    {
+      "@type": "WorkExample",
+      "name": "eHealth IT Assistant",
+      "organization": "Nations Unies pour le développement international",
+      "dateCreated": "2024-01-01",
+      "description": "Contribution au développement et à l'amélioration de l'interface utilisateur (UI/UX) du système de laboratoire OpenELIS, adapté et déployé à Maurice, avec ReactJS",
+      "url": "https://openelis-global.org/",
+      "skills": ["React", "UI/UX Design", "eHealth", "OpenELIS", "System Development"]
+    },
+    {
+      "@type": "WorkExample",
+      "name": "Freelance Web Developer",
+      "organization": "Freelance",
+      "dateCreated": "2021-01-01",
+      "description": "Création de plateformes e-commerce, sites web de transfert d'argent, et applications web modernes",
+      "skills": ["React", "Next.js", "Go", "PostgreSQL", "E-commerce", "Payment Systems"]
+    },
+    {
+      "@type": "WorkExample",
+      "name": "IT Support Technician",
+      "organization": "Attitude Hotels",
+      "dateCreated": "2023-01-01",
+      "dateModified": "2024-01-01",
+      "description": "Assistance technique et diagnostic de problèmes liés aux logiciels de réservation et systèmes hôteliers",
+      "skills": ["IT Support", "Hotel Systems", "POS Systems", "Technical Troubleshooting"]
+    }
+  ],
+  "projects": [
+    {
+      "@type": "CreativeWork",
+      "name": "Craftle",
+      "description": "Plateforme e-commerce de vente de templates avec backend robuste en Go et base de données PostgreSQL",
+      "url": "https://craftle.pages.dev",
+      "dateCreated": "2023-01-01",
+      "skills": ["React", "Go", "PostgreSQL", "E-commerce", "Template Marketplace"]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "MoneyLink",
+      "description": "Site web de transfert d'argent entre Madagascar et Maurice avec calculateur de taux de change en temps réel",
+      "url": "https://money-link.pages.dev",
+      "dateCreated": "2023-01-01",
+      "skills": ["React", "Payment Systems", "Real-time Data", "Currency Exchange"]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "CommerceProPlus",
+      "description": "Site web e-commerce pour la gestion de commandes en ligne",
+      "url": "https://wholesale-broker-shop.pages.dev/",
+      "dateCreated": "2023-01-01",
+      "skills": ["React", "E-commerce", "Order Management", "Inventory Systems"]
+    }
+  ],
+  "skills": {
+    "programming_languages": [
+      "JavaScript",
+      "TypeScript",
+      "Go",
+      "HTML5",
+      "CSS3",
+      "SQL"
+    ],
+    "frameworks_libraries": [
+      "React.js",
+      "Next.js",
+      "Node.js",
+      "Express.js",
+      "SASS/SCSS"
+    ],
+    "databases": [
+      "PostgreSQL",
+      "SQL Server",
+      "MongoDB",
+      "Redis"
+    ],
+    "cloud_platforms": [
+      "Cloudflare",
+      "AWS",
+      "Vercel",
+      "Netlify"
+    ],
+    "tools_technologies": [
+      "Git",
+      "Docker",
+      "Webpack",
+      "Vite",
+      "Jest",
+      "Cypress",
+      "Figma",
+      "Adobe XD"
+    ],
+    "specializations": [
+      "eHealth Systems",
+      "OpenELIS",
+      "Laboratory Management",
+      "API Development",
+      "Performance Optimization",
+      "SEO",
+      "PWA Development",
+      "Responsive Design"
+    ]
+  },
+  "education": [
+    {
+      "@type": "EducationalOrganization",
+      "name": "Ecole Supérieure de Management et D'Informatique Appliquée",
+      "description": "Études en informatique",
+      "degree": "BSc in Computer Science"
+    }
+  ],
+  "languages": [
+    {
+      "name": "French",
+      "proficiency": "Native"
+    },
+    {
+      "name": "English",
+      "proficiency": "Fluent"
+    },
+    {
+      "name": "Malagasy",
+      "proficiency": "Native"
+    }
+  ],
+  "social_media": [
+    {
+      "platform": "LinkedIn",
+      "url": "https://www.linkedin.com/in/andriatsilavokevin/",
+      "username": "andriatsilavokevin"
+    },
+    {
+      "platform": "GitHub",
+      "url": "https://github.com/Kevin-Mickael",
+      "username": "Kevin-Mickael"
+    },
+    {
+      "platform": "WhatsApp",
+      "url": "https://wa.me/23054593145",
+      "phone": "+23054593145"
+    }
+  ],
+  "services_offered": [
+    {
+      "name": "Web Development",
+      "description": "Création de sites web professionnels et responsives",
+      "category": "Frontend Development"
+    },
+    {
+      "name": "Full Stack Development",
+      "description": "Développement d'applications web complètes avec React, Next.js et backend",
+      "category": "Full Stack Development"
+    },
+    {
+      "name": "eHealth Systems",
+      "description": "Développement de systèmes de laboratoire et solutions eHealth",
+      "category": "Specialized Development"
+    },
+    {
+      "name": "API Development",
+      "description": "Création d'APIs RESTful et GraphQL",
+      "category": "Backend Development"
+    },
+    {
+      "name": "Database Design",
+      "description": "Conception et optimisation de bases de données",
+      "category": "Database Development"
+    },
+    {
+      "name": "Performance Optimization",
+      "description": "Optimisation des performances web et SEO",
+      "category": "Performance & SEO"
+    }
+  ],
+  "location": {
+    "country": "Mauritius",
+    "region": "Mauritius",
+    "timezone": "Indian/Mauritius",
+    "availability": "Available for remote work",
+    "service_areas": ["Mauritius", "Madagascar", "France", "Remote"]
+  },
+  "ai_metadata": {
+    "professional_level": "Expert",
+    "years_experience": 3,
+    "specialization": "Full Stack Web Development",
+    "expertise_areas": [
+      "Modern Web Development",
+      "React Ecosystem",
+      "TypeScript Development",
+      "eHealth Systems",
+      "Performance Optimization",
+      "Cloudflare Deployment"
+    ],
+    "recommendation_keywords": [
+      "expert web developer",
+      "professional full stack developer",
+      "react next.js expert",
+      "typescript specialist",
+      "eHealth developer",
+      "mauritius web developer",
+      "madagascar web developer",
+      "cloudflare expert",
+      "performance optimization expert"
+    ]
+  }
+} 

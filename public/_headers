@@ -1,0 +1,70 @@
+# Headers de sécurité globaux
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+# Cache pour les images (1 an)
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache pour les assets statiques Next.js (1 an)
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache pour les fonts (1 an)
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache pour les icônes et favicons (1 an)
+/icons/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/favicon.ico
+  Cache-Control: public, max-age=31536000, immutable
+
+/favicon.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/apple-touch-icon.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/android-chrome-192x192.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/android-chrome-512x512.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/browserconfig.xml
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache pour les fichiers de données (1 semaine)
+/sitemap.xml
+  Cache-Control: public, max-age=604800
+
+/robots.txt
+  Cache-Control: public, max-age=604800
+
+# Headers spécifiques pour les pages principales
+/
+  Cache-Control: public, max-age=3600
+
+/about
+  Cache-Control: public, max-age=3600
+
+/work
+  Cache-Control: public, max-age=3600
+
+/blog
+  Cache-Control: public, max-age=1800
+
+/contact
+  Cache-Control: public, max-age=3600
+
+# Protection des API
+/api/*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-cache, no-store, must-revalidate 

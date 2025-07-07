@@ -1,0 +1,24 @@
+# Redirections 301 pour SEO
+# Redirection des anciennes URLs vers les nouvelles
+/old-blog/* /blog/:splat 301
+/portfolio/* /work/:splat 301
+
+# Redirection des URLs sans trailing slash
+/about/ /about 301
+/work/ /work 301
+/blog/ /blog 301
+/contact/ /contact 301
+
+# Redirection des URLs avec www vers sans www
+https://www.kevinmickael.com/* https://kevinmickael.com/:splat 301
+
+# Redirection des URLs HTTP vers HTTPS
+http://kevinmickael.com/* https://kevinmickael.com/:splat 301
+http://www.kevinmickael.com/* https://kevinmickael.com/:splat 301
+
+# Redirection des pages d'erreur
+/404 / 404
+/500 / 404 500
+
+# Redirection des fichiers non trouvés vers la page d'accueil
+/* /index.html 200 

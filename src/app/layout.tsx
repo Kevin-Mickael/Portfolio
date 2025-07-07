@@ -3,7 +3,7 @@ import '@once-ui-system/core/css/tokens.css';
 import '@/resources/custom.css'
 
 import classNames from "classnames";
-import { defaultMetadata } from './metadata.config';
+import { defaultMetadata, jsonLdSchemas } from './metadata.config';
 import { Background, Column, Flex, opacity, SpacingToken } from "@once-ui-system/core";
 import { Footer, Header, RouteGuard, Providers } from '@/components';
 import { CookieBanner } from '@/components/CookieBanner';
@@ -44,14 +44,55 @@ export default async function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
         
+        {/* Favicons et icônes PWA */}
+        <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=3" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png?v=3" />
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-180x180.png?v=3" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png?v=3" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png?v=3" />
+        <link rel="manifest" href="/manifest.json?v=3" />
+        <link rel="mask-icon" href="/favicon.png?v=3" color="#000000" />
+        
         {/* Meta tags pour PWA */}
-        <meta name="application-name" content="Portfolio Kevin" />
+        <meta name="application-name" content="Portfolio Kevin Mickael" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Portfolio Kevin" />
+        <meta name="apple-mobile-web-app-title" content="Portfolio Kevin Mickael" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="theme-color" content="#000000" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="msapplication-TileImage" content="/favicon.png" />
+        <meta name="msapplication-config" content="/browserconfig.xml" />
+        
+        {/* Schémas JSON-LD pour le SEO et les IA */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLdSchemas.person),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLdSchemas.organization),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLdSchemas.website),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLdSchemas.service),
+          }}
+        />
         
         <script
           id="theme-init"

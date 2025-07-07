@@ -10,6 +10,7 @@ import {
   Text,
   Button,
 } from "@once-ui-system/core";
+import Image from "next/image";
 import ImageSlider from "./ImageSlider";
 import { projects } from "@/resources/projects-data";
 import { useState } from "react";
@@ -69,16 +70,17 @@ const InfiniteSlider: React.FC<{ images: string[]; projects: any[] }> = ({ image
                 setHoveredImageIndex(null);
               }}
             >
-              <img
+              <Image
                 src={image}
                 alt={`Slide ${originalIndex + 1}`}
+                width={300}
+                height={200}
                 style={{
-                  width: '300px',
-                  height: '200px',
                   objectFit: 'cover',
                   borderRadius: '8px',
                   transition: 'filter 0.3s ease'
                 }}
+                sizes="300px"
               />
               
               {/* Overlay avec bouton "Visiter" - seulement pour l'image survolée */}
