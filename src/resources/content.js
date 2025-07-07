@@ -58,10 +58,10 @@ const social = [
 
 const home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image: "/favicon.png",
   label: "Accueil",
-  title: `Portfolio de ${person.name}`,
-  description: `Site portfolio présentant mon travail en tant que ${person.role}`,
+  title: `Création de site web et Portfolio à l'île Maurice`,
+  description: `Création de site web et portfolio à l'île Maurice  présentant mon travail en tant que ${person.role}`,
   headline: <>Création de sites web professionnels et intuitifs</>,
   featured: {
     display: true,
@@ -79,7 +79,7 @@ const home = {
 const about = {
   path: "/about",
   label: "À propos",
-  title: `À propos – ${person.name}`,
+  title: `À propos de ${person.name}`,
   description: `Rencontrez ${person.name}, ${person.role} basé à ${person.locationLabel}`,
   tableOfContent: {
     display: true,
@@ -97,7 +97,7 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Basé à Madagascar et à Maurice, Kevin Mickael est un spécialiste IT support et développement logiciel, toujours curieux et passionné par l&apos;innovation. Il conçoit des solutions aux problèmes techniques et crée des applications web et mobiles sur des bases solides, pour des projets utiles et à impact positif.
+        Basé à l&apos;île Maurice originaire de Madagascar, Kevin Mickael est un spécialiste IT support et développement logiciel, toujours curieux et passionné par l&apos;innovation. Il conçoit des solutions aux problèmes techniques et crée des applications web et mobiles sur des bases solides, pour des projets utiles et à impact positif.
       </>
     ),
   },

@@ -1,7 +1,9 @@
 "use client";
 
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent, useEffect } from 'react';
 import { person } from "@/resources";
+import { contact } from "@/resources/content";
+import { Metadata } from "next";
 
 interface FormData {
   firstName: string;
@@ -10,6 +12,7 @@ interface FormData {
   subject: string;
   message: string;
 }
+
 
 const ContactPage: React.FC = () => {
   // Ajouter les styles globaux pour les placeholders et enlever l'outline
@@ -115,6 +118,17 @@ const ContactPage: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    // Ajoute le script Tenor pour l'embed
+    const script = document.createElement('script');
+    script.src = 'https://tenor.com/embed.js';
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
     <section style={{
       /* Variables de couleurs */
@@ -166,9 +180,14 @@ const ContactPage: React.FC = () => {
             letterSpacing: '-3.2px',
             color: 'var(--black)',
             margin: '0',
-            textAlign: 'center'
+            textAlign: 'center',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '16px'
           }}>
-            Contact
+            Contactez-nous
+            <span style={{fontSize: '48px', lineHeight: '1'}}>✉️</span>
           </h1>
           <p style={{
             fontSize: '16px',

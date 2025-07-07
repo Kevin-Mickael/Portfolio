@@ -7,11 +7,11 @@ const defaultOpenGraph = {
   url: baseURL,
   siteName: home.title,
   images: [{
-    url: `${baseURL}/images/og/home.jpg`,
-    width: 1200,
-    height: 630,
+    url: `${baseURL}/favicon.png`,
+    width: 512,
+    height: 512,
     alt: home.title,
-    type: 'image/jpeg',
+    type: 'image/png',
   }],
 };
 
@@ -19,7 +19,7 @@ const defaultTwitter = {
   card: 'summary_large_image',
   creator: `@${person.name.replace(/\s+/g, '')}`,
   site: '@kevinmickael',
-  images: [`${baseURL}/images/og/home.jpg`],
+  images: [`${baseURL}/favicon.png`],
 };
 
 // Mots-clés enrichis pour un meilleur SEO et visibilité IA
@@ -39,6 +39,7 @@ const keywords = [
   'expert next.js',
   'développeur typescript',
   'création site web',
+  'création Portfolio',
   'développement web',
   'web design',
   'responsive design',
@@ -48,9 +49,14 @@ const keywords = [
   'développeur frontend madagascar',
   
   // Technologies spécifiques
-  'eHealth',
-  'OpenELIS',
-  'système de laboratoire',
+  'HTML',
+  'CSS',
+  'Wordpress',
+  'Shopify',
+  'Wix',
+  'Squarespace',
+  'Webflow',
+  'Figma',
   'IT support',
   'software engineer',
   'freelance developer',
@@ -80,7 +86,7 @@ const keywords = [
   'développeur web madagascar',
   'expert en développement d\'applications',
   'spécialiste en eHealth',
-  'développeur de systèmes de laboratoire',
+  'développeur web HTML & CSS',
   'expert en bases de données',
   'développeur d\'APIs',
   'spécialiste en performance web',
@@ -172,7 +178,7 @@ const jsonLd = {
   honorificPrefix: 'Mr.',
   honorificSuffix: 'BSc',
   gender: 'Male',
-  birthDate: '1995-01-01', // À ajuster selon votre date de naissance
+  birthDate: '2000-19-11', // À ajuster selon votre date de naissance
   nationality: {
     '@type': 'Country',
     name: 'Madagascar',
@@ -346,8 +352,8 @@ const serviceJsonLd = {
   offers: [
     {
       '@type': 'Offer',
-      name: 'Création de Sites Web',
-      description: 'Sites web professionnels et responsives',
+      name: 'Création de Sites Web et Portfolio Web',
+      description: 'Sites web professionnels et responsives et Portfolio Web',
       price: '0',
       priceCurrency: 'EUR',
     },
@@ -372,7 +378,7 @@ export const defaultMetadata: Metadata = {
   metadataBase: new URL(baseURL),
   title: {
     default: home.title,
-    template: `%s | ${person.name}`,
+    template: `%s `,
   },
   description: home.description,
   keywords: keywords,
