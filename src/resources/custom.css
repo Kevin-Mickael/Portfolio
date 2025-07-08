@@ -71,3 +71,58 @@ html, body {
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
+
+/*
+  Fichier CSS global pour le site
+  Place ici tous tes styles globaux, classes utilitaires, overrides, etc.
+  Exemple de structure :
+*/
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--page-background, #fff);
+  color: var(--neutral-on-background-strong, #222);
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Ajoute ici tes classes utilitaires ou styles globaux */
+
+.heading-strong {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+/* ...etc. */
+
+.cookie-banner {
+  /* fallback for desktop, overridden by inline style */
+}
+
+@media (max-width: 768px) {
+  .cookie-banner {
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    border-radius: 0 !important;
+    padding: 12px !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+  }
+}

@@ -28,38 +28,19 @@ export const CookieBanner: React.FC = () => {
     }
   }, []);
 
-  const setHttpOnlyCookie = (name: string, value: string, days: number = 365) => {
+  // Note: Il n'est pas possible de créer un cookie HttpOnly côté client (JavaScript). HttpOnly est réservé au backend.
+  // On applique les flags Secure et SameSite=Strict pour la meilleure sécurité possible côté frontend.
+  const setClientCookie = (name: string, value: string, days: number = 365) => {
     const expires = new Date();
     expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
-    document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/;SameSite=Strict`;
+    document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/;SameSite=Strict;Secure`;
   };
 
-  const handleAccept = async () => {
-    try {
-      // Envoyer les préférences au serveur pour créer des cookies HTTP-only
-      const response = await fetch('/api/cookies', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          accepted: true,
-          settings: cookieSettings
-        }),
-      });
-
-      if (response.ok) {
-        setIsAccepted(true);
-        setIsVisible(false);
-      }
-    } catch (error) {
-      console.error('Erreur lors de la sauvegarde des cookies:', error);
-      // Fallback: utiliser des cookies normaux si l'API échoue
-      setHttpOnlyCookie('cookies-accepted', 'true');
-      setHttpOnlyCookie('cookie-settings', JSON.stringify(cookieSettings));
-      setIsAccepted(true);
-      setIsVisible(false);
-    }
+  const handleAccept = () => {
+    setClientCookie('cookies-accepted', 'true');
+    setClientCookie('cookie-settings', JSON.stringify(cookieSettings));
+    setIsAccepted(true);
+    setIsVisible(false);
   };
 
   const handleSettings = () => {
@@ -123,7 +104,7 @@ export const CookieBanner: React.FC = () => {
   }
 
   return (
-    <div style={{
+    <div className={"cookie-banner"} style={{
       position: 'fixed',
       bottom: '20px',
       left: '20px',
@@ -605,13 +586,19 @@ export const CookieBanner: React.FC = () => {
             transform: translateY(0) scale(1);
           }
         }
-        
+        .cookie-banner {
+          /* fallback for desktop, overridden by inline style */
+        }
         @media (max-width: 768px) {
           .cookie-banner {
-            bottom: 10px;
-            left: 10px;
-            right: 10px;
-            width: auto;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            width: 100vw !important;
+            border-radius: 0 !important;
+            padding: 12px !important;
+            min-width: 0 !important;
+            max-width: 100vw !important;
           }
         }
       `}</style>

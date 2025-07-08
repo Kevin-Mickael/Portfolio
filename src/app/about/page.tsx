@@ -11,14 +11,13 @@ import {
   Text,
   Meta,
   Schema
-} from "@once-ui-system/core";
-import { baseURL, person, social, socialAbout } from "@/resources";
-import { about as aboutContent } from "@/resources/content";
-import TableOfContents from "@/components/about/TableOfContents";
-import styles from "@/components/about/about.module.scss";
-import React from "react";
-
-export async function generateMetadata() {
+ } from "@once-ui-system/core";
+ import { baseURL, person, social, socialAbout } from "@/resources";
+ import { about as aboutContent } from "@/resources/content";
+ import TableOfContents from "@/components/about/TableOfContents";
+ import React from "react";
+ 
+ export async function generateMetadata() {
   return Meta.generate({
     title: aboutContent.title.replace('About', 'À propos'),
     description: aboutContent.description.replace('Meet', 'Rencontrez'),
@@ -26,9 +25,9 @@ export async function generateMetadata() {
     image: `/api/og/generate?title=${encodeURIComponent(aboutContent.title)}`,
     path: aboutContent.path,
   });
-}
-
-export default function About() {
+ }
+ 
+ export default function About() {
   const about = aboutContent;
   const structure = [
     {
@@ -70,7 +69,6 @@ export default function About() {
       <Flex fillWidth mobileDirection="column" horizontal="center">
         {about.avatar.display && (
           <Column
-            className={styles.avatar}
             position="sticky"
             minWidth="160"
             paddingX="l"
@@ -79,7 +77,25 @@ export default function About() {
             flex={3}
             horizontal="center"
           >
-            <Avatar src={person.avatar} size="xl" />
+            <img
+              src={person.avatar || ''}
+              alt={person.name}
+              width={160}
+              height={160}
+              style={{
+                borderRadius: '50%',
+                objectFit: 'cover',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                marginBottom: 16,
+                width: 160,
+                height: 160,
+                aspectRatio: '1 / 1',
+                display: 'block',
+                maxWidth: '100%',
+                minWidth: 0
+              }}
+              loading="lazy"
+            />
             <Flex gap="8" vertical="center">
               <Icon onBackground="accent-weak" name="globe" />
               {person.locationLabel}
@@ -95,7 +111,7 @@ export default function About() {
             )}
           </Column>
         )}
-        <Column className={styles.blockAlign} flex={9} maxWidth={40}>
+        <Column flex={9} maxWidth={40}>
           <Column
             id={about.intro.title}
             fillWidth
@@ -107,7 +123,6 @@ export default function About() {
               <Flex
                 fitWidth
                 border="brand-alpha-medium"
-                className={styles.blockAlign}
                 style={{
                   backdropFilter: "blur(var(--static-space-1))",
                 }}
@@ -128,18 +143,17 @@ export default function About() {
                 />
               </Flex>
             )}
-            <Heading className={styles.textAlign} variant="display-strong-xl">
+            <Heading variant="display-strong-xl">
               {person.name}
             </Heading>
             <Text
-              className={styles.textAlign}
               variant="display-default-xs"
               onBackground="neutral-weak"
             >
               {person.role}
             </Text>
             {social.length > 0 && (
-              <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth data-border="rounded">
+              <Flex paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth data-border="rounded">
                 {social.map(
                   (item) =>
                     item.link && (
@@ -201,13 +215,13 @@ export default function About() {
               </Flex>
             )}
           </Column>
-
+ 
           {about.intro.display && (
             <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
               {about.intro.description}
             </Column>
           )}
-
+ 
           {about.work.display && (
             <>
               <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m">
@@ -245,21 +259,22 @@ export default function About() {
                             key={index}
                             border="neutral-medium"
                             radius="m"
-                            //@ts-ignore
-                            minWidth={image.width}
-                            //@ts-ignore
-                            height={image.height}
                           >
-                            <Media
-                              enlarge
-                              radius="m"
-                              //@ts-ignore
-                              sizes={image.width.toString()}
-                              //@ts-ignore
-                              alt={image.alt}
-                              //@ts-ignore
-                              src={image.src}
-                            />
+                            <img
+                              src={typeof image === 'string' ? image : (image?.src || '')}
+                              alt={typeof image === 'string' ? (experience.company + ' logo') : (image?.alt || (experience.company + ' logo'))}
+                              width={160}
+                              height={90}
+                              style={{
+                                borderRadius: '8px',
+                                objectFit: 'cover',
+                                width: '200%',
+                                height: '120px',
+                                aspectRatio: '16/9',
+                                display: 'block'
+                              }}
+                              loading="lazy"
+                              />
                           </Flex>
                         ))}
                       </Flex>
@@ -269,7 +284,7 @@ export default function About() {
               </Column>
             </>
           )}
-
+ 
           {about.studies.display && (
             <>
               <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="m">
@@ -289,7 +304,7 @@ export default function About() {
               </Column>
             </>
           )}
-
+ 
           {about.technical.display && (
             <>
               <Heading
@@ -314,21 +329,22 @@ export default function About() {
                             key={index}
                             border="neutral-medium"
                             radius="m"
-                            //@ts-ignore
-                            minWidth={image.width}
-                            //@ts-ignore
-                            height={image.height}
                           >
-                            <Media
-                              enlarge
-                              radius="m"
-                              //@ts-ignore
-                              sizes={image.width.toString()}
-                              //@ts-ignore
-                              alt={image.alt}
-                              //@ts-ignore
-                              src={image.src}
-                            />
+                          <img
+                          src={typeof image === 'string' ? image : (image?.src || '')}
+                          alt={typeof image === 'string' ? (skill.title + ' logo') : (image?.alt || (skill.title + ' logo'))}
+                          width={160}
+                          height={90}
+                          style={{
+                            borderRadius: '8px',
+                            objectFit: 'cover',
+                            width: '200%',
+                            height: '120px',
+                            aspectRatio: '16/9',
+                            display: 'block'
+                          }}
+                          loading="lazy"
+                          />
                           </Flex>
                         ))}
                       </Flex>
@@ -342,4 +358,4 @@ export default function About() {
       </Flex>
     </Column>
   );
-}
+ }

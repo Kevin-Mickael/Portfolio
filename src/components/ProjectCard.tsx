@@ -70,7 +70,7 @@ const InfiniteSlider: React.FC<{ images: string[]; projects: any[] }> = ({ image
                 setHoveredImageIndex(null);
               }}
             >
-              <Image
+              <img
                 src={image}
                 alt={`Slide ${originalIndex + 1}`}
                 width={300}
@@ -207,7 +207,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   link,
 }) => {
   const isIframe = images.length === 1 && images[0].startsWith('iframe:');
-  const isSliderProject = title.includes("🎨 Galerie d'inspiration créative");
+  const isSliderProject = href && href.includes('image-slider-showcase');
   
   return (
     <Column fillWidth gap="m">

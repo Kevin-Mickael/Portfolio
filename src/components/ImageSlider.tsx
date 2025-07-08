@@ -6,7 +6,7 @@ import { Flex, Button, Text } from '@once-ui-system/core';
 import { Icon } from '@once-ui-system/core';
 
 interface ImageSliderProps {
-  images: string[];
+  images: (string | { src: string; alt?: string; width?: number; height?: number })[];
   title?: string;
   autoPlay?: boolean;
   interval?: number;
@@ -20,80 +20,113 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const currentIndexRef = useRef(0);
-  const imagesRef = useRef(images);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [imageError, setImageError] = useState<{ [key: number]: boolean }>({});
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Debug logs
-  useEffect(() => {
-    console.log('🔍 ImageSlider Debug:');
-    console.log('  - Images reçues:', images);
-    console.log('  - Nombre d\'images:', images.length);
-    console.log('  - Current index:', currentIndex);
-  }, [images, currentIndex]);
-
-  // Mettre à jour la ref des images
-  useEffect(() => {
-    imagesRef.current = images;
+  // Fonction pour normaliser les images
+  const normalizeImages = useCallback(() => {
+    return images.map(img => {
+      if (typeof img === 'string') {
+        return { src: img, alt: 'Image' };
+      }
+      return { src: img.src, alt: img.alt || 'Image' };
+    });
   }, [images]);
 
-  // Reset currentIndex seulement si les images changent complètement
-  useEffect(() => {
-    const prevImages = imagesRef.current;
-    const imagesChanged = prevImages.length !== images.length || 
-                         !prevImages.every((img, index) => img === images[index]);
+  const normalizedImages = normalizeImages();
+
+  // Fonction pour aller à l'image suivante
+  const goToNext = useCallback(() => {
+    if (images.length <= 1 || isTransitioning) return;
     
-    if (imagesChanged) {
-      console.log('🔄 Images changées, reset de l\'index');
-      setCurrentIndex(0);
-      currentIndexRef.current = 0;
-    }
-  }, [images]);
+    setIsTransitioning(true);
+    setCurrentIndex((prevIndex) => {
+      const newIndex = prevIndex >= images.length - 1 ? 0 : prevIndex + 1;
+      console.log('➡️ Next:', prevIndex, '->', newIndex);
+      return newIndex;
+    });
+    
+    setTimeout(() => setIsTransitioning(false), 500);
+  }, [images.length, isTransitioning]);
 
-  // Auto-play functionality
+  // Fonction pour aller à l'image précédente
+  const goToPrevious = useCallback(() => {
+    if (images.length <= 1 || isTransitioning) return;
+    
+    setIsTransitioning(true);
+    setCurrentIndex((prevIndex) => {
+      const newIndex = prevIndex <= 0 ? images.length - 1 : prevIndex - 1;
+      console.log('⬅️ Previous:', prevIndex, '->', newIndex);
+      return newIndex;
+    });
+    
+    setTimeout(() => setIsTransitioning(false), 500);
+  }, [images.length, isTransitioning]);
+
+  // Fonction pour aller à une image spécifique
+  const goToSlide = useCallback((index: number) => {
+    if (index < 0 || index >= images.length || index === currentIndex || isTransitioning) return;
+    
+    setIsTransitioning(true);
+    setCurrentIndex(index);
+    console.log('🎯 Go to slide:', index);
+    
+    setTimeout(() => setIsTransitioning(false), 500);
+  }, [images.length, currentIndex, isTransitioning]);
+
+  // Gestion de l'autoplay
   useEffect(() => {
-    if (!autoPlay || isPaused || images.length <= 1) return;
+    if (!autoPlay || isPaused || images.length <= 1) {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
+      return;
+    }
 
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => {
-        const newIndex = (prevIndex + 1) % images.length;
-        currentIndexRef.current = newIndex;
-        return newIndex;
-      });
+    timerRef.current = setInterval(() => {
+      goToNext();
     }, interval);
 
-    return () => clearInterval(timer);
-  }, [autoPlay, interval, images.length, isPaused]);
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
+    };
+  }, [autoPlay, isPaused, images.length, interval, goToNext]);
 
-  const goToNext = useCallback(() => {
-    if (images.length <= 1) return;
-    setCurrentIndex((prevIndex) => {
-      const newIndex = (prevIndex + 1) % images.length;
-      currentIndexRef.current = newIndex;
-      console.log('➡️ goToNext - currentIndex:', prevIndex, '->', newIndex);
-      return newIndex;
-    });
-  }, [images.length]);
+  // Reset quand les images changent
+  useEffect(() => {
+    setCurrentIndex(0);
+    setIsTransitioning(false);
+    setImageError({});
+  }, [images]);
 
-  const goToPrevious = useCallback(() => {
-    if (images.length <= 1) return;
-    setCurrentIndex((prevIndex) => {
-      const newIndex = (prevIndex - 1 + images.length) % images.length;
-      currentIndexRef.current = newIndex;
-      console.log('⬅️ goToPrevious - currentIndex:', prevIndex, '->', newIndex);
-      return newIndex;
-    });
-  }, [images.length]);
-
-  const goToSlide = useCallback((index: number) => {
-    console.log('🎯 goToSlide - index demandé:', index);
-    if (index >= 0 && index < images.length) {
-      console.log('✅ Changement vers index:', index);
-      setCurrentIndex(index);
-      currentIndexRef.current = index;
-    } else {
-      console.log('❌ Index invalide:', index);
+  // Fonction pour empêcher le scroll horizontal
+  const preventHorizontalScroll = useCallback((e: React.WheelEvent) => {
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+      e.preventDefault();
+      e.stopPropagation();
     }
-  }, [images.length]);
+  }, []);
+
+  // Gestion des touches clavier
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        goToPrevious();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        goToNext();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [goToNext, goToPrevious]);
 
   const handleMouseEnter = useCallback(() => {
     setIsPaused(true);
@@ -103,144 +136,207 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
     setIsPaused(false);
   }, []);
 
+  const handleImageError = useCallback((index: number) => {
+    setImageError(prev => ({ ...prev, [index]: true }));
+  }, []);
+
   if (!images || images.length === 0) {
     return null;
   }
 
-  // Test: Afficher les informations de débogage
-  console.log('🔄 Rendu ImageSlider:');
-  console.log('  - currentIndex:', currentIndex);
-  console.log('  - images.length:', images.length);
-  console.log('  - image actuelle:', images[currentIndex]);
+  const currentImage = normalizedImages[currentIndex];
 
   return (
-    <Flex direction="column" gap="16" style={{ width: '100%', maxWidth: '100%', overflow: 'hidden' }}>
-      {title && (
-        <Flex horizontal="center">
-          <Text variant="heading-strong-m">
-            {title}
-          </Text>
-        </Flex>
-      )}
-      
+    <div style={{ 
+      width: '100%', 
+      maxWidth: '100%', 
+      overflowX: 'hidden',
+      boxSizing: 'border-box'
+    }}>
       <Flex 
-        position="relative" 
+        direction="column" 
+        gap="16" 
         style={{ 
-          width: '100%',
-          maxWidth: '100%',
-          height: '400px',
-          borderRadius: '12px',
-          overflow: 'hidden'
+          width: '100%', 
+          maxWidth: '100%', 
+          overflow: 'hidden',
+          boxSizing: 'border-box'
         }}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        onWheel={preventHorizontalScroll}
       >
-        {/* Main Image */}
-        <Image
-          src={images[currentIndex]}
-          alt={`Slide ${currentIndex + 1}`}
-          fill
-          style={{
-            objectFit: 'cover',
-            transition: 'opacity 0.5s ease-in-out'
-          }}
-          priority={currentIndex === 0}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-        />
-
-        {/* Navigation Buttons - Only show if more than 1 image */}
-        {images.length > 1 && (
-          <>
-            <Button
-              onClick={goToPrevious}
-              variant="tertiary"
-              size="s"
-              style={{
-                position: 'absolute',
-                left: '16px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                zIndex: 10,
-                background: 'rgba(0, 0, 0, 0.5)',
-                color: 'white',
-                border: 'none'
-              }}
-            >
-              <Icon name="chevronLeft" size="m" />
-            </Button>
-
-            <Button
-              onClick={goToNext}
-              variant="tertiary"
-              size="s"
-              style={{
-                position: 'absolute',
-                right: '16px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                zIndex: 10,
-                background: 'rgba(0, 0, 0, 0.5)',
-                color: 'white',
-                border: 'none'
-              }}
-            >
-              <Icon name="chevronRight" size="m" />
-            </Button>
-          </>
-        )}
-
-        {/* Slide Counter */}
-        {images.length > 1 && (
-          <Flex
-            position="absolute"
-            bottom="l"
-            right="l"
-            background="neutral-strong"
-            padding="s"
-            radius="m"
-          >
-            <Text variant="body-default-s" onBackground="neutral-strong">
-              {currentIndex + 1} / {images.length}
+        {title && (
+          <Flex horizontal="center">
+            <Text variant="heading-strong-m">
+              {title}
             </Text>
           </Flex>
         )}
-      </Flex>
-
-      {/* Dots Navigation - Only show if more than 1 image */}
-      {images.length > 1 && (
-        <Flex gap="8" horizontal="center" style={{ width: '100%', maxWidth: '100%' }}>
-          {images.map((_, index) => (
-            <Button
-              key={index}
-              onClick={() => goToSlide(index)}
-              variant="tertiary"
-              size="s"
+        
+        <Flex 
+          position="relative" 
+          style={{ 
+            width: '100%',
+            maxWidth: '100%',
+            height: '400px',
+            borderRadius: '12px',
+            overflow: 'hidden',
+            boxSizing: 'border-box',
+            margin: 0,
+            padding: 0,
+            userSelect: 'none',
+            WebkitUserSelect: 'none',
+            MozUserSelect: 'none',
+            backgroundColor: '#f0f0f0'
+          } as React.CSSProperties}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onWheel={preventHorizontalScroll}
+        >
+          {/* Main Image */}
+          {imageError[currentIndex] ? (
+            <div style={{
+              width: '100%',
+              height: '100%',
+              backgroundColor: '#f0f0f0',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: '12px',
+              color: '#666'
+            }}>
+              <Text variant="body-default-m">Image non disponible</Text>
+            </div>
+          ) : (
+            <Image
+              key={`image-${currentIndex}`}
+              src={currentImage.src}
+              alt={currentImage.alt}
+              fill
               style={{
-                width: '12px',
-                height: '12px',
-                borderRadius: '50%',
-                padding: 0,
-                background: index === currentIndex ? 'var(--color-brand-strong)' : 'var(--color-neutral-alpha-medium)',
-                border: 'none',
-                cursor: 'pointer',
-                transition: 'background-color 0.3s ease'
+                objectFit: 'cover',
+                borderRadius: '12px',
+                transition: isTransitioning ? 'opacity 0.5s ease-in-out' : 'none',
+                opacity: isTransitioning ? 0.7 : 1
               }}
-              onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
-                if (index !== currentIndex) {
-                  e.currentTarget.style.background = 'var(--color-brand-alpha-medium)';
-                }
-              }}
-              onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
-                if (index !== currentIndex) {
-                  e.currentTarget.style.background = 'var(--color-neutral-alpha-medium)';
-                }
-              }}
-              title={`Image ${index + 1}`}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              onError={() => handleImageError(currentIndex)}
+              priority={currentIndex === 0}
+              unoptimized={true}
             />
-          ))}
+          )}
+
+          {/* Navigation Buttons */}
+          {images.length > 1 && (
+            <>
+              <Button
+                onClick={goToPrevious}
+                variant="tertiary"
+                size="s"
+                disabled={isTransitioning}
+                style={{
+                  position: 'absolute',
+                  left: '16px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  zIndex: 10,
+                  background: 'rgba(0, 0, 0, 0.7)',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '50%',
+                  width: '40px',
+                  height: '40px',
+                  cursor: isTransitioning ? 'not-allowed' : 'pointer',
+                  opacity: isTransitioning ? 0.5 : 1
+                }}
+              >
+                <Icon name="chevronLeft" size="m" />
+              </Button>
+
+              <Button
+                onClick={goToNext}
+                variant="tertiary"
+                size="s"
+                disabled={isTransitioning}
+                style={{
+                  position: 'absolute',
+                  right: '16px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  zIndex: 10,
+                  background: 'rgba(0, 0, 0, 0.7)',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '50%',
+                  width: '40px',
+                  height: '40px',
+                  cursor: isTransitioning ? 'not-allowed' : 'pointer',
+                  opacity: isTransitioning ? 0.5 : 1
+                }}
+              >
+                <Icon name="chevronRight" size="m" />
+              </Button>
+            </>
+          )}
+
+          {/* Slide Counter */}
+          {images.length > 1 && (
+            <Flex
+              position="absolute"
+              bottom="l"
+              right="l"
+              background="neutral-strong"
+              padding="s"
+              radius="m"
+              style={{ 
+                zIndex: 5,
+                background: 'rgba(0, 0, 0, 0.7)',
+                color: 'white'
+              }}
+            >
+              <Text variant="body-default-s" style={{ color: 'white' }}>
+                {currentIndex + 1} / {images.length}
+              </Text>
+            </Flex>
+          )}
         </Flex>
-      )}
-    </Flex>
+
+        {/* Dots Navigation */}
+        {images.length > 1 && (
+          <Flex 
+            gap="8" 
+            horizontal="center" 
+            style={{ 
+              width: '100%', 
+              maxWidth: '100%',
+              overflowX: 'hidden',
+              flexWrap: 'wrap',
+              justifyContent: 'center'
+            }}
+          >
+            {images.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                disabled={isTransitioning}
+                style={{
+                  width: '12px',
+                  height: '12px',
+                  borderRadius: '50%',
+                  padding: 0,
+                  background: index === currentIndex ? 'var(--color-brand-strong, #007bff)' : 'var(--color-neutral-alpha-medium, #ccc)',
+                  border: 'none',
+                  cursor: isTransitioning ? 'not-allowed' : 'pointer',
+                  transition: 'background-color 0.3s ease',
+                  opacity: isTransitioning ? 0.5 : 1,
+                  margin: '0 2px'
+                }}
+                title={`Image ${index + 1}`}
+              />
+            ))}
+          </Flex>
+        )}
+      </Flex>
+    </div>
   );
 };
 

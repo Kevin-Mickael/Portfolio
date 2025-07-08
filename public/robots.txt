@@ -1,0 +1,30 @@
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /blog
+Allow: /work
+Allow: /contact
+Disallow: /api/*
+Disallow: /_next/*
+Disallow: /static/*
+Disallow: /admin/*
+Disallow: /private/*
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+Sitemap: https://demo.magic-portfolio.com/sitemap.xml
+Host: https://demo.magic-portfolio.com 

@@ -12,10 +12,12 @@ function IframeDisplay({ src, title }: { src: string; title?: string }) {
     <div style={{ 
       position: 'relative', 
       width: '100%', 
+      maxWidth: '100%',
       height: '400px', 
       margin: '16px 0',
       borderRadius: '8px',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      boxSizing: 'border-box'
     }}>
       <iframe
         src={src}
@@ -24,6 +26,8 @@ function IframeDisplay({ src, title }: { src: string; title?: string }) {
           width: '100%',
           height: '100%',
           border: 'none',
+          maxWidth: '100%',
+          boxSizing: 'border-box'
         }}
         loading="lazy"
       />
@@ -78,62 +82,112 @@ export default async function Project({
     })) || [];
 
   return (
-    <Column as="section" maxWidth="m" horizontal="center" gap="l">
-      <Schema
-        as="blogPosting"
-        baseURL={baseURL}
-        path={`${work.path}/${post.slug}`}
-        title={post.metadata.title}
-        description={post.metadata.summary}
-        datePublished={post.metadata.publishedAt}
-        dateModified={post.metadata.publishedAt}
-        image={post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`}
-        author={{
-          name: person.name,
-          url: `${baseURL}${about.path}`,
-          image: `${baseURL}${person.avatar}`,
+    <div style={{ 
+      width: '100%', 
+      maxWidth: '100vw', 
+      overflowX: 'hidden', 
+      boxSizing: 'border-box' 
+    }}>
+      <Column 
+        as="section" 
+        maxWidth="m" 
+        horizontal="center" 
+        gap="l" 
+        style={{ 
+          overflowX: 'hidden',
+          width: '100%',
+          maxWidth: '100%',
+          boxSizing: 'border-box'
         }}
-      />
-      <Column maxWidth="xs" gap="16">
-        <Button data-border="rounded" href="/work" variant="tertiary" weight="default" size="s" prefixIcon="chevronLeft">
-          Projets
-        </Button>
-        <Heading variant="display-strong-s">{post.metadata.title}</Heading>
+      >
+        <Schema
+          as="blogPosting"
+          baseURL={baseURL}
+          path={`${work.path}/${post.slug}`}
+          title={post.metadata.title}
+          description={post.metadata.summary}
+          datePublished={post.metadata.publishedAt}
+          dateModified={post.metadata.publishedAt}
+          image={post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`}
+          author={{
+            name: person.name,
+            url: `${baseURL}${about.path}`,
+            image: `${baseURL}${person.avatar}`,
+          }}
+        />
+        <Column 
+          maxWidth="xs" 
+          gap="16"
+          style={{ 
+            width: '100%', 
+            maxWidth: '100%', 
+            boxSizing: 'border-box' 
+          }}
+        >
+          <Button data-border="rounded" href="/work" variant="tertiary" weight="default" size="s" prefixIcon="chevronLeft">
+            Projets
+          </Button>
+          <Heading variant="display-strong-s">{post.metadata.title}</Heading>
+        </Column>
+        
+        <div style={{ 
+          width: '100%', 
+          maxWidth: '100%', 
+          overflowX: 'hidden', 
+          boxSizing: 'border-box' 
+        }}>
+          {post.metadata.images.length > 0 && (
+            post.metadata.images[0].startsWith('iframe:') ? (
+              <IframeDisplay 
+                src={post.metadata.images[0].replace('iframe:', '')} 
+                title={post.metadata.title}
+              />
+            ) : post.metadata.images.length > 1 ? (
+              <ImageSlider 
+                key={`slider-${post.slug}`}
+                images={post.metadata.images}
+                title="Galerie du projet"
+                autoPlay={true}
+                interval={4000}
+              />
+            ) : (
+              <img
+                src={post.metadata.images[0]}
+                alt="image"
+                style={{ 
+                  width: '100%', 
+                  maxWidth: '100%', 
+                  boxSizing: 'border-box',
+                  borderRadius: '12px',
+                  objectFit: 'cover'
+                }}
+                loading="lazy"
+              />
+            )
+          )}
+        </div>
+        
+        <Column 
+          style={{ 
+            margin: "auto",
+            width: '100%',
+            maxWidth: '100%',
+            boxSizing: 'border-box',
+            overflowX: 'hidden'
+          }} 
+          as="article" 
+          maxWidth="xs"
+        >
+          <Flex gap="12" marginBottom="24" vertical="center">
+            {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="m" />}
+            <Text variant="body-default-s" onBackground="neutral-weak">
+              {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
+            </Text>
+          </Flex>
+          <CustomMDX source={post.content} />
+        </Column>
+        <ScrollToHash />
       </Column>
-      {post.metadata.images.length > 0 && (
-        post.metadata.images[0].startsWith('iframe:') ? (
-          <IframeDisplay 
-            src={post.metadata.images[0].replace('iframe:', '')} 
-            title={post.metadata.title}
-          />
-        ) : post.metadata.images.length > 1 ? (
-          <ImageSlider 
-            key={`slider-${post.slug}`}
-            images={post.metadata.images}
-            title="Galerie du projet"
-            autoPlay={true}
-            interval={4000}
-          />
-        ) : (
-          <Media
-            priority
-            aspectRatio="16 / 9"
-            radius="m"
-            alt="image"
-            src={post.metadata.images[0]}
-          />
-        )
-      )}
-      <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
-        <Flex gap="12" marginBottom="24" vertical="center">
-          {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="m" />}
-          <Text variant="body-default-s" onBackground="neutral-weak">
-            {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
-          </Text>
-        </Flex>
-        <CustomMDX source={post.content} />
-      </Column>
-      <ScrollToHash />
-    </Column>
+    </div>
   );
 }

@@ -60,11 +60,22 @@ export default function Home() {
             >
               <Flex gap="8" vertical="center" paddingRight="4">
                 {about.avatar.display && (
-                  <Avatar
-                    marginRight="8"
-                    style={{ marginLeft: "-0.75rem" }}
+                  <img
                     src={person.avatar}
-                    size="m"
+                    alt={person.name}
+                    width={32}
+                    height={32}
+                    style={{
+                      width: 32,
+                      height: 32,
+                      borderRadius: '50%',
+                      objectFit: 'cover',
+                      overflow: 'hidden',
+                      marginRight: 8,
+                      marginLeft: '-0.75rem',
+                      boxShadow: '0 1px 4px rgba(0,0,0,0.08)'
+                    }}
+                    loading="lazy"
                   />
                 )}
                 {about.title}
@@ -97,13 +108,13 @@ export default function Home() {
               {pinnedPost.metadata.title}
             </Heading>
             {pinnedPost.metadata.image && (
-              <Image
+              <img
                 src={pinnedPost.metadata.image}
                 alt={pinnedPost.metadata.title}
                 width={800}
                 height={450}
                 style={{ maxWidth: '100%', height: 'auto', borderRadius: 'var(--radius-l)', marginBottom: 24 }}
-                priority
+                loading="lazy"
               />
             )}
             <Text variant="body-default-l" onBackground="neutral-medium" style={{ marginBottom: 16 }}>

@@ -1,19 +1,18 @@
 import { Logo } from "@once-ui-system/core";
 
-
 const person = {
   firstName: "Kevin Mickael",
   lastName: "",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "IT Support Engineer · Software Engineer",
+  role: "Software Engineer",
   avatar: "/images/avatar.jpeg",
   email: "Andriatsilavokevin@gmail.com",
-  location: "Indian/Mauritius", // Timezone IANA valide pour le fonctionnement technique
-  locationDisplay: "Mauritius", // Affichage simple pour l'interface
-  locationLabel: "Madagascar/Maurice", // Affichage utilisateur
-  languages: ["Français", "Anglais","Malagasy"], // optionnel : Laisser vide si vous ne souhaitez pas afficher de langues
+  location: "Indian/Mauritius",
+  locationDisplay: "Mauritius",
+  locationLabel: "Madagascar/Maurice",
+  languages: ["Français", "Anglais","Malagasy"],
 };
 
 const newsletter = {
@@ -22,14 +21,11 @@ const newsletter = {
   description: (
     <>
       Restez à l&apos;écoute des nouvelles opportunités, suivez les dernières tendances technologiques, découvrez des formations pour progresser et profitez d&apos;offres de réduction exclusives.
-
     </>
   ),
 };
 
 const social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
   {
     name: "GitHub",
     icon: "github",
@@ -57,14 +53,12 @@ const social = [
   },
 ];
 
-// Réseaux sociaux spécifiques à la page À propos
 const socialAbout = [
   {
     name: "Resume",
     icon: "document",
     link: "https://docs.google.com/document/d/1HvyuqkGyeOfPC-H-hGiZ726bS5ih2MOY-oOQTaYL8Po/edit?usp=sharing",
   },
-  // Tu peux ajouter d'autres liens spécifiques à la page À propos ici
 ];
 
 const home = {
@@ -113,7 +107,7 @@ const about = {
     ),
   },
   work: {
-    display: true, // mettre sur false pour masquer cette section
+    display: true,
     title: "Expérience professionnelle",
     experiences: [
       {
@@ -126,7 +120,7 @@ const about = {
         ],
         images: [
           {
-            src: "https://yt3.googleusercontent.com/xamtiH56sPu5qm65ONu_LuoxoBcNkEzh6Oqr6ZCClbYLN6olA7vCD-dTdFE8q1G3716_0CV3=s900-c-k-c0x00ffffff-no-rj",
+            src: "/images/ehealth-logo.jpg",
             alt: "eHealth",
             width: 16,
             height: 9,
@@ -174,7 +168,7 @@ const about = {
         ],
         images: [
           {
-            src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7Uxe4KGD-s5h-kfVEmL54y3Cun3r9rDVZvA&s",
+            src: "/images/attitude-hotel-logo.jpg",
             alt: "Attitude Hotel logo",
             width: 16,
             height: 9,
@@ -193,7 +187,7 @@ const about = {
         ],        
         images: [
           {
-            src: "https://www.ivotoro.mg/wp-content/themes/hueman/images/rep-logo.jpg",
+            src: "/images/interieur-logo.jpg",
             alt: "Ministère de l'Intérieur logo",
             width: 16,
             height: 9,
@@ -203,7 +197,7 @@ const about = {
     ],
   },
   studies: {
-    display: true, // mettre sur false pour masquer cette section
+    display: true,
     title: "Études",
     institutions: [
       {
@@ -213,7 +207,7 @@ const about = {
     ],
   },
   technical: {
-    display: true, // mettre sur false pour masquer cette section
+    display: true,
     title: "Compétences techniques",
     skills: [
       {
@@ -221,13 +215,13 @@ const about = {
         description: <>Excellente maîtrise du langage SQL pour la conception, l&apos;interrogation et l&apos;optimisation de bases de données relationnelles, incluant la création de schémas, les jointures complexes, les sous-requêtes, les fonctions d&apos;agrégation ainsi que l&apos;optimisation des performances avec des index et des vues.</>,
         images: [
           {
-            src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBn9djlMmqMEnNhETDtAZUaVMxhO5jvldqqA&s",
+            src: "/images/mysql-logo.jpg",
             alt: "MySQL Logo",
             width: 16,
             height: 9,
           },
           {
-            src: "https://techvify-software.com/wp-content/uploads/2024/03/what-is-postgresql-used-for.png",
+            src: "/images/postgresql-logo.png",
             alt: "PostgreSQL logo",
             width: 16,
             height: 9,
@@ -252,7 +246,7 @@ const about = {
         description: <>Développement d&apos;applications web e-commerce avec React (framework Next.js), backend Go et PostgreSQL.</>,
         images: [
           {
-            src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFYUMxwjoJUgk-Bv9mwUGhi6uhAIKOfWZHw&s",
+            src: "/images/react-logo.jpg",
             alt: "React Logo",
             width: 16,
             height: 9,
@@ -262,7 +256,6 @@ const about = {
       },
     ],
   },
-  
 };
 
 const blog = {
@@ -270,8 +263,6 @@ const blog = {
   label: "Blog",
   title: "Blog",
   description: "Retrouvez mes articles et réflexions sur le design, le développement et la technologie.",
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
 };
 
 const work = {
@@ -279,8 +270,6 @@ const work = {
   label: "Projets",
   title: "Projets",
   description: "Découvrez mes projets et réalisations.",
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
 };
 
 const contact = {
