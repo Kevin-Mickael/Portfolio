@@ -617,39 +617,46 @@ const ContactPage: React.FC = () => {
           {formStatus === 'success' && (
             <div style={{
               display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              alignItems: 'flex-start',
               gap: '12px',
-              color: '#22c55e',
-              background: '#f0fdf4',
-              border: '1.5px solid #22c55e',
-              fontFamily: 'var(--font-family)',
-              fontSize: '20px',
-              lineHeight: '30px',
-              borderRadius: '18px',
-              textAlign: 'center',
-              fontWeight: '500',
-              padding: '20px',
-              marginTop: '48px',
-              boxShadow: '0 2px 8px rgba(34,197,94,0.08)',
+              background: '#fff',
+              border: '1px solid #e5e7eb',
+              borderRadius: '8px',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+              padding: '16px 20px',
               position: 'relative',
-              maxWidth: '400px',
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              transition: 'opacity 0.3s'
+              maxWidth: '380px',
+              margin: '40px auto 0 auto',
+              minWidth: '320px',
             }}>
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="12" fill="#22c55e" fillOpacity="0.15"/><path d="M7 13.5L10.5 17L17 10.5" stroke="#22c55e" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              <span>Message envoyé avec succès !</span>
+              <span style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: 32,
+                height: 32,
+                borderRadius: '50%',
+                background: '#e7f9ef',
+                flexShrink: 0,
+                marginTop: 2
+              }}>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="#22c55e" fillOpacity="0.15"/><path d="M6 10.5L9 13.5L14 8.5" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </span>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontWeight: 600, color: '#222', fontSize: 16, marginBottom: 2 }}>Message envoyé avec succès !</div>
+                <div style={{ color: '#6b7280', fontSize: 14 }}>Votre message a bien été transmis. Vous recevrez une réponse rapidement.</div>
+              </div>
               <button onClick={() => setFormStatus('idle')} style={{
                 position: 'absolute',
                 right: 12,
                 top: 12,
                 background: 'transparent',
                 border: 'none',
-                color: '#22c55e',
-                fontSize: 20,
+                color: '#9ca3af',
+                fontSize: 18,
                 cursor: 'pointer',
-                fontWeight: 700
+                fontWeight: 700,
+                lineHeight: 1
               }} aria-label="Fermer la notification">×</button>
             </div>
           )}
