@@ -27,23 +27,23 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images, height = 200 }) => {
     if (!slider) return;
     let animationId: number;
     let start: number | null = null;
-    let lastScrollLeft = 0;
+    let lastTimestamp: number | null = null;
     const speed = 1.5; // px per frame (moyen)
 
     function step(timestamp: number) {
       if (!slider) return;
       if (start === null) start = timestamp;
-      const elapsed = timestamp - start;
-      const scrollAmount = lastScrollLeft + elapsed * speed * 0.06;
-      slider.scrollLeft = scrollAmount;
-      // Log pour debug animation
-      if (Math.floor(elapsed) % 1000 < 16) {
-        console.log('[ImageSlider] Animation running, scrollLeft:', slider.scrollLeft);
-      }
-      if (slider.scrollLeft >= slider.scrollWidth / 2) {
-        slider.scrollLeft = 0;
-        lastScrollLeft = 0;
-        start = timestamp;
+      if (lastTimestamp === null) lastTimestamp = timestamp;
+      const elapsed = timestamp - lastTimestamp;
+      lastTimestamp = timestamp;
+      // Avancer le scroll
+      slider.scrollLeft += speed * (elapsed / 16.67); // 16.67ms = 1 frame à 60fps
+      // Si on a atteint la moitié (fin du premier set), on revient au début sans flash
+      const resetPoint = slider.scrollWidth / 2;
+      if (slider.scrollLeft >= resetPoint) {
+        slider.scrollLeft -= resetPoint;
+        // Synchroniser le temps pour éviter le micro-arrêt
+        lastTimestamp = timestamp;
       }
       animationId = requestAnimationFrame(step);
     }
