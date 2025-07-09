@@ -26,5 +26,5 @@ User-agent: DuckDuckBot
 Allow: /
 Crawl-delay: 1
 
-Sitemap: https://demo.magic-portfolio.com/sitemap.xml
-Host: https://demo.magic-portfolio.com 
+Sitemap: https://creativfolio.com/sitemap.xml
+Host: https://creativfolio.com 

@@ -10,11 +10,11 @@
 /contact/ /contact 301
 
 # Redirection des URLs avec www vers sans www
-https://www.kevinmickael.com/* https://kevinmickael.com/:splat 301
+https://www.creativfolio.com/* https://creativfolio.com/:splat 301
 
 # Redirection des URLs HTTP vers HTTPS
-http://kevinmickael.com/* https://kevinmickael.com/:splat 301
-http://www.kevinmickael.com/* https://kevinmickael.com/:splat 301
+http://creativfolio.com/* https://creativfolio.com/:splat 301
+http://www.creativfolio.com/* https://creativfolio.com/:splat 301
 
 # Redirection des pages d'erreur
 /404 / 404
