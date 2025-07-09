@@ -206,6 +206,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   avatars,
   link,
 }) => {
+  // Log pour debug
+  console.log("[ProjectCard] images prop:", images);
   const isIframe = images.length === 1 && images[0].startsWith('iframe:');
   const isSliderProject = href && href.includes('image-slider-showcase');
   
@@ -253,45 +255,55 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         <Column flex={7} gap="16">
           {!isSliderProject && avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />}
           
-          {isSliderProject && images.length > 1 ? (
-            <InfiniteSlider images={images} projects={projects} />
-          ) : (
+          {images.length > 1 && (
             <>
-              {description?.trim() && (
-                <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak">
-                  {description}
-                </Text>
-              )}
-              <Flex gap="24" wrap>
-                {content?.trim() && (
-                  <SmartLink
-                    suffixIcon="arrowRight"
-                    style={{ margin: "0", width: "fit-content" }}
-                    href={href}
-                  >
-                    <Text variant="body-default-s">Voir </Text>
-                  </SmartLink>
-                )}
-                {link && (typeof link === 'object' ? (
-                  <SmartLink
-                    suffixIcon={link.icon || undefined}
-                    style={{ margin: "0", width: "fit-content" }}
-                    href={link.url}
-                  >
-                    <Text variant="body-default-s">{link.label || 'Visiter'}</Text>
-                  </SmartLink>
-                ) : (
-                  <SmartLink
-                    suffixIcon="arrowUpRightFromSquare"
-                    style={{ margin: "0", width: "fit-content" }}
-                    href={link}
-                  >
-                    <Text variant="body-default-s">View project</Text>
-                  </SmartLink>
-                ))}
-              </Flex>
+              {console.log('[ProjectCard] Appel ImageSlider avec images:', images)}
+              <ImageSlider
+                images={images.map(imgSrc => {
+                  const project = projects.find(p => p.image === imgSrc);
+                  return {
+                    src: imgSrc,
+                    name: project?.name || '',
+                    category: project?.category || '',
+                    link: project?.link || ''
+                  };
+                })}
+              />
             </>
           )}
+          {description?.trim() && (
+            <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak">
+              {description}
+            </Text>
+          )}
+          <Flex gap="24" wrap>
+            {content?.trim() && (
+              <SmartLink
+                suffixIcon="arrowRight"
+                style={{ margin: "0", width: "fit-content" }}
+                href={href}
+              >
+                <Text variant="body-default-s">Voir </Text>
+              </SmartLink>
+            )}
+            {link && (typeof link === 'object' ? (
+              <SmartLink
+                suffixIcon={link.icon || undefined}
+                style={{ margin: "0", width: "fit-content" }}
+                href={link.url}
+              >
+                <Text variant="body-default-s">{link.label || 'Visiter'}</Text>
+              </SmartLink>
+            ) : (
+              <SmartLink
+                suffixIcon="arrowUpRightFromSquare"
+                style={{ margin: "0", width: "fit-content" }}
+                href={link}
+              >
+                <Text variant="body-default-s">View project</Text>
+              </SmartLink>
+            ))}
+          </Flex>
         </Column>
       </Flex>
     </Column>

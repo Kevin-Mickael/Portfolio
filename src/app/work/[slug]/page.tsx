@@ -145,9 +145,12 @@ export default async function Project({
             ) : post.metadata.images.length > 1 ? (
               <ImageSlider 
                 key={`slider-${post.slug}`}
-                images={post.metadata.images}
-                autoPlay={true}
-                interval={4000}
+                images={post.metadata.images.map(imgSrc => ({
+                  src: imgSrc,
+                  name: post.metadata.title || '',
+                  category: '', // Ajouté pour satisfaire le type
+                  link: post.metadata.link || ''
+                }))}
               />
             ) : (
               <img

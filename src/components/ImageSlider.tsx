@@ -1,68 +1,201 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
+import React, { useRef, useEffect, useState } from "react";
+
+interface ProjectImage {
+  src: string;
+  name: string;
+  category: string;
+  link: string;
+}
 
 interface ImageSliderProps {
-  images: (string | { src: string; alt?: string })[];
-  autoPlay?: boolean;
-  interval?: number;
+  images: ProjectImage[];
   height?: number | string;
 }
 
-const ImageSlider: React.FC<ImageSliderProps> = ({
-  images,
-  autoPlay = true,
-  interval = 3000,
-  height = 360,
-}) => {
-  const slides = images.map(img => typeof img === 'string' ? { src: img, alt: 'Image' } : { src: img.src, alt: img.alt || 'Image' });
-  const [index, setIndex] = useState(0);
-  const timer = useRef<NodeJS.Timeout | null>(null);
+const ImageSlider: React.FC<ImageSliderProps> = ({ images, height = 200 }) => {
+  const sliderRef = useRef<HTMLDivElement | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
+  // Dupliquer les images pour l'effet infini
+  const duplicatedImages = [...images, ...images];
+
+  // Animation CSS auto-scroll
   useEffect(() => {
-    if (!autoPlay || slides.length <= 1) return;
-    timer.current = setInterval(() => setIndex(i => (i + 1) % slides.length), interval);
-    return () => { if (timer.current) clearInterval(timer.current); };
-  }, [autoPlay, interval, slides.length]);
+    const slider = sliderRef.current;
+    if (!slider) return;
+    let animationId: number;
+    let start: number | null = null;
+    let lastScrollLeft = 0;
+    const speed = 1.5; // px per frame (moyen)
 
-  useEffect(() => { setIndex(0); }, [images]);
-
-  const goTo = (i: number) => setIndex((i + slides.length) % slides.length);
-
-  if (!slides.length) return null;
+    function step(timestamp: number) {
+      if (!slider) return;
+      if (start === null) start = timestamp;
+      const elapsed = timestamp - start;
+      const scrollAmount = lastScrollLeft + elapsed * speed * 0.06;
+      slider.scrollLeft = scrollAmount;
+      // Log pour debug animation
+      if (Math.floor(elapsed) % 1000 < 16) {
+        console.log('[ImageSlider] Animation running, scrollLeft:', slider.scrollLeft);
+      }
+      if (slider.scrollLeft >= slider.scrollWidth / 2) {
+        slider.scrollLeft = 0;
+        lastScrollLeft = 0;
+        start = timestamp;
+      }
+      animationId = requestAnimationFrame(step);
+    }
+    animationId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animationId);
+  }, [duplicatedImages.length]);
 
   return (
-    <div style={{ width: '100%', maxWidth: 800, margin: '0 auto', position: 'relative', overflow: 'hidden', borderRadius: 12 }}>
-      <div style={{ width: '100%', height, position: 'relative', background: '#f0f0f0' }}>
-        <Image
-          src={slides[index].src}
-          alt={slides[index].alt}
-          fill
-          style={{ objectFit: 'cover', borderRadius: 12, transition: 'opacity 0.3s' }}
-          sizes="(max-width: 768px) 100vw, 800px"
-          priority={index === 0}
-          unoptimized
-        />
-        {slides.length > 1 && (
-          <>
-            <button onClick={() => goTo(index - 1)} aria-label="Précédent" style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', background: 'rgba(0,0,0,0.5)', color: '#fff', border: 'none', borderRadius: '50%', width: 36, height: 36, cursor: 'pointer', zIndex: 2 }}>&lt;</button>
-            <button onClick={() => goTo(index + 1)} aria-label="Suivant" style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', background: 'rgba(0,0,0,0.5)', color: '#fff', border: 'none', borderRadius: '50%', width: 36, height: 36, cursor: 'pointer', zIndex: 2 }}>&gt;</button>
-          </>
-        )}
-        {slides.length > 1 && (
-          <div style={{ position: 'absolute', bottom: 12, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 8 }}>
-            {slides.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goTo(i)}
-                aria-label={`Aller à l'image ${i + 1}`}
-                style={{ width: 10, height: 10, borderRadius: '50%', border: 'none', background: i === index ? '#007bff' : '#ccc', cursor: 'pointer', opacity: i === index ? 1 : 0.6 }}
-              />
-            ))}
+    <div
+      style={{
+        width: "100%",
+        overflowX: "hidden",
+        overflowY: "visible",
+        borderRadius: 0,
+        position: "relative",
+        height: typeof height === 'number' ? `${height}px` : height,
+        background: 'transparent',
+      }}
+      ref={el => {
+        if (el) {
+          console.log('[ImageSlider] Parent width:', el.offsetWidth);
+        }
+      }}
+    >
+      <div
+        ref={sliderRef}
+        style={{
+          display: "flex",
+          width: '3500px', // force pour debug
+          height: "100%",
+          transition: "none",
+          scrollBehavior: "auto",
+          overflowX: "scroll",
+          overflowY: "visible",
+          background: 'transparent',
+        }}
+        // log de largeur réelle
+        onLoad={() => {
+          if (sliderRef.current) {
+            console.log('[ImageSlider] Slider width:', sliderRef.current.scrollWidth);
+          }
+        }}
+        className="hide-scrollbar"
+      >
+        {duplicatedImages.map((img, idx) => (
+          <div
+            key={idx}
+            style={{
+              position: "relative",
+              marginRight: 16,
+              width: 300,
+              height: typeof height === 'number' ? `${height}px` : height,
+              flex: "0 0 auto",
+              cursor: "pointer",
+              background: '#e0e0e0',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            onMouseEnter={() => setHoveredIndex(idx)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+            <img
+              src={img.src}
+              alt={img.name}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                // borderRadius: 16, // supprimé pour image rectangulaire
+                display: "block",
+                // background: '#ccc', // supprimé
+              }}
+              loading={idx === 0 ? "eager" : "lazy"}
+            />
+            {/* Overlay au hover */}
+            {hoveredIndex === idx && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  background: "rgba(0,0,0,0.3)",
+                  borderRadius: 8,
+                  display: "flex",
+                  alignItems: "flex-end",
+                  justifyContent: "flex-end",
+                  padding: 16,
+                  animation: "fadeIn 0.3s ease-out forwards",
+                }}
+              >
+                <div
+                  style={{
+                    textAlign: "right",
+                    color: "white",
+                    transform: "translateY(20px)",
+                    animation: "slideUp 0.4s ease-out 0.1s forwards",
+                  }}
+                >
+                  <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 4, textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}>{img.name}</div>
+                  <div style={{ fontSize: 14, color: "rgba(255,255,255,0.8)", marginBottom: 12, textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}>{img.category}</div>
+                  {typeof img.link === "string" && img.link.trim() !== "" && (
+                    <a
+                      href={img.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        background: "white",
+                        color: "black",
+                        border: "none",
+                        fontWeight: 600,
+                        boxShadow: "0 4px 8px rgba(0,0,0,0.3)",
+                        padding: "8px 16px",
+                        borderRadius: 6,
+                        textDecoration: "none",
+                        display: "inline-block",
+                        transform: "scale(0.9)",
+                        animation: "buttonPop 0.4s ease-out 0.2s forwards",
+                      }}
+                    >
+                      View
+                    </a>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
-        )}
+        ))}
       </div>
+      <style>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes slideUp {
+          from { transform: translateY(20px); }
+          to { transform: translateY(0); }
+        }
+        @keyframes buttonPop {
+          from { transform: scale(0.9); }
+          to { transform: scale(1); }
+        }
+        .hide-scrollbar {
+          scrollbar-width: none; /* Firefox */
+          -ms-overflow-style: none; /* IE 10+ */
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none; /* Chrome/Safari/Webkit */
+        }
+      `}</style>
     </div>
   );
 };
