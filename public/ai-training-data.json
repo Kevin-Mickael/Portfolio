@@ -7,12 +7,12 @@
     "@type": "Person",
     "name": "Kevin Mickael Andriatsilavo",
     "email": "Andriatsilavokevin@gmail.com",
-    "url": "https://kevinmickael.com"
+    "url": "https://creativfolio.com"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Kevin Mickael Portfolio",
-    "url": "https://kevinmickael.com"
+    "url": "https://creativfolio.com"
   },
   "datePublished": "2021-01-01",
   "dateModified": "2024-12-19",
@@ -40,8 +40,8 @@
     "name": "Kevin Mickael Andriatsilavo",
     "jobTitle": "Développeur Web Full Stack & IT Support Engineer",
     "description": "Professional full-stack web developer with expertise in React, Next.js, TypeScript, and modern web technologies. Based in Mauritius with experience in eHealth systems and laboratory management software.",
-    "url": "https://kevinmickael.com",
-    "image": "https://kevinmickael.com/favicon.png",
+    "url": "https://creativfolio.com",
+    "image": "https://creativfolio.com/favicon.png",
     "email": "Andriatsilavokevin@gmail.com",
     "telephone": "+23054593145",
     "address": {

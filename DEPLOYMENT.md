@@ -6,13 +6,13 @@
 
 #### Google Search Console
 1. Aller sur [Google Search Console](https://search.google.com/search-console)
-2. Ajouter votre propriété : `https://kevinmickael.com`
+2. Ajouter votre propriété : `https://creativfolio.com`
 3. Vérifier la propriété (recommandé : fichier HTML)
 4. Récupérer le code de vérification et l'ajouter dans `src/app/metadata.config.ts`
 
 #### Bing Webmaster Tools
 1. Aller sur [Bing Webmaster Tools](https://www.bing.com/webmasters)
-2. Ajouter votre site : `https://kevinmickael.com`
+2. Ajouter votre site : `https://creativfolio.com`
 3. Vérifier la propriété
 4. Récupérer le code de vérification
 
@@ -27,13 +27,13 @@
 #### Étape 1 : Créer un compte Cloudflare
 1. Aller sur [Cloudflare](https://cloudflare.com)
 2. Créer un compte gratuit
-3. Ajouter votre domaine : `kevinmickael.com`
+3. Ajouter votre domaine : `creativfolio.com`
 
 #### Étape 2 : Configuration DNS
 ```
 Type    Nom                    Contenu
 A       @                      [IP de votre serveur]
-CNAME   www                   kevinmickael.com
+CNAME   www                   creativfolio.com
 ```
 
 #### Étape 3 : Configuration Cloudflare Pages
@@ -49,7 +49,7 @@ CNAME   www                   kevinmickael.com
 #### Étape 4 : Variables d'environnement
 ```
 NODE_ENV=production
-NEXT_PUBLIC_SITE_URL=https://kevinmickael.com
+NEXT_PUBLIC_SITE_URL=https://creativfolio.com
 ```
 
 ### 3. Optimisations Cloudflare

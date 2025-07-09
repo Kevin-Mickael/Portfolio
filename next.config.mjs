@@ -46,7 +46,7 @@ const nextConfig = {
       'encrypted-tbn0.gstatic.com',
       'www.ivotoro.mg',
       'themewagon.github.io',
-      'kevinmickael.com',
+      'creativfolio.com',
       'localhost',
       '127.0.0.1',
       'lh3.googleusercontent.com',

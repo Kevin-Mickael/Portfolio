@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const baseURL = 'https://demo.magic-portfolio.com';
+const baseURL = 'https://creativfolio.com';
 
 // Pages principales
 const staticPages = [

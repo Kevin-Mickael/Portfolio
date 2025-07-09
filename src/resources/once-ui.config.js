@@ -3,7 +3,7 @@ import { Geist } from "next/font/google";
 import { Geist_Mono } from "next/font/google";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = "https://demo.magic-portfolio.com";
+const baseURL = "https://creativfolio.com";
 
 const routes = {
   "/": true,
