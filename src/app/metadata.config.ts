@@ -415,8 +415,7 @@ export const defaultMetadata: Metadata = {
     description: home.description,
   },
   verification: {
-    // TODO: Remplacer par ton code de vérification Google Search Console
-    google: 'google-site-verification=REMPLACER_PAR_TON_CODE',
+    google: 'MmHJO51HH3FEXTU938nPgFyQZ_MtrDPnpSyLT-XgiTU',
     // TODO: Ajouter Bing Webmaster Tools
     yandex: 'yandex-verification=REMPLACER_PAR_TON_CODE',
   },

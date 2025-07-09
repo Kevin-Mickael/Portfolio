@@ -146,7 +146,6 @@ export default async function Project({
               <ImageSlider 
                 key={`slider-${post.slug}`}
                 images={post.metadata.images}
-                title="Galerie du projet"
                 autoPlay={true}
                 interval={4000}
               />
