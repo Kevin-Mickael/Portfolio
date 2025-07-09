@@ -67,6 +67,28 @@ Docs available at: [docs.once-ui.com](https://docs.once-ui.com/docs/magic-portfo
 - A localized version of Magic Portfolio is available with the next-intl library
 - To use localization, switch to the 'i18n' branch
 
+## Configuration de l'envoi d'email avec Brevo (Sendinblue)
+
+Pour que le formulaire de contact fonctionne, ajoutez la clé API Brevo dans vos variables d'environnement :
+
+```
+# .env.local
+BREVO_API_KEY=VotreCléAPISecrèteBrevo
+```
+
+Vous pouvez obtenir votre clé API sur https://app.brevo.com/settings/keys/api
+
+Le formulaire de contact enverra les messages à andriatsilavokevin@gmail.com via l'API Brevo.
+
+## Envoi d'email avec Brevo sur Cloudflare Pages
+
+- Le formulaire de contact envoie une requête POST à `/functions/contact`.
+- La Cloudflare Function (`functions/contact.js`) reçoit la requête, utilise la clé API Brevo (stockée dans les variables d'environnement Cloudflare) et envoie l'email à andriatsilavokevin@gmail.com.
+- **Configuration** :
+  - Ajoute la variable d'environnement `BREVO_API_KEY` dans les paramètres de ton projet Cloudflare Pages (onglet "Environment Variables").
+  - La clé n'est jamais exposée au frontend.
+- Tu peux tester en local avec `npx wrangler pages dev` si tu as wrangler installé.
+
 # **Authors**
 
 Connect with us on Threads or LinkedIn.

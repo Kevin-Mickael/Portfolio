@@ -29,6 +29,7 @@ export default function Home() {
         }}
       />
       <Column fillWidth paddingY="24" gap="m">
+        {/* Bloc titre style accueil personnalisé */}
         <Column maxWidth="s">
           {home.featured.display && (
           <RevealFx fillWidth horizontal="start" paddingTop="16" paddingBottom="32" paddingLeft="12">

@@ -15,7 +15,7 @@ export const CookieBanner: React.FC = () => {
   });
 
   useEffect(() => {
-    // Vérifier si les cookies ont déjà été acceptés
+    // Vérifier si le cookie a déjà été accepté
     const checkCookie = document.cookie.includes('cookies-accepted=true');
     if (!checkCookie) {
       // Afficher le banner après 1 seconde
@@ -28,8 +28,7 @@ export const CookieBanner: React.FC = () => {
     }
   }, []);
 
-  // Note: Il n'est pas possible de créer un cookie HttpOnly côté client (JavaScript). HttpOnly est réservé au backend.
-  // On applique les flags Secure et SameSite=Strict pour la meilleure sécurité possible côté frontend.
+  // Gestion simple du cookie accepté
   const setClientCookie = (name: string, value: string, days: number = 365) => {
     const expires = new Date();
     expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -38,7 +37,6 @@ export const CookieBanner: React.FC = () => {
 
   const handleAccept = () => {
     setClientCookie('cookies-accepted', 'true');
-    setClientCookie('cookie-settings', JSON.stringify(cookieSettings));
     setIsAccepted(true);
     setIsVisible(false);
   };
@@ -124,6 +122,9 @@ export const CookieBanner: React.FC = () => {
         flexDirection: 'column',
         gap: '16px'
       }}>
+        {/* Bloc titre style accueil */}
+        {/* SUPPRIMÉ : Bloc élégante et titres personnalisés */}
+        {/* Fin bloc titre style accueil */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
@@ -591,14 +592,15 @@ export const CookieBanner: React.FC = () => {
         }
         @media (max-width: 768px) {
           .cookie-banner {
-            left: 0 !important;
-            right: 0 !important;
-            bottom: 0 !important;
-            width: 100vw !important;
-            border-radius: 0 !important;
-            padding: 12px !important;
+            /* On garde le style desktop : position en bas à gauche, coins arrondis, largeur fixe */
+            left: 20px !important;
+            right: auto !important;
+            bottom: 20px !important;
+            width: 90vw !important;
+            max-width: 320px !important;
+            border-radius: 16px !important;
+            padding: 16px !important;
             min-width: 0 !important;
-            max-width: 100vw !important;
           }
         }
       `}</style>

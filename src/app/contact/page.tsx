@@ -27,11 +27,13 @@ const ContactPage: React.FC = () => {
       input:focus,
       textarea:focus {
         outline: none !important;
+        background: transparent !important;
       }
       
       input:focus-visible,
       textarea:focus-visible {
         outline: none !important;
+        background: transparent !important;
       }
       
       @keyframes rotate {
@@ -95,25 +97,28 @@ const ContactPage: React.FC = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setFormStatus('idle');
     try {
-      // Simulation d'un envoi
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Envoi par email
-      const mailtoLink = `mailto:${person.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Nom: ${formData.firstName} ${formData.lastName}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
-      window.open(mailtoLink);
-      
-      setFormStatus('success');
-      // Reset form after successful submission
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        subject: '',
-        message: '',
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
+      if (response.ok) {
+        setFormStatus('success');
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          subject: '',
+          message: '',
+        });
+      } else {
+        setFormStatus('error');
+      }
     } catch (error) {
-      console.error('Form submission failed:', error);
       setFormStatus('error');
     }
   };
