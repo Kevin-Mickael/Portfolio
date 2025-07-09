@@ -19,6 +19,10 @@ const ContactPage: React.FC = () => {
   React.useEffect(() => {
     const style = document.createElement('style');
     style.textContent = `
+      input,
+      textarea {
+        background: transparent !important;
+      }
       input::placeholder,
       textarea::placeholder {
         color: var(--text-medium) !important;
