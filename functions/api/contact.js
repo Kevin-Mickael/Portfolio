@@ -31,10 +31,10 @@ export async function onRequestPost(context) {
         'accept': 'application/json',
       },
       body: JSON.stringify({
-        sender: { name: `${data.firstName} ${data.lastName}`, email: data.email },
+        sender: { name: `${data.firstName} ${data.lastName}`, email: 'andriatsilavokevin@gmail.com' },
         to: [{ email: 'andriatsilavokevin@gmail.com', name: 'Kevin Andriatsilavo' }],
         subject: data.subject,
-        htmlContent: `<p><strong>Nom:</strong> ${data.firstName} ${data.lastName}<br/><strong>Email:</strong> ${data.email}<br/><br/>${data.message.replace(/\n/g, '<br/>')}</p>`
+        htmlContent: `<p><strong>Nom:</strong> ${data.firstName} ${data.lastName}<br/><strong>Email utilisateur:</strong> ${data.email}<br/><br/>${data.message.replace(/\n/g, '<br/>')}</p>`
       })
     });
   } catch (err) {

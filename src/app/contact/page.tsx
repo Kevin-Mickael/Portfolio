@@ -94,6 +94,16 @@ const ContactPage: React.FC = () => {
   });
   const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
+  useEffect(() => {
+    if (formStatus === 'success') {
+      const timer = setTimeout(() => {
+        setFormStatus('idle');
+        window.location.reload();
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [formStatus]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -606,7 +616,13 @@ const ContactPage: React.FC = () => {
           
           {formStatus === 'success' && (
             <div style={{
-              color: 'var(--white)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '12px',
+              color: '#22c55e',
+              background: '#f0fdf4',
+              border: '1.5px solid #22c55e',
               fontFamily: 'var(--font-family)',
               fontSize: '20px',
               lineHeight: '30px',
@@ -615,9 +631,26 @@ const ContactPage: React.FC = () => {
               fontWeight: '500',
               padding: '20px',
               marginTop: '48px',
-              backgroundColor: 'var(--primary-color)'
+              boxShadow: '0 2px 8px rgba(34,197,94,0.08)',
+              position: 'relative',
+              maxWidth: '400px',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              transition: 'opacity 0.3s'
             }}>
-              <p style={{ margin: '0' }}>Message envoyé avec succès !</p>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="12" fill="#22c55e" fillOpacity="0.15"/><path d="M7 13.5L10.5 17L17 10.5" stroke="#22c55e" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <span>Message envoyé avec succès !</span>
+              <button onClick={() => setFormStatus('idle')} style={{
+                position: 'absolute',
+                right: 12,
+                top: 12,
+                background: 'transparent',
+                border: 'none',
+                color: '#22c55e',
+                fontSize: 20,
+                cursor: 'pointer',
+                fontWeight: 700
+              }} aria-label="Fermer la notification">×</button>
             </div>
           )}
           
