@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Script from 'next/script';
 
 export const CookieBanner: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -25,8 +26,59 @@ export const CookieBanner: React.FC = () => {
       return () => clearTimeout(timer);
     } else {
       setIsAccepted(true);
+      // Si cookies analytiques acceptés, injecte GA
+      if (typeof window !== 'undefined') {
+        const analyticsConsent = document.cookie.includes('cookies-analytics=true');
+        if (analyticsConsent) {
+          injectGA();
+        }
+      }
     }
   }, []);
+
+  // Fonction pour injecter Google Analytics dynamiquement
+  const injectGA = () => {
+    if ((window as any).gtagScriptLoaded) return;
+    const script1 = document.createElement('script');
+    script1.async = true;
+    script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-5NLNTYRRRR';
+    script1.id = 'ga-gtag-js';
+    document.head.appendChild(script1);
+    const script2 = document.createElement('script');
+    script2.id = 'ga-gtag-init';
+    script2.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5NLNTYRRRR');
+    `;
+    document.head.appendChild(script2);
+    (window as any).gtagScriptLoaded = true;
+  };
+
+  // Fonction pour retirer Google Analytics dynamiquement
+  const removeGA = () => {
+    const script1 = document.getElementById('ga-gtag-js');
+    const script2 = document.getElementById('ga-gtag-init');
+    if (script1) script1.remove();
+    if (script2) script2.remove();
+    (window as any).gtagScriptLoaded = false;
+    // Supprime le cookie analytics
+    document.cookie = 'cookies-analytics=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  };
+
+  // Effet pour surveiller la case analytics et agir en temps réel
+  useEffect(() => {
+    if (isAccepted) {
+      if (cookieSettings.analytics) {
+        setClientCookie('cookies-analytics', 'true');
+        injectGA();
+      } else {
+        removeGA();
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cookieSettings.analytics, isAccepted]);
 
   // Gestion simple du cookie accepté
   const setClientCookie = (name: string, value: string, days: number = 365) => {
@@ -37,8 +89,10 @@ export const CookieBanner: React.FC = () => {
 
   const handleAccept = () => {
     setClientCookie('cookies-accepted', 'true');
+    setClientCookie('cookies-analytics', 'true');
     setIsAccepted(true);
     setIsVisible(false);
+    injectGA();
   };
 
   const handleSettings = () => {
