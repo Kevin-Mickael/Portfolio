@@ -42,7 +42,11 @@ export default async function RootLayout({
         
         {/* Google Fonts avec preconnect */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Préchargement de la police Inter pour améliorer le LCP */}
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+        <style>{`@font-face { font-family: 'Inter'; font-display: swap; }`}</style>
         
         {/* Favicons et icônes PWA */}
         <link rel="icon" type="image/x-icon" href="/favicon.ico?v=4" />
