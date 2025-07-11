@@ -21,7 +21,7 @@ export function generateSEO(config: SEOConfig): Metadata {
     title,
     description,
     keywords = [],
-    image = '/images/og/home.jpg',
+    image = '/favicon.ico',
     url,
     type = 'website',
     publishedTime,
@@ -249,7 +249,7 @@ export function generatePageJsonLd(config: SEOConfig) {
       ...baseSchema,
       '@type': 'Article',
       headline: title,
-      image: `${baseURL}/images/og/home.jpg`,
+      image: `${baseURL}/favicon.ico`,
       mainEntityOfPage: {
         '@type': 'WebPage',
         '@id': fullUrl,
@@ -284,7 +284,7 @@ export function generateLocalBusinessSchema(location: 'maurice' | 'madagascar' |
       addressLocality: 'Port Louis',
       latitude: -20.348404,
       longitude: 57.552152,
-      telephone: '+230-XXXX-XXXX',
+      telephone: '+230-5459-3145',
       areaServed: ['Maurice', 'Île Maurice', 'Mauritius'],
     },
     madagascar: {
@@ -293,8 +293,8 @@ export function generateLocalBusinessSchema(location: 'maurice' | 'madagascar' |
       addressLocality: 'Antananarivo',
       latitude: -18.766947,
       longitude: 46.869107,
-      telephone: '+261-XX-XX-XXX-XX',
-      areaServed: ['Madagascar', 'Antananarivo', 'Toamasina', 'Antsirabe'],
+      telephone: '+261-34-23-352-6',
+      areaServed: ['Madagascar', 'Antananarivo', 'Toamasina', 'Antsirabe', 'Fianarantsoa','Majunga','Nosy Be'],
     },
   };
 
