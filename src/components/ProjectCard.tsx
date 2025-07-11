@@ -224,11 +224,15 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             overflowX: 'hidden',
             scrollbarWidth: 'none', // Firefox
           }}
-          className="hide-scrollbar"
+          className="hide-scrollbar iframe-container"
         >
           <iframe
             src={images[0].replace('iframe:', '')}
-            style={{ width: '100%', height: '100%', border: 'none' }}
+            style={{ 
+              width: '100%', 
+              height: '100%', 
+              border: 'none'
+            }}
             allowFullScreen
             loading="lazy"
             title={title}

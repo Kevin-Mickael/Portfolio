@@ -166,7 +166,16 @@ function createCodeBlock(props: any) {
 // Composant pour gérer les iframes de manière robuste
 function IframeWrapper({ src, title, ...props }: { src: string; title?: string; [key: string]: any }) {
   return (
-    <div style={{ position: 'relative', width: '100%', height: '400px', margin: '16px 0' }}>
+    <div 
+      style={{ 
+        position: 'relative', 
+        width: '100%', 
+        height: '400px', 
+        margin: '16px 0',
+        borderRadius: '8px',
+      }}
+      className="iframe-container"
+    >
       <iframe
         src={src}
         title={title || 'Embedded content'}
@@ -177,6 +186,7 @@ function IframeWrapper({ src, title, ...props }: { src: string; title?: string; 
           borderRadius: '8px',
         }}
         loading="lazy"
+        allowFullScreen
         {...props}
       />
     </div>
