@@ -361,8 +361,7 @@ export const defaultMetadata: Metadata = {
   },
   verification: {
     google: 'MmHJO51HH3FEXTU938nPgFyQZ_MtrDPnpSyLT-XgiTU',
-    // TODO: Ajouter Bing Webmaster Tools
-    yandex: 'yandex-verification=REMPLACER_PAR_TON_CODE',
+    yandex: '3cb6fb33f8583b06',
   },
   category: 'technology',
   other: {
