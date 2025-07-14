@@ -8,6 +8,7 @@ import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 import { getPosts } from '@/utils/utils';
 import FAQ from "@/components/FAQ";
+import Avis from "@/components/Avis";
 
 export default function Home() {
   // Récupérer l'article épinglé
@@ -85,6 +86,7 @@ export default function Home() {
               </Flex>
             </Button>
           </RevealFx>
+          <Avis />
         </Column>
       </Column>
       <RevealFx translateY="16" delay={0.6}>
