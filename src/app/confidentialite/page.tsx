@@ -6,16 +6,16 @@ export default function Page() {
   return (
     <>
       <Head>
-        <title>Politique de confidentialité | CreativFolio</title>
-        <meta name="description" content="Découvrez la politique de confidentialité de CreativFolio.com : protection des données, droits des utilisateurs, cookies, sécurité et contact." />
-        <meta property="og:title" content="Politique de confidentialité | CreativFolio" />
-        <meta property="og:description" content="Découvrez la politique de confidentialité de CreativFolio.com : protection des données, droits des utilisateurs, cookies, sécurité et contact." />
+        <title>Politique de confidentialité | Création de Site Web & Portfolio Maurice</title>
+        <meta name="description" content="Découvrez la politique de confidentialité de Création de Site Web & Portfolio Maurice : protection des données, droits des utilisateurs, cookies, sécurité et contact." />
+        <meta property="og:title" content="Politique de confidentialité | Création de Site Web & Portfolio Maurice" />
+        <meta property="og:description" content="Découvrez la politique de confidentialité de Création de Site Web & Portfolio Maurice : protection des données, droits des utilisateurs, cookies, sécurité et contact." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://creativfolio.com/confidentialite" />
         <meta property="og:image" content="https://creativfolio.com/favicon.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Politique de confidentialité | CreativFolio" />
-        <meta name="twitter:description" content="Découvrez la politique de confidentialité de CreativFolio.com : protection des données, droits des utilisateurs, cookies, sécurité et contact." />
+        <meta name="twitter:title" content="Politique de confidentialité | Création de Site Web & Portfolio Maurice" />
+        <meta name="twitter:description" content="Découvrez la politique de confidentialité de Création de Site Web & Portfolio Maurice : protection des données, droits des utilisateurs, cookies, sécurité et contact." />
         <meta name="twitter:image" content="https://creativfolio.com/favicon.png" />
         <link rel="canonical" href="https://creativfolio.com/confidentialite" />
       </Head>

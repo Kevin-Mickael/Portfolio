@@ -6,23 +6,23 @@ export default function Page() {
   return (
     <>
       <Head>
-        <title>Conditions Générales d&apos;Utilisation | CreativFolio</title>
-        <meta name="description" content="Consultez les conditions générales d&apos;utilisation (CGU) de CreativFolio.com. Découvrez les règles d&apos;utilisation, la propriété intellectuelle, la responsabilité et vos droits en tant qu&apos;utilisateur du site." />
-        <meta property="og:title" content="Conditions Générales d&apos;Utilisation | CreativFolio" />
-        <meta property="og:description" content="Consultez les conditions générales d&apos;utilisation (CGU) de CreativFolio.com. Découvrez les règles d&apos;utilisation, la propriété intellectuelle, la responsabilité et vos droits en tant qu&apos;utilisateur du site." />
+        <title>Conditions Générales d&apos;Utilisation | Création de Site Web & Portfolio Maurice </title>
+        <meta name="description" content="Consultez les conditions générales d&apos;utilisation (CGU) de Création de Site Web & Portfolio Maurice. Découvrez les règles d&apos;utilisation, la propriété intellectuelle, la responsabilité et vos droits en tant qu&apos;utilisateur du site." />
+        <meta property="og:title" content="Conditions Générales d&apos;Utilisation | Création de Site Web & Portfolio Maurice" />
+        <meta property="og:description" content="Consultez les conditions générales d&apos;utilisation (CGU) de Création de Site Web & Portfolio Maurice. Découvrez les règles d&apos;utilisation, la propriété intellectuelle, la responsabilité et vos droits en tant qu&apos;utilisateur du site." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://creativfolio.com/cgu" />
         <meta property="og:image" content="https://creativfolio.com/favicon.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Conditions Générales d&apos;Utilisation | CreativFolio" />
-        <meta name="twitter:description" content="Consultez les conditions générales d&apos;utilisation (CGU) de CreativFolio.com. Découvrez les règles d&apos;utilisation, la propriété intellectuelle, la responsabilité et vos droits en tant qu&apos;utilisateur du site." />
+        <meta name="twitter:title" content="Conditions Générales d&apos;Utilisation | Création de Site Web & Portfolio Maurice" />
+        <meta name="twitter:description" content="Consultez les conditions générales d&apos;utilisation (CGU) de Création de Site Web & Portfolio Maurice. Découvrez les règles d&apos;utilisation, la propriété intellectuelle, la responsabilité et vos droits en tant qu&apos;utilisateur du site." />
         <meta name="twitter:image" content="https://creativfolio.com/favicon.png" />
         <link rel="canonical" href="https://creativfolio.com/cgu" />
       </Head>
       <div className={styles.droipPage}>
         <div className={styles.container}>
           <div className={styles.headerContainer}>
-            <h1 className={styles.headingLarge}>Conditions générales d&apos;utilisation</h1>
+            <h1 className={styles.headingLarge}>Conditions Générales d&apos;Utilisation</h1>
             <div className={styles.dateContainer}>
               <p className={styles.updateDate}>Dernière mise à jour : 14 juillet 2025</p>
             </div>
