@@ -70,7 +70,7 @@ const InfiniteSlider: React.FC<{ images: string[]; projects: any[] }> = ({ image
                 setHoveredImageIndex(null);
               }}
             >
-              <img
+              <Image
                 src={image}
                 alt={`Slide ${originalIndex + 1}`}
                 width={300}
@@ -81,6 +81,7 @@ const InfiniteSlider: React.FC<{ images: string[]; projects: any[] }> = ({ image
                   transition: 'filter 0.3s ease'
                 }}
                 sizes="300px"
+                unoptimized
               />
               
               {/* Overlay avec bouton "Visiter" - seulement pour l'image survolée */}

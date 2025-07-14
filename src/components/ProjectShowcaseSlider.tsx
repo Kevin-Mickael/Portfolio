@@ -74,12 +74,13 @@ export default function ProjectShowcaseSlider() {
       <div className={styles.slider} ref={sliderRef}>
         {projects.map((project, index) => (
           <div key={project.name + index} className={styles.sliderItem}>
-            <img
+            <Image
               src={project.image}
               alt={project.name}
               className={styles.sliderImage}
               width={320}
               height={240}
+              unoptimized
             />
             <div className={styles.sliderOverlay}>
               <div className={styles.sliderItemInfo}>

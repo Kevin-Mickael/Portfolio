@@ -16,6 +16,7 @@ import {
  import { about as aboutContent } from "@/resources/content";
  import TableOfContents from "@/components/about/TableOfContents";
  import React from "react";
+ import Image from "next/image";
  
  export async function generateMetadata() {
   return Meta.generate({
@@ -77,7 +78,7 @@ import {
             flex={3}
             horizontal="center"
           >
-            <img
+            <Image
               src={person.avatar || ''}
               alt={person.name}
               width={160}
@@ -95,6 +96,7 @@ import {
                 minWidth: 0
               }}
               loading="lazy"
+              unoptimized
             />
             <Flex gap="8" vertical="center">
               <Icon onBackground="accent-weak" name="globe" />
@@ -260,7 +262,7 @@ import {
                             border="neutral-medium"
                             radius="m"
                           >
-                            <img
+                            <Image
                               src={typeof image === 'string' ? image : (image?.src || '')}
                               alt={typeof image === 'string' ? (experience.company + ' logo') : (image?.alt || (experience.company + ' logo'))}
                               width={160}
@@ -274,7 +276,8 @@ import {
                                 display: 'block'
                               }}
                               loading="lazy"
-                              />
+                              unoptimized
+                            />
                           </Flex>
                         ))}
                       </Flex>
@@ -330,7 +333,7 @@ import {
                             border="neutral-medium"
                             radius="m"
                           >
-                          <img
+                          <Image
                           src={typeof image === 'string' ? image : (image?.src || '')}
                           alt={typeof image === 'string' ? (skill.title + ' logo') : (image?.alt || (skill.title + ' logo'))}
                           width={160}
@@ -344,7 +347,8 @@ import {
                             display: 'block'
                           }}
                           loading="lazy"
-                          />
+                          unoptimized
+                        />
                           </Flex>
                         ))}
                       </Flex>

@@ -5,6 +5,7 @@ import { baseURL, about, person, work } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX, ImageSlider } from "@/components";
 import { Metadata } from "next";
+import Image from "next/image";
 
 // Composant pour afficher les iframes
 function IframeDisplay({ src, title }: { src: string; title?: string }) {
@@ -153,9 +154,11 @@ export default async function Project({
                 }))}
               />
             ) : (
-              <img
+              <Image
                 src={post.metadata.images[0]}
                 alt="image"
+                width={800}
+                height={450}
                 style={{ 
                   width: '100%', 
                   maxWidth: '100%', 
@@ -164,6 +167,7 @@ export default async function Project({
                   objectFit: 'cover'
                 }}
                 loading="lazy"
+                unoptimized
               />
             )
           )}

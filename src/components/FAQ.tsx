@@ -13,7 +13,7 @@ const FAQ_DATA = [
     answer: (<>Le délai dépend du projet, mais en général, je livre votre site ou portfolio en <strong>2 à 5 jours</strong> maximum.</>)
   },
   {
-    question: "L&apos;hébergement est-il compris ?",
+    question: (<>L&apos;hébergement est-il compris ?</>),
     answer: (<><strong>Oui, l&apos;hébergement est inclus dans l&apos;offre</strong>. En revanche, la maintenance du site après livraison n&apos;est pas incluse, mais je peux vous proposer une option si besoin.</>)
   },
   {

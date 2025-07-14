@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
+import Image from "next/image";
 
 interface ProjectImage {
   src: string;
@@ -106,18 +107,19 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images, height = 200 }) => {
             onMouseEnter={() => setHoveredIndex(idx)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
-            <img
+            <Image
               src={img.src}
               alt={img.name}
+              width={300}
+              height={typeof height === 'number' ? height : 200}
               style={{
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
-                // borderRadius: 16, // supprimé pour image rectangulaire
                 display: "block",
-                // background: '#ccc', // supprimé
               }}
               loading={idx === 0 ? "eager" : "lazy"}
+              unoptimized
             />
             {/* Overlay au hover */}
             {hoveredIndex === idx && (

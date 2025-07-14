@@ -22,7 +22,6 @@ const nextConfig = {
   images: {
     // Configuration pour la production (export statique)
     unoptimized: true,
-    loader: 'custom',
     remotePatterns: [
       {
         protocol: 'https',

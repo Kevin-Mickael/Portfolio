@@ -62,7 +62,7 @@ export default function Home() {
             >
               <Flex gap="8" vertical="center" paddingRight="4">
                 {about.avatar.display && (
-                  <img
+                  <Image
                     src={person.avatar}
                     alt={person.name}
                     width={32}
@@ -78,6 +78,7 @@ export default function Home() {
                       boxShadow: '0 1px 4px rgba(0,0,0,0.08)'
                     }}
                     loading="lazy"
+                    unoptimized
                   />
                 )}
                 {about.title}
@@ -110,13 +111,14 @@ export default function Home() {
               {pinnedPost.metadata.title}
             </Heading>
             {pinnedPost.metadata.image && (
-              <img
+              <Image
                 src={pinnedPost.metadata.image}
                 alt={pinnedPost.metadata.title}
                 width={800}
                 height={450}
                 style={{ maxWidth: '100%', height: 'auto', borderRadius: 'var(--radius-l)', marginBottom: 24 }}
                 loading="lazy"
+                unoptimized
               />
             )}
             <Text variant="body-default-l" onBackground="neutral-medium" style={{ marginBottom: 16 }}>
