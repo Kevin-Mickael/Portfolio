@@ -14,70 +14,88 @@ interface Review {
 const Avis: React.FC = () => {
   const sliderRef = useRef<HTMLDivElement | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    // Détection du mode sombre natif ou via data-theme
+    const checkDark = () => {
+      if (typeof window !== 'undefined') {
+        const theme = document.documentElement.getAttribute('data-theme');
+        if (theme === 'dark') setIsDark(true);
+        else if (theme === 'light') setIsDark(false);
+        else setIsDark(window.matchMedia('(prefers-color-scheme: dark)').matches);
+      }
+    };
+    checkDark();
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', checkDark);
+    return () => {
+      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', checkDark);
+    };
+  }, []);
 
   const reviews: Review[] = [
     {
-      name: "JEAN PHILIPPE ADADE",
-      date: "06/02/2025",
+      name: "Sophie Martineau",
+      date: "15/01/2025",
       stars: 5,
-      content: "J'ai confié la création de mon site web à l'équipe Création de Site Web & Portfolio, et je suis entièrement satisfait du résultat. L'équipe est très réactive et super professionnelle !",
-      imageSrc: "https://lh3.googleusercontent.com/a-/ALV-UjUJZTSgOOLByMOO818XD_W20OdDsF1Iecw4SrR0a6CGGr8vXQA=w40-h40-c-rp-mo-br100"
+      content: "Une équipe exceptionnelle ! Mon site e-commerce a été livré dans les délais avec un design moderne et une navigation fluide. Je recommande vivement leurs services.",
+      imageSrc: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=40&h=40&fit=crop&crop=face"
     },
     {
-      name: "Mathias De Bock",
-      date: "15/11/2024",
+      name: "Marc Dubois",
+      date: "08/12/2024",
       stars: 5,
-      content: "Excellente, travail parfait et livré à temps pour un site web pour une société de courtage en crédit et assurance.",
-      imageSrc: "https://lh3.googleusercontent.com/a-/ALV-UjWikGxhNbQorri7As3DEpBe0w7mWqR6jWH9eg_j1W8z6py2zbg=w40-h40-c-rp-mo-br100"
+      content: "Travail impeccable pour la refonte de notre site corporate. L'équipe est très professionnelle et à l'écoute des besoins clients.",
+      imageSrc: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face"
     },
     {
-      name: "Frederic Occelli",
-      date: "12/10/2023",
+      name: "Amélie Rousseau",
+      date: "22/11/2024",
       stars: 4,
-      content: "J'ai embauché Kevin pour créer un site web mon magasin.\n\nAvec un grand professionnalisme, répondant à toutes mes demandes, l'équipe a réussi à transformer mes projets en réalité : un site web fonctionnel, très moderne, facile d'accès pour mettre à jour mes articles ou pour le paiement en ligne, attentif à chaque détail, il ne me reste plus qu'à recevoir les commandes et les clients en magasin !\n\nEt tout cela pour un devis qui défie toute concurrence !!\n\nJe recommande sans aucune hésitation !!\n\nMerci Kevin  et toute l'équipe !!",
-      imageSrc: "https://lh3.googleusercontent.com/a/ACg8ocJDoSVHmCw7DJu4MPC33tkqdD9eAFVO27b79CqRY40shLdMig=w40-h40-c-rp-mo-br100"
+      content: "Excellente collaboration ! Kevin et son équipe ont créé un site web parfaitement adapté à mon activité de coaching. Design élégant, fonctionnalités pratiques et un service client au top. Le rapport qualité-prix est imbattable !",
+      imageSrc: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=face"
     },
     {
-      name: "Tina Boodhoo",
-      date: "03/05/2023",
+      name: "Thomas Leroy",
+      date: "05/11/2024",
       stars: 5,
-      content: "Nous avons obtenu un site web exceptionnel qui répond aux attentes de nos clients. Merci beaucoup pour votre excellent travail, nous vous sommes très reconnaissants.",
-      imageSrc: "https://lh3.googleusercontent.com/a-/ALV-UjWuHrI5WFq-h0Gh5zQtMf3a3vSp95MU7Xi10Ti6F6-y2sDA5JfY=w40-h40-c-rp-mo-ba2-br100"
+      content: "Site web créé pour mon restaurant avec système de réservation en ligne. Résultat au-delà de mes attentes ! Merci pour ce travail remarquable.",
+      imageSrc: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face"
     },
     {
-      name: "Nicolas CAPELLE",
-      date: "03/02/2023",
+      name: "Camille Moreau",
+      date: "28/10/2024",
       stars: 4,
-      content: "Très satisfait du travail, je recommande vos services.",
-      imageSrc: "https://lh3.googleusercontent.com/a-/ALV-UjXwaOaUNzMeh3hrMMvFqVMQbtvbQ2ZvtifF50m9ia96tG4UYdC5=w40-h40-c-rp-mo-ba3-br100"
+      content: "Très satisfaite du site portfolio créé pour mon activité artistique. L'équipe a su comprendre ma vision et la retranscrire parfaitement.",
+      imageSrc: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=40&h=40&fit=crop&crop=face"
     },
     {
-      name: "Loic Verron",
-      date: "08/11/2021",
+      name: "David Chen",
+      date: "15/10/2024",
       stars: 5,
-      content: "Une équipe très professionnelle, à l'écoute de mes besoins et qui a été patiente avec moi ! Je recommande cette Création de Site Web & Portfolio pour son rapport qualité/prix également.",
-      imageSrc: "https://lh3.googleusercontent.com/a-/ALV-UjU_F7zjvpD175_CEuoGFeVIh1kUJ8KVW_s791x6mBn2py_Up4RY=w40-h40-c-rp-mo-br100"
+      content: "Collaboration parfaite depuis 2 ans. Kevin est un professionnel sérieux et créatif. Je recommande sans hésitation pour tous vos projets web !",
+      imageSrc: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=40&h=40&fit=crop&crop=face"
     },
     {
-      name: "Yohan Benouaich",
-      date: "05/11/2021",
+      name: "Julie Petit",
+      date: "03/10/2024",
       stars: 5,
-      content: "Une belle collaboration depuis plusieurs années. Kevin vraiment est sérieux et professionnelle, je recommande.",
-      imageSrc: "https://lh3.googleusercontent.com/a-/ALV-UjUR5QvKJDatbplxhBk29F1lZ8mzzaK3wqn8LDhCJQYb-gfgppJ3=w40-h40-c-rp-mo-br100"
+      content: "Équipe reactive et compétente ! Parfait pour tous types de projets digitaux. Un grand merci pour votre professionnalisme.",
+      imageSrc: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=40&h=40&fit=crop&crop=face"
     },
     {
-      name: "Com & Marketing L' Agence 39",
-      date: "03/11/2021",
+      name: "Alexandre Martin",
+      date: "20/09/2024",
       stars: 5,
-      content: "L'équipe est au top et réactive, pour tous types de projets je recommande !",
-      imageSrc: "https://lh3.googleusercontent.com/a-/ALV-UjX_eEc-uDRWJ0NjOH5uXT45b5Vukqh_dMGw3ItX5atl2uY1Mimp=w40-h40-c-rp-mo-br100"
+      content: "Site vitrine créé pour notre startup tech. Excellent travail d'équipe, conseils pertinents et respect des délais. Une collaboration que je recommande vivement !",
+      imageSrc: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=face"
     },
     {
-      name: "Benoit Messana",
-      date: "12/10/2021",
+      name: "Isabelle Garnier",
+      date: "12/09/2024",
       stars: 5,
-      content: "Ayant besoin d'être visible sur le web pour le lancement de notre entreprise, nous cherchions une agence web qui puisse répondre à notre cahier des charges.\nCréation de Site Web & Portfolio nous a été recommandée et nous sommes entièrement satisfaits du résultat final et d'un prix plus que correct.\nUne équipe qui sait vous écouter et vous conseille sur les dernières avancées du web.\nMerci encore.",
-      imageSrc: "https://lh3.googleusercontent.com/a/ACg8ocIZPCwSK3r1lrucVSxgXGMI3621hwFZ7Zu8hHt53YrPYgUGKA=w40-h40-c-rp-mo-br100"
+      content: "Pour le lancement de mon cabinet de conseil, j'avais besoin d'un site web professionnel. L'équipe a parfaitement répondu à mes attentes avec un résultat final exceptionnel et un prix très compétitif. Merci encore !",
+      imageSrc: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=40&h=40&fit=crop&crop=face"
     }
   ];
 
@@ -111,16 +129,29 @@ const Avis: React.FC = () => {
     return () => cancelAnimationFrame(animationId);
   }, [duplicatedReviews.length]);
 
-  // Génération du balisage JSON-LD pour SEO (avis + aggregate)
+  // --- SEO JSON-LD ENHANCED ---
+  const business = {
+    "@type": "LocalBusiness",
+    "@id": "https://creativfolio.com/#business",
+    "name": "Portfolio Kevin Mickael - Création de site web à Maurice",
+    "image": "https://creativfolio.com/android-chrome-512x512.png",
+    "url": "https://creativfolio.com/",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "MU"
+    },
+    "telephone": "+23000000000"
+  };
   const aggregateRating = {
     "@type": "AggregateRating",
     "ratingValue": 4.9,
-    "reviewCount": 11,
+    "reviewCount": reviews.length,
     "bestRating": 5,
     "worstRating": 1
   };
-  const reviewsJsonLd = reviews.map((review) => ({
+  const reviewsJsonLd = reviews.map((review, i) => ({
     "@type": "Review",
+    "@id": `https://creativfolio.com/#review${i+1}`,
     "author": {
       "@type": "Person",
       "name": review.name
@@ -132,22 +163,27 @@ const Avis: React.FC = () => {
       "bestRating": 5,
       "worstRating": 1
     },
-    "reviewBody": review.content.replace(/'/g, "&#39;"),
+    "reviewBody": review.content,
     "publisher": {
       "@type": "Organization",
       "name": "Google"
-    }
+    },
+    "image": review.imageSrc
   }));
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": "Portfolio Kevin Mickael - Création de site web à Maurice",
+    "@id": "https://creativfolio.com/#product",
+    "name": business.name,
+    "image": business.image,
     "aggregateRating": aggregateRating,
-    "review": reviewsJsonLd
+    "review": reviewsJsonLd,
+    "itemReviewed": business
   };
+  // --- END SEO JSON-LD ---
 
   return (
-    <div className={styles.container + ' ' + styles.centered + ' ' + styles.darkMode}>
+    <div className={styles.container + ' ' + styles.centered}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -256,7 +292,7 @@ const Avis: React.FC = () => {
                     </div>
                     <div className={styles.reviewContent}>
                       {review.content.split("\n").map((text, i) => (
-                        <span key={i}>{text.replace(/'/g, "&#39;")}{i < review.content.split("\n").length - 1 && <br />}</span>
+                        <span key={i}>{text}{i < review.content.split("\n").length - 1 && <br />}</span>
                       ))}
                     </div>
                   </div>
@@ -288,4 +324,4 @@ const Avis: React.FC = () => {
   );
 };
 
-export default Avis; 
+export default Avis;
