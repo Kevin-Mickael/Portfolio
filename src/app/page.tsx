@@ -7,6 +7,7 @@ import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 import { getPosts } from '@/utils/utils';
+import FAQ from "@/components/FAQ";
 
 export default function Home() {
   // Récupérer l'article épinglé
@@ -130,6 +131,12 @@ export default function Home() {
             >
               Lire l&apos;article
             </Button>
+            {/* FAQ déplacée ici, harmonisée */}
+            <RevealFx translateY="8" delay={0.1} fillWidth horizontal="start" paddingTop="24">
+              <Column fillWidth maxWidth="s" style={{ margin: '0 auto' }}>
+                <FAQ />
+              </Column>
+            </RevealFx>
           </Column>
         </RevealFx>
       )}
