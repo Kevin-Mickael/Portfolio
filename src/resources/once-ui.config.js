@@ -1,6 +1,7 @@
 import { home } from "./content";
-import { Geist } from "next/font/google";
-import { Geist_Mono } from "next/font/google";
+// Temporairement désactivé pour éviter les problèmes de connexion
+// import { Geist } from "next/font/google";
+// import { Geist_Mono } from "next/font/google";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
 const baseURL = "https://creativfolio.com";
@@ -26,29 +27,26 @@ const protectedRoutes = {
 };
 
 // Import and set font for each variant
-const heading = Geist({
+// Temporairement désactivé pour éviter les problèmes de connexion
+const heading = {
   variable: "--font-heading",
-  subsets: ["latin"],
-  display: "swap",
-});
+  style: { fontFamily: "system-ui, -apple-system, sans-serif" }
+};
 
-const body = Geist({
-  variable: "--font-body",
-  subsets: ["latin"],
-  display: "swap",
-});
+const body = {
+  variable: "--font-body", 
+  style: { fontFamily: "system-ui, -apple-system, sans-serif" }
+};
 
-const label = Geist({
+const label = {
   variable: "--font-label",
-  subsets: ["latin"],
-  display: "swap",
-});
+  style: { fontFamily: "system-ui, -apple-system, sans-serif" }
+};
 
-const code = Geist_Mono({
+const code = {
   variable: "--font-code",
-  subsets: ["latin"],
-  display: "swap",
-});
+  style: { fontFamily: "ui-monospace, SFMono-Regular, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace" }
+};
 
 const fonts = {
   heading,
