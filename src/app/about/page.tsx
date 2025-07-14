@@ -67,6 +67,9 @@ import {
           image: `${baseURL}${person.avatar}`,
         }}
       />
+      <Heading as="h1" variant="display-strong-l" marginBottom="l">
+        {about.title}
+      </Heading>
       <Flex fillWidth mobileDirection="column" horizontal="center">
         {about.avatar.display && (
           <Column

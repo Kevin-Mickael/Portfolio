@@ -361,7 +361,7 @@ export const defaultMetadata: Metadata = {
   },
   verification: {
     google: 'MmHJO51HH3FEXTU938nPgFyQZ_MtrDPnpSyLT-XgiTU',
-    yandex: '3cb6fb33f8583b06',
+    yandex: '3cb6fb33f8583b06', // Ajoute ici ton code Bing Webmaster
   },
   category: 'technology',
   other: {
