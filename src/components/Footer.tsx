@@ -31,6 +31,17 @@ export const Footer = () => {
           <Text style={{ color: 'var(--neutral-on-background-weak)' }}>© {currentYear} /</Text>
           <Text paddingX="4">{person.name} / +230 54593145</Text>
         </Text>
+        <Flex direction="column" align="center" style={{ flex: 1 }}>
+          <Flex gap="16" horizontal="center">
+            <SmartLink href="/confidentialite" className="footer-legal-link"  style={{ textDecoration: 'underline' }}>
+              Politique de confidentialité
+            </SmartLink>
+            <Text as="span" style={{ color: 'var(--neutral-on-background-weak)' }}>|</Text>
+            <SmartLink href="/cgu" className="footer-legal-link" style={{ textDecoration: 'underline' }}>
+              CGU
+            </SmartLink>
+          </Flex>
+        </Flex>
         <Flex gap="16">
           {social.map(
             (item) =>

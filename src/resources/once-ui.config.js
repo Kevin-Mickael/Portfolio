@@ -12,6 +12,8 @@ const routes = {
   "/work": true,
   "/blog": true,
   "/contact": true,
+  "/confidentialite": true,
+  "/cgu": true,
 };
 
 const display = {

@@ -174,7 +174,7 @@ const ContactPage: React.FC = () => {
       
       /* Styles de base de la section */
       padding: '104px 0 120px 0',
-      backgroundColor: 'var(--bg-color)',
+      // backgroundColor: 'var(--bg-color)',
       minHeight: '100vh',
       display: 'flex',
       alignItems: 'center',

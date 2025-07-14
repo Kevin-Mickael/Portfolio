@@ -1,0 +1,106 @@
+import React from 'react';
+import Head from 'next/head';
+import styles from '../confidentialite/terms.module.css';
+
+export default function Page() {
+  return (
+    <>
+      <Head>
+        <title>Conditions Générales d&apos;Utilisation | CreativFolio</title>
+        <meta name="description" content="Consultez les conditions générales d&apos;utilisation (CGU) de CreativFolio.com. Découvrez les règles d&apos;utilisation, la propriété intellectuelle, la responsabilité et vos droits en tant qu&apos;utilisateur du site." />
+        <meta property="og:title" content="Conditions Générales d&apos;Utilisation | CreativFolio" />
+        <meta property="og:description" content="Consultez les conditions générales d&apos;utilisation (CGU) de CreativFolio.com. Découvrez les règles d&apos;utilisation, la propriété intellectuelle, la responsabilité et vos droits en tant qu&apos;utilisateur du site." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://creativfolio.com/cgu" />
+        <meta property="og:image" content="https://creativfolio.com/favicon.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Conditions Générales d&apos;Utilisation | CreativFolio" />
+        <meta name="twitter:description" content="Consultez les conditions générales d&apos;utilisation (CGU) de CreativFolio.com. Découvrez les règles d&apos;utilisation, la propriété intellectuelle, la responsabilité et vos droits en tant qu&apos;utilisateur du site." />
+        <meta name="twitter:image" content="https://creativfolio.com/favicon.png" />
+        <link rel="canonical" href="https://creativfolio.com/cgu" />
+      </Head>
+      <div className={styles.droipPage}>
+        <div className={styles.container}>
+          <div className={styles.headerContainer}>
+            <h1 className={styles.headingLarge}>Conditions générales d&apos;utilisation</h1>
+            <div className={styles.dateContainer}>
+              <p className={styles.updateDate}>Dernière mise à jour : 14 juillet 2025</p>
+            </div>
+          </div>
+          <div className={styles.contentContainer}>
+            <div>
+              <div className={styles.section}>
+                <div className={styles.sectionContent}>
+                  <p className={styles.paragraph}>
+                    L&apos;utilisation du site implique l&apos;acceptation pleine et entière des présentes conditions générales d&apos;utilisation (CGU).<br/>
+                    Si vous n&apos;acceptez pas ces conditions, veuillez ne pas utiliser le site.
+                  </p>
+                </div>
+              </div>
+              <div className={styles.section}>
+                <h2 className={styles.headingMedium}> Présentation du site</h2>
+                <p className={styles.paragraph}>
+                  Ce site présente des exemples de réalisations web, des projets de création de sites internet et des portfolios numériques conçus pour valoriser différents secteurs d&apos;activité.
+                </p>
+              </div>
+              <div className={styles.section}>
+                <h2 className={styles.headingMedium}> Accès au site</h2>
+                <p className={styles.paragraph}>
+                  Le site est accessible gratuitement à tout utilisateur disposant d&apos;un accès internet.<br/>
+                  Nous pouvons interrompre ou limiter l&apos;accès pour maintenance ou en cas d&apos;abus.
+                </p>
+              </div>
+              <div className={styles.section}>
+                <h2 className={styles.headingMedium}> Propriété intellectuelle</h2>
+                <p className={styles.paragraph}>
+                  Les contenus du site (textes, images, logos, etc.) sont protégés par le droit d&apos;auteur.<br/>
+                  Toute reproduction sans autorisation écrite préalable est interdite.
+                </p>
+              </div>
+              <div className={styles.section}>
+                <h2 className={styles.headingMedium}> Responsabilité</h2>
+                <p className={styles.paragraph}>
+                  Nous nous efforçons de maintenir un site sécurisé et actualisé.<br/>
+                  Cependant, l&apos;utilisateur utilise le site sous sa propre responsabilité.<br/>
+                  Nous ne saurions être tenus responsables en cas de dommages indirects liés à l&apos;utilisation du site.
+                </p>
+              </div>
+              <div className={styles.section}>
+                <h2 className={styles.headingMedium}> Comportement de l&apos;utilisateur</h2>
+                <p className={styles.paragraph}>
+                  L&apos;utilisateur s&apos;engage à :
+                </p>
+                <ul className={styles.commonList}>
+                  <li><span className={styles.paragraph}>Ne pas nuire au bon fonctionnement du site</span></li>
+                  <li><span className={styles.paragraph}>Ne pas tenter d&apos;accéder de manière non autorisée à nos systèmes</span></li>
+                </ul>
+                <p className={styles.paragraph}>
+                  Toute violation peut entraîner des poursuites conformément à la législation mauricienne.
+                </p>
+              </div>
+              <div className={styles.section}>
+                <h2 className={styles.headingMedium}> Modifications</h2>
+                <p className={styles.paragraph}>
+                  Nous pouvons modifier ces CGU à tout moment. La version applicable est celle en ligne au moment de la visite.
+                </p>
+              </div>
+              <div className={styles.section}>
+                <h2 className={styles.headingMedium}> Loi applicable et juridiction compétente</h2>
+                <p className={styles.paragraph}>
+                  Les présentes CGU sont régies par la législation en vigueur en République de Maurice.<br/>
+                  En cas de litige, les tribunaux mauriciens sont seuls compétents.
+                </p>
+              </div>
+              <div className={styles.section}>
+                <h2 className={styles.headingMedium}> Contact</h2>
+                <p className={styles.paragraph}>
+                  Pour toute question sur ces CGU, contactez-nous à <a className={styles.link} href="mailto:contact@creativfolio.com">contact@creativfolio.com</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+} 

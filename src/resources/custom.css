@@ -114,6 +114,11 @@ img {
   /* fallback for desktop, overridden by inline style */
 }
 
+/* Liens légaux du footer : bleu en mode jour, accent sinon */
+:root[data-theme='light'] .footer-legal-link {
+  color: #2563eb !important;
+}
+
 @media (max-width: 768px) {
   .cookie-banner {
     left: 0 !important;
