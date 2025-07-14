@@ -26,6 +26,16 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://creativfolio.com/confidentialite</loc>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://creativfolio.com/cgu</loc>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://creativfolio.com/blog/introduction</loc>
     <lastmod>2024-06-13</lastmod>
     <priority>0.7</priority>
@@ -51,7 +61,6 @@
   </url>
   <url>
     <loc>https://creativfolio.com/work/image-slider-showcase</loc>
-    <lastmod>2024-04-01</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>

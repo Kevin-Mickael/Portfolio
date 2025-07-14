@@ -10,6 +10,8 @@ const staticPages = [
   { url: '/work', priority: 0.8, changefreq: 'weekly' },
   { url: '/blog', priority: 0.7, changefreq: 'daily' },
   { url: '/contact', priority: 0.6, changefreq: 'monthly' },
+  { url: '/confidentialite', priority: 0.5, changefreq: 'monthly' },
+  { url: '/cgu', priority: 0.5, changefreq: 'monthly' },
 ];
 
 // Helper pour lire les métadonnées d'un fichier MDX
