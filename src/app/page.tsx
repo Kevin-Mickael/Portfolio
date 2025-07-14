@@ -41,8 +41,8 @@ export default function Home() {
           </RevealFx>
           )}
           <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="16">
-            <Heading as="h1" wrap="balance" variant="display-strong-l">
-              {home.headline}
+            <Heading as="h1" wrap="balance" variant="display-strong-l" style={{position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0}}>
+              Création site web Maurice : développeur, agence et web designer pour site vitrine, e-commerce et portfolio professionnel.
             </Heading>
           </RevealFx>
           <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="32">

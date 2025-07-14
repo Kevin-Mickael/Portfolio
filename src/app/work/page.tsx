@@ -29,7 +29,7 @@ export default function Work() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Heading as="h1" variant="display-strong-l" marginBottom="l">
+      <Heading as="h1" variant="display-strong-l" marginBottom="l" style={{position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0}}>
         {work.title}
       </Heading>
       <Projects />
