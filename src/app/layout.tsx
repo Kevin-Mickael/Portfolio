@@ -126,7 +126,7 @@ export default async function RootLayout({
                     root.setAttribute('data-' + key, value);
                   });
                   
-                  // Resolve theme
+                  // Resolve theme function
                   const resolveTheme = (themeValue) => {
                     if (!themeValue || themeValue === 'system') {
                       return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -134,10 +134,17 @@ export default async function RootLayout({
                     return themeValue;
                   };
                   
-                  // Apply saved theme
-                  const savedTheme = localStorage.getItem('data-theme');
+                  // Get saved theme or use default
+                  const savedTheme = localStorage.getItem('data-theme') || defaultTheme;
+                  
+                  // Apply resolved theme
                   const resolvedTheme = resolveTheme(savedTheme);
                   root.setAttribute('data-theme', resolvedTheme);
+                  
+                  // Store the resolved theme for consistency
+                  if (savedTheme === 'system') {
+                    localStorage.setItem('data-theme', 'system');
+                  }
                   
                   // Apply any saved style overrides
                   const styleKeys = Object.keys(config);
@@ -147,9 +154,22 @@ export default async function RootLayout({
                       root.setAttribute('data-' + key, value);
                     }
                   });
+                  
+                  // Listen for system theme changes
+                  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+                  const handleSystemThemeChange = () => {
+                    const currentSavedTheme = localStorage.getItem('data-theme');
+                    if (currentSavedTheme === 'system' || !currentSavedTheme) {
+                      const newResolvedTheme = resolveTheme('system');
+                      root.setAttribute('data-theme', newResolvedTheme);
+                    }
+                  };
+                  
+                  mediaQuery.addEventListener('change', handleSystemThemeChange);
+                  
                 } catch (e) {
                   console.error('Failed to initialize theme:', e);
-                  document.documentElement.setAttribute('data-theme', 'dark');
+                  document.documentElement.setAttribute('data-theme', 'light');
                 }
               })();
             `,
