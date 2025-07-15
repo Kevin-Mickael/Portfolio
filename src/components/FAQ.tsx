@@ -18,7 +18,7 @@ const FAQ_DATA = [
   },
   {
     question: "Proposez-vous un support technique après la livraison ?",
-    answer: (<>Oui, je propose un <strong>support technique et une assistance IT</strong> pour vous accompagner après la mise en ligne de votre site. Que ce soit pour des mises à jour, des problèmes techniques ou des questions d'utilisation, je reste disponible pour vous conseiller et résoudre rapidement tous vos besoins informatiques.</>)
+    answer: (<>Oui, je propose un <strong>support technique et une assistance IT</strong> pour vous accompagner après la mise en ligne de votre site. Que ce soit pour des mises à jour, des problèmes techniques ou des questions d&apos;utilisation, je reste disponible pour vous conseiller et résoudre rapidement tous vos besoins informatiques.</>)
   }
 ];
 
