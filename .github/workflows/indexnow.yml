@@ -1,18 +1,12 @@
 name: Notify IndexNow after Deploy
 
 on:
-  workflow_run:
-    workflows: ["Cloudflare Pages"]
-    types:
-      - completed
-  # Si tu veux déclencher après chaque push sur main, décommente ci-dessous :
-  # push:
-  #   branches: [main]
+  push:
+    branches: [main]
 
 jobs:
   notify-indexnow:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Notify IndexNow
         run: |
