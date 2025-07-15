@@ -2,6 +2,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from './Avis.module.css';
+import { RevealFx } from "@once-ui-system/core";
 
 interface Review {
   name: string;
@@ -183,144 +184,146 @@ const Avis: React.FC = () => {
   // --- END SEO JSON-LD ---
 
   return (
-    <div className={styles.container + ' ' + styles.centered}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        key="trustindex-reviews-seo"
-      />
-      <div className={styles.header}>
-        <div className={styles.avisTitle}>
-          <strong>EXCELLENT</strong>
-          <div className={styles.avisStars}>
+    <RevealFx translateY="8" delay={0.1} fillWidth horizontal="start" paddingTop="24">
+      <div className={styles.container + ' ' + styles.centered}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          key="trustindex-reviews-seo"
+        />
+        <div className={styles.header}>
+          <div className={styles.avisTitle}>
+            <strong>EXCELLENT</strong>
+            <div className={styles.avisStars}>
+              <Image 
+                src="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" 
+                alt="Étoile" 
+                className={styles.star} 
+                width={20} 
+                height={20}
+              />
+              <Image 
+                src="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" 
+                alt="Étoile" 
+                className={styles.star} 
+                width={20} 
+                height={20}
+              />
+              <Image 
+                src="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" 
+                alt="Étoile" 
+                className={styles.star} 
+                width={20} 
+                height={20}
+              />
+              <Image 
+                src="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" 
+                alt="Étoile" 
+                className={styles.star} 
+                width={20} 
+                height={20}
+              />
+              <Image 
+                src="https://cdn.trustindex.io/assets/platform/Google/star/h.svg" 
+                alt="Demi-étoile" 
+                className={styles.star} 
+                width={20} 
+                height={20}
+              />
+            </div>
+            <div className={styles.avisSubtitle}>Basé sur <strong>11 avis</strong></div>
+          </div>
+          <div className={styles.logo}>
             <Image 
-              src="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" 
-              alt="Étoile" 
-              className={styles.star} 
-              width={20} 
-              height={20}
-            />
-            <Image 
-              src="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" 
-              alt="Étoile" 
-              className={styles.star} 
-              width={20} 
-              height={20}
-            />
-            <Image 
-              src="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" 
-              alt="Étoile" 
-              className={styles.star} 
-              width={20} 
-              height={20}
-            />
-            <Image 
-              src="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" 
-              alt="Étoile" 
-              className={styles.star} 
-              width={20} 
-              height={20}
-            />
-            <Image 
-              src="https://cdn.trustindex.io/assets/platform/Google/star/h.svg" 
-              alt="Demi-étoile" 
-              className={styles.star} 
-              width={20} 
-              height={20}
+              src="https://cdn.trustindex.io/assets/platform/Google/logo.svg" 
+              alt="Google" 
+              className={styles.logoImg} 
+              width={110} 
+              height={36}
             />
           </div>
-          <div className={styles.avisSubtitle}>Basé sur <strong>11 avis</strong></div>
         </div>
-        <div className={styles.logo}>
-          <Image 
-            src="https://cdn.trustindex.io/assets/platform/Google/logo.svg" 
-            alt="Google" 
-            className={styles.logoImg} 
-            width={110} 
-            height={36}
-          />
-        </div>
-      </div>
-      <div className={styles.reviewsContainer}>
-        <div className={styles.reviewsWrapper}>
-          <div
-            ref={sliderRef}
-            className={styles.reviewsTrack + ' hide-scrollbar'}
-            style={{ display: 'flex', width: '3500px', height: '100%', transition: 'none', scrollBehavior: 'auto', overflowX: 'scroll', overflowY: 'visible', background: 'transparent', alignItems: 'center', justifyContent: 'center' }}
-          >
-            {duplicatedReviews.map((review, idx) => (
-              <div key={idx} className={styles.reviewItem + ' ' + styles.centeredItem} style={{ minWidth: 320, maxWidth: 480, margin: '0 16px' }}>
-                <div className={styles.reviewItemInner + ' ' + styles.darkCard}>
-                  <div className={styles.reviewInner}>
-                    <Image 
-                      className={styles.platformIcon} 
-                      src="https://cdn.trustindex.io/assets/platform/Google/icon.svg" 
-                      alt="Google" 
-                      width={24}
-                      height={24}
-                    />
-                    <div className={styles.reviewHeader}>
-                      <div className={styles.profileImg}>
-                        <Image 
-                          src={review.imageSrc} 
-                          alt={review.name}
-                          width={40}
-                          height={40}
-                        />
+        <div className={styles.reviewsContainer}>
+          <div className={styles.reviewsWrapper}>
+            <div
+              ref={sliderRef}
+              className={styles.reviewsTrack + ' hide-scrollbar'}
+              style={{ display: 'flex', width: '100vw', height: '100%', transition: 'none', scrollBehavior: 'auto', overflowX: 'scroll', overflowY: 'visible', background: 'transparent', alignItems: 'center', justifyContent: 'flex-start' }}
+            >
+              {duplicatedReviews.map((review, idx) => (
+                <div key={idx} className={styles.reviewItem + ' ' + styles.centeredItem} style={{ minWidth: 320, maxWidth: 480, margin: '0 16px' }}>
+                  <div className={styles.reviewItemInner + ' ' + styles.darkCard}>
+                    <div className={styles.reviewInner}>
+                      <Image 
+                        className={styles.platformIcon} 
+                        src="https://cdn.trustindex.io/assets/platform/Google/icon.svg" 
+                        alt="Google" 
+                        width={24}
+                        height={24}
+                      />
+                      <div className={styles.reviewHeader}>
+                        <div className={styles.profileImg}>
+                          <Image 
+                            src={review.imageSrc} 
+                            alt={review.name}
+                            width={40}
+                            height={40}
+                          />
+                        </div>
+                        <div className={styles.profileDetails}>
+                          <div className={styles.name}>{review.name}</div>
+                          <div className={styles.date}>{review.date}</div>
+                        </div>
                       </div>
-                      <div className={styles.profileDetails}>
-                        <div className={styles.name}>{review.name}</div>
-                        <div className={styles.date}>{review.date}</div>
-                      </div>
-                    </div>
-                    <div className={styles.stars}>
-                      {[...Array(review.stars)].map((_, i) => (
-                        <Image 
-                          key={i}
-                          className={styles.star} 
-                          src="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" 
-                          alt="Étoile" 
-                          width={16}
-                          height={16}
-                        />
-                      ))}
-                      <span className={styles.verifiedReview}>
-                        <span className={styles.verifiedTooltip}>
-                          Trustindex vérifie que la source originale de l&#39;avis est Google.
+                      <div className={styles.stars}>
+                        {[...Array(review.stars)].map((_, i) => (
+                          <Image 
+                            key={i}
+                            className={styles.star} 
+                            src="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" 
+                            alt="Étoile" 
+                            width={16}
+                            height={16}
+                          />
+                        ))}
+                        <span className={styles.verifiedReview}>
+                          <span className={styles.verifiedTooltip}>
+                            Trustindex vérifie que la source originale de l&#39;avis est Google.
+                          </span>
                         </span>
-                      </span>
-                    </div>
-                    <div className={styles.reviewContent}>
-                      {review.content.split("\n").map((text, i) => (
-                        <span key={i}>{text}{i < review.content.split("\n").length - 1 && <br />}</span>
-                      ))}
+                      </div>
+                      <div className={styles.reviewContent}>
+                        {review.content.split("\n").map((text, i) => (
+                          <span key={i}>{text}{i < review.content.split("\n").length - 1 && <br />}</span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className={styles.verifiedBy}>
+          <div className={styles.verifiedInner}>
+            Certifié par : Trustindex 
+            <span className={styles.infoIcon}></span>
+            <div className={styles.disclaimer}>
+              Le badge vérifié Trustindex est le symbole universel de confiance. 
+              Seules les meilleures entreprises peuvent obtenir le badge vérifié, 
+              avec une note supérieure à 4,5, basée sur les avis clients des 12 derniers mois. 
+              <a 
+                href="https://www.trustindex.io/ti-redirect.php?a=sys&c=wp-verified-badge&url=/the-trustindex-verified-badge" 
+                target="_blank"
+                rel="noreferrer"
+              >
+                En savoir plus
+              </a>
+            </div>
           </div>
         </div>
       </div>
-      <div className={styles.verifiedBy}>
-        <div className={styles.verifiedInner}>
-          Certifié par : Trustindex 
-          <span className={styles.infoIcon}></span>
-          <div className={styles.disclaimer}>
-            Le badge vérifié Trustindex est le symbole universel de confiance. 
-            Seules les meilleures entreprises peuvent obtenir le badge vérifié, 
-            avec une note supérieure à 4,5, basée sur les avis clients des 12 derniers mois. 
-            <a 
-              href="https://www.trustindex.io/ti-redirect.php?a=sys&c=wp-verified-badge&url=/the-trustindex-verified-badge" 
-              target="_blank"
-              rel="noreferrer"
-            >
-              En savoir plus
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+    </RevealFx>
   );
 };
 
