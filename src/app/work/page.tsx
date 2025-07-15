@@ -2,6 +2,8 @@ import { Column, Meta, Schema, Heading } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { Projects } from "@/components/work/Projects";
 import FAQ from "@/components/FAQ";
+import Avis from "@/components/Avis";
+import Breadcrumbs from '@/components/Breadcrumbs';
 import Head from "next/head";
 
 export async function generateMetadata() {
@@ -19,9 +21,38 @@ export default function Work() {
   return (
     <>
       <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Accueil",
+                  "item": baseURL
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Projets",
+                  "item": `${baseURL}/work`
+                }
+              ]
+            })
+          }}
+        />
         <link rel="canonical" href={canonicalUrl} />
       </Head>
       <Column maxWidth="m">
+        <Breadcrumbs
+          items={[
+            { label: 'Accueil', href: '/' },
+            { label: 'Projets' }
+          ]}
+        />
         <Schema
           as="webPage"
           baseURL={baseURL}
@@ -39,6 +70,7 @@ export default function Work() {
           {work.title}
         </Heading>
         <Projects />
+        <Avis />
         <FAQ />
       </Column>
     </>

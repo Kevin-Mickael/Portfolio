@@ -6,6 +6,7 @@ import { formatDate } from "@/utils/formatDate";
 import { getPosts } from "@/utils/utils";
 import { Metadata } from 'next';
 import Head from "next/head";
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const posts = getPosts(["src", "app", "blog", "posts"]);
@@ -59,11 +60,46 @@ export default async function Blog({
     <>
       <Head>
         <link rel="canonical" href={canonicalUrl} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Accueil",
+                  "item": baseURL
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blog",
+                  "item": `${baseURL}/blog`
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": post.metadata.title
+                }
+              ]
+            })
+          }}
+        />
       </Head>
       <Row fillWidth>
         <Row maxWidth={12} hide="m"/>
         <Row fillWidth horizontal="center">
           <Column as="section" maxWidth="xs" gap="l">
+            <Breadcrumbs
+              items={[
+                { label: 'Accueil', href: '/' },
+                { label: 'Blog', href: '/blog' },
+                { label: post.metadata.title }
+              ]}
+            />
             <Schema
               as="blogPosting"
               baseURL={baseURL}

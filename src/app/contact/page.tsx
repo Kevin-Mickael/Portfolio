@@ -4,6 +4,7 @@ import React, { useState, FormEvent, useEffect } from 'react';
 import { person } from "@/resources";
 import { contact } from "@/resources/content";
 import { Metadata } from "next";
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 interface FormData {
   firstName: string;

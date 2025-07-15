@@ -9,7 +9,8 @@ import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 import { getPosts } from '@/utils/utils';
 import FAQ from "@/components/FAQ";
-import Avis from "@/components/Avis";
+import AppIntegrationClient from '@/components/AppIntegrationClient';
+import CuteQuote from '@/components/CuteQuote';
 
 export default function Home() {
   // Récupérer l'article épinglé
@@ -20,7 +21,20 @@ export default function Home() {
   return (
     <>
       <Head>
+        <title>Créez votre opportunité avec un site web ou portfolio web professionnel à l&apos;île Maurice</title>
+        <meta name="description" content="Tout le monde possède un talent unique qui mérite d&apos;être vu, reconnu et valorisé. Arrêtez de vous adapter aux opportunités des autres : créez la vôtre ! Votre portfolio web ou site web devient votre terrain de jeu professionnel, l&apos;endroit où votre créativité rencontre l&apos;ambition, où vos compétences se transforment en opportunités concrètes. Démarquez-vous dans un monde où les CV se ressemblent tous grâce à un site web moderne, optimisé pour le référencement naturel (SEO), la visibilité Google et l&apos;impact professionnel à l&apos;île Maurice. Contactez-moi pour révéler votre potentiel en ligne et attirer vos futurs clients ou employeurs !" />
+        <meta property="og:title" content="Fatigué de chercher l&apos;emploi parfait ? Créez votre opportunité avec un portfolio web professionnel à l&apos;île Maurice" />
+        <meta property="og:description" content="Tout le monde possède un talent unique qui mérite d&apos;être vu, reconnu et valorisé. Arrêtez de vous adapter aux opportunités des autres : créez la vôtre ! Votre portfolio web devient votre terrain de jeu professionnel, l&apos;endroit où votre créativité rencontre l&apos;ambition, où vos compétences se transforment en opportunités concrètes. Démarquez-vous dans un monde où les CV se ressemblent tous grâce à un site web moderne, optimisé pour le référencement naturel (SEO), la visibilité Google et l&apos;impact professionnel à l&apos;île Maurice. Contactez-moi pour révéler votre potentiel en ligne et attirer vos futurs clients ou employeurs !" />
+        <meta name="twitter:title" content="Fatigué de chercher l&apos;emploi parfait ? Créez votre opportunité avec un portfolio web professionnel à l&apos;île Maurice" />
+        <meta name="twitter:description" content="Tout le monde possède un talent unique qui mérite d&apos;être vu, reconnu et valorisé. Arrêtez de vous adapter aux opportunités des autres : créez la vôtre ! Votre portfolio web devient votre terrain de jeu professionnel, l&apos;endroit où votre créativité rencontre l&apos;ambition, où vos compétences se transforment en opportunités concrètes. Démarquez-vous dans un monde où les CV se ressemblent tous grâce à un site web moderne, optimisé pour le référencement naturel (SEO), la visibilité Google et l&apos;impact professionnel à l&apos;île Maurice. Contactez-moi pour révéler votre potentiel en ligne et attirer vos futurs clients ou employeurs !" />
+        <meta name="keywords" content="création site web Maurice, portfolio web Maurice, développeur web Maurice, site internet professionnel, visibilité Google, SEO Maurice, web designer, site vitrine, site e-commerce, freelance web, opportunité emploi Maurice, branding digital, optimisation SEO, site web moderne, trouver clients en ligne" />
         <link rel="canonical" href={canonicalUrl} />
+        {/* Favicons pour tous les navigateurs et moteurs de recherche */}
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
       <Column maxWidth="m" gap="xl" horizontal="center">
         <Schema
@@ -92,11 +106,49 @@ export default function Home() {
                 </Flex>
               </Button>
             </RevealFx>
-            <Avis />
+            <RevealFx translateY="8" delay={0.5} fillWidth horizontal="center" paddingTop="40" paddingBottom="32">
+              <Column fillWidth horizontal="start" gap="12" style={{alignItems: 'flex-start'}}>
+                <Heading
+                  as="h2"
+                  variant="display-strong-l"
+                  style={{
+                    textAlign: 'left',
+                    maxWidth: '100%',
+                    wordBreak: 'break-word',
+                  }}
+                >
+                  Révélez votre potentiel au monde entier. 🌟
+                </Heading>
+                <Text variant="body-default-l" style={{maxWidth: 900, textAlign: 'left'}}>
+                Votre talent mérite d&apos;être vu, reconnu et célébré. Que vous soyez étudiant ambitieux, professionnel passionné, entrepreneur visionnaire ou créatif libre, votre portfolio web devient votre vitrine d&apos;excellence, celle qui transforme vos réalisations en opportunités extraordinaires.<br/>
+                <br/>
+                Dans un univers numérique où chaque clic compte, votre site professionnel ne se contente pas de présenter votre travail : il raconte votre histoire, inspire confiance instantanément et grave votre expertise dans les esprits.<br/> C&apos;est votre signature digitale, votre passeport vers le succès.<br/>
+                <br/>
+                <b>Parce que votre premier regard virtuel peut changer le cours de votre carrière.</b><br/>
+                <br/>
+                Ne laissez plus votre talent dans l&apos;ombre, donnez-lui la scène qu&apos;il mérite. Votre portfolio web, c&apos;est votre moment de briller.
+                </Text>
+              </Column>
+            </RevealFx>
           </Column>
         </Column>
         <RevealFx translateY="16" delay={0.6}>
           <Projects range={[1, 1]} />
+        </RevealFx>
+        
+        <RevealFx translateY="8" delay={0.1} fillWidth horizontal="center" paddingTop="32" paddingBottom="32">
+          <Column fillWidth horizontal="start" gap="8" style={{alignItems: 'flex-start'}}>
+            <Heading as="h2" variant="display-strong-l" style={{textAlign: 'left', fontWeight: 700, marginBottom: 20}}>
+              Fatigué de chercher l&apos;emploi parfait ? Il est temps de le créer.
+            </Heading>
+            <Text variant="body-default-l" style={{maxWidth: 900, textAlign: 'left'}}>
+              Tout le monde possède un talent unique qui sommeille - cette étincelle particulière qui vous distingue des autres. Peut-être que vous l&apos;avez toujours su, ou peut-être qu&apos;elle attend encore d&apos;être découverte. Mais une chose est certaine : votre talent mérite d&apos;être vu, reconnu et valorisé.<br/><br/>
+              Arrêtez de vous adapter aux opportunités des autres. Créez la vôtre. <strong>Votre portfolio web devient votre terrain de jeu professionnel</strong>, l&apos;endroit où votre créativité rencontre l&apos;ambition, où vos compétences se transforment en opportunités concrètes.<br/><br/>
+              Dans un monde où les CV se ressemblent tous, osez vous démarquer. Montrez qui vous êtes vraiment. Révélez ce potentiel caché que vous portez en vous. Votre prochaine grande opportunité ne viendra peut-être pas d&apos;une candidature, mais de quelqu&apos;un qui découvrira votre <strong>univers en ligne</strong>.<br/><br/>
+              Votre talent n&apos;attend qu&apos;une chose : être libéré.<br/><br/>
+              Je suis là pour toutes les personnes prêtes à franchir le pas. N&apos;hésitez pas à <a href="/contact" style={{color: '#0070f3', textDecoration: 'underline'}}>me contacter</a> - ensemble, nous donnerons vie à votre vision professionnelle.
+            </Text>
+          </Column>
         </RevealFx>
         {routes["/blog"] && (
           <Flex fillWidth gap="24" mobileDirection="column">
@@ -110,7 +162,9 @@ export default function Home() {
             </Flex>
           </Flex>
         )}
+        <CuteQuote />
         <Projects range={[2]} />
+        <AppIntegrationClient />
         {/* Section article épinglé */}
         {pinnedPost && (
           <RevealFx translateY="16" delay={0.7}>

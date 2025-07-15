@@ -7,6 +7,7 @@ import { ScrollToHash, CustomMDX, ImageSlider } from "@/components";
 import { Metadata } from "next";
 import Image from "next/image";
 import Head from "next/head";
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 // Composant pour afficher les iframes
 function IframeDisplay({ src, title }: { src: string; title?: string }) {
@@ -89,6 +90,34 @@ export default async function Project({
     <>
       <Head>
         <link rel="canonical" href={canonicalUrl} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Accueil",
+                  "item": baseURL
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Projets",
+                  "item": `${baseURL}/work`
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": post.metadata.title
+                }
+              ]
+            })
+          }}
+        />
       </Head>
       <div style={{ 
         width: '100%', 
@@ -108,6 +137,13 @@ export default async function Project({
             boxSizing: 'border-box'
           }}
         >
+          <Breadcrumbs
+            items={[
+              { label: 'Accueil', href: '/' },
+              { label: 'Projets', href: '/work' },
+              { label: post.metadata.title }
+            ]}
+          />
           <Schema
             as="blogPosting"
             baseURL={baseURL}

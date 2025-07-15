@@ -18,6 +18,7 @@ import {
  import React from "react";
  import Image from "next/image";
  import Head from "next/head";
+ import Breadcrumbs from '@/components/Breadcrumbs';
  
  export async function generateMetadata() {
   return Meta.generate({
