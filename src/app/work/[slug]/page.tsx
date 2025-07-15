@@ -6,6 +6,7 @@ import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX, ImageSlider } from "@/components";
 import { Metadata } from "next";
 import Image from "next/image";
+import Head from "next/head";
 
 // Composant pour afficher les iframes
 function IframeDisplay({ src, title }: { src: string; title?: string }) {
@@ -77,123 +78,130 @@ export default async function Project({
     notFound();
   }
 
+  const canonicalUrl = `${baseURL}${work.path}/${post.slug}`;
+
   const avatars =
     post.metadata.team?.map((person) => ({
       src: person.avatar,
     })) || [];
 
   return (
-    <div style={{ 
-      width: '100%', 
-      maxWidth: '100vw', 
-      overflowX: 'hidden', 
-      boxSizing: 'border-box' 
-    }}>
-      <Column 
-        as="section" 
-        maxWidth="m" 
-        horizontal="center" 
-        gap="l" 
-        style={{ 
-          overflowX: 'hidden',
-          width: '100%',
-          maxWidth: '100%',
-          boxSizing: 'border-box'
-        }}
-      >
-        <Schema
-          as="blogPosting"
-          baseURL={baseURL}
-          path={`${work.path}/${post.slug}`}
-          title={post.metadata.title}
-          description={post.metadata.summary}
-          datePublished={post.metadata.publishedAt}
-          dateModified={post.metadata.publishedAt}
-          image={post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`}
-          author={{
-            name: person.name,
-            url: `${baseURL}${about.path}`,
-            image: `${baseURL}${person.avatar}`,
-          }}
-        />
+    <>
+      <Head>
+        <link rel="canonical" href={canonicalUrl} />
+      </Head>
+      <div style={{ 
+        width: '100%', 
+        maxWidth: '100vw', 
+        overflowX: 'hidden', 
+        boxSizing: 'border-box' 
+      }}>
         <Column 
-          maxWidth="xs" 
-          gap="16"
+          as="section" 
+          maxWidth="m" 
+          horizontal="center" 
+          gap="l" 
           style={{ 
-            width: '100%', 
-            maxWidth: '100%', 
-            boxSizing: 'border-box' 
-          }}
-        >
-          <Button data-border="rounded" href="/work" variant="tertiary" weight="default" size="s" prefixIcon="chevronLeft">
-            Projets
-          </Button>
-          <Heading variant="display-strong-s">{post.metadata.title}</Heading>
-        </Column>
-        
-        <div style={{ 
-          width: '100%', 
-          maxWidth: '100%', 
-          overflowX: 'hidden', 
-          boxSizing: 'border-box' 
-        }}>
-          {post.metadata.images.length > 0 && (
-            post.metadata.images[0].startsWith('iframe:') ? (
-              <IframeDisplay 
-                src={post.metadata.images[0].replace('iframe:', '')} 
-                title={post.metadata.title}
-              />
-            ) : post.metadata.images.length > 1 ? (
-              <ImageSlider 
-                key={`slider-${post.slug}`}
-                images={post.metadata.images.map(imgSrc => ({
-                  src: imgSrc,
-                  name: post.metadata.title || '',
-                  category: '', // Ajouté pour satisfaire le type
-                  link: post.metadata.link || ''
-                }))}
-              />
-            ) : (
-              <Image
-                src={post.metadata.images[0]}
-                alt="image"
-                width={800}
-                height={450}
-                style={{ 
-                  width: '100%', 
-                  maxWidth: '100%', 
-                  boxSizing: 'border-box',
-                  borderRadius: '12px',
-                  objectFit: 'cover'
-                }}
-                loading="lazy"
-                unoptimized
-              />
-            )
-          )}
-        </div>
-        
-        <Column 
-          style={{ 
-            margin: "auto",
+            overflowX: 'hidden',
             width: '100%',
             maxWidth: '100%',
-            boxSizing: 'border-box',
-            overflowX: 'hidden'
-          }} 
-          as="article" 
-          maxWidth="xs"
+            boxSizing: 'border-box'
+          }}
         >
-          <Flex gap="12" marginBottom="24" vertical="center">
-            {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="m" />}
-            <Text variant="body-default-s" onBackground="neutral-weak">
-              {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
-            </Text>
-          </Flex>
-          <CustomMDX source={post.content} />
+          <Schema
+            as="blogPosting"
+            baseURL={baseURL}
+            path={`${work.path}/${post.slug}`}
+            title={post.metadata.title}
+            description={post.metadata.summary}
+            datePublished={post.metadata.publishedAt}
+            dateModified={post.metadata.publishedAt}
+            image={post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`}
+            author={{
+              name: person.name,
+              url: `${baseURL}${about.path}`,
+              image: `${baseURL}${person.avatar}`,
+            }}
+          />
+          <Column 
+            maxWidth="xs" 
+            gap="16"
+            style={{ 
+              width: '100%', 
+              maxWidth: '100%', 
+              boxSizing: 'border-box' 
+            }}
+          >
+            <Button data-border="rounded" href="/work" variant="tertiary" weight="default" size="s" prefixIcon="chevronLeft">
+              Projets
+            </Button>
+            <Heading variant="display-strong-s">{post.metadata.title}</Heading>
+          </Column>
+          
+          <div style={{ 
+            width: '100%', 
+            maxWidth: '100%', 
+            overflowX: 'hidden', 
+            boxSizing: 'border-box' 
+          }}>
+            {post.metadata.images.length > 0 && (
+              post.metadata.images[0].startsWith('iframe:') ? (
+                <IframeDisplay 
+                  src={post.metadata.images[0].replace('iframe:', '')} 
+                  title={post.metadata.title}
+                />
+              ) : post.metadata.images.length > 1 ? (
+                <ImageSlider 
+                  key={`slider-${post.slug}`}
+                  images={post.metadata.images.map(imgSrc => ({
+                    src: imgSrc,
+                    name: post.metadata.title || '',
+                    category: '', // Ajouté pour satisfaire le type
+                    link: post.metadata.link || ''
+                  }))}
+                />
+              ) : (
+                <Image
+                  src={post.metadata.images[0]}
+                  alt="image"
+                  width={800}
+                  height={450}
+                  style={{ 
+                    width: '100%', 
+                    maxWidth: '100%', 
+                    boxSizing: 'border-box',
+                    borderRadius: '12px',
+                    objectFit: 'cover'
+                  }}
+                  loading="lazy"
+                  unoptimized
+                />
+              )
+            )}
+          </div>
+          
+          <Column 
+            style={{ 
+              margin: "auto",
+              width: '100%',
+              maxWidth: '100%',
+              boxSizing: 'border-box',
+              overflowX: 'hidden'
+            }} 
+            as="article" 
+            maxWidth="xs"
+          >
+            <Flex gap="12" marginBottom="24" vertical="center">
+              {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="m" />}
+              <Text variant="body-default-s" onBackground="neutral-weak">
+                {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
+              </Text>
+            </Flex>
+            <CustomMDX source={post.content} />
+          </Column>
+          <ScrollToHash />
         </Column>
-        <ScrollToHash />
-      </Column>
-    </div>
+      </div>
+    </>
   );
 }
