@@ -17,8 +17,8 @@ const FAQ_DATA = [
     answer: (<><strong>Oui, l&apos;hébergement est inclus dans l&apos;offre</strong>. En revanche, la maintenance du site après livraison n&apos;est pas incluse, mais je peux vous proposer une option si besoin.</>)
   },
   {
-    question: "Pourquoi avoir un site web ou portfolio web ?",
-    answer: (<>Dans un monde où 90% des clients recherchent en ligne avant de commander ou faire appel à un professionnel, être absent du digital c&apos;est perdre des opportunités. <strong>Votre site web devient votre vitrine 24h/24, prouve votre professionnalisme et vous permet de vous démarquer face à vos concurrents </strong>qui n&apos;ont qu&apos;une simple page Facebook.</>)
+    question: "Proposez-vous un support technique après la livraison ?",
+    answer: (<>Oui, je propose un <strong>support technique et une assistance IT</strong> pour vous accompagner après la mise en ligne de votre site. Que ce soit pour des mises à jour, des problèmes techniques ou des questions d'utilisation, je reste disponible pour vous conseiller et résoudre rapidement tous vos besoins informatiques.</>)
   }
 ];
 
