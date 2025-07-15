@@ -22,3 +22,5 @@ http://www.creativfolio.com/* https://creativfolio.com/:splat 301
 
 # Redirection des fichiers non trouvés vers la page d'accueil
 /* /index.html 200 
+
+/*  https://creativfolio.com/:splat  301! 
