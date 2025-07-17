@@ -65,7 +65,7 @@ const home = {
   path: "/",
   image: "/favicon.png",
   label: "Accueil",
-  title: `Créez votre opportunité avec un site web ou portfolio web professionnel à l'île Maurice` ,
+  title: `Création de site web ou portfolio web professionnel à l'île Maurice` ,
   description: `Création de sites web et portfolio web professionnels et intuitifs à l'île Maurice`,
   headline: <>Création de sites web professionnels et intuitifs</>,
   featured: {
