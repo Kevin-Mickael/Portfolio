@@ -95,7 +95,7 @@ const about = {
   },
   calendar: {
     display: true,
-    link: "https://cal.com",
+    link: "https://cal.com/knvxn/15min",
   },
   intro: {
     display: true,
