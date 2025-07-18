@@ -11,7 +11,7 @@ import {
   Button,
 } from "@once-ui-system/core";
 import Image from "next/image";
-import ImageSlider from "./ImageSlider";
+// import ImageSlider from "./ImageSlider";
 import { projects } from "@/resources/projects-data";
 import { useState } from "react";
 
@@ -261,20 +261,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           {!isSliderProject && avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />}
           
           {images.length > 1 && (
-            <>
-              {console.log('[ProjectCard] Appel ImageSlider avec images:', images)}
-              <ImageSlider
-                images={images.map(imgSrc => {
-                  const project = projects.find(p => p.image === imgSrc);
-                  return {
-                    src: imgSrc,
-                    name: project?.name || '',
-                    category: project?.category || '',
-                    link: project?.link || ''
-                  };
-                })}
-              />
-            </>
+            null
           )}
           {description?.trim() && (
             <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak">

@@ -176,6 +176,26 @@ function IframeWrapper({ src, title, ...props }: { src: string; title?: string; 
       }}
       className="iframe-container"
     >
+      {/* Badge d'indication */}
+      <span
+        style={{
+          position: 'absolute',
+          top: 10,
+          left: 10,
+          background: 'rgba(34,34,34,0.85)',
+          color: '#fff',
+          fontSize: 12,
+          padding: '2px 10px',
+          borderRadius: 6,
+          zIndex: 2,
+          pointerEvents: 'none',
+          fontWeight: 500,
+          letterSpacing: 0.5,
+          boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
+        }}
+      >
+        iframe
+      </span>
       <iframe
         src={src}
         title={title || 'Embedded content'}

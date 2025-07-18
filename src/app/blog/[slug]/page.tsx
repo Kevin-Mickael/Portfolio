@@ -65,6 +65,28 @@ export default async function Blog({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
+              "@type": "Article",
+              "headline": post.metadata.title,
+              "description": post.metadata.summary,
+              "image": post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
+              "author": {
+                "@type": "Person",
+                "name": person.name,
+                "url": `${baseURL}${about.path}`,
+                "image": `${baseURL}${person.avatar}`
+              },
+              "datePublished": post.metadata.publishedAt,
+              "dateModified": post.metadata.publishedAt,
+              "mainEntityOfPage": canonicalUrl,
+              "url": canonicalUrl
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               "itemListElement": [
                 {

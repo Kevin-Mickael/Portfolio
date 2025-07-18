@@ -45,31 +45,7 @@ export default TimeDisplay;
 export const Header = () => {
   const pathname = usePathname() ?? "";
   // Ajout gestion de langue
-  const [lang, setLang] = useState<'fr' | 'en'>(() => {
-    if (typeof window !== 'undefined') {
-      return (localStorage.getItem('lang') as 'fr' | 'en') || 'fr';
-    }
-    return 'fr';
-  });
-  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-    if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('lang');
-      if (stored === 'fr' || stored === 'en') setLang(stored);
-    }
-  }, []);
-
-  const handleLangSwitch = () => {
-    const nextLang = lang === 'fr' ? 'en' : 'fr';
-    setLang(nextLang);
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('lang', nextLang);
-      window.location.reload();
-    }
-  };
-  
   console.log("Routes:", routes);
   console.log("Contact route:", routes["/contact"]);
   console.log("Pathname:", pathname);
@@ -121,6 +97,7 @@ export const Header = () => {
                     prefixIcon="person"
                     href="/about"
                     selected={pathname === "/about"}
+                    aria-label="À propos"
                   />
                 </>
               )}
@@ -138,6 +115,7 @@ export const Header = () => {
                     prefixIcon="grid"
                     href="/work"
                     selected={pathname.startsWith("/work")}
+                    aria-label="Projets"
                   />
                 </>
               )}
@@ -155,6 +133,7 @@ export const Header = () => {
                     prefixIcon="book"
                     href="/blog"
                     selected={pathname.startsWith("/blog")}
+                    aria-label="Blog"
                   />
                 </>
               )}
@@ -172,6 +151,7 @@ export const Header = () => {
                     prefixIcon="email"
                     href="/contact"
                     selected={pathname.startsWith("/contact")}
+                    aria-label="Contact"
                   />
                 </>
               )}
@@ -193,26 +173,6 @@ export const Header = () => {
             gap="20"
           >
             <Flex hide="s">{display.time && <TimeDisplay timeZone={person.location} />}</Flex>
-            {/* Switch FR-EN button (placeholder) à l'extrémité droite */}
-            {mounted && (
-              <button
-                type="button"
-                style={{
-                  marginLeft: '12px',
-                  padding: '6px 12px',
-                  borderRadius: '6px',
-                  border: '1px solid #fff',
-                  background: 'transparent',
-                  color: '#fff',
-                  cursor: 'pointer',
-                  fontWeight: 600,
-                }}
-                aria-label="Switch language"
-                onClick={handleLangSwitch}
-              >
-                {lang === 'fr' ? 'EN' : 'FR'}
-              </button>
-            )}
           </Flex>
         </Flex>
       </Flex>

@@ -13,14 +13,16 @@ export async function generateMetadata() {
     baseURL: baseURL,
     image: `/api/og/generate?title=${encodeURIComponent(work.title)}`,
     path: work.path,
+    canonical: `${baseURL}${work.path}`,
   });
 }
 
 export default function Work() {
-  const canonicalUrl = `${baseURL}${work.path}`;
+  // const canonicalUrl = `${baseURL}${work.path}`; // plus nécessaire
   return (
     <>
       <Head>
+        <link rel="canonical" href={`${baseURL}${work.path}`} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -44,7 +46,7 @@ export default function Work() {
             })
           }}
         />
-        <link rel="canonical" href={canonicalUrl} />
+        {/* <link rel="canonical" href={canonicalUrl} /> supprimé */}
       </Head>
       <Column maxWidth="m">
         <Breadcrumbs

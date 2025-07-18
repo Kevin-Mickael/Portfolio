@@ -20,21 +20,20 @@ export default function Home() {
   const canonicalUrl = `${baseURL}/`;
   return (
     <>
-      <Head>
-        <title>Création de site web ou portfolio web professionnel à l&apos;île Maurice</title>
-        <meta name="description" content="Tout le monde possède un talent unique qui mérite d&apos;être vu, reconnu et valorisé. Arrêtez de vous adapter aux opportunités des autres : créez la vôtre ! Votre portfolio web ou site web devient votre terrain de jeu professionnel, l&apos;endroit où votre créativité rencontre l&apos;ambition, où vos compétences se transforment en opportunités concrètes. Démarquez-vous dans un monde où les CV se ressemblent tous grâce à un site web moderne, optimisé pour le référencement naturel (SEO), la visibilité Google et l&apos;impact professionnel à l&apos;île Maurice. Contactez-moi pour révéler votre potentiel en ligne et attirer vos futurs clients ou employeurs !" />
-        <meta property="og:title" content="Fatigué de chercher l&apos;emploi parfait ? Créez votre opportunité avec un portfolio web professionnel à l&apos;île Maurice" />
-        <meta property="og:description" content="Tout le monde possède un talent unique qui mérite d&apos;être vu, reconnu et valorisé. Arrêtez de vous adapter aux opportunités des autres : créez la vôtre ! Votre portfolio web devient votre terrain de jeu professionnel, l&apos;endroit où votre créativité rencontre l&apos;ambition, où vos compétences se transforment en opportunités concrètes. Démarquez-vous dans un monde où les CV se ressemblent tous grâce à un site web moderne, optimisé pour le référencement naturel (SEO), la visibilité Google et l&apos;impact professionnel à l&apos;île Maurice. Contactez-moi pour révéler votre potentiel en ligne et attirer vos futurs clients ou employeurs !" />
-        <meta name="twitter:title" content="Fatigué de chercher l&apos;emploi parfait ? Créez votre opportunité avec un portfolio web professionnel à l&apos;île Maurice" />
-        <meta name="twitter:description" content="Tout le monde possède un talent unique qui mérite d&apos;être vu, reconnu et valorisé. Arrêtez de vous adapter aux opportunités des autres : créez la vôtre ! Votre portfolio web devient votre terrain de jeu professionnel, l&apos;endroit où votre créativité rencontre l&apos;ambition, où vos compétences se transforment en opportunités concrètes. Démarquez-vous dans un monde où les CV se ressemblent tous grâce à un site web moderne, optimisé pour le référencement naturel (SEO), la visibilité Google et l&apos;impact professionnel à l&apos;île Maurice. Contactez-moi pour révéler votre potentiel en ligne et attirer vos futurs clients ou employeurs !" />
-        <meta name="keywords" content="création site web Maurice, portfolio web Maurice, développeur web Maurice, site internet professionnel, visibilité Google, SEO Maurice, web designer, site vitrine, site e-commerce, freelance web, opportunité emploi Maurice, branding digital, optimisation SEO, site web moderne, trouver clients en ligne" />
-        <link rel="canonical" href={canonicalUrl} />
-        {/* Favicons pour tous les navigateurs et moteurs de recherche */}
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+          <Head>
+      <title>Création de site web professionnel à Maurice | Portfolio web </title>
+      <meta name="description" content="Développeur web professionnel à Maurice spécialisé dans la création de sites web et portfolios optimisés SEO. Augmentez votre visibilité en ligne et attirez plus de clients avec un site moderne et performant." />
+      <meta property="og:title" content="Création de site web professionnel à Maurice | Portfolio web" />
+      <meta property="og:description" content="Développeur web professionnel à Maurice spécialisé dans la création de sites web et portfolios optimisés SEO. Augmentez votre visibilité en ligne et attirez plus de clients avec un site moderne et performant." />
+      <meta name="twitter:title" content="Création de site web professionnel à Maurice | Portfolio web" />
+      <meta name="twitter:description" content="Développeur web professionnel à Maurice spécialisé dans la création de sites web et portfolios optimisés SEO. Augmentez votre visibilité en ligne et attirez plus de clients avec un site moderne et performant." />
+      <meta name="keywords" content="création site web Maurice, développeur web Maurice, portfolio web professionnel, SEO Maurice, site internet Maurice, web design Maurice, référencement naturel, visibilité Google Maurice, site responsive Maurice, développement web île Maurice" />
+      <link rel="canonical" href={canonicalUrl} />
+      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
       <Column maxWidth="m" gap="xl" horizontal="center">
         <Schema
@@ -117,17 +116,75 @@ export default function Home() {
                     wordBreak: 'break-word',
                   }}
                 >
-                  Révélez votre potentiel au monde entier. 🌟
+                  Façonnez Votre Avenir Numérique : Créez Votre Portfolio Web
                 </Heading>
                 <Text variant="body-default-l" style={{maxWidth: 900, textAlign: 'left'}}>
-                Votre talent mérite d&apos;être vu, reconnu et célébré. Que vous soyez étudiant ambitieux, professionnel passionné, entrepreneur visionnaire ou créatif libre, votre portfolio web devient votre vitrine d&apos;excellence, celle qui transforme vos réalisations en opportunités extraordinaires.<br/>
-                <br/>
-                Dans un univers numérique où chaque clic compte, votre site professionnel ne se contente pas de présenter votre travail : il raconte votre histoire, inspire confiance instantanément et grave votre expertise dans les esprits.<br/> C&apos;est votre signature digitale, votre passeport vers le succès.<br/>
-                <br/>
-                <b>Parce que votre premier regard virtuel peut changer le cours de votre carrière.</b><br/>
-                <br/>
-                Ne laissez plus votre talent dans l&apos;ombre, donnez-lui la scène qu&apos;il mérite. Votre portfolio web, c&apos;est votre moment de briller.
+                  
+                  Notre objectif est de démocratiser l&apos;accès au monde numérique pour tous. Je suis là pour vous accompagner dans cette transition essentielle.<br/><br/>
+                  Il est temps de vous présenter une opportunité concrète et innovante : la création d&apos;un portfolio web. Ce dernier est bien plus qu&apos;un simple CV ; c&apos;est une vitrine numérique accessible instantanément, permettant de présenter vos compétences et réalisations de manière percutante.<br/><br/>
+                  <span style={{display: 'block', margin: '32px 0 12px 0'}}>
+                    <div className="heading-responsive">
+                      <Heading as="h3" variant="display-strong-m">
+                        Qu&apos;est-ce qu&apos;un portfolio web ?
+                      </Heading>
+                    </div>
+                  </span>
+                  Un portfolio web est l&apos;équivalent numérique de votre CV, mais avec une dimension interactive et visuelle. Il met en lumière vos expériences et réalisations concrètes.<br/><br/>
+                  Prenons l&apos;exemple d&apos;un travailleur indépendant, comme un chef cuisinier. Au lieu de simplement lister vos compétences sur papier, imaginez pouvoir montrer des photos de vos projets terminés, des témoignages de clients, ou même des vidéos de votre travail. Lorsque quelqu&apos;un vous interroge sur vos services, vous pouvez simplement dire : &quot;Avez-vous un téléphone ? Scannez ce QR code pour découvrir mon travail et mes références&quot;, ou &quot;Visitez mon site web : www.votredomaine.com&quot;.<br/><br/>
+                  Contrairement à un CV traditionnel qui ne peut détailler vos réalisations de manière exhaustive, un portfolio web offre une visibilité complète et concrète de votre savoir-faire.<br/><br/>
+                  <span style={{display: 'block', margin: '32px 0 12px 0'}}>
+                    <Heading as="h3" variant="display-strong-l" style={{marginBottom: 8, color: '#2563eb'}}>
+                      Quels sont les avantages d&apos;un portfolio web ?
+                    </Heading>
+                  </span>
+                  Les bénéfices de disposer d&apos;un portfolio web sont multiples et significatifs dans le paysage numérique actuel :<br/><br/>
+                  <ul style={{marginLeft: 24}}>
+                    <li><b>Visibilité Instantanée :</b> Présentez vos compétences et réalisations de manière immédiate.</li>
+                    <li><b>Adaptation Numérique :</b> Intégrez pleinement le monde numérique en valorisant votre image professionnelle.</li>
+                    <li><b>Mise en Valeur :</b> Démontrez votre valeur ajoutée de manière concrète et convaincante.</li>
+                    <li><b>Impact Persuasif :</b> Captivez votre audience et mettez en avant la qualité de votre travail.</li>
+                    <li><b>Gain de Temps et Économie :</b> Réduisez le temps et les coûts liés aux impressions de CV à chaque démarche.</li>
+                    <li><b>Accessibilité Mondiale :</b> Soyez visible sur Internet (notamment Google), un atout majeur pour attirer des clients internationaux.</li>
+                    <li><b>Optimisation de Profils :</b> Enrichissez vos profils professionnels (LinkedIn, etc.) et améliorez votre image de marque personnelle.</li>
+                    <li><b>Renforcement Employeur :</b> Présentez votre portfolio aux employeurs pour appuyer votre candidature et justifier votre valeur.</li>
+                  </ul>
+                  <br/>
+                  Chacun de nous possède un talent unique ; mon souhait est de vous aider à le révéler au monde 🌟 !<br/><br/>
+                  <span style={{display: 'block', margin: '32px 0 12px 0'}}>
+                    <Image 
+                      src="https://surfshark.com/wp-content/uploads/2024/07/How-to-scan-a-QR-code-on-your-phone-safely-Hero-1024x501.png" 
+                      alt="QR Code Création de site web ou portfolio web professionnel à l&apos;île Maurice" 
+                      width={1024}
+                      height={501}
+                      style={{maxWidth: '100%', height: 'auto', borderRadius: 12, marginBottom: 16, boxShadow: '0 2px 16px rgba(0,0,0,0.08)'}}
+                      loading="lazy"
+                      unoptimized
+                    />
+                  <Heading as="h3" variant="display-strong-m" style={{marginTop: 24, marginBottom: 24, whiteSpace: 'nowrap'}}>
+                  Une solution moderne : Le QR Code
+                </Heading>
+                  </span>
+                  Imaginez intégrer un QR Code sur votre carte de visite personnelle ou votre carte d&apos;identité. Un simple scan redirigera instantanément vos interlocuteurs vers votre portfolio web, offrant une présentation complète de votre profil et de vos réalisations. C&apos;est une manière innovante et très efficace de vous démarquer !
                 </Text>
+                <Button
+                href="https://wa.me/23054593145"
+                variant="primary"
+                size="l"
+                weight="strong"
+                style={{
+                  backgroundColor: '#25D366',
+                  color: 'white',
+                  marginTop: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                </svg>
+                Me contacter
+              </Button>
               </Column>
             </RevealFx>
           </Column>
@@ -136,33 +193,7 @@ export default function Home() {
           <Projects range={[1, 1]} />
         </RevealFx>
         
-        <RevealFx translateY="8" delay={0.1} fillWidth horizontal="center" paddingTop="32" paddingBottom="32">
-          <Column fillWidth horizontal="start" gap="8" style={{alignItems: 'flex-start'}}>
-            <Heading as="h2" variant="display-strong-l" style={{textAlign: 'left', fontWeight: 700, marginBottom: 20}}>
-              Fatigué de chercher l&apos;emploi parfait ? Il est temps de le créer.
-            </Heading>
-            <Text variant="body-default-l" style={{maxWidth: 900, textAlign: 'left'}}>
-              Tout le monde possède un talent unique qui sommeille - cette étincelle particulière qui vous distingue des autres. Peut-être que vous l&apos;avez toujours su, ou peut-être qu&apos;elle attend encore d&apos;être découverte. Mais une chose est certaine : votre talent mérite d&apos;être vu, reconnu et valorisé.<br/><br/>
-              Arrêtez de vous adapter aux opportunités des autres. Créez la vôtre. <strong>Votre portfolio web devient votre terrain de jeu professionnel</strong>, l&apos;endroit où votre créativité rencontre l&apos;ambition, où vos compétences se transforment en opportunités concrètes.<br/><br/>
-              Dans un monde où les CV se ressemblent tous, osez vous démarquer. Montrez qui vous êtes vraiment. Révélez ce potentiel caché que vous portez en vous. Votre prochaine grande opportunité ne viendra peut-être pas d&apos;une candidature, mais de quelqu&apos;un qui découvrira votre <strong>univers en ligne</strong>.<br/><br/>
-              Votre talent n&apos;attend qu&apos;une chose : être libéré.<br/><br/>
-              Je suis là pour toutes les personnes prêtes à franchir le pas. N&apos;hésitez pas à <a href="/contact" style={{color: '#0070f3', textDecoration: 'underline'}}>me contacter</a> - ensemble, nous donnerons vie à votre vision professionnelle.
-            </Text>
-          </Column>
-        </RevealFx>
-        {routes["/blog"] && (
-          <Flex fillWidth gap="24" mobileDirection="column">
-            <Flex flex={1} paddingLeft="l" paddingTop="24">
-              <Heading as="h2" variant="display-strong-xs" wrap="balance">
-                Derniers articles du blog
-              </Heading>
-            </Flex>
-            <Flex flex={3} paddingX="20">
-              <Posts range={[1, 2]} columns="2" thumbnail />
-            </Flex>
-          </Flex>
-        )}
-        <CuteQuote />
+        {/* Section blog supprimée de l'accueil */}
         <Projects range={[2]} />
         <AppIntegrationClient />
         {/* Section article épinglé */}
@@ -198,6 +229,7 @@ export default function Home() {
               {/* FAQ déplacée ici, harmonisée */}
               <RevealFx translateY="8" delay={0.1} fillWidth horizontal="start" paddingTop="24">
                 <Column fillWidth maxWidth="s" style={{ margin: '0 auto' }}>
+                  <CuteQuote />
                   <FAQ />
                 </Column>
               </RevealFx>

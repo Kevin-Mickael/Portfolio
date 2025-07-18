@@ -3,7 +3,7 @@ import { getPosts } from "@/utils/utils";
 import { Meta, Schema, AvatarGroup, Button, Column, Flex, Heading, Media, Text } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
-import { ScrollToHash, CustomMDX, ImageSlider } from "@/components";
+import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
 import Image from "next/image";
 import Head from "next/head";
@@ -90,6 +90,28 @@ export default async function Project({
     <>
       <Head>
         <link rel="canonical" href={canonicalUrl} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Project",
+              "name": post.metadata.title,
+              "description": post.metadata.summary,
+              "image": post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
+              "author": {
+                "@type": "Person",
+                "name": person.name,
+                "url": `${baseURL}${about.path}`,
+                "image": `${baseURL}${person.avatar}`
+              },
+              "datePublished": post.metadata.publishedAt,
+              "dateModified": post.metadata.publishedAt,
+              "mainEntityOfPage": canonicalUrl,
+              "url": canonicalUrl
+            })
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -187,15 +209,7 @@ export default async function Project({
                   title={post.metadata.title}
                 />
               ) : post.metadata.images.length > 1 ? (
-                <ImageSlider 
-                  key={`slider-${post.slug}`}
-                  images={post.metadata.images.map(imgSrc => ({
-                    src: imgSrc,
-                    name: post.metadata.title || '',
-                    category: '', // Ajouté pour satisfaire le type
-                    link: post.metadata.link || ''
-                  }))}
-                />
+                null
               ) : (
                 <Image
                   src={post.metadata.images[0]}

@@ -119,6 +119,27 @@ img {
   color: #2563eb !important;
 }
 
+.contact-link {
+  color: #0070f3;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.heading-responsive {
+  font-size: 2.2rem;
+  line-height: 1.2;
+  word-break: break-word;
+  text-align: left;
+  max-width: 100%;
+}
+@media (max-width: 600px) {
+  .heading-responsive {
+    font-size: 1.3rem;
+    text-align: left;
+    padding: 0 4px;
+  }
+}
+
 @media (max-width: 768px) {
   .cookie-banner {
     left: 0 !important;

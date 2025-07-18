@@ -72,4 +72,20 @@ const sitemap = [
 ].join('\n');
 
 fs.writeFileSync(path.join(__dirname, '../public/sitemap.xml'), sitemap, 'utf-8');
-console.log('✅ Sitemap généré dans public/sitemap.xml'); 
+console.log('✅ Sitemap généré dans public/sitemap.xml');
+
+// Appel automatique à IndexNow après génération du sitemap
+(async () => {
+  try {
+    const res = await fetch('https://creativfolio.com/api/indexnow', {
+      method: 'GET',
+    });
+    if (res.ok) {
+      console.log('🚀 IndexNow notifié avec succès !');
+    } else {
+      console.error('❌ Erreur lors de la notification IndexNow:', await res.text());
+    }
+  } catch (e) {
+    console.error('❌ Exception lors de la notification IndexNow:', e);
+  }
+})(); 
