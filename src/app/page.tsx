@@ -11,6 +11,7 @@ import { getPosts } from '@/utils/utils';
 import FAQ from "@/components/FAQ";
 import AppIntegrationClient from '@/components/AppIntegrationClient';
 import CuteQuote from '@/components/CuteQuote';
+import styles from './home.module.css';
 
 export default function Home() {
   // Récupérer l'article épinglé
@@ -35,7 +36,7 @@ export default function Home() {
       <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
       <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
-      <Column maxWidth="m" gap="xl" horizontal="center">
+      <Column maxWidth="m" gap="xl" horizontal="center" className={styles.responsiveHome}>
         <Schema
           as="webPage"
           baseURL={baseURL}
@@ -80,13 +81,14 @@ export default function Home() {
                 weight="default"
                 arrowIcon
               >
-                <Flex gap="8" vertical="center" paddingRight="4">
+                <Flex gap="8" vertical="center" paddingRight="4" className={styles.aboutButtonFlex}>
                   {about.avatar.display && (
                     <Image
                       src={person.avatar}
                       alt={person.name}
                       width={32}
                       height={32}
+                      className={styles.aboutAvatar}
                       style={{
                         width: 32,
                         height: 32,
