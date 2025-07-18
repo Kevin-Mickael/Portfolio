@@ -96,6 +96,30 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }}
           />
           
+          {/* Balises régionales pour la Mauricie */}
+          <meta name="geo.region" content="MU" />
+          <meta name="geo.placename" content="Mauritius" />
+          <meta name="geo.position" content="-20.348404;57.552152" />
+          <meta name="ICBM" content="-20.348404, 57.552152" />
+
+          {/* Données structurées LocalBusiness pour la régionalité */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "LocalBusiness",
+                "name": "Portfolio Kevin Mickael",
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressCountry": "MU",
+                  "addressRegion": "Mauritius"
+                },
+                "url": "https://creativfolio.com/",
+                "image": "/favicon.png"
+              })
+            }}
+          />
           <script
             id="theme-init"
             dangerouslySetInnerHTML={{
