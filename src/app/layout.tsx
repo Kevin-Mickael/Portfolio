@@ -1,6 +1,7 @@
 import '@once-ui-system/core/css/styles.css';
 import '@once-ui-system/core/css/tokens.css';
 import '@/resources/custom.css'
+import '@/resources/mobile.css';
 
 import { Inter } from 'next/font/google';
 import classNames from "classnames";

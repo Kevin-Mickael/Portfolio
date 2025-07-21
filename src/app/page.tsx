@@ -172,7 +172,7 @@ export default function Home() {
                   <br/>
                   <span style={{display: 'block', margin: '32px 0 12px 0'}}>
                     <Image 
-                      src="https://surfshark.com/wp-content/uploads/2024/07/How-to-scan-a-QR-code-on-your-phone-safely-Hero-1024x501.png" 
+                      src="/images/qr-code-scan.png" 
                       alt="QR Code Création de site web ou portfolio web professionnel à l'île Maurice" 
                       width={1024}
                       height={501}

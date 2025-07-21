@@ -1,0 +1,56 @@
+/* Styles globaux pour les appareils mobiles */
+@media (max-width: 767px) {
+  /* Réinitialisation de base pour la typographie */
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 1.5rem !important; /* Ajustez selon le design */
+    line-height: 1.3 !important;
+    word-break: break-word;
+  }
+
+  p, span, li, a, label, input, button {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+  }
+
+  /* S'assurer que les images ne débordent pas */
+  img, .next-image, .next-image img {
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 8px !important;
+  }
+
+  /* Styles pour les conteneurs flexibles */
+  .Column, .Row, .Flex {
+    flex-direction: column !important;
+    gap: 16px !important;
+    align-items: stretch !important;
+  }
+
+  /* Boutons pleine largeur pour une meilleure accessibilité */
+  button, .Button, [role="button"] {
+    width: 100% !important;
+    min-width: 0 !important;
+    font-size: 1.1rem !important;
+    padding: 14px 0 !important;
+    margin-top: 10px;
+    justify-content: center;
+  }
+
+  /* Ajustements pour les listes */
+  ul, ol {
+    padding-left: 20px !important;
+    margin-left: 0 !important;
+  }
+
+  /* Gestion de la taille de la police pour les textes descriptifs */
+  .descriptionText, .Text, p, span, [class*="body-default"], [class*="heading-default"], [class*="label-default"] {
+    max-width: 100% !important;
+    word-break: break-word !important;
+    text-align: left !important;
+  }
+
+  /* Pour éviter le défilement horizontal */
+  body, html {
+    overflow-x: hidden !important;
+  }
+} 

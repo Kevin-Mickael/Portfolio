@@ -140,6 +140,25 @@ img {
   }
 }
 
+.iframe-container {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 8px;
+  margin: 0 auto;
+}
+
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 @media (max-width: 768px) {
   .cookie-banner {
     left: 0 !important;
@@ -152,21 +171,7 @@ img {
     max-width: 100vw !important;
   }
   
-  /* Styles pour les iframes en version mobile uniquement */
   .iframe-container {
-    width: 100% !important;
-    height: 300px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-  }
-  
-  .iframe-container iframe {
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 250px !important;
-    max-width: 100vw !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    height: 350px !important;
   }
 }

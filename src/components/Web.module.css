@@ -56,17 +56,17 @@
   }
   .appsGrid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    padding: 4px;
+    gap: 16px;
+    padding: 8px;
   }
   .appCard {
-    min-height: 56px;
-    border-radius: 12px;
+    min-height: 80px;
+    border-radius: 16px;
   }
   .appIcon {
-    width: 24px;
-    height: 24px;
-    font-size: 24px;
+    width: 32px;
+    height: 32px;
+    font-size: 32px;
   }
   .textWrapper {
     flex-direction: column;
@@ -255,8 +255,13 @@
   letter-spacing: 0.5px;
 }
 
+.appCard:hover .techName {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .appCard.focused .techName {
-  opacity: 0;
+  opacity: 1;
   transform: translateY(0);
 }
 
@@ -309,40 +314,64 @@
 /* Mobile Landscape (max-width: 767px) */
 @media only screen and (max-width: 767px) {
   .section {
-    padding: 64px 0;
+    padding: 48px 0;
   }
   
   .container {
-    max-width: 640px;
+    max-width: 100%;
+    padding: 0 16px;
   }
   
   .heading {
-    font-size: 46px;
-    letter-spacing: -3px;
+    font-size: 36px;
+    letter-spacing: -2px;
   }
   
   .textWrapper {
     flex-direction: column;
-    margin: 24px 0 40px 0;
+    align-items: flex-start;
+    margin: 24px 0 32px 0;
+    row-gap: 16px;
   }
   
   .dividerWrapper {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
+    width: 100%;
   }
   
   .paragraphWrapper {
-    min-width: auto;
-    max-width: 320px;
+    min-width: 0;
+    max-width: 100%;
   }
   
   .paragraph {
-    font-size: 18px;
-    line-height: 24px;
-    letter-spacing: -0.3px;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.2px;
   }
   
   .appsGrid {
     grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  
+  .appCard {
+    min-height: 80px;
+    border-radius: 12px;
+  }
+  
+  .appIcon {
+    width: 36px;
+    height: 36px;
+    font-size: 36px;
+  }
+}
+
+/* Mobile (max-width: 480px) */
+@media only screen and (max-width: 480px) {
+  .appsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
   }
   
   .appCard {
@@ -353,38 +382,5 @@
     width: 32px;
     height: 32px;
     font-size: 32px;
-  }
-}
-
-/* Mobile (max-width: 575px) */
-@media only screen and (max-width: 575px) {
-  .container {
-    max-width: 480px;
-    padding: 0 16px;
-  }
-  
-  .heading {
-    font-size: 46px;
-    letter-spacing: -3px;
-  }
-  
-  .paragraphWrapper {
-    min-width: auto;
-    max-width: 270px;
-  }
-  
-  .appsGrid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
-  }
-  
-  .appCard {
-    min-height: 60px;
-  }
-  
-  .appIcon {
-    width: 28px;
-    height: 28px;
-    font-size: 28px;
   }
 } 
