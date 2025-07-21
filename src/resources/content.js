@@ -65,18 +65,18 @@ const home = {
   path: "/",
   image: "/favicon.png",
   label: "Accueil",
-  title: `Création de site web ou portfolio web professionnel à l'île Maurice` ,
-  description: `Création de sites web et portfolio web professionnels et intuitifs à l'île Maurice`,
-  headline: <>Création de sites web et portfolio web professionnels et intuitifs</>,
+  title: `Création de de portfolio, sites web et mini apps à Maurice` ,
+  description: `Je vous aide à créer un portfolio, un site web ou une mini app qui vous ressemble, ici à Maurice. Ensemble, on imagine une solution simple, belle et efficace pour vous permettre de mieux vous présenter en ligne et toucher les bonnes personnes.`,
+  headline: <>Création de de portfolio, sites web et mini apps à Maurice</>,
   featured: {
     display: true,
-    title: <><strong>Création de site web et portfolio web à l&apos;île Maurice</strong></>,
+    title: <><strong>Création de de portfolio, sites web et mini apps à Maurice</strong></>,
     href: undefined,
   },
   subline: (
     <>
       Je suis {person.name}, un développeur web basé à l&apos;île Maurice, passionné par la création d&apos;expériences utilisateurs intuitives et professionnelles.<br />  
-      J&apos;aide les jeunes, les élèves, les entrepreneurs et les startups à se démarquer et à suivre les tendances actuelles en créant des portfolios et des sites web modernes qui marquent les esprits et font la différence.
+      J&apos;aide les jeunes, les élèves, les entrepreneurs et les startups à se démarquer et à suivre les tendances actuelles en créant des portfolios et des sites web et des mini-apps modernes qui marquent les esprits et font la différence.
     </>
   ),
 };

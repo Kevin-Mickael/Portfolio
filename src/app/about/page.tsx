@@ -17,17 +17,38 @@ import {
  import TableOfContents from "@/components/about/TableOfContents";
  import React from "react";
  import Image from "next/image";
- import Head from "next/head";
  import Breadcrumbs from '@/components/Breadcrumbs';
+ import { Metadata } from "next";
  
- export async function generateMetadata() {
-  return Meta.generate({
-    title: aboutContent.title.replace('About', 'À propos'),
-    description: aboutContent.description.replace('Meet', 'Rencontrez'),
-    baseURL: baseURL,
-    image: `/api/og/generate?title=${encodeURIComponent(aboutContent.title)}`,
-    path: aboutContent.path,
-  });
+ export async function generateMetadata(): Promise<Metadata> {
+  const about = aboutContent;
+  const canonicalUrl = `${baseURL}${about.path}`;
+  return {
+    title: about.title.replace('About', 'À propos'),
+    description: about.description.replace('Meet', 'Rencontrez'),
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: about.title.replace('About', 'À propos'),
+      description: about.description.replace('Meet', 'Rencontrez'),
+      url: canonicalUrl,
+      images: [
+        {
+          url: `/api/og/generate?title=${encodeURIComponent(about.title)}`,
+          width: 1200,
+          height: 630,
+          alt: about.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: about.title.replace('About', 'À propos'),
+      description: about.description.replace('Meet', 'Rencontrez'),
+      images: [`/api/og/generate?title=${encodeURIComponent(about.title)}`],
+    },
+  };
  }
  
  export default function About() {
@@ -57,9 +78,6 @@ import {
   ];
   return (
     <>
-      <Head>
-        <link rel="canonical" href={canonicalUrl} />
-      </Head>
       <Column maxWidth="m">
         <Schema
           as="webPage"
@@ -74,9 +92,6 @@ import {
             image: `${baseURL}${person.avatar}`,
           }}
         />
-        <Heading as="h1" variant="display-strong-l" marginBottom="l" style={{position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0}}>
-          À propos : Développeur web à Maurice, expert en création de site internet professionnel, vitrine et e-commerce.
-        </Heading>
         <Flex fillWidth mobileDirection="column" horizontal="center">
           {about.avatar.display && (
             <Column
@@ -155,7 +170,7 @@ import {
                   />
                 </Flex>
               )}
-              <Heading variant="display-strong-xl">
+              <Heading as="h1" variant="display-strong-xl">
                 {person.name}
               </Heading>
               <Text

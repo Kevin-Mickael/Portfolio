@@ -1,53 +1,73 @@
-import { Column, Meta, Schema, Heading } from "@once-ui-system/core";
+import { Column, Schema, Heading } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { Projects } from "@/components/work/Projects";
-import FAQ from "@/components/FAQ";
-import Avis from "@/components/Avis";
+import FAQ, { faqJsonLd } from "@/components/FAQ";
+import AvisClient from "@/components/AvisClient";
+import { reviewsJsonLd } from "@/components/Avis";
 import Breadcrumbs from '@/components/Breadcrumbs';
-import Head from "next/head";
+import { Metadata } from "next";
 
-export async function generateMetadata() {
-  return Meta.generate({
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = `${baseURL}${work.path}`;
+  const imageUrl = `/api/og/generate?title=${encodeURIComponent(work.title)}`;
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": baseURL
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Projets",
+        "item": canonicalUrl
+      }
+    ]
+  };
+
+  return {
     title: work.title,
     description: work.description,
-    baseURL: baseURL,
-    image: `/api/og/generate?title=${encodeURIComponent(work.title)}`,
-    path: work.path,
-    canonical: `${baseURL}${work.path}`,
-  });
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: work.title,
+      description: work.description,
+      url: canonicalUrl,
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: work.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: work.title,
+      description: work.description,
+      images: [imageUrl],
+    },
+    other: {
+      'script[type="application/ld+json"]': [
+        JSON.stringify(breadcrumbJsonLd),
+        JSON.stringify(faqJsonLd),
+        JSON.stringify(reviewsJsonLd),
+      ].join(''),
+    }
+  };
 }
 
 export default function Work() {
-  // const canonicalUrl = `${baseURL}${work.path}`; // plus nécessaire
   return (
     <>
-      <Head>
-        <link rel="canonical" href={`${baseURL}${work.path}`} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Accueil",
-                  "item": baseURL
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Projets",
-                  "item": `${baseURL}/work`
-                }
-              ]
-            })
-          }}
-        />
-        {/* <link rel="canonical" href={canonicalUrl} /> supprimé */}
-      </Head>
       <Column maxWidth="m">
         <Breadcrumbs
           items={[
@@ -68,11 +88,11 @@ export default function Work() {
             image: `${baseURL}${person.avatar}`,
           }}
         />
-        <Heading as="h1" variant="display-strong-l" marginBottom="l" style={{position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0}}>
+        <Heading as="h1" variant="display-strong-l" marginBottom="l">
           {work.title}
         </Heading>
         <Projects />
-        <Avis />
+        <AvisClient />
         <FAQ />
       </Column>
     </>

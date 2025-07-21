@@ -92,6 +92,10 @@
   transition: max-height 0.4s cubic-bezier(.4,2,.6,1), opacity 0.3s, padding 0.3s;
 }
 
+.faqQuestionLeft {
+  justify-content: flex-start;
+}
+
 // Mode nuit
 .faqSection[data-theme='dark'] {
   background: #181a1b;

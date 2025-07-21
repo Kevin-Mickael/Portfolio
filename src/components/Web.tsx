@@ -8,7 +8,6 @@ import {
   FaWordpress, FaBootstrap, FaFigma, FaSlack
 } from 'react-icons/fa';
 import { SiTypescript, SiMongodb, SiGraphql, SiNextdotjs, SiYarn } from 'react-icons/si';
-import Head from 'next/head';
 
 interface AppIconProps {
   Icon: React.ElementType;
@@ -108,10 +107,6 @@ const AppIntegration: React.FC = () => {
 
   return (
     <>
-      <Head>
-        <title>Technologies utilisées | Portfolio Développeur Web</title>
-        <meta name="description" content="Découvrez toutes les technologies web maîtrisées : React, Next.js, Node.js, TypeScript, HTML5, CSS3, et bien d'autres. Un savoir-faire moderne pour vos projets web sur-mesure." />
-      </Head>
       <section className={`${styles.section} ${styles.variables}`} id="app-integration">
         <div className={styles.container}>
           <h2 className={styles.heading96px} id="technologies-web" data-droip="dpyn5enz">

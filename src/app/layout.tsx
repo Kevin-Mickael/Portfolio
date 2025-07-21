@@ -2,6 +2,7 @@ import '@once-ui-system/core/css/styles.css';
 import '@once-ui-system/core/css/tokens.css';
 import '@/resources/custom.css'
 
+import { Inter } from 'next/font/google';
 import classNames from "classnames";
 import { defaultMetadata, jsonLdSchemas } from './metadata.config';
 import { Background, Column, Flex, opacity, SpacingToken } from "@once-ui-system/core";
@@ -10,6 +11,13 @@ import { CookieBanner } from '@/components/CookieBanner';
 import { effects, fonts, style, dataStyle } from '@/resources';
 import { Metadata } from 'next';
 import ClientErrorBoundary from '@/components/ClientErrorBoundary';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  weight: ['400', '700'],
+  display: 'swap',
+});
 
 export async function generateMetadata(): Promise<Metadata> {
   return defaultMetadata;
@@ -24,6 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         lang="fr"
         fillWidth
         className={classNames(
+          inter.variable,
           fonts.heading.variable,
           fonts.body.variable,
           fonts.label.variable,
@@ -31,68 +40,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
       >
         <head>
-          {/* DNS Prefetch pour les domaines externes */}
-          <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-          <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-          
-          {/* Preconnect pour les ressources critiques */}
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-          
-          {/* Google Fonts avec preconnect */}
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-          {/* Préchargement de la police Inter pour améliorer le LCP */}
-          <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
-          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
-          <style>{`@font-face { font-family: 'Inter'; font-display: swap; }`}</style>
-          
-          {/* Favicons et icônes PWA */}
-          <link rel="icon" type="image/x-icon" href="/favicon.ico?v=4" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=4" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=4" />
-          <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png?v=4" />
-          <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=4" />
-          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=4" />
-          <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png?v=4" />
-          <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png?v=4" />
-          <link rel="manifest" href="/manifest.json?v=4" />
-          <link rel="mask-icon" href="/favicon-32x32.png?v=4" color="#000000" />
-          
-          {/* Meta tags pour PWA */}
-          <meta name="application-name" content="Portfolio Kevin Mickael" />
-          <meta name="apple-mobile-web-app-capable" content="yes" />
-          <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-          <meta name="apple-mobile-web-app-title" content="Portfolio Kevin Mickael" />
-          <meta name="format-detection" content="telephone=no" />
-          <meta name="mobile-web-app-capable" content="yes" />
-          <meta name="theme-color" content="#000000" />
-          <meta name="msapplication-TileColor" content="#000000" />
-          <meta name="msapplication-TileImage" content="/favicon.png" />
-          <meta name="msapplication-config" content="/browserconfig.xml" />
+          {/* Les métadonnées de favicon et PWA sont maintenant gérées 
+              via `defaultMetadata` dans metadata.config.ts */}
           
           {/* Schémas JSON-LD pour le SEO et les IA */}
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify(jsonLdSchemas.person),
-            }}
-          />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(jsonLdSchemas.organization),
-            }}
-          />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(jsonLdSchemas.website),
-            }}
-          />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(jsonLdSchemas.service),
+              __html: JSON.stringify([
+                jsonLdSchemas.person,
+                jsonLdSchemas.organization,
+                jsonLdSchemas.website,
+                jsonLdSchemas.service,
+              ]),
             }}
           />
           
