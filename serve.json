@@ -1,0 +1,13 @@
+{
+  "headers": [
+    {
+      "source": "**/*.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/x-component; charset=utf-8"
+        }
+      ]
+    }
+  ]
+} 
