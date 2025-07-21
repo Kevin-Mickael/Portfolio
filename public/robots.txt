@@ -1,6 +1,28 @@
-# Fichier robots.txt optimisé pour CreativFolio
+# Robots.txt pour creativfolio.com
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /blog
+Allow: /work
+Allow: /contact
+Allow: /sitemap.xml
+Allow: /favicon.ico
+Allow: /robots.txt
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /cache/
+Disallow: /login
+Disallow: /register
+Disallow: /*.json$
+Disallow: /*?*
+Disallow: /search?
+Disallow: /print/
 
-# Accès complet pour les moteurs de recherche principaux
+# Moteurs de recherche principaux
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 1
@@ -9,22 +31,23 @@ User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
 User-agent: DuckDuckBot
 Allow: /
 Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 3
 
 User-agent: YandexBot
 Allow: /
 Crawl-delay: 2
 
-# Interdiction de certaines URLs
-User-agent: *
-Disallow: /api/
-Disallow: /_next/
-Disallow: /admin/
-Disallow: /private/
-
-# Interdiction pour les robots d'audit SEO et autres
+# Blocage des bots indésirables
 User-agent: AhrefsBot
 Disallow: /
 
@@ -37,5 +60,6 @@ Disallow: /
 User-agent: DotBot
 Disallow: /
 
-# Emplacement du sitemap
+# Configuration du site
 Sitemap: https://creativfolio.com/sitemap.xml
+Host: https://creativfolio.com

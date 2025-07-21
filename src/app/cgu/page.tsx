@@ -1,31 +1,24 @@
 import React from 'react';
-import { Metadata } from 'next';
+import Head from 'next/head';
 import styles from '../confidentialite/terms.module.css';
-
-export const metadata: Metadata = {
-  title: 'Conditions Générales d\'Utilisation | Création de Site Web & Portfolio Maurice',
-  description: 'Consultez les conditions générales d\'utilisation (CGU) de Création de Site Web & Portfolio Maurice. Découvrez les règles d\'utilisation, la propriété intellectuelle, la responsabilité et vos droits en tant qu\'utilisateur du site.',
-  openGraph: {
-    title: 'Conditions Générales d\'Utilisation | Création de Site Web & Portfolio Maurice',
-    description: 'Consultez les conditions générales d\'utilisation (CGU) de Création de Site Web & Portfolio Maurice. Découvrez les règles d\'utilisation, la propriété intellectuelle, la responsabilité et vos droits en tant qu\'utilisateur du site.',
-    type: 'website',
-    url: 'https://creativfolio.com/cgu',
-    images: ['https://creativfolio.com/favicon.png'],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Conditions Générales d\'Utilisation | Création de Site Web & Portfolio Maurice',
-    description: 'Consultez les conditions générales d\'utilisation (CGU) de Création de Site Web & Portfolio Maurice. Découvrez les règles d\'utilisation, la propriété intellectuelle, la responsabilité et vos droits en tant qu\'utilisateur du site.',
-    images: ['https://creativfolio.com/favicon.png'],
-  },
-  alternates: {
-    canonical: 'https://creativfolio.com/cgu',
-  },
-};
 
 export default function Page() {
   return (
     <>
+      <Head>
+        <title>Conditions Générales d&apos;Utilisation | Création de Site Web & Portfolio Maurice </title>
+        <meta name="description" content="Consultez les conditions générales d&apos;utilisation (CGU) de Création de Site Web & Portfolio Maurice. Découvrez les règles d&apos;utilisation, la propriété intellectuelle, la responsabilité et vos droits en tant qu&apos;utilisateur du site." />
+        <meta property="og:title" content="Conditions Générales d&apos;Utilisation | Création de Site Web & Portfolio Maurice" />
+        <meta property="og:description" content="Consultez les conditions générales d&apos;utilisation (CGU) de Création de Site Web & Portfolio Maurice. Découvrez les règles d&apos;utilisation, la propriété intellectuelle, la responsabilité et vos droits en tant qu&apos;utilisateur du site." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://creativfolio.com/cgu" />
+        <meta property="og:image" content="https://creativfolio.com/favicon.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Conditions Générales d&apos;Utilisation | Création de Site Web & Portfolio Maurice" />
+        <meta name="twitter:description" content="Consultez les conditions générales d&apos;utilisation (CGU) de Création de Site Web & Portfolio Maurice. Découvrez les règles d&apos;utilisation, la propriété intellectuelle, la responsabilité et vos droits en tant qu&apos;utilisateur du site." />
+        <meta name="twitter:image" content="https://creativfolio.com/favicon.png" />
+        <link rel="canonical" href="https://creativfolio.com/cgu" />
+      </Head>
       <div className={styles.droipPage}>
         <div className={styles.container}>
           <div className={styles.headerContainer}>

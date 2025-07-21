@@ -1,10 +1,11 @@
 import { notFound } from "next/navigation";
 import { CustomMDX, ScrollToHash } from "@/components";
-import { AvatarGroup, Button, Column, Heading, HeadingNav, Icon, Row, Text, Schema } from "@once-ui-system/core";
+import { Meta, Schema, AvatarGroup, Button, Column, Heading, HeadingNav, Icon, Row, Text } from "@once-ui-system/core";
 import { baseURL, about, blog, person } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 import { getPosts } from "@/utils/utils";
 import { Metadata } from 'next';
+import Head from "next/head";
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
@@ -22,90 +23,18 @@ export async function generateMetadata({
   const routeParams = await params;
   const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
 
-  const posts = getPosts(["src", "app", "blog", "posts"]);
-  const post = posts.find((post) => post.slug === slugPath);
+  const posts = getPosts(["src", "app", "blog", "posts"])
+  let post = posts.find((post) => post.slug === slugPath);
 
-  if (!post) {
-    return {};
-  }
+  if (!post) return {};
 
-  const canonicalUrl = `${baseURL}${blog.path}/${post.slug}`;
-  const imageUrl = post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`;
-
-  const articleJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": post.metadata.title,
-    "description": post.metadata.summary,
-    "image": imageUrl,
-    "author": {
-      "@type": "Person",
-      "name": person.name,
-      "url": `${baseURL}${about.path}`,
-      "image": `${baseURL}${person.avatar}`
-    },
-    "datePublished": post.metadata.publishedAt,
-    "dateModified": post.metadata.publishedAt,
-    "mainEntityOfPage": canonicalUrl,
-    "url": canonicalUrl
-  };
-
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Accueil",
-        "item": baseURL
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Blog",
-        "item": `${baseURL}/blog`
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": post.metadata.title
-      }
-    ]
-  };
-
-  return {
+  return Meta.generate({
     title: post.metadata.title,
     description: post.metadata.summary,
-    alternates: {
-      canonical: canonicalUrl,
-    },
-    openGraph: {
-      title: post.metadata.title,
-      description: post.metadata.summary,
-      url: canonicalUrl,
-      images: [
-        {
-          url: imageUrl,
-          width: 1200,
-          height: 630,
-          alt: post.metadata.title,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.metadata.title,
-      description: post.metadata.summary,
-      images: [imageUrl],
-    },
-    other: {
-      'script[type="application/ld+json"]': [
-        JSON.stringify(articleJsonLd),
-        JSON.stringify(breadcrumbJsonLd)
-      ].join(''),
-    }
-  };
+    baseURL: baseURL,
+    image: post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
+    path: `${blog.path}/${post.slug}`,
+  });
 }
 
 export default async function Blog({
@@ -129,6 +58,59 @@ export default async function Blog({
 
   return (
     <>
+      <Head>
+        <link rel="canonical" href={canonicalUrl} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              "headline": post.metadata.title,
+              "description": post.metadata.summary,
+              "image": post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
+              "author": {
+                "@type": "Person",
+                "name": person.name,
+                "url": `${baseURL}${about.path}`,
+                "image": `${baseURL}${person.avatar}`
+              },
+              "datePublished": post.metadata.publishedAt,
+              "dateModified": post.metadata.publishedAt,
+              "mainEntityOfPage": canonicalUrl,
+              "url": canonicalUrl
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Accueil",
+                  "item": baseURL
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blog",
+                  "item": `${baseURL}/blog`
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": post.metadata.title
+                }
+              ]
+            })
+          }}
+        />
+      </Head>
       <Row fillWidth>
         <Row maxWidth={12} hide="m"/>
         <Row fillWidth horizontal="center">

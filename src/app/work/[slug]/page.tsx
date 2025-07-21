@@ -6,6 +6,7 @@ import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
 import Image from "next/image";
+import Head from "next/head";
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 // Composant pour afficher les iframes
@@ -52,90 +53,18 @@ export async function generateMetadata({
   const routeParams = await params;
   const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
 
-  const posts = getPosts(["src", "app", "work", "projects"]);
-  const post = posts.find((post) => post.slug === slugPath);
+  const posts = getPosts(["src", "app", "work", "projects"])
+  let post = posts.find((post) => post.slug === slugPath);
 
-  if (!post) {
-    return {};
-  }
+  if (!post) return {};
 
-  const canonicalUrl = `${baseURL}${work.path}/${post.slug}`;
-  const imageUrl = post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`;
-
-  const projectJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    "name": post.metadata.title,
-    "description": post.metadata.summary,
-    "image": imageUrl,
-    "author": {
-      "@type": "Person",
-      "name": person.name,
-      "url": `${baseURL}${about.path}`,
-      "image": `${baseURL}${person.avatar}`
-    },
-    "datePublished": post.metadata.publishedAt,
-    "dateModified": post.metadata.publishedAt,
-    "mainEntityOfPage": canonicalUrl,
-    "url": canonicalUrl
-  };
-
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Accueil",
-        "item": baseURL
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Projets",
-        "item": `${baseURL}/work`
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": post.metadata.title
-      }
-    ]
-  };
-
-  return {
+  return Meta.generate({
     title: post.metadata.title,
     description: post.metadata.summary,
-    alternates: {
-      canonical: canonicalUrl,
-    },
-    openGraph: {
-      title: post.metadata.title,
-      description: post.metadata.summary,
-      url: canonicalUrl,
-      images: [
-        {
-          url: imageUrl,
-          width: 1200,
-          height: 630,
-          alt: post.metadata.title,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.metadata.title,
-      description: post.metadata.summary,
-      images: [imageUrl],
-    },
-    other: {
-      'script[type="application/ld+json"]': [
-        JSON.stringify(projectJsonLd),
-        JSON.stringify(breadcrumbJsonLd)
-      ].join(''),
-    }
-  };
+    baseURL: baseURL,
+    image: post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
+    path: `${work.path}/${post.slug}`,
+  });
 }
 
 export default async function Project({
@@ -159,6 +88,59 @@ export default async function Project({
 
   return (
     <>
+      <Head>
+        <link rel="canonical" href={canonicalUrl} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Project",
+              "name": post.metadata.title,
+              "description": post.metadata.summary,
+              "image": post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
+              "author": {
+                "@type": "Person",
+                "name": person.name,
+                "url": `${baseURL}${about.path}`,
+                "image": `${baseURL}${person.avatar}`
+              },
+              "datePublished": post.metadata.publishedAt,
+              "dateModified": post.metadata.publishedAt,
+              "mainEntityOfPage": canonicalUrl,
+              "url": canonicalUrl
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Accueil",
+                  "item": baseURL
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Projets",
+                  "item": `${baseURL}/work`
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": post.metadata.title
+                }
+              ]
+            })
+          }}
+        />
+      </Head>
       <div style={{ 
         width: '100%', 
         maxWidth: '100vw', 
@@ -231,7 +213,7 @@ export default async function Project({
               ) : (
                 <Image
                   src={post.metadata.images[0]}
-                  alt={post.metadata.title}
+                  alt="image"
                   width={800}
                   height={450}
                   style={{ 
@@ -242,6 +224,7 @@ export default async function Project({
                     objectFit: 'cover'
                   }}
                   loading="lazy"
+                  unoptimized
                 />
               )
             )}

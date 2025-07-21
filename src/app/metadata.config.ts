@@ -190,64 +190,28 @@ const jsonLd = {
   ],
 };
 
-// Schéma pour l'organisation (entreprise locale)
+// Schéma pour l'organisation
 const organizationJsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  '@id': baseURL,
+  '@type': 'Organization',
   name: `${person.name} - Portfolio`,
-  description: home.description,
   url: baseURL,
   logo: `${baseURL}/favicon.png`,
-  image: `${baseURL}/favicon.png`,
-  telephone: '+23054593145',
-  email: person.email,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'B S Road',
-    addressLocality: 'Port Mathurin',
-    postalCode: '99999',
-    addressCountry: 'MU',
-  },
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: [
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-        'Sunday'
-      ],
-      opens: '00:00',
-      closes: '23:59',
-    },
-  ],
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: '-19.6833',
-    longitude: '63.4167',
-  },
+  description: home.description,
   founder: {
     '@type': 'Person',
     name: person.name,
-    url: baseURL,
   },
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+23054593145',
     contactType: 'customer service',
     email: person.email,
-    areaServed: 'MU',
-    availableLanguage: ['English', 'French', 'Malagasy'],
+    availableLanguage: ['French', 'English', 'Malagasy'],
+    areaServed: {
+      '@type': 'Country',
+      name: 'Mauritius',
+    },
   },
-  priceRange: '$$',
-  servesCuisine: [],
-  acceptsReservations: 'True',
-  menu: '',
-  department: [],
   // Informations pour les IA
   foundingDate: '2021-01-01',
   numberOfEmployees: '1',
@@ -355,12 +319,8 @@ const serviceJsonLd = {
   ],
 };
 
-/**
- * La configuration des métadonnées par défaut pour l'ensemble du site.
- * Ces valeurs peuvent être surchargées par les métadonnées spécifiques à chaque page.
- */
 export const defaultMetadata: Metadata = {
-  metadataBase: new URL('https://creativfolio.com'),
+  metadataBase: new URL(baseURL),
   title: {
     default: home.title,
     template: `%s `,
@@ -399,24 +359,6 @@ export const defaultMetadata: Metadata = {
     title: home.title,
     description: home.description,
   },
-  icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: 'any', rel: 'icon' },
-      { url: '/favicon-circle.png', rel: 'icon', type: 'image/png' },
-      { url: '/favicon.svg', rel: 'icon', type: 'image/svg+xml' },
-    ],
-    apple: [
-      { url: '/apple-touch-icon.png', rel: 'apple-touch-icon' },
-    ],
-    other: [
-      {
-        rel: 'mask-icon',
-        url: '/safari-pinned-tab.svg',
-        color: '#000000',
-      },
-    ],
-  },
-  manifest: '/manifest.json',
   verification: {
     google: 'MmHJO51HH3FEXTU938nPgFyQZ_MtrDPnpSyLT-XgiTU',
     yandex: '3cb6fb33f8583b06', // Ajoute ici ton code Bing Webmaster

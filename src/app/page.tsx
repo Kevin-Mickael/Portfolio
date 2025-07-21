@@ -1,62 +1,17 @@
 import React from "react";
 import Image from "next/image";
+import Head from "next/head";
 
 import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row, Meta, Schema } from "@once-ui-system/core";
-import { home, about, person, newsletter, baseURL } from "@/resources";
+import { home, about, person, newsletter, baseURL, routes } from "@/resources";
 import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 import { getPosts } from '@/utils/utils';
-import FAQ, { faqJsonLd } from "@/components/FAQ";
-import AppIntegrationClientDynamic from '@/components/AppIntegrationClientDynamic';
+import FAQ from "@/components/FAQ";
+import AppIntegrationClient from '@/components/AppIntegrationClient';
 import CuteQuote from '@/components/CuteQuote';
 import styles from './home.module.css';
-import { Metadata } from "next";
-import LazySection from "@/components/LazySection";
-
-export async function generateMetadata(): Promise<Metadata> {
-  const canonicalUrl = `${baseURL}/`;
-  return {
-    title: "Création de de portfolio, sites web et mini apps à Maurice",
-    description: "Expert en création de portfolios, sites web et mini apps à Maurice pour booster votre visibilité et conquérir de nouveaux clients.",
-    keywords: [
-      "création site web Maurice",
-      "développeur web Maurice",
-      "portfolio web professionnel",
-      "mini-apps Maurice",
-      "site internet Maurice",
-      "site responsive Maurice",
-      "développement web île Maurice",
-      "développeur web freelance Maurice",
-      "agence web Maurice",
-      "création site vitrine Maurice",
-      "création site e-commerce Maurice",
-      "création de mini-applications Maurice",
-      "site web professionnel à Maurice",
-      "site internet moderne Maurice",
-      "création portfolio créatif en ligne Maurice",
-      "mini apps pour entreprises Maurice",
-      "site web pas cher Maurice",
-      "conception site web rapide Maurice",
-      "création site web optimisé SEO Maurice",
-      "développeur web indépendant Maurice"
-    ],    
-    alternates: {
-      canonical: canonicalUrl,
-    },
-    openGraph: {
-      title: "Création de de portfolios, sites web et mini apps à Maurice",
-      description: "Expert en création de portfolios, sites web et mini apps à Maurice pour booster votre visibilité et conquérir de nouveaux clients.",
-    },
-    twitter: {
-      title: "Création de de portfolios, sites web et mini apps à Maurice",
-      description: "Expert en création de portfolios, sites web et mini apps à Maurice pour booster votre visibilité et conquérir de nouveaux clients.",
-    },
-    other: {
-      'script[type="application/ld+json"]': JSON.stringify(faqJsonLd),
-    }
-  };
-}
 
 export default function Home() {
   // Récupérer l'article épinglé
@@ -66,6 +21,21 @@ export default function Home() {
   const canonicalUrl = `${baseURL}/`;
   return (
     <>
+          <Head>
+      <title>Création de site web professionnel à Maurice | Portfolio web </title>
+      <meta name="description" content="Développeur web professionnel à Maurice spécialisé dans la création de sites web et portfolios optimisés SEO. Augmentez votre visibilité en ligne et attirez plus de clients avec un site moderne et performant." />
+      <meta property="og:title" content="Création de site web professionnel à Maurice | Portfolio web" />
+      <meta property="og:description" content="Développeur web professionnel à Maurice spécialisé dans la création de sites web et portfolios optimisés SEO. Augmentez votre visibilité en ligne et attirez plus de clients avec un site moderne et performant." />
+      <meta name="twitter:title" content="Création de site web professionnel à Maurice | Portfolio web" />
+      <meta name="twitter:description" content="Développeur web professionnel à Maurice spécialisé dans la création de sites web et portfolios optimisés SEO. Augmentez votre visibilité en ligne et attirez plus de clients avec un site moderne et performant." />
+      <meta name="keywords" content="création site web Maurice, développeur web Maurice, portfolio web professionnel, SEO Maurice, site internet Maurice, web design Maurice, référencement naturel, visibilité Google Maurice, site responsive Maurice, développement web île Maurice" />
+      <link rel="canonical" href={canonicalUrl} />
+      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      </Head>
       <Column maxWidth="m" gap="xl" horizontal="center" className={styles.responsiveHome}>
         <Schema
           as="webPage"
@@ -91,6 +61,11 @@ export default function Home() {
               </Badge>
             </RevealFx>
             )}
+            <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="16">
+              <Heading as="h1" wrap="balance" variant="display-strong-l" style={{position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0}}>
+                Création site web Maurice : développeur, agence et web designer pour site vitrine, e-commerce et portfolio professionnel.
+              </Heading>
+            </RevealFx>
             <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="32">
               <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
                 {home.subline}
@@ -143,44 +118,51 @@ export default function Home() {
                     wordBreak: 'break-word',
                   }}
                 >
-                  Créons ensemble votre portfolio web et montrez au monde qui vous êtes 🌍
+                  Façonnez Votre Avenir Numérique : Créez Votre Portfolio Web
                 </Heading>
-                <br/>
                 <Text variant="body-default-l" style={{maxWidth: 900, textAlign: 'left'}}>
-                  Je vous aide à transformer votre parcours et vos talents en une vitrine numérique vivante, accessible partout et tout le temps, même grâce à un simple QR code à scanner.<br/><br/>
-                  Plus qu’un CV, votre portfolio web raconte votre histoire, montre vos réalisations et capte l’attention des employeurs, clients ou partenaires.<br/><br/>
-                  Ces portfolios sont pensés pour mettre en avant vos compétences, avec style, simplicité et impact.<br/><br/>
-                  <Button href="/work" variant="tertiary" size="l" weight="strong" arrowIcon style={{ border: '1.5px solid #d1d5db' }}>
-                    Découvrez mes réalisations
-                  </Button>
-                  <br/>
+                  
+                  Notre objectif est de démocratiser l&apos;accès au monde numérique pour tous. Je suis là pour vous accompagner dans cette transition essentielle.<br/><br/>
+                  Il est temps de vous présenter une opportunité concrète et innovante : la création d&apos;un portfolio web. Ce dernier est bien plus qu&apos;un simple CV ; c&apos;est une vitrine numérique accessible instantanément, permettant de présenter vos compétences et réalisations de manière percutante.<br/><br/>
                   <span style={{display: 'block', margin: '32px 0 12px 0'}}>
                     <div className="heading-responsive">
-                      <Heading as="h2" variant="display-strong-m" style={{whiteSpace: 'nowrap'}}>
-                        Ce que votre portfolio web vous apporte :
+                      <Heading as="h3" variant="display-strong-m">
+                        Qu&apos;est-ce qu&apos;un portfolio web ?
                       </Heading>
                     </div>
                   </span>
+                  Un portfolio web est l&apos;équivalent numérique de votre CV, mais avec une dimension interactive et visuelle. Il met en lumière vos expériences et réalisations concrètes.<br/><br/>
+                  Prenons l&apos;exemple d&apos;un travailleur indépendant, comme un chef cuisinier. Au lieu de simplement lister vos compétences sur papier, imaginez pouvoir montrer des photos de vos projets terminés, des témoignages de clients, ou même des vidéos de votre travail. Lorsque quelqu&apos;un vous interroge sur vos services, vous pouvez simplement dire : &quot;Avez-vous un téléphone ? Scannez ce QR code pour découvrir mon travail et mes références&quot;, ou &quot;Visitez mon site web : www.votredomaine.com&quot;.<br/><br/>
+                  Contrairement à un CV traditionnel qui ne peut détailler vos réalisations de manière exhaustive, un portfolio web offre une visibilité complète et concrète de votre savoir-faire.<br/><br/>
+                  <span style={{display: 'block', margin: '32px 0 12px 0'}}>
+                    <Heading as="h3" variant="display-strong-l" style={{marginBottom: 8, color: '#2563eb'}}>
+                      Quels sont les avantages d&apos;un portfolio web ?
+                    </Heading>
+                  </span>
+                  Les bénéfices de disposer d&apos;un portfolio web sont multiples et significatifs dans le paysage numérique actuel :<br/><br/>
                   <ul style={{marginLeft: 24}}>
-                    <li><b>Votre histoire en images et vidéos</b><br/>Montrez vos projets, vos créations, vos témoignages clients pour convaincre d’un coup d’œil.</li>
-                    <li><b>Partage facile grâce à un QR code</b><br/>Offrez une expérience moderne et pratique à ceux qui découvrent votre travail.</li>
-                    <li><b>Visible partout, tout le temps</b><br/>Votre vitrine en ligne, même à l’autre bout du monde.</li>
-                    <li><b>Gain de temps et économies</b><br/>Plus besoin d’imprimer et d’envoyer votre CV à chaque occasion.</li>
-                    <li><b>Une image professionnelle forte</b><br/>Mettez en valeur votre profil LinkedIn, votre candidature et votre personal branding.</li>
-                    <li><b>Faites la différence</b><br/>Démarquez-vous avec une présentation concrète, originale et percutante de vos compétences.</li>
+                    <li><b>Visibilité Instantanée :</b> Présentez vos compétences et réalisations de manière immédiate.</li>
+                    <li><b>Adaptation Numérique :</b> Intégrez pleinement le monde numérique en valorisant votre image professionnelle.</li>
+                    <li><b>Mise en Valeur :</b> Démontrez votre valeur ajoutée de manière concrète et convaincante.</li>
+                    <li><b>Impact Persuasif :</b> Captivez votre audience et mettez en avant la qualité de votre travail.</li>
+                    <li><b>Gain de Temps et Économie :</b> Réduisez le temps et les coûts liés aux impressions de CV à chaque démarche.</li>
+                    <li><b>Accessibilité Mondiale :</b> Soyez visible sur Internet (notamment Google), un atout majeur pour attirer des clients internationaux.</li>
+                    <li><b>Optimisation de Profils :</b> Enrichissez vos profils professionnels (LinkedIn, etc.) et améliorez votre image de marque personnelle.</li>
+                    <li><b>Renforcement Employeur :</b> Présentez votre portfolio aux employeurs pour appuyer votre candidature et justifier votre valeur.</li>
                   </ul>
                   <br/>
+                  Chacun de nous possède un talent unique ; mon souhait est de vous aider à le révéler au monde 🌟 !<br/><br/>
                   <span style={{display: 'block', margin: '32px 0 12px 0'}}>
                     <Image 
-                      src="/images/qr-code-scan.png" 
-                      alt="QR Code Création de site web ou portfolio web professionnel à l'île Maurice" 
+                      src="https://surfshark.com/wp-content/uploads/2024/07/How-to-scan-a-QR-code-on-your-phone-safely-Hero-1024x501.png" 
+                      alt="QR Code Création de site web ou portfolio web professionnel à l&apos;île Maurice" 
                       width={1024}
                       height={501}
                       style={{maxWidth: '100%', height: 'auto', borderRadius: 12, marginBottom: 16, boxShadow: '0 2px 16px rgba(0,0,0,0.08)'}}
                       loading="lazy"
                       unoptimized
                     />
-                  <Heading as="h2" variant="display-strong-m" style={{marginTop: 24, marginBottom: 24, whiteSpace: 'nowrap'}}>
+                  <Heading as="h3" variant="display-strong-m" style={{marginTop: 24, marginBottom: 24, whiteSpace: 'nowrap'}}>
                   Une solution moderne : Le QR Code
                 </Heading>
                   </span>
@@ -209,104 +191,13 @@ export default function Home() {
             </RevealFx>
           </Column>
         </Column>
-        
+        <RevealFx translateY="16" delay={0.6}>
+          <Projects range={[1, 1]} />
+        </RevealFx>
         
         {/* Section blog supprimée de l'accueil */}
         <Projects range={[2]} />
-        {/* Bloc mini-apps avant technologies */}
-        <RevealFx translateY="8" delay={0.3} fillWidth horizontal="center" paddingTop="40" paddingBottom="32">
-            <Column fillWidth horizontal="start" gap="12" style={{alignItems: 'flex-start'}}>
-                <Heading
-                  as="h1"
-                  variant="display-strong-l"
-                  style={{
-                    textAlign: 'left',
-                    maxWidth: '100%',
-                    wordBreak: 'break-word',
-                    marginBottom: '16px',
-                  }}
-                >
-                  🌱 Création de mini-apps pour simplifier votre quotidien à l&apos;île Maurice
-                </Heading>
-                
-                <Text variant="body-default-l" style={{maxWidth: 900, textAlign: 'left'}}>
-                  Je conçois également des mini-applications web légères, simples à utiliser, et utiles dans la vie de tous les jours, directement accessibles depuis votre téléphone, tablette ou ordinateur.<br/><br/>
-                  Ces applications sont pensées pour répondre à de petits besoins précis, pour les familles, les parents, les étudiants ou les professionnels.
-                </Text>
-                
-                <Text 
-                  variant="heading-default-m" 
-                  style={{ 
-                    marginTop: '32px', 
-                    marginBottom: '24px',
-                    display: 'block'
-                  }}
-                >
-                  📱 Quelques exemples de mini-apps que je peux créer :
-                </Text>
-                
-                <Column as="ul" gap="m" fillWidth style={{ listStyle: 'none', padding: 0, marginTop: '24px' }}>
-                  <Row as="li" gap="m" vertical="center" style={{ alignItems: 'flex-start' }}>
-                    <Text style={{ fontSize: '1.5rem' }}>🍼</Text>
-                    <Column>
-                      <Text weight="strong">Suivi bébé</Text>
-                      <Text onBackground="neutral-weak">Une petite app pour noter les heures des biberons ou tétées, le poids et la taille, et avoir des rappels pour la prochaine prise.</Text>
-                    </Column>
-                  </Row>
-                  <Row as="li" gap="m" vertical="center" style={{ alignItems: 'flex-start' }}>
-                    <Text style={{ fontSize: '1.5rem' }}>🍎</Text>
-                    <Column>
-                      <Text weight="strong">Idées repas faciles</Text>
-                      <Text onBackground="neutral-weak">Une app qui suggère des recettes rapides en fonction des ingrédients que vous avez sous la main.</Text>
-                    </Column>
-                  </Row>
-                  <Row as="li" gap="m" vertical="center" style={{ alignItems: 'flex-start' }}>
-                    <Text style={{ fontSize: '1.5rem' }}>🧒🏾</Text>
-                    <Column>
-                      <Text weight="strong">Tablette enfants</Text>
-                      <Text onBackground="neutral-weak">Une interface colorée et sécurisée pour occuper les enfants avec des jeux éducatifs simples et un minuteur pour contrôler le temps d’écran.</Text>
-                    </Column>
-                  </Row>
-                  <Row as="li" gap="m" vertical="center" style={{ alignItems: 'flex-start' }}>
-                    <Text style={{ fontSize: '1.5rem' }}>🧘🏽</Text>
-                    <Column>
-                      <Text weight="strong">Pause bien-être</Text>
-                      <Text onBackground="neutral-weak">Une mini app qui vous guide à travers 5 minutes de respiration ou d’étirement quand vous en avez besoin.</Text>
-                    </Column>
-                  </Row>
-                  <Row as="li" gap="m" vertical="center" style={{ alignItems: 'flex-start' }}>
-                    <Text style={{ fontSize: '1.5rem' }}>📝</Text>
-                    <Column>
-                      <Text weight="strong">Liste rapide</Text>
-                      <Text onBackground="neutral-weak">Une app pour créer des listes (courses, tâches, idées) et les garder accessibles et partagées.</Text>
-                    </Column>
-                  </Row>
-                </Column>
-                
-                <Button
-                  href="/contact"
-                  variant="secondary"
-                  size="l"
-                  weight="strong"
-                  style={{ marginTop: '24px', border: '1.5px solid #d1d5db' }}
-                  arrowIcon
-                >
-                  Demande spécifique
-                </Button>
-              </Column>
-        </RevealFx>
-        
-       <RevealFx translateY="16" delay={0.6}>
-          <Projects range={[1, 1]} />
-        </RevealFx>
-
-        {/* Section Nos technologies */}
-        <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center" paddingTop="40" paddingBottom="32">
-          <Column fillWidth horizontal="center" gap="xl">
-            <AppIntegrationClientDynamic />
-          </Column>
-        </RevealFx>
-
+        <AppIntegrationClient />
         {/* Section article épinglé */}
         {pinnedPost && (
           <RevealFx translateY="16" delay={0.7}>

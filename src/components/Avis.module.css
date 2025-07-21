@@ -112,12 +112,10 @@
 
 .reviewsTrack {
   display: flex;
-  animation: slide 60s linear infinite;
-  width: fit-content;
-}
-
-.reviewsTrack:hover {
-  animation-play-state: paused;
+  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+  width: 3500px;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .reviewItem {
@@ -487,15 +485,6 @@
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
-}
-
-@keyframes slide {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
 }
 
 .avisTitle {
