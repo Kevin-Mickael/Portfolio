@@ -1,0 +1,29 @@
+{
+  "routes": [
+    {
+      "routePath": "/api/contact",
+      "mountPath": "/api",
+      "method": "POST",
+      "module": [
+        "api/contact.js:onRequestPost"
+      ]
+    },
+    {
+      "routePath": "/api/indexnow",
+      "mountPath": "/api",
+      "method": "GET",
+      "module": [
+        "api/indexnow.js:onRequestGet"
+      ]
+    },
+    {
+      "routePath": "/api/indexnow",
+      "mountPath": "/api",
+      "method": "POST",
+      "module": [
+        "api/indexnow.js:onRequestPost"
+      ]
+    }
+  ],
+  "baseURL": "/"
+}

@@ -13,7 +13,6 @@ export interface SEOConfig {
   author?: string;
   section?: string;
   tags?: string[];
-  location?: 'maurice' | 'madagascar' | 'both';
 }
 
 export function generateSEO(config: SEOConfig): Metadata {
@@ -26,62 +25,16 @@ export function generateSEO(config: SEOConfig): Metadata {
     type = 'website',
     publishedTime,
     modifiedTime,
-    author = person.name,
+    author = person?.name || 'Développeur Web',
     section,
     tags = [],
-    location = 'both',
   } = config;
 
   const fullUrl = url ? `${baseURL}${url}` : baseURL;
   const fullImageUrl = image.startsWith('http') ? image : `${baseURL}${image}`;
 
-  // Mots-clés spécifiques par localisation
-  const locationKeywords = {
-    maurice: [
-      'création site web Maurice',
-      'création site internet Maurice',
-      'concepteur site web Maurice',
-      'développeur site web Maurice',
-      'agence web Maurice',
-      'site internet professionnel Maurice',
-      'création de site vitrine Maurice',
-      'création site e-commerce Maurice',
-      'freelance site web Maurice',
-      'prix création site web Maurice',
-      'devis site web Maurice',
-      'portfolio web designer Maurice',
-      'web designer Maurice',
-    ],
-    madagascar: [
-      'développeur web Madagascar',
-      'création site internet Madagascar',
-      'portfolio développeur Madagascar',
-      'développeur frontend Madagascar',
-      'développeur react Madagascar',
-      'développeur next.js Madagascar',
-      'webmaster Madagascar',
-      'développeur Antananarivo',
-      'développeur Toamasina',
-      'développeur Antsirabe',
-      'site web professionnel Madagascar',
-      'développeur freelance Madagascar',
-      'agence web Madagascar',
-      'Madagascar developer',
-      'site vitrine Madagascar',
-      'e-commerce Madagascar',
-      'développeur mobile Madagascar',
-      'intégration web Madagascar',
-      'responsive design Madagascar',
-      'SEO Madagascar',
-      'Madagascar IT services',
-      'web development Madagascar',
-      'digital agency Madagascar',
-      'création portfolio Madagascar',
-      'développeur Fianarantsoa'
-    ]
-  };
-
-  const baseKeywords = [
+  // Mots-clés optimisés pour Maurice
+  const mauriceKeywords = [
     'création site web Maurice',
     'création site internet Maurice',
     'concepteur site web Maurice',
@@ -95,25 +48,29 @@ export function generateSEO(config: SEOConfig): Metadata {
     'devis site web Maurice',
     'portfolio web designer Maurice',
     'web designer Maurice',
-    person.name,
-  ];
+    'mini-apps maurice',
+    'site web maurice',
+    'portfolio Maurice',
+    'développeur frontend Maurice',
+    'développeur react Maurice',
+    'développeur next.js Maurice',
+    'webmaster Maurice',
+    'développeur Port Louis',
+    'intégration web Maurice',
+    'responsive design Maurice',
+    'SEO Maurice',
+    'web development Maurice',
+    'digital agency Maurice',
+    person?.name || '',
+  ].filter(Boolean);
 
-  let allKeywords = [...keywords, ...baseKeywords];
-
-  // Ajouter les mots-clés selon la localisation
-  if (location === 'maurice') {
-    allKeywords = [...allKeywords, ...locationKeywords.maurice];
-  } else if (location === 'madagascar') {
-    allKeywords = [...allKeywords, ...locationKeywords.madagascar];
-  } else {
-    allKeywords = [...allKeywords, ...locationKeywords.maurice, ...locationKeywords.madagascar];
-  }
+  const allKeywords = [...new Set([...keywords, ...mauriceKeywords])];
 
   const openGraph = {
     title,
     description,
     url: fullUrl,
-    siteName: `${person.name} - Développeur Web Maurice & Madagascar`,
+    siteName: `${person?.name || 'Développeur Web'} - Développeur Web Maurice`,
     images: [
       {
         url: fullImageUrl,
@@ -133,24 +90,24 @@ export function generateSEO(config: SEOConfig): Metadata {
   };
 
   const twitter = {
-    card: 'summary_large_image',
+    card: 'summary_large_image' as const,
     title,
     description,
     images: [fullImageUrl],
-    creator: `@${person.name.replace(/\s+/g, '')}`,
+    creator: person?.name ? `@${person.name.replace(/\s+/g, '')}` : '@developer',
     site: '@kevinmickael',
   };
 
   return {
     title: {
       default: title,
-      template: `%s | ${person.name} - Développeur Web Maurice & Madagascar`,
+      template: `%s | ${person?.name || 'Développeur Web'} - Développeur Web Maurice`,
     },
     description,
     keywords: allKeywords,
-    authors: [{ name: person.name, url: baseURL }],
-    creator: person.name,
-    publisher: person.name,
+    authors: [{ name: person?.name || 'Développeur Web', url: baseURL }],
+    creator: person?.name || 'Développeur Web',
+    publisher: person?.name || 'Développeur Web',
     robots: {
       index: true,
       follow: true,
@@ -174,17 +131,17 @@ export function generateSEO(config: SEOConfig): Metadata {
     twitter,
     category: 'technology',
     other: {
-      'geo.region': location === 'maurice' ? 'MU' : location === 'madagascar' ? 'MG' : 'MU,MG',
-      'geo.placename': location === 'maurice' ? 'Maurice' : location === 'madagascar' ? 'Madagascar' : 'Maurice, Madagascar',
-      'geo.position': location === 'maurice' ? '-20.348404;57.552152' : location === 'madagascar' ? '-18.766947;46.869107' : '-20.348404;57.552152',
-      'ICBM': location === 'maurice' ? '-20.348404, 57.552152' : location === 'madagascar' ? '-18.766947, 46.869107' : '-20.348404, 57.552152',
+      'geo.region': 'MU',
+      'geo.placename': 'Maurice',
+      'geo.position': '-20.348404;57.552152',
+      'ICBM': '-20.348404, 57.552152',
     },
   };
 }
 
 // Fonction pour générer les schémas JSON-LD spécifiques aux pages
 export function generatePageJsonLd(config: SEOConfig) {
-  const { title, description, url, type, publishedTime, modifiedTime, author, tags, location } = config;
+  const { title, description, url, type, publishedTime, modifiedTime, author, tags } = config;
   const fullUrl = url ? `${baseURL}${url}` : baseURL;
 
   const baseSchema = {
@@ -194,17 +151,17 @@ export function generatePageJsonLd(config: SEOConfig) {
     url: fullUrl,
     author: {
       '@type': 'Person',
-      name: author || person.name,
+      name: author || person?.name || 'Développeur Web',
       url: baseURL,
       jobTitle: 'Développeur Web',
       worksFor: {
         '@type': 'Organization',
-        name: `${person.name} - Développeur Web`,
+        name: `${person?.name || 'Développeur Web'} - Développeur Web Maurice`,
       },
     },
     publisher: {
       '@type': 'Organization',
-      name: `${person.name} - Développeur Web Maurice & Madagascar`,
+      name: `${person?.name || 'Développeur Web'} - Développeur Web Maurice`,
       logo: {
         '@type': 'ImageObject',
         url: `${baseURL}/favicon.png`,
@@ -231,77 +188,44 @@ export function generatePageJsonLd(config: SEOConfig) {
   return {
     ...baseSchema,
     '@type': 'WebPage',
-    ...(location && {
-      spatialCoverage: {
-        '@type': 'Place',
-        name: location === 'maurice' ? 'Maurice' : location === 'madagascar' ? 'Madagascar' : 'Maurice, Madagascar',
-        geo: {
-          '@type': 'GeoCoordinates',
-          latitude: location === 'maurice' ? -20.348404 : location === 'madagascar' ? -18.766947 : -20.348404,
-          longitude: location === 'maurice' ? 57.552152 : location === 'madagascar' ? 46.869107 : 57.552152,
-        },
-      },
-    }),
-  };
-}
-
-// Schéma pour les services locaux
-export function generateLocalBusinessSchema(location: 'maurice' | 'madagascar' | 'both') {
-  const locations = {
-    maurice: {
+    spatialCoverage: {
+      '@type': 'Place',
       name: 'Maurice',
-      addressCountry: 'MU',
-      addressLocality: 'Port Louis',
-      latitude: -20.348404,
-      longitude: 57.552152,
-      telephone: '+230-5459-3145',
-      areaServed: ['Maurice', 'Île Maurice', 'Mauritius'],
-    },
-    madagascar: {
-      name: 'Madagascar',
-      addressCountry: 'MG',
-      addressLocality: 'Antananarivo',
-      latitude: -18.766947,
-      longitude: 46.869107,
-      telephone: '+261-34-23-352-6',
-      areaServed: ['Madagascar', 'Antananarivo', 'Toamasina', 'Antsirabe', 'Fianarantsoa','Majunga','Nosy Be'],
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: -20.348404,
+        longitude: 57.552152,
+      },
     },
   };
-
-  if (location === 'both') {
-    return [
-      generateSingleLocationSchema(locations.maurice),
-      generateSingleLocationSchema(locations.madagascar),
-    ];
-  }
-
-  return generateSingleLocationSchema(locations[location]);
 }
 
-function generateSingleLocationSchema(locationData: any) {
+// Schéma pour les services locaux Maurice
+export function generateLocalBusinessSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: `${person.name} - Développeur Web ${locationData.name}`,
-    description: `Services de développement web professionnel à ${locationData.name}. Création de sites internet, portfolios et applications web.`,
+    name: `${person?.name || 'Développeur Web'} - Développeur Web Maurice`,
+    description: 'Services de développement web professionnel à Maurice. Création de sites internet, portfolios, mini-apps et applications web.',
     url: baseURL,
-    telephone: locationData.telephone,
+    telephone: '+230-5459-3145',
     address: {
       '@type': 'PostalAddress',
-      addressCountry: locationData.addressCountry,
-      addressLocality: locationData.addressLocality,
+      addressCountry: 'MU',
+      addressLocality: 'Port Louis',
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: locationData.latitude,
-      longitude: locationData.longitude,
+      latitude: -20.348404,
+      longitude: 57.552152,
     },
-    areaServed: locationData.areaServed,
+    areaServed: ['Maurice', 'Île Maurice', 'Mauritius', 'Port Louis'],
     serviceType: [
       'Développement Web',
       'Création Site Internet',
       'Portfolio Professionnel',
       'Applications Web',
+      'Mini-Apps',
       'E-commerce',
       'Maintenance Web',
       'Optimisation SEO',
@@ -314,7 +238,7 @@ function generateSingleLocationSchema(locationData: any) {
 export const seoConfigs = {
   home: {
     title: 'Création site web Maurice | Développeur, Agence & Web Designer',
-    description: 'Création site web Maurice : développeur freelance, agence web, web designer. Site internet professionnel, vitrine, e-commerce, devis & prix sur mesure à Maurice.',
+    description: 'Création site web Maurice : développeur freelance, agence web, web designer. Site internet professionnel, vitrine, e-commerce, mini-apps, devis & prix sur mesure à Maurice.',
     keywords: [
       'création site web Maurice',
       'création site internet Maurice',
@@ -329,25 +253,24 @@ export const seoConfigs = {
       'devis site web Maurice',
       'portfolio web designer Maurice',
       'web designer Maurice',
+      'mini-apps maurice',
+      'site web maurice',
+      'portfolio Maurice',
     ],
-    location: 'maurice' as const,
   },
   portfolio: {
-    title: 'Portfolio - Projets Web Maurice & Madagascar',
-    description: 'Découvrez mes réalisations en développement web : sites vitrine, e-commerce et applications web pour clients à Maurice et Madagascar.',
-    keywords: ['portfolio web', 'projets développement', 'réalisations web'],
-    location: 'both' as const,
+    title: 'Portfolio Maurice - Projets Web & Mini-Apps',
+    description: 'Découvrez mon portfolio Maurice : projets de développement web, sites vitrine, e-commerce, mini-apps et applications web réalisés à Maurice.',
+    keywords: ['portfolio Maurice', 'projets développement Maurice', 'réalisations web Maurice', 'mini-apps maurice'],
   },
   services: {
-    title: 'Services Développement Web Maurice & Madagascar',
-    description: 'Services de développement web professionnel : création sites internet, portfolios, e-commerce et applications web à Maurice et Madagascar.',
-    keywords: ['services web', 'développement professionnel', 'création site internet'],
-    location: 'both' as const,
+    title: 'Services Développement Web Maurice | Mini-Apps & Sites Internet',
+    description: 'Services de développement web professionnel à Maurice : création sites internet, portfolios, mini-apps, e-commerce et applications web.',
+    keywords: ['services web Maurice', 'développement professionnel Maurice', 'création site internet Maurice', 'mini-apps maurice'],
   },
   contact: {
-    title: 'Contact Développeur Web Maurice & Madagascar',
-    description: 'Contactez-moi pour vos projets de développement web à Maurice et Madagascar. Devis gratuit et conseils personnalisés.',
-    keywords: ['contact développeur', 'devis site web', 'développeur freelance'],
-    location: 'both' as const,
+    title: 'Contact Développeur Web Maurice | Devis Gratuit',
+    description: 'Contactez-moi pour vos projets de développement web à Maurice. Devis gratuit pour sites internet, portfolios et mini-apps.',
+    keywords: ['contact développeur Maurice', 'devis site web Maurice', 'développeur freelance Maurice'],
   },
-};
+} as const;

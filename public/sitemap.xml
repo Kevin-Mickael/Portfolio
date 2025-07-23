@@ -53,24 +53,18 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://creativfolio.com/blog/quick-start</loc>
-    <lastmod>2025-01-20</lastmod>
-    <priority>0.7</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://creativfolio.com/work/building-once-ui-a-customizable-design-system</loc>
+    <loc>https://creativfolio.com/work/simple-portfolio-builder</loc>
     <lastmod>2024-04-08</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://creativfolio.com/work/image-slider-showcase</loc>
+    <loc>https://creativfolio.com/work/quiz-maurice</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://creativfolio.com/work/simple-portfolio-builder</loc>
+    <loc>https://creativfolio.com/work/portfolioxample</loc>
     <lastmod>2024-04-08</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>

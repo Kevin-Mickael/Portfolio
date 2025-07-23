@@ -65,18 +65,18 @@ const home = {
   path: "/",
   image: "/favicon.png",
   label: "Accueil",
-  title: `Création de site web ou portfolio web professionnel à l'île Maurice` ,
-  description: `Création de sites web et portfolio web professionnels et intuitifs à l'île Maurice`,
+  title: `Création de mini‑apps, de sites web et de portfolios à Maurice` ,
+  description: `Création de mini-applications, de sites web et portfolios professionnels et intuitifs à Maurice`,
   headline: <>Création de sites web et portfolio web professionnels et intuitifs</>,
   featured: {
     display: true,
-    title: <><strong>Création de site web et portfolio web à l&apos;île Maurice</strong></>,
+    title: <><strong>Création de mini-apps, site web et portfolio web à Maurice</strong></>,
     href: undefined,
   },
   subline: (
     <>
       Je suis {person.name}, un développeur web basé à l&apos;île Maurice, passionné par la création d&apos;expériences utilisateurs intuitives et professionnelles.<br />  
-      J&apos;aide les jeunes, les élèves, les entrepreneurs et les startups à se démarquer et à suivre les tendances actuelles en créant des portfolios et des sites web modernes qui marquent les esprits et font la différence.
+      J&apos;aide les jeunes, les élèves, les entrepreneurs et les startups à se démarquer et à suivre les tendances actuelles en créant des mini-applications, des portfolios et des sites web modernes qui simplifient leur quotidien et les rendent plus professionnels.
     </>
   ),
 };
@@ -262,14 +262,14 @@ const blog = {
   path: "/blog",
   label: "Blog",
   title: "Blog",
-  description: "Retrouvez mes articles et réflexions sur le design, le développement et la technologie.",
+  description: "Retrouvez mes astuces digitales et conseils pratiques pour faciliter votre quotidien et mieux profiter de la technologie.",
 };
 
 const work = {
   path: "/work",
   label: "Projets",
   title: "Projets",
-  description: "Découvrez mes projets et réalisations.",
+  description: "Des projets pensés pour aider les Mauriciens à se simplifier la vie et à briller dans le monde numérique.",
 };
 
 const contact = {

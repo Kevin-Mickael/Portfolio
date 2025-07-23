@@ -1,28 +1,54 @@
 import { Metadata } from 'next';
 import { baseURL, person, home } from '@/resources';
 
+// Validation des données importées avec fallbacks
+const validatePerson = () => {
+  if (!person?.name) {
+    console.warn('Person data not found, using fallback');
+    return {
+      name: 'Développeur Web Maurice',
+      email: 'contact@creativfolio.com'
+    };
+  }
+  return person;
+};
+
+const validateHome = () => {
+  if (!home?.title || !home?.description) {
+    console.warn('Home data not found, using fallback');
+    return {
+      title: 'Création site web Maurice | Développeur Web & Mini-Apps',
+      description: 'Développeur web professionnel à Maurice spécialisé en création de sites internet, portfolios et mini-apps. Services de développement web sur mesure.'
+    };
+  }
+  return home;
+};
+
+const validatedPerson = validatePerson();
+const validatedHome = validateHome();
+
 const defaultOpenGraph = {
-  type: 'website',
+  type: 'website' as const,
   locale: 'fr_FR',
   url: baseURL,
-  siteName: home.title,
+  siteName: `${validatedPerson.name} - Développeur Web Maurice`,
   images: [{
     url: `${baseURL}/favicon.png`,
     width: 512,
     height: 512,
-    alt: home.title,
+    alt: validatedHome.title,
     type: 'image/png',
   }],
 };
 
 const defaultTwitter = {
-  card: 'summary_large_image',
-  creator: `@${person.name.replace(/\s+/g, '')}`,
+  card: 'summary_large_image' as const,
+  creator: validatedPerson.name ? `@${validatedPerson.name.replace(/\s+/g, '')}` : '@developer',
   site: '@kevinmickael',
   images: [`${baseURL}/favicon.png`],
 };
 
-// Mots-clés enrichis pour un meilleur SEO et visibilité IA
+// Mots-clés optimisés pour Maurice avec les nouveaux termes
 const keywords = [
   'création site web Maurice',
   'création site internet Maurice',
@@ -37,140 +63,113 @@ const keywords = [
   'devis site web Maurice',
   'portfolio web designer Maurice',
   'web designer Maurice',
-  person.name,
-];
+  'mini-apps maurice',
+  'site web maurice',
+  'portfolio Maurice',
+  'développeur frontend Maurice',
+  'développeur react Maurice',
+  'développeur next.js Maurice',
+  'webmaster Maurice',
+  'développeur Quatre bornes',
+  'intégration web Maurice',
+  'responsive design Maurice',
+  'SEO Maurice',
+  'web development Maurice',
+  'digital agency Maurice',
+  validatedPerson.name,
+].filter(Boolean);
 
-// Schéma JSON-LD enrichi pour Google et les IA
+// Schéma JSON-LD enrichi focalisé sur Maurice
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   '@id': baseURL,
-  name: person.name,
+  name: validatedPerson.name,
   url: baseURL,
-  jobTitle: 'Développeur Web Full Stack & IT Support Engineer',
-  description: home.description,
+  jobTitle: 'Développeur Web Full Stack Maurice',
+  description: validatedHome.description,
   image: `${baseURL}/favicon.png`,
   sameAs: [
     'https://github.com/Kevin-Mickael',
     'https://www.linkedin.com/in/andriatsilavokevin/',
-  ],
+  ].filter(Boolean),
   worksFor: {
     '@type': 'Organization',
-    name: 'Freelance',
+    name: 'Freelance Maurice',
   },
   knowsAbout: [
-    'Développement Web',
-    'React',
-    'Next.js',
+    'Développement Web Maurice',
+    'React Maurice',
+    'Next.js Maurice',
     'TypeScript',
     'JavaScript',
     'Node.js',
-    'Go',
-    'PostgreSQL',
-    'SQL Server',
+    'Mini-Apps',
+    'Portfolio Web',
+    'Sites Internet Maurice',
     'UI/UX Design',
     'Responsive Design',
     'Web Performance',
-    'SEO',
-    'IT Support',
-    'eHealth Systems',
-    'OpenELIS',
-    'Database Design',
-    'API Development',
-    'Cloudflare',
-    'Web Development',
+    'SEO Maurice',
     'Frontend Development',
     'Backend Development',
     'Full Stack Development',
-    'Software Engineering',
-    'System Architecture',
-    'Database Management',
+    'Database Design',
+    'API Development',
     'Web Security',
-    'Performance Optimization',
-    'Mobile Development',
     'Progressive Web Apps',
   ],
   address: {
     '@type': 'PostalAddress',
     addressCountry: 'MU',
-    addressRegion: 'Mauritius',
-  },
-  alumniOf: {
-    '@type': 'EducationalOrganization',
-    name: "Ecole Supérieure de Management et D'Informatique Appliquée",
+    addressRegion: 'Maurice',
+    addressLocality: 'Port Louis',
   },
   hasOccupation: {
     '@type': 'Occupation',
-    name: 'Développeur Web Full Stack',
-    description: 'Développement d\'applications web modernes avec React, Next.js et TypeScript',
+    name: 'Développeur Web Full Stack Maurice',
+    description: 'Développement de sites web, portfolios et mini-apps à Maurice',
   },
   makesOffer: {
     '@type': 'Offer',
     itemOffered: {
       '@type': 'Service',
-      name: 'Développement Web',
-      description: 'Création de sites web professionnels et applications web modernes',
+      name: 'Développement Web Maurice',
+      description: 'Création de sites web professionnels, portfolios et mini-apps à Maurice',
     },
     areaServed: {
       '@type': 'Country',
       name: 'Mauritius',
     },
   },
-  // Informations supplémentaires pour les IA
-  additionalName: 'Kevin Mickael Andriatsilavo',
-  familyName: 'Andriatsilavo',
-  givenName: 'Kevin Mickael',
-  honorificPrefix: 'Mr.',
-  honorificSuffix: 'BSc',
-  gender: 'Male',
-  birthDate: '2000-19-11', // À ajuster selon votre date de naissance
+  additionalName: validatedPerson.name,
   nationality: {
     '@type': 'Country',
-    name: 'Madagascar',
+    name: 'Mauritius',
   },
-  // Compétences techniques détaillées
   skill: [
     'React.js',
     'Next.js',
     'TypeScript',
     'JavaScript',
     'Node.js',
-    'Go',
-    'PostgreSQL',
-    'SQL Server',
     'HTML5',
     'CSS3',
     'SASS/SCSS',
     'Git',
-    'Docker',
-    'AWS',
-    'Cloudflare',
+    'PostgreSQL',
+    'MongoDB',
     'REST APIs',
     'GraphQL',
-    'MongoDB',
-    'Redis',
     'Webpack',
     'Vite',
-    'Jest',
-    'Cypress',
     'Figma',
     'Adobe XD',
-    'Linux',
-    'Windows',
-    'macOS',
+    'Mini-Apps Development',
+    'Portfolio Design',
+    'Responsive Design',
+    'SEO Optimization',
   ],
-  // Expérience professionnelle
-  hasCredential: [
-    {
-      '@type': 'EducationalOccupationalCredential',
-      credentialCategory: 'degree',
-      recognizedBy: {
-        '@type': 'EducationalOrganization',
-        name: "Ecole Supérieure de Management et D'Informatique Appliquée",
-      },
-    },
-  ],
-  // Langues parlées
   knowsLanguage: [
     {
       '@type': 'Language',
@@ -182,54 +181,54 @@ const jsonLd = {
       name: 'English',
       proficiencyLevel: 'Fluent',
     },
-    {
-      '@type': 'Language',
-      name: 'Malagasy',
-      proficiencyLevel: 'Native',
-    },
   ],
 };
 
-// Schéma pour l'organisation
+// Schéma pour l'organisation focalisé sur Maurice
 const organizationJsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: `${person.name} - Portfolio`,
+  '@type': 'LocalBusiness',
+  name: `${validatedPerson.name} - Développeur Web Maurice`,
   url: baseURL,
   logo: `${baseURL}/favicon.png`,
-  description: home.description,
+  description: validatedHome.description,
   founder: {
     '@type': 'Person',
-    name: person.name,
+    name: validatedPerson.name,
   },
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'customer service',
-    email: person.email,
-    availableLanguage: ['French', 'English', 'Malagasy'],
+    email: validatedPerson.email,
+    availableLanguage: ['French', 'English'],
     areaServed: {
       '@type': 'Country',
       name: 'Mauritius',
     },
   },
-  // Informations pour les IA
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'MU',
+    addressLocality: 'Port Louis',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: -20.348404,
+    longitude: 57.552152,
+  },
   foundingDate: '2021-01-01',
   numberOfEmployees: '1',
   industry: 'Technology',
-  sector: 'Information Technology',
-  serviceType: 'Web Development',
+  serviceType: [
+    'Développement Web Maurice',
+    'Création Site Internet Maurice',
+    'Portfolio Maurice',
+    'Mini-Apps Maurice',
+  ],
   areaServed: [
     {
       '@type': 'Country',
       name: 'Mauritius',
-    },
-    {
-      '@type': 'Country',
-      name: 'Madagascar',
-    },
-    {
-      '@type': 'Country',
-      name: 'France',
     },
   ],
 };
@@ -238,45 +237,40 @@ const organizationJsonLd = {
 const websiteJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: home.title,
+  name: validatedHome.title,
   url: baseURL,
-  description: home.description,
+  description: validatedHome.description,
   author: {
     '@type': 'Person',
-    name: person.name,
+    name: validatedPerson.name,
   },
   publisher: {
     '@type': 'Organization',
-    name: `${person.name} - Portfolio`,
+    name: `${validatedPerson.name} - Développeur Web Maurice`,
   },
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: {
-      '@type': 'EntryPoint',
-      urlTemplate: `${baseURL}/search?q={search_term_string}`,
-    },
-    'query-input': 'required name=search_term_string',
-  },
-  // Informations pour les IA
   inLanguage: ['fr-FR', 'en-US'],
   isAccessibleForFree: true,
   dateCreated: '2021-01-01',
   dateModified: new Date().toISOString(),
   mainEntity: {
     '@type': 'Person',
-    name: person.name,
+    name: validatedPerson.name,
+  },
+  about: {
+    '@type': 'Thing',
+    name: 'Développement Web Maurice',
   },
 };
 
-// Schéma pour les services offerts
+// Schéma pour les services offerts à Maurice
 const serviceJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: 'Développement Web Full Stack',
-  description: 'Services de développement web professionnel incluant la création de sites web, applications web, et solutions eHealth',
+  name: 'Développement Web Maurice',
+  description: 'Services de développement web professionnel à Maurice : création de sites internet, portfolios et mini-apps',
   provider: {
     '@type': 'Person',
-    name: person.name,
+    name: validatedPerson.name,
     url: baseURL,
   },
   areaServed: {
@@ -284,37 +278,41 @@ const serviceJsonLd = {
     name: 'Mauritius',
   },
   serviceType: [
-    'Web Development',
-    'Frontend Development',
-    'Backend Development',
-    'Full Stack Development',
-    'UI/UX Design',
-    'Database Design',
-    'API Development',
-    'eHealth Systems',
+    'Création Site Web Maurice',
+    'Portfolio Maurice',
+    'Mini-Apps Maurice',
+    'Développement Frontend',
     'IT Support',
+    'UI/UX Design',
+    'SEO Maurice',
   ],
   offers: [
     {
       '@type': 'Offer',
-      name: 'Création de Sites Web et Portfolio Web',
-      description: 'Sites web professionnels et responsives et Portfolio Web',
-      price: '0',
-      priceCurrency: 'EUR',
+      name: 'Création Sites Web Maurice',
+      description: 'Sites web professionnels et responsives à Maurice',
+      availableAtOrFrom: {
+        '@type': 'Place',
+        name: 'Maurice',
+      },
     },
     {
       '@type': 'Offer',
-      name: 'Développement d\'Applications Web',
-      description: 'Applications web modernes avec React et Next.js',
-      price: '0',
-      priceCurrency: 'EUR',
+      name: 'Création Portfolio Maurice',
+      description: 'Création de portfolios professionnels à Maurice',
+      availableAtOrFrom: {
+        '@type': 'Place',
+        name: 'Maurice',
+      },
     },
     {
       '@type': 'Offer',
-      name: 'Systèmes eHealth',
-      description: 'Développement de systèmes de laboratoire et eHealth',
-      price: '0',
-      priceCurrency: 'EUR',
+      name: 'Création Mini-Apps Maurice',
+      description: 'Développement de mini-applications à Maurice',
+      availableAtOrFrom: {
+        '@type': 'Place',
+        name: 'Maurice',
+      },
     },
   ],
 };
@@ -322,14 +320,14 @@ const serviceJsonLd = {
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(baseURL),
   title: {
-    default: home.title,
-    template: `%s `,
+    default: validatedHome.title,
+    template: `%s | ${validatedPerson.name} - Développeur Web Maurice`,
   },
-  description: home.description,
+  description: validatedHome.description,
   keywords: keywords,
-  authors: [{ name: person.name, url: baseURL }],
-  creator: person.name,
-  publisher: person.name,
+  authors: [{ name: validatedPerson.name, url: baseURL }],
+  creator: validatedPerson.name,
+  publisher: validatedPerson.name,
   robots: {
     index: true,
     follow: true,
@@ -351,17 +349,17 @@ export const defaultMetadata: Metadata = {
   },
   openGraph: {
     ...defaultOpenGraph,
-    title: home.title,
-    description: home.description,
+    title: validatedHome.title,
+    description: validatedHome.description,
   },
   twitter: {
     ...defaultTwitter,
-    title: home.title,
-    description: home.description,
+    title: validatedHome.title,
+    description: validatedHome.description,
   },
   verification: {
-    google: 'MmHJO51HH3FEXTU938nPgFyQZ_MtrDPnpSyLT-XgiTU',
-    yandex: '3cb6fb33f8583b06', // Ajoute ici ton code Bing Webmaster
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || 'MmHJO51HH3FEXTU938nPgFyQZ_MtrDPnpSyLT-XgiTU',
+    yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || '3cb6fb33f8583b06',
   },
   category: 'technology',
   other: {
@@ -369,19 +367,23 @@ export const defaultMetadata: Metadata = {
     'theme-color': '#000000',
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'default',
-    'apple-mobile-web-app-title': home.title,
-    'application-name': home.title,
+    'apple-mobile-web-app-title': validatedHome.title,
+    'application-name': validatedHome.title,
     'mobile-web-app-capable': 'yes',
     'format-detection': 'telephone=no',
     'referrer': 'origin-when-cross-origin',
     'color-scheme': 'light dark',
-    // Métadonnées pour les IA
-    'ai-description': `${person.name} est un développeur web full stack professionnel basé à Maurice, spécialisé en React, Next.js, TypeScript et développement d'applications web modernes. Expert en eHealth et systèmes de laboratoire.`,
-    'ai-expertise': 'React, Next.js, TypeScript, Node.js, Go, PostgreSQL, eHealth, OpenELIS, Web Development, Full Stack',
-    'ai-location': 'Mauritius, Madagascar',
-    'ai-contact': person.email,
-    'ai-linkedin': 'https://www.linkedin.com/in/andriatsilavokevin/',
-    'ai-github': 'https://github.com/Kevin-Mickael',
+    // Métadonnées géographiques pour Maurice
+    'geo.region': 'MU',
+    'geo.placename': 'Maurice',
+    'geo.position': '-20.348404;57.552152',
+    'ICBM': '-20.348404, 57.552152',
+    // Métadonnées pour les IA focalisées sur Maurice
+    'ai-description': `${validatedPerson.name} est un développeur web professionnel basé à Maurice, spécialisé en création de sites internet, portfolios et mini-apps. Expert en React, Next.js et développement web moderne.`,
+    'ai-expertise': 'Développement Web Maurice, React, Next.js, TypeScript, Mini-Apps, Portfolio, Sites Internet Maurice',
+    'ai-location': 'Maurice, Port Louis',
+    'ai-services': 'Création site web Maurice, Portfolio Maurice, Mini-apps Maurice',
+    ...(validatedPerson.email && { 'ai-contact': validatedPerson.email }),
   },
 };
 
@@ -391,4 +393,12 @@ export const jsonLdSchemas = {
   organization: organizationJsonLd,
   website: websiteJsonLd,
   service: serviceJsonLd,
-}; 
+};
+
+// Fonction utilitaire pour injecter les schémas JSON-LD
+export const generateJsonLdScript = (schemas: object[]) => {
+  return schemas.map(schema => ({
+    type: 'application/ld+json',
+    children: JSON.stringify(schema),
+  }));
+};

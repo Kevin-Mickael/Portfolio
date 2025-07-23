@@ -14,6 +14,11 @@ const routes = {
   "/contact": true,
   "/confidentialite": true,
   "/cgu": true,
+  "/blog/introduction" : true,
+  "/blog/presentation" : true,
+  "/work/simple-portfolio-builder" : true,
+  "/work/quiz-maurice" : true,
+  "/work/portfolioxample" :true
 };
 
 const display = {
@@ -172,18 +177,16 @@ const mailchimp = {
 
 // default schema data
 const schema = {
-  logo: "",
+  logo: "/favicon.png",
   type: "Organization",
-  name: "Once UI",
-  description: home.description,
-  email: "lorant@once-ui.com",
+  name: "Création de mini‑apps, de sites web et de portfolios à Maurice",
+  description: home.description || "Création de mini‑apps, de sites web et de portfolios à Maurice",
+  email: "contact@creativfolio.com",
 };
 
 // social links
 const sameAs = {
-  threads: "https://www.threads.com/@once_ui",
-  linkedin: "https://www.linkedin.com/company/once-ui/",
-  discord: "https://discord.com/invite/5EyAQ4eNdS",
+  linkedin: "https://www.linkedin.com/in/andriatsilavokevin/",
 };
 
 export { display, mailchimp, routes, protectedRoutes, baseURL, fonts, style, schema, sameAs, effects, dataStyle };
