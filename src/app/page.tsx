@@ -313,7 +313,7 @@ export default function Home() {
                     style={{
                       backgroundColor: 'transparent',
                       color: 'var(--text-neutral-strong)',
-                      border: '2px solid var(--white)',
+                      border: '2px solid white',
                       marginTop: '24px',
                       display: 'flex',
                       alignItems: 'center',

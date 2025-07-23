@@ -18,7 +18,8 @@ const routes = {
   "/blog/presentation" : true,
   "/work/simple-portfolio-builder" : true,
   "/work/quiz-maurice" : true,
-  "/work/portfolioxample" :true
+  "/work/portfolioxample" :true,
+  "/blog/quick-start" : true
 };
 
 const display = {
@@ -30,7 +31,7 @@ const display = {
 // Enable password protection on selected routes
 // Set password in the .env file, refer to .env.example
 const protectedRoutes = {
-  "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
+  "/work/": true,
 };
 
 // Import and set font for each variant
@@ -178,7 +179,7 @@ const mailchimp = {
 // default schema data
 const schema = {
   logo: "/favicon.png",
-  type: "Organization",
+  type: "Localbusiness",
   name: "Création de mini‑apps, de sites web et de portfolios à Maurice",
   description: home.description || "Création de mini‑apps, de sites web et de portfolios à Maurice",
   email: "contact@creativfolio.com",
