@@ -8,6 +8,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Head from "next/head";
 import Breadcrumbs from '@/components/Breadcrumbs';
+import { routeImages } from "@/resources/routeImages";
 
 // Composant pour afficher les iframes
 function IframeDisplay({ src, title }: { src: string; title?: string }) {
@@ -62,7 +63,7 @@ export async function generateMetadata({
     title: post.metadata.title,
     description: post.metadata.summary,
     baseURL: baseURL,
-    image: post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
+    image: post.metadata.image || routeImages['/work'],
     path: `${work.path}/${post.slug}`,
   });
 }
@@ -98,7 +99,7 @@ export default async function Project({
               "@type": "Project",
               "name": post.metadata.title,
               "description": post.metadata.summary,
-              "image": post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
+              "image": post.metadata.image || routeImages['/work'],
               "author": {
                 "@type": "Person",
                 "name": person.name,
@@ -174,7 +175,7 @@ export default async function Project({
             description={post.metadata.summary}
             datePublished={post.metadata.publishedAt}
             dateModified={post.metadata.publishedAt}
-            image={post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`}
+            image={post.metadata.image || routeImages['/work']}
             author={{
               name: person.name,
               url: `${baseURL}${about.path}`,

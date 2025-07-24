@@ -19,7 +19,8 @@ const routes = {
   "/work/simple-portfolio-builder" : true,
   "/work/quiz-maurice" : true,
   "/work/portfolioxample" :true,
-  "/blog/quick-start" : true
+  "/blog/quick-start" : true,
+  "/blog/binaryblog" : true,
 };
 
 const display = {

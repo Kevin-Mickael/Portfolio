@@ -6,12 +6,12 @@ import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row, Meta
 import { home, about, person, newsletter, baseURL, routes } from "@/resources";
 import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
-import { Posts } from "@/components/blog/Posts";
 import { getPosts } from '@/utils/utils';
 import FAQ from "@/components/FAQ";
 import AppIntegrationClient from '@/components/AppIntegrationClient';
 import CuteQuote from '@/components/CuteQuote';
 import styles from './home.module.css';
+import { routeImages } from "@/resources/routeImages";
 
 export default function Home() {
   // Récupérer l'article épinglé
@@ -26,8 +26,10 @@ export default function Home() {
       <meta name="description" content="Création de mini‑apps, sites web et portfolios à Maurice pour simplifier votre quotidien, attirer des clients et renforcer votre image professionnelle en ligne." />
       <meta property="og:title" content="CCréation de mini‑apps, sites web et portfolios à Maurice" />
       <meta property="og:description" content="Création de mini‑apps, sites web et portfolios à Maurice pour simplifier votre quotidien, attirer des clients et renforcer votre image professionnelle en ligne." />
+      <meta property="og:image" content={routeImages['/']} />
       <meta name="twitter:title" content="Création de mini‑apps, sites web et portfolios à Maurice" />
       <meta name="twitter:description" content="Création de mini‑apps, sites web et portfolios à Maurice pour simplifier votre quotidien, attirer des clients et renforcer votre image professionnelle en ligne." />
+      <meta name="twitter:image" content={routeImages['/']} />
       <meta name="keywords" content="Création de mini‑apps, sites web et portfolios à Maurice pour simplifier votre quotidien, attirer des clients et renforcer votre image professionnelle en ligne." />
       <link rel="canonical" href={canonicalUrl} />
       <link rel="icon" href="/favicon.ico" />
@@ -43,7 +45,7 @@ export default function Home() {
           path={home.path}
           title={home.title}
           description={home.description}
-          image={`/api/og/generate?title=${encodeURIComponent(home.title)}`}
+          image={routeImages['/']}
           author={{
             name: person.name,
             url: `${baseURL}${about.path}`,

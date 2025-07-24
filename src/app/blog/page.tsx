@@ -2,6 +2,7 @@ import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
 import { Mailchimp } from "@/components";
 import { Posts } from "@/components/blog/Posts";
 import { baseURL, blog, person, newsletter } from "@/resources";
+import { routeImages } from "@/resources/routeImages";
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Head from 'next/head';
 
@@ -52,7 +53,7 @@ export default function Blog() {
           title={blog.title}
           description={blog.description}
           path={blog.path}
-          image={`/api/og/generate?title=${encodeURIComponent(blog.title)}`}
+          image={routeImages['/blog']}
           author={{
             name: person.name,
             url: `${baseURL}/blog`,

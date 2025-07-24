@@ -5,13 +5,14 @@ import FAQ from "@/components/FAQ";
 import Avis from "@/components/Avis";
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Head from "next/head";
+import { routeImages } from "@/resources/routeImages";
 
 export async function generateMetadata() {
   return Meta.generate({
     title: work.title,
     description: work.description,
     baseURL: baseURL,
-    image: `/api/og/generate?title=${encodeURIComponent(work.title)}`,
+    image: routeImages['/work'],
     path: work.path,
     canonical: `${baseURL}${work.path}`,
   });
@@ -61,7 +62,7 @@ export default function Work() {
           path={work.path}
           title={work.title}
           description={work.description}
-          image={`/api/og/generate?title=${encodeURIComponent(work.title)}`}
+          image={routeImages['/work']}
           author={{
             name: person.name,
             url: `${baseURL}${about.path}`,

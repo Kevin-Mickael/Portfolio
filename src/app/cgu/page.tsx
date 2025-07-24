@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import styles from '../confidentialite/terms.module.css';
+import { routeImages } from "@/resources/routeImages";
 
 export default function Page() {
   return (
@@ -12,11 +13,11 @@ export default function Page() {
         <meta property="og:description" content="Consultez les conditions générales d&apos;utilisation (CGU) de Création de Site Web & Portfolio Maurice. Découvrez les règles d&apos;utilisation, la propriété intellectuelle, la responsabilité et vos droits en tant qu&apos;utilisateur du site." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://creativfolio.com/cgu" />
-        <meta property="og:image" content="https://creativfolio.com/favicon.png" />
+        <meta property="og:image" content={routeImages['/cgu']} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Conditions Générales d&apos;Utilisation | Création de Site Web & Portfolio Maurice" />
         <meta name="twitter:description" content="Consultez les conditions générales d&apos;utilisation (CGU) de Création de Site Web & Portfolio Maurice. Découvrez les règles d&apos;utilisation, la propriété intellectuelle, la responsabilité et vos droits en tant qu&apos;utilisateur du site." />
-        <meta name="twitter:image" content="https://creativfolio.com/favicon.png" />
+        <meta name="twitter:image" content={routeImages['/cgu']} />
         <link rel="canonical" href="https://creativfolio.com/cgu" />
       </Head>
       <div className={styles.droipPage}>

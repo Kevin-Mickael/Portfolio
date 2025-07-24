@@ -7,6 +7,7 @@ import { getPosts } from "@/utils/utils";
 import { Metadata } from 'next';
 import Head from "next/head";
 import Breadcrumbs from '@/components/Breadcrumbs';
+import { routeImages } from "@/resources/routeImages";
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const posts = getPosts(["src", "app", "blog", "posts"]);
@@ -32,7 +33,7 @@ export async function generateMetadata({
     title: post.metadata.title,
     description: post.metadata.summary,
     baseURL: baseURL,
-    image: post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
+    image: post.metadata.image || routeImages['/blog'],
     path: `${blog.path}/${post.slug}`,
   });
 }
@@ -68,7 +69,7 @@ export default async function Blog({
               "@type": "Article",
               "headline": post.metadata.title,
               "description": post.metadata.summary,
-              "image": post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
+              "image": post.metadata.image || routeImages['/blog'],
               "author": {
                 "@type": "Person",
                 "name": person.name,
@@ -130,7 +131,7 @@ export default async function Blog({
               description={post.metadata.summary}
               datePublished={post.metadata.publishedAt}
               dateModified={post.metadata.publishedAt}
-              image={post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`}
+              image={post.metadata.image || routeImages['/blog']}
               author={{
                 name: person.name,
                 url: `${baseURL}${about.path}`,

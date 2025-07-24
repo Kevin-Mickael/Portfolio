@@ -6,7 +6,7 @@ const validatePerson = () => {
   if (!person?.name) {
     console.warn('Person data not found, using fallback');
     return {
-      name: 'Développeur Web Maurice',
+      name: 'Création de mini-apps, site web et portfolio web à Maurice',
       email: 'contact@creativfolio.com'
     };
   }
@@ -31,7 +31,7 @@ const defaultOpenGraph = {
   type: 'website' as const,
   locale: 'fr_FR',
   url: baseURL,
-  siteName: `${validatedPerson.name} - Développeur Web Maurice`,
+  siteName: `${validatedPerson.name} - Création de mini-apps, site web et portfolio web à Maurice`,
   images: [{
     url: `${baseURL}/favicon.png`,
     width: 512,
@@ -188,7 +188,7 @@ const jsonLd = {
 const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  name: `${validatedPerson.name} - Développeur Web Maurice`,
+  name: `${validatedPerson.name} - Création de mini-apps, site web et portfolio web à Maurice`,
   url: baseURL,
   logo: `${baseURL}/favicon.png`,
   description: validatedHome.description,
@@ -246,7 +246,7 @@ const websiteJsonLd = {
   },
   publisher: {
     '@type': 'Organization',
-    name: `${validatedPerson.name} - Développeur Web Maurice`,
+    name: `${validatedPerson.name} - Création de mini-apps, site web et portfolio web à Maurice`,
   },
   inLanguage: ['fr-FR', 'en-US'],
   isAccessibleForFree: true,
@@ -281,9 +281,9 @@ const serviceJsonLd = {
     'Création Site Web Maurice',
     'Portfolio Maurice',
     'Mini-Apps Maurice',
-    'Développement Frontend',
-    'IT Support',
-    'UI/UX Design',
+    'Développement Frontend Maurice',
+    'IT Support Maurice',
+    'UI/UX Design Maurice',
     'SEO Maurice',
   ],
   offers: [

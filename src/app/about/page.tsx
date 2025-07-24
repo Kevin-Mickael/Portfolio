@@ -19,13 +19,14 @@ import {
  import Image from "next/image";
  import Head from "next/head";
  import Breadcrumbs from '@/components/Breadcrumbs';
+ import { routeImages } from "@/resources/routeImages";
  
  export async function generateMetadata() {
   return Meta.generate({
     title: aboutContent.title.replace('About', 'À propos'),
     description: aboutContent.description.replace('Meet', 'Rencontrez'),
     baseURL: baseURL,
-    image: `/api/og/generate?title=${encodeURIComponent(aboutContent.title)}`,
+    image: routeImages['/about'],
     path: aboutContent.path,
   });
  }
@@ -67,7 +68,7 @@ import {
           title={about.title}
           description={about.description}
           path={about.path}
-          image={`/api/og/generate?title=${encodeURIComponent(about.title)}`}
+          image={routeImages['/about']}
           author={{
             name: person.name,
             url: `${baseURL}${about.path}`,
