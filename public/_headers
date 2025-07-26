@@ -1,74 +1,39 @@
-# Headers de sécurité globaux
-/*
-  X-Content-Type-Options: nosniff
-  // X-Frame-Options: DENY
-  X-XSS-Protection: 1; mode=block
-  Referrer-Policy: origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Strict-Transport-Security: max-age=31536000; includeSubDomains
-  Content-Security-Policy: default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; frame-src 'self' https://www.youtube.com https://player.vimeo.com https://craftleyourwebsite.github.io/;
-  Cross-Origin-Opener-Policy: same-origin
-  Cross-Origin-Resource-Policy: same-origin
-
-# Cache pour les images (1 an)
-/images/*
-  Cache-Control: public, max-age=31536000, immutable
-  Access-Control-Allow-Origin: *
-
-# Cache pour les assets statiques Next.js (1 an)
-/_next/static/*
-  Cache-Control: public, max-age=31536000, immutable
-
-# Cache pour les fonts (1 an)
-/fonts/*
-  Cache-Control: public, max-age=31536000, immutable
-
-# Cache pour les icônes et favicons (1 an)
-/icons/*
-  Cache-Control: public, max-age=31536000, immutable
-
-/favicon.ico
-  Cache-Control: public, max-age=31536000, immutable
-
-/favicon.png
-  Cache-Control: public, max-age=31536000, immutable
-
-/apple-touch-icon.png
-  Cache-Control: public, max-age=31536000, immutable
-
-/android-chrome-192x192.png
-  Cache-Control: public, max-age=31536000, immutable
-
-/android-chrome-512x512.png
-  Cache-Control: public, max-age=31536000, immutable
-
-/browserconfig.xml
-  Cache-Control: public, max-age=31536000, immutable
-
-# Cache pour les fichiers de données (1 semaine)
+# Headers pour le sitemap
 /sitemap.xml
-  Cache-Control: public, max-age=604800
-
-/robots.txt
-  Cache-Control: public, max-age=604800
-
-# Headers spécifiques pour les pages principales
-/
+  Content-Type: application/xml
   Cache-Control: public, max-age=3600
+  X-Robots-Tag: noindex
 
-/about
-  Cache-Control: public, max-age=3600
+# Headers de sécurité pour toutes les pages
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
 
-/work
-  Cache-Control: public, max-age=3600
+# Headers pour les images
+*.webp
+  Cache-Control: public, max-age=31536000, immutable
 
-/blog
-  Cache-Control: public, max-age=1800
+*.png
+  Cache-Control: public, max-age=31536000, immutable
 
-/contact
-  Cache-Control: public, max-age=3600
+*.jpg
+  Cache-Control: public, max-age=31536000, immutable
 
-# Protection des API
-/api/*
-  X-Robots-Tag: noindex, nofollow
-  Cache-Control: no-cache, no-store, must-revalidate 
+*.jpeg
+  Cache-Control: public, max-age=31536000, immutable
+
+# Headers pour les fichiers statiques
+*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# Headers pour les fonts
+*.woff
+  Cache-Control: public, max-age=31536000, immutable
+
+*.woff2
+  Cache-Control: public, max-age=31536000, immutable 

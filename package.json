@@ -7,7 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "preexport": "node scripts/generate-sitemap.js"
+    "sitemap": "node scripts/generate-sitemap.js",
+    "validate-sitemap": "node scripts/validate-sitemap.js",
+    "test-sitemap": "node scripts/test-sitemap.js",
+    "deploy": "./scripts/deploy.sh",
+    "prebuild": "npm run sitemap && npm run validate-sitemap",
+    "preexport": "npm run sitemap && npm run validate-sitemap"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",

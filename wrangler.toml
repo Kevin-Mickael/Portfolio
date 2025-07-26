@@ -1,2 +1,38 @@
-name = "portfolio"
-pages_build_output_dir = "out"
+name = "creativfolio"
+compatibility_date = "2024-01-01"
+
+[build]
+command = "npm run build"
+watch_dir = "src"
+
+[build.upload]
+format = "service-worker"
+
+[site]
+bucket = "./out"
+
+[[redirects]]
+from = "/sitemap.xml"
+to = "/sitemap.xml"
+status = 200
+headers = { "Content-Type" = "application/xml" }
+
+[[headers]]
+for = "/sitemap.xml"
+[headers.values]
+Content-Type = "application/xml"
+Cache-Control = "public, max-age=3600"
+
+[[headers]]
+for = "/*"
+[headers.values]
+X-Frame-Options = "DENY"
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "strict-origin-when-cross-origin"
+Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[env.production]
+name = "creativfolio-production"
+
+[env.staging]
+name = "creativfolio-staging"

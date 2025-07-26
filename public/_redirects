@@ -1,26 +1,35 @@
-# Redirections 301 pour SEO
-# Redirection des anciennes URLs vers les nouvelles
+# Redirects pour Creativfolio
+# https://creativfolio.com
+
+# Redirects permanents (301)
 /old-blog/* /blog/:splat 301
 /portfolio/* /work/:splat 301
+/about-me /about 301
 
-# Redirection des URLs sans trailing slash
-/about/ /about 301
-/work/ /work 301
-/blog/ /blog 301
-/contact/ /contact 301
+# Redirects temporaires (302)
+/temp-page /contact 302
 
-# Redirection des URLs avec www vers sans www
-https://www.creativfolio.com/* https://creativfolio.com/:splat 301
-
-# Redirection des URLs HTTP vers HTTPS
-http://creativfolio.com/* https://creativfolio.com/:splat 301
-http://www.creativfolio.com/* https://creativfolio.com/:splat 301
-
-# Redirection des pages d'erreur
+# Gestion des erreurs 404
 /404 / 404
-/500 / 404 500
+/not-found / 404
 
-# Redirection des fichiers non trouvés vers la page d'accueil
-/* /index.html 200 
+# API redirects
+/api/contact /api/contact 200
 
-/*  https://creativfolio.com/:splat  301! 
+# Sitemap et robots
+/sitemap /sitemap.xml 301
+/robots /robots.txt 301
+
+# Sécurité - bloquer les tentatives d'accès malveillantes
+/admin/* / 404
+/wp-admin/* / 404
+/phpmyadmin/* / 404
+/.env / 404
+/config/* / 404
+
+# Optimisations SEO
+# Rediriger les URLs sans trailing slash vers celles avec
+/* /:splat 301
+
+# Gestion des anciennes URLs (si nécessaire)
+# /ancien-article /nouvel-article 301 
