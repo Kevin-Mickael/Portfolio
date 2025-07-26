@@ -2,34 +2,32 @@
 # https://creativfolio.com
 
 # Redirects permanents (301)
-/old-blog/* /blog/:splat 301
-/portfolio/* /work/:splat 301
-/about-me /about 301
+/old-blog/*      /blog/:splat 301
+/portfolio/*     /work/:splat 301
+/about-me        /about 301
 
 # Redirects temporaires (302)
-/temp-page /contact 302
+/temp-page       /contact 302
 
 # Gestion des erreurs 404
-/404 / 404
-/not-found / 404
+/404             / 404
+/not-found       / 404
 
 # API redirects
-/api/contact /api/contact 200
+/api/contact     /api/contact 200
 
 # Sitemap et robots
-/sitemap /sitemap.xml 301
-/robots /robots.txt 301
+/sitemap         /sitemap.xml 301
+/robots          /robots.txt 301
 
 # Sécurité - bloquer les tentatives d'accès malveillantes
-/admin/* / 404
-/wp-admin/* / 404
-/phpmyadmin/* / 404
-/.env / 404
-/config/* / 404
+/admin/*         / 404
+/wp-admin/*      / 404
+/phpmyadmin/*    / 404
+/.env            / 404
+/config/*        / 404
 
-# Optimisations SEO
-# Rediriger les URLs sans trailing slash vers celles avec
-/* /:splat 301
+# (Pas de règle globale /* /:splat 301 !)
 
 # Gestion des anciennes URLs (si nécessaire)
 # /ancien-article /nouvel-article 301 
