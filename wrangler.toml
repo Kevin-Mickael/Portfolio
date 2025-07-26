@@ -9,7 +9,7 @@ watch_dir = "src"
 format = "service-worker"
 
 [site]
-bucket = "./out"
+bucket = "/out"
 
 [[redirects]]
 from = "/sitemap.xml"
@@ -36,3 +36,5 @@ name = "creativfolio-production"
 
 [env.staging]
 name = "creativfolio-staging"
+
+pages_build_output_dir = "out"

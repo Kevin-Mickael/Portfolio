@@ -12,7 +12,8 @@
     "test-sitemap": "node scripts/test-sitemap.js",
     "deploy": "./scripts/deploy.sh",
     "prebuild": "npm run sitemap && npm run validate-sitemap",
-    "preexport": "npm run sitemap && npm run validate-sitemap"
+    "preexport": "npm run sitemap && npm run validate-sitemap",
+    "notify-indexnow": "node scripts/notify-indexnow.js"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",

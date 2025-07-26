@@ -226,34 +226,15 @@ async function generateSitemap() {
   }
 }
 
-// Notification IndexNow (optionnelle)
-async function notifyIndexNow() {
-  try {
-    console.log('🔔 Notification IndexNow...');
-    const response = await fetch(`${config.baseURL}/api/indexnow`, {
-      method: 'GET',
-      headers: {
-        'User-Agent': 'Sitemap-Generator/1.0'
-      }
-    });
-    
-    if (response.ok) {
-      console.log('✅ IndexNow notifié avec succès !');
-    } else {
-      console.warn(`⚠️  Erreur IndexNow: ${response.status} ${response.statusText}`);
-    }
-  } catch (error) {
-    console.warn('⚠️  Impossible de notifier IndexNow:', error.message);
-  }
-}
+// Suppression de l'appel automatique à IndexNow après génération du sitemap
+// La notification IndexNow doit être déclenchée après le déploiement, pas pendant le build.
 
 // Exécution
 if (require.main === module) {
   generateSitemap()
     .then(success => {
-      if (success) {
-        return notifyIndexNow();
-      }
+      // Suppression de l'appel automatique à IndexNow après génération du sitemap
+      // La notification IndexNow doit être déclenchée après le déploiement, pas pendant le build.
     })
     .catch(error => {
       console.error('❌ Erreur fatale:', error.message);
