@@ -1,15 +1,9 @@
 name = "creativfolio"
 compatibility_date = "2024-01-01"
-
-[build]
-command = "npm run build"
-watch_dir = "src"
-
-[build.upload]
-format = "service-worker"
+pages_build_output_dir = "out"
 
 [site]
-bucket = "/out"
+bucket = "out"
 
 [[redirects]]
 from = "/sitemap.xml"
@@ -36,5 +30,3 @@ name = "creativfolio-production"
 
 [env.staging]
 name = "creativfolio-staging"
-
-pages_build_output_dir = "out"
