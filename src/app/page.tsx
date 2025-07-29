@@ -62,6 +62,81 @@ export default function Home() {
           }),
         }}
       />
+        {/* Schema.org LocalBusiness pour Google My Business */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'LocalBusiness',
+              name: 'Création de Site Web & Portfolio Maurice',
+              image: `${baseURL}/favicon.png`,
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: 'Stanley Ave',
+                addressLocality: 'Quatre Bornes',
+                postalCode: '72249',
+                addressCountry: 'MU',
+              },
+              telephone: '+230 5459 3145',
+              url: baseURL,
+              openingHours: 'Mo-Fr 09:00-17:00',
+            }),
+          }}
+        />
+        {/* Schema.org WebSite pour sitelinks et SearchAction */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'Création de Site Web & Portfolio Maurice',
+              url: baseURL,
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: `${baseURL}/search?q={search_term_string}`,
+                'query-input': 'required name=search_term_string',
+              },
+            }),
+          }}
+        />
+        {/* Schema.org BreadcrumbList pour fil d'Ariane */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'Accueil',
+                  item: `${baseURL}/`,
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: 'Blog',
+                  item: `${baseURL}/blog`,
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 3,
+                  name: 'Contact',
+                  item: `${baseURL}/contact`,
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 4,
+                  name: 'Projets',
+                  item: `${baseURL}/work`,
+                },
+              ],
+            }),
+          }}
+        />
       </Head>
       <Column maxWidth="m" gap="xl" horizontal="center" className={styles.responsiveHome}>
         <Schema
