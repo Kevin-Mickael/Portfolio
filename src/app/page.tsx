@@ -37,6 +37,31 @@ export default function Home() {
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
       <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
       <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'VideoObject',
+            name: 'Création de site web et portfolio à Maurice',
+            description: "Vidéo de présentation : création de site web et portfolio professionnel à l'île Maurice",
+            thumbnailUrl: [`${baseURL}/images/avatar.jpeg`],
+            uploadDate: '2024-07-09',
+            contentUrl: `${baseURL}/video/presentation.mp4`,
+            embedUrl: `${baseURL}/video/presentation.mp4`,
+            publisher: {
+              '@type': 'Person',
+              name: person.name,
+              url: baseURL,
+              logo: {
+                '@type': 'ImageObject',
+                url: `${baseURL}${person.avatar}`,
+              },
+            },
+            duration: 'PT7S',
+          }),
+        }}
+      />
       </Head>
       <Column maxWidth="m" gap="xl" horizontal="center" className={styles.responsiveHome}>
         <Schema
@@ -109,6 +134,31 @@ export default function Home() {
                 </Flex>
               </Button>
             </RevealFx>
+                  {/* Vidéo de présentation */}
+                <RevealFx translateY="8" delay={0.5} fillWidth horizontal="center" paddingTop="24" paddingBottom="24">
+                  <div style={{ width: '100%', maxWidth: '3840px', margin: '32px auto 0 auto', borderRadius: 0, overflow: 'hidden' }}>
+                    <video
+                      src="/video/presentation.mp4"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      controls={false}
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                        display: 'block',
+                        border: 'none',
+                        borderRadius: 30,
+                        background: '#000',
+                        maxWidth: '3840px',
+                        boxShadow: 'none',
+                      }}
+                      poster="/images/avatar.jpeg"
+                    />
+                  </div>
+                </RevealFx>
+
             <RevealFx translateY="8" delay={0.5} fillWidth horizontal="center" paddingTop="40" paddingBottom="32">
               <Column fillWidth horizontal="start" gap="12" style={{alignItems: 'flex-start'}}>
                 {/* Nouveau bloc ajouté */}
@@ -185,6 +235,7 @@ export default function Home() {
                   </span>
                   Imaginez intégrer un QR Code sur votre carte de visite personnelle ou votre carte d&apos;identité. Un simple scan redirigera instantanément vos interlocuteurs vers votre portfolio web, offrant une présentation complète de votre profil et de vos réalisations. C&apos;est une manière innovante et très efficace de vous démarquer !
                 </Text>
+                
                 <Button
                 href="https://wa.me/23054593145"
                 variant="primary"
