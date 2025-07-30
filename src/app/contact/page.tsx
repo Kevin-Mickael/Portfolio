@@ -2,10 +2,7 @@
 
 import React, { useState, FormEvent, useEffect } from 'react';
 import { person } from "@/resources";
-import { contact } from "@/resources/content";
-import { Metadata } from "next";
-import Breadcrumbs from '@/components/Breadcrumbs';
-import Head from "next/head";
+import JsonLdScripts from '@/components/JsonLdScripts';
 
 interface FormData {
   firstName: string;
@@ -152,22 +149,7 @@ const ContactPage: React.FC = () => {
 
   return (
     <>
-      <Head>
-        <title>Contact - Création de Site Web & Portfolio Maurice</title>
-        <meta name="description" content="Contactez-nous pour toute demande de création de site web, portfolio ou mini-app à Maurice. Réponse rapide et conseils personnalisés." />
-        <link rel="canonical" href="https://creativfolio.com/contact" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "ContactPage",
-              "name": "Contact",
-              "url": "https://creativfolio.com/contact"
-            }),
-          }}
-        />
-      </Head>
+      <JsonLdScripts page="contact" />
       <section style={{
         /* Variables de couleurs */
         '--primary-color': '#fbbf24',

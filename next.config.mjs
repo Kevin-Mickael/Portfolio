@@ -99,54 +99,6 @@ const nextConfig = {
     maxInactiveAge: 60 * 60 * 1000, // 1 heure
     pagesBufferLength: 5,
   },
-  // Headers de sécurité et performance pour Cloudflare
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          // {
-          //   key: 'X-Frame-Options',
-          //   value: 'DENY',
-          // },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin',
-          },
-          {
-            key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()',
-          },
-        ],
-      },
-      {
-        source: '/images/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/out/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-    ];
-  },
   // Timeout plus long pour le développement
   webpack: (config, { dev, isServer }) => {
     if (dev) {

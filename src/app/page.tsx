@@ -1,17 +1,46 @@
 import React from "react";
 import Image from "next/image";
-import Head from "next/head";
+import { Metadata } from "next";
 
 import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row, Meta, Schema } from "@once-ui-system/core";
 import { home, about, person, newsletter, baseURL, routes } from "@/resources";
-import { Mailchimp } from "@/components";
+import { Mailchimp, InternalLinks } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { getPosts } from '@/utils/utils';
 import FAQ from "@/components/FAQ";
 import AppIntegrationClient from '@/components/AppIntegrationClient';
 import CuteQuote from '@/components/CuteQuote';
+import JsonLdScripts from '@/components/JsonLdScripts';
 import styles from './home.module.css';
 import { routeImages } from "@/resources/routeImages";
+
+export const generateMetadata = (): Metadata => {
+  return {
+    title: home.title,
+    description: home.description,
+    keywords: [
+      'création site web Maurice',
+      'portfolio Maurice',
+      'mini-apps Maurice',
+      'développeur web Maurice',
+      'site internet professionnel Maurice'
+    ],
+    openGraph: {
+      title: home.title,
+      description: home.description,
+      images: [routeImages['/']],
+      type: 'website',
+    },
+    twitter: {
+      title: home.title,
+      description: home.description,
+      images: [routeImages['/']],
+    },
+    alternates: {
+      canonical: baseURL,
+    },
+  };
+};
 
 export default function Home() {
   // Récupérer l'article épinglé
@@ -21,123 +50,7 @@ export default function Home() {
   const canonicalUrl = `${baseURL}/`;
   return (
     <>
-          <Head>
-      <title>Création de mini‑apps, de sites web et de portfolios à Maurice</title>
-      <meta name="description" content="Création de mini‑apps, sites web et portfolios à Maurice pour simplifier votre quotidien, attirer des clients et renforcer votre image professionnelle en ligne." />
-      <meta property="og:title" content="CCréation de mini‑apps, sites web et portfolios à Maurice" />
-      <meta property="og:description" content="Création de mini‑apps, sites web et portfolios à Maurice pour simplifier votre quotidien, attirer des clients et renforcer votre image professionnelle en ligne." />
-      <meta property="og:image" content={routeImages['/']} />
-      <meta name="twitter:title" content="Création de mini‑apps, sites web et portfolios à Maurice" />
-      <meta name="twitter:description" content="Création de mini‑apps, sites web et portfolios à Maurice pour simplifier votre quotidien, attirer des clients et renforcer votre image professionnelle en ligne." />
-      <meta name="twitter:image" content={routeImages['/']} />
-      <meta name="keywords" content="Création de mini‑apps, sites web et portfolios à Maurice pour simplifier votre quotidien, attirer des clients et renforcer votre image professionnelle en ligne." />
-      <link rel="canonical" href={canonicalUrl} />
-      <link rel="icon" href="/favicon.ico" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
-      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'VideoObject',
-            name: 'Création de site web et portfolio à Maurice',
-            description: "Vidéo de présentation : création de site web et portfolio professionnel à l'île Maurice",
-            thumbnailUrl: [`${baseURL}/images/avatar.jpeg`],
-            uploadDate: '2024-07-09',
-            contentUrl: `${baseURL}/video/presentation.mp4`,
-            embedUrl: `${baseURL}/video/presentation.mp4`,
-            publisher: {
-              '@type': 'Person',
-              name: person.name,
-              url: baseURL,
-              logo: {
-                '@type': 'ImageObject',
-                url: `${baseURL}${person.avatar}`,
-              },
-            },
-            duration: 'PT7S',
-          }),
-        }}
-      />
-        {/* Schema.org LocalBusiness pour Google My Business */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'LocalBusiness',
-              name: 'Création de Site Web & Portfolio Maurice',
-              image: `${baseURL}/favicon.png`,
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress: 'Stanley Ave',
-                addressLocality: 'Quatre Bornes',
-                postalCode: '72249',
-                addressCountry: 'MU',
-              },
-              telephone: '+230 5459 3145',
-              url: baseURL,
-              openingHours: 'Mo-Fr 09:00-17:00',
-            }),
-          }}
-        />
-        {/* Schema.org WebSite pour sitelinks et SearchAction */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'WebSite',
-              name: 'Création de Site Web & Portfolio Maurice',
-              url: baseURL,
-              potentialAction: {
-                '@type': 'SearchAction',
-                target: `${baseURL}/search?q={search_term_string}`,
-                'query-input': 'required name=search_term_string',
-              },
-            }),
-          }}
-        />
-        {/* Schema.org BreadcrumbList pour fil d'Ariane */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                {
-                  '@type': 'ListItem',
-                  position: 1,
-                  name: 'Accueil',
-                  item: `${baseURL}/`,
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 2,
-                  name: 'Blog',
-                  item: `${baseURL}/blog`,
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 3,
-                  name: 'Contact',
-                  item: `${baseURL}/contact`,
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 4,
-                  name: 'Projets',
-                  item: `${baseURL}/work`,
-                },
-              ],
-            }),
-          }}
-        />
-      </Head>
+      <JsonLdScripts page="home" />
       <Column maxWidth="m" gap="xl" horizontal="center" className={styles.responsiveHome}>
         <Schema
           as="webPage"

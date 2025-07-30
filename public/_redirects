@@ -1,24 +1,16 @@
-# Redirects pour Creativfolio
+# Redirections pour Creativfolio
 # https://creativfolio.com
 
-# Redirects permanents (301)
-/old-blog/*      /blog/:splat 301
-/portfolio/*     /work/:splat 301
-/about-me        /about 301
-
-# Redirects temporaires (302)
-/temp-page       /contact 302
-
-# Gestion des erreurs 404
-/404             / 404
-/not-found       / 404
-
-# API redirects
-/api/contact     /api/contact 200
-
-# Sitemap et robots
+# Redirections permanentes (301) - URLs canoniques
 /sitemap         /sitemap.xml 301
 /robots          /robots.txt 301
+/home            / 301
+/index           / 301
+/index.html      / 301
+
+# API endpoints (200 - pas de redirection)
+/api/contact     /api/contact 200
+/api/indexnow    /api/indexnow 200
 
 # Sécurité - bloquer les tentatives d'accès malveillantes
 /admin/*         / 404
@@ -26,8 +18,14 @@
 /phpmyadmin/*    / 404
 /.env            / 404
 /config/*        / 404
+/database/*      / 404
+/backup/*        / 404
+/.git/*          / 404
 
-# (Pas de règle globale /* /:splat 301 !)
+# Pages légales avec contenu
+/privacy         /confidentialite 301
+/terms           /cgu 301
+/legal           /confidentialite 301
 
-# Gestion des anciennes URLs (si nécessaire)
-# /ancien-article /nouvel-article 301 
+# Fallback pour 404
+/*               /404 404

@@ -85,7 +85,7 @@ const about = {
   path: "/about",
   label: "À propos",
   title: `À propos de ${person.name}`,
-  description: `Rencontrez ${person.name}, ${person.role} basé à ${person.locationLabel}`,
+  description: `Découvrez Kevin Mickael, développeur web professionnel à Maurice spécialisé en création de sites internet, portfolios et mini-apps. Expert en React, Next.js avec plus de 5 ans d'expérience dans le développement web moderne et le support IT.`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -261,22 +261,22 @@ const about = {
 const blog = {
   path: "/blog",
   label: "Blog",
-  title: "Blog",
-  description: "Retrouvez mes astuces digitales et conseils pratiques pour faciliter votre quotidien et mieux profiter de la technologie.",
+  title: "Blog - Développement Web Maurice | Kevin Mickael",
+  description: "Découvrez les dernières tendances du développement web à Maurice. Articles techniques, tutoriels React/Next.js, conseils SEO et astuces pour créer des sites web performants. Blog du développeur Kevin Mickael.",
 };
 
 const work = {
   path: "/work",
   label: "Projets",
-  title: "Projets",
-  description: "Des projets pensés pour aider les Mauriciens à se simplifier la vie et à briller dans le monde numérique.",
+  title: "Portfolio Projets - Sites Web & Mini-Apps Maurice",
+  description: "Découvrez mes réalisations en développement web à Maurice : sites e-commerce, portfolios professionnels, mini-applications. Projets React, Next.js développés par Kevin Mickael pour des clients mauriciens.",
 };
 
 const contact = {
   path: "/contact",
   label: "Contact",
-  title: "Contact",
-  description: "Contactez-moi pour discuter de vos projets et collaborations.",
+  title: "Contact - Devis Site Web Maurice | Kevin Mickael",
+  description: "Contactez Kevin Mickael, développeur web à Maurice, pour votre projet de site internet. Devis gratuit pour création de sites web, portfolios et mini-apps. Réponse rapide garantie.",
 };
 
 export { person, social, socialAbout, newsletter, home, about, blog, work, contact };

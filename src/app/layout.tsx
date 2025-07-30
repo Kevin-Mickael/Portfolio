@@ -46,6 +46,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
           <style>{`@font-face { font-family: 'Inter'; font-display: swap; }`}</style>
           
+          {/* URL canonique */}
+          <link rel="canonical" href="https://creativfolio.com/" />
+          
           {/* Favicons et icônes PWA */}
           <link rel="icon" type="image/x-icon" href="/favicon.ico?v=4" />
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=4" />

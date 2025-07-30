@@ -16,20 +16,34 @@ import {
  import { about as aboutContent } from "@/resources/content";
  import TableOfContents from "@/components/about/TableOfContents";
  import React from "react";
- import Image from "next/image";
- import Head from "next/head";
- import Breadcrumbs from '@/components/Breadcrumbs';
- import { routeImages } from "@/resources/routeImages";
- 
- export async function generateMetadata() {
-  return Meta.generate({
-    title: aboutContent.title.replace('About', 'À propos'),
-    description: aboutContent.description.replace('Meet', 'Rencontrez'),
-    baseURL: baseURL,
-    image: routeImages['/about'],
-    path: aboutContent.path,
-  });
- }
+import Image from "next/image";
+import Breadcrumbs from '@/components/Breadcrumbs';
+import { routeImages } from "@/resources/routeImages";
+import { InternalLinks } from '@/components/InternalLinks';
+import { Metadata } from "next";
+import JsonLdScripts from '@/components/JsonLdScripts';
+
+export const generateMetadata = (): Metadata => {
+  return {
+    title: aboutContent.title,
+    description: aboutContent.description,
+    alternates: {
+      canonical: `${baseURL}${aboutContent.path}`,
+    },
+    openGraph: {
+      title: aboutContent.title,
+      description: aboutContent.description,
+      images: [routeImages['/about']],
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: aboutContent.title,
+      description: aboutContent.description,
+      images: [routeImages['/about']],
+    },
+  };
+};
  
  export default function About() {
   const about = aboutContent;
@@ -58,9 +72,7 @@ import {
   ];
   return (
     <>
-      <Head>
-        <link rel="canonical" href={canonicalUrl} />
-      </Head>
+      <JsonLdScripts page="about" />
       <Column maxWidth="m">
         <Schema
           as="webPage"
@@ -369,6 +381,8 @@ import {
                 </Column>
               </>
             )}
+            
+            
           </Column>
         </Flex>
       </Column>

@@ -200,7 +200,7 @@ const organizationJsonLd = {
     '@type': 'ContactPoint',
     contactType: 'customer service',
     email: validatedPerson.email,
-    availableLanguage: ['French', 'English'],
+    availableLanguage: ['French'],
     areaServed: {
       '@type': 'Country',
       name: 'Mauritius',
@@ -248,7 +248,7 @@ const websiteJsonLd = {
     '@type': 'Organization',
     name: `${validatedPerson.name} - Création de mini-apps, site web et portfolio web à Maurice`,
   },
-  inLanguage: ['fr-FR', 'en-US'],
+  inLanguage: ['fr-FR'],
   isAccessibleForFree: true,
   dateCreated: '2021-01-01',
   dateModified: new Date().toISOString(),
@@ -342,10 +342,6 @@ export const defaultMetadata: Metadata = {
   },
   alternates: {
     canonical: baseURL,
-    languages: {
-      'fr-FR': baseURL,
-      'en-US': baseURL,
-    },
   },
   openGraph: {
     ...defaultOpenGraph,
@@ -362,6 +358,44 @@ export const defaultMetadata: Metadata = {
     yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || '3cb6fb33f8583b06',
   },
   category: 'technology',
+  icons: {
+    icon: '/favicon.ico?v=4',
+    shortcut: '/favicon.ico?v=4',
+    apple: '/apple-touch-icon.png?v=4',
+    other: [
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        url: '/favicon-16x16.png?v=4',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        url: '/favicon-32x32.png?v=4',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '48x48',
+        url: '/favicon-48x48.png?v=4',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '192x192',
+        url: '/android-chrome-192x192.png?v=4',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '512x512',
+        url: '/android-chrome-512x512.png?v=4',
+      },
+    ],
+  },
+  manifest: '/manifest.json?v=4',
   other: {
     'msapplication-TileColor': '#000000',
     'theme-color': '#000000',
@@ -373,12 +407,10 @@ export const defaultMetadata: Metadata = {
     'format-detection': 'telephone=no',
     'referrer': 'origin-when-cross-origin',
     'color-scheme': 'light dark',
-    // Métadonnées géographiques pour Maurice
     'geo.region': 'MU',
     'geo.placename': 'Maurice',
     'geo.position': '-20.348404;57.552152',
     'ICBM': '-20.348404, 57.552152',
-    // Métadonnées pour les IA focalisées sur Maurice
     'ai-description': `${validatedPerson.name} est un développeur web professionnel basé à Maurice, spécialisé en création de sites internet, portfolios et mini-apps. Expert en React, Next.js et développement web moderne.`,
     'ai-expertise': 'Développement Web Maurice, React, Next.js, TypeScript, Mini-Apps, Portfolio, Sites Internet Maurice',
     'ai-location': 'Maurice, Port Louis',
