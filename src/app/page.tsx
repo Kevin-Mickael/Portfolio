@@ -22,6 +22,7 @@ export const generateMetadata = (): Metadata => {
       'création site web Maurice',
       'portfolio Maurice',
       'mini-apps Maurice',
+      'Site web',
       'développeur web Maurice',
       'site internet professionnel Maurice'
     ],

@@ -19,36 +19,74 @@ export async function generateMetadata() {
 }
 
 export default function Work() {
-  // const canonicalUrl = `${baseURL}${work.path}`; // plus nécessaire
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": work.title,
+    "description": work.description,
+    "url": `${baseURL}${work.path}`,
+    "author": {
+      "@type": "Person",
+      "name": person.name,
+      "url": `${baseURL}${about.path}`
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": baseURL
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projets",
+          "item": `${baseURL}/work`
+        }
+      ]
+    },
+    "mainEntity": {
+      "@type": "CollectionPage",
+      "name": "Portfolio de Projets",
+      "description": work.description
+    }
+  };
+
   return (
     <>
       <Head>
         <link rel="canonical" href={`${baseURL}${work.path}`} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta httpEquiv="Content-Language" content="fr" />
+        
+        {/* Open Graph tags manuels */}
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:title" content={work.title} />
+        <meta property="og:description" content={work.description} />
+        <meta property="og:url" content={`${baseURL}${work.path}`} />
+        <meta property="og:image" content={routeImages['/work']} />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={work.title} />
+        <meta name="twitter:description" content={work.description} />
+        <meta name="twitter:image" content={routeImages['/work']} />
+        
+        {/* Robots meta */}
+        <meta name="robots" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1" />
+        <meta name="googlebot" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1" />
+        
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Accueil",
-                  "item": baseURL
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Projets",
-                  "item": `${baseURL}/work`
-                }
-              ]
-            })
+            __html: JSON.stringify(structuredData)
           }}
         />
-        {/* <link rel="canonical" href={canonicalUrl} /> supprimé */}
       </Head>
+      
       <Column maxWidth="m">
         <Breadcrumbs
           items={[
@@ -56,6 +94,7 @@ export default function Work() {
             { label: 'Projets' }
           ]}
         />
+        
         <Schema
           as="webPage"
           baseURL={baseURL}
@@ -69,12 +108,21 @@ export default function Work() {
             image: `${baseURL}${person.avatar}`,
           }}
         />
-        <Heading as="h1" variant="display-strong-l" marginBottom="l" style={{position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0}}>
+        
+        <Heading 
+          as="h1" 
+          variant="display-strong-l" 
+          marginBottom="l"
+          className="sr-only"
+        >
           {work.title}
         </Heading>
-        <Projects />
-        <Avis />
-        <FAQ />
+        
+        <main>
+          <Projects />
+          <Avis />
+          <FAQ />
+        </main>
       </Column>
     </>
   );
