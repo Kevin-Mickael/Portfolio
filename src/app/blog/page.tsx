@@ -61,18 +61,24 @@ export default function Blog() {
             image: `${baseURL}${person.avatar}`,
           }}
         />
-        <Heading as="h1" marginBottom="l" variant="display-strong-s" style={{position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0}}>
+        <Heading as="h1" marginBottom="l" variant="display-strong-s">
           {blog.title}
         </Heading>
         <Column
 				fillWidth flex={1}>
+          <Heading as="h2" marginBottom="m" variant="heading-strong-m">
+            Articles récents
+          </Heading>
 				<Posts range={[1,1]} thumbnail direction="column"/>
 				<Posts range={[2,3]} thumbnail/>
 				<Posts range={[4]} columns="2"/>
 			</Column>
         {newsletter.display && <Mailchimp newsletter={newsletter} />}
         
-        
+        {/* Liens internes pour réduire les pages orphelines - bien ajustés */}
+        <div style={{ width: '100%', maxWidth: '600px', margin: '0 auto', padding: '0 16px' }}>
+          <InternalLinks currentPage="/blog" />
+        </div>
       </Column>
     </>
   );

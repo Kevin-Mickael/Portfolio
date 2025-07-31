@@ -123,4 +123,22 @@
 /* Pour éviter le scroll horizontal */
 .responsiveHome {
   overflow-x: hidden;
-} 
+}
+
+/* Centrage forcé des liens internes */
+.responsiveHome [role="button"],
+.responsiveHome .InternalLinks,
+.responsiveHome div[style*="justifyContent"] {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.responsiveHome div[style*="flexWrap"] {
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+}

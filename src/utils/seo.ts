@@ -101,7 +101,7 @@ export function generateSEO(config: SEOConfig): Metadata {
   return {
     title: {
       default: title,
-      template: `%s | ${person?.name || 'Développeur Web'} - Développeur Web Maurice`,
+      template: `%s | Kevin Mickael`,
     },
     description,
     keywords: allKeywords,

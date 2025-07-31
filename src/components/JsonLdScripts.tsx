@@ -292,7 +292,7 @@ export const JsonLdScripts: React.FC<JsonLdScriptsProps> = ({
           key={`jsonld-${page}-${index}`}
           id={`jsonld-${page}-${index}`}
           type="application/ld+json"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(schema, null, 0),
           }}

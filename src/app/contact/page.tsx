@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, FormEvent, useEffect } from 'react';
-import { person } from "@/resources";
+import { person, contact } from "@/resources";
 import JsonLdScripts from '@/components/JsonLdScripts';
 
 interface FormData {
@@ -220,6 +220,16 @@ const ContactPage: React.FC = () => {
               Que vous ayez des questions, besoin d&apos;aide, ou simplement<br />
               envie de dire bonjour, je suis là pour vous aider !
             </p>
+            <h2 style={{
+              fontFamily: 'var(--font-family)',
+              fontWeight: '600',
+              fontSize: '24px',
+              color: 'var(--black)',
+              margin: '32px 0 16px 0',
+              textAlign: 'center'
+            }}>
+              Formulaire de contact
+            </h2>
           </div>
           
           <form style={{ marginTop: '64px' }} onSubmit={handleSubmit}>
@@ -681,6 +691,7 @@ const ContactPage: React.FC = () => {
         </form>
       </div>
     </section>
+    
     </>
   );
 };

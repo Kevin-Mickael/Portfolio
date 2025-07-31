@@ -5,8 +5,8 @@ import styles from "./FAQ.module.scss";
 
 const FAQ_DATA = [
   {
-    question: "Que proposez-vous exactement ?",
-    answer: (<>Que vous soyez machiniste, mécanicien, plombier, maçon, couturier, garagiste, artiste, coiffeur, photographe ou créateur de mode... J&apos;accompagne tous les professionnels dans la création de leur site web et portfolio personnalisé. Mon objectif ? Mettre en valeur votre <strong>savoir-faire</strong>, attirer de nouveaux clients et développer votre activité grâce à une présence digitale percutante et professionnelle.</>)
+    question: "Code ou No-Code ?",
+    answer: (<>Nous privilégions le <strong>code</strong>, car il offre une <strong>personnalisation avancée</strong>, une meilleure intégration et une <strong>base technique robuste</strong> pour des projets durables.</>)
   },
   {
     question: "Combien de temps faut-il pour créer un site ou un portfolio ?",

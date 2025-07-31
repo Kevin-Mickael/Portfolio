@@ -46,8 +46,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
           <style>{`@font-face { font-family: 'Inter'; font-display: swap; }`}</style>
           
-          {/* URL canonique */}
-          <link rel="canonical" href="https://creativfolio.com/" />
+          {/* Script pour désactiver la protection email automatique de Cloudflare */}
+          <script async src="/disable-email-protection.js" />
+          
+          {/* URL canonique définie par page via generateMetadata */}
           
           {/* Favicons et icônes PWA */}
           <link rel="icon" type="image/x-icon" href="/favicon.ico?v=4" />
@@ -73,6 +75,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <meta name="msapplication-TileImage" content="/favicon.png" />
           <meta name="msapplication-config" content="/browserconfig.xml" />
           
+          {/* Désactiver la protection automatique des emails par Cloudflare */}
+          <meta name="cf-2fa-verify" content="false" />
+          <meta name="cf-turnstile-verify" content="false" />
+          
           {/* Schémas JSON-LD pour le SEO et les IA */}
           <script
             type="application/ld+json"
@@ -96,6 +102,91 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             type="application/ld+json"
             dangerouslySetInnerHTML={{
               __html: JSON.stringify(jsonLdSchemas.service),
+            }}
+          />
+          
+          {/* Schéma de navigation pour les sitelinks */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'SiteNavigationElement',
+                '@id': 'https://creativfolio.com#navigation',
+                hasPart: [
+                  {
+                    '@type': 'WebPage',
+                    '@id': 'https://creativfolio.com/about',
+                    name: 'À propos',
+                    description: 'Découvrez Kevin Mickael, développeur web professionnel à Maurice',
+                    url: 'https://creativfolio.com/about',
+                  },
+                  {
+                    '@type': 'WebPage',
+                    '@id': 'https://creativfolio.com/work',
+                    name: 'Projets',
+                    description: 'Portfolio de mes réalisations en développement web à Maurice',
+                    url: 'https://creativfolio.com/work',
+                  },
+                  {
+                    '@type': 'WebPage',
+                    '@id': 'https://creativfolio.com/blog',
+                    name: 'Blog',
+                    description: 'Articles sur le développement web et conseils techniques',
+                    url: 'https://creativfolio.com/blog',
+                  },
+                  {
+                    '@type': 'WebPage',
+                    '@id': 'https://creativfolio.com/contact',
+                    name: 'Contact',
+                    description: 'Contactez-moi pour vos projets de développement web à Maurice',
+                    url: 'https://creativfolio.com/contact',
+                  },
+                ],
+              })
+            }}
+          />
+          
+          {/* Schéma de navigation breadcrumb global */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'BreadcrumbList',
+                itemListElement: [
+                  {
+                    '@type': 'ListItem',
+                    position: 1,
+                    name: 'Accueil',
+                    item: 'https://creativfolio.com',
+                  },
+                  {
+                    '@type': 'ListItem',
+                    position: 2,
+                    name: 'À propos',
+                    item: 'https://creativfolio.com/about',
+                  },
+                  {
+                    '@type': 'ListItem',
+                    position: 3,
+                    name: 'Projets',
+                    item: 'https://creativfolio.com/work',
+                  },
+                  {
+                    '@type': 'ListItem',
+                    position: 4,
+                    name: 'Blog',
+                    item: 'https://creativfolio.com/blog',
+                  },
+                  {
+                    '@type': 'ListItem',
+                    position: 5,
+                    name: 'Contact',
+                    item: 'https://creativfolio.com/contact',
+                  },
+                ],
+              })
             }}
           />
           

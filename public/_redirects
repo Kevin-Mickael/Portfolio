@@ -12,6 +12,10 @@
 /api/contact     /api/contact 200
 /api/indexnow    /api/indexnow 200
 
+# Redirection pour la protection email Cloudflare
+/cdn-cgi/l/email-protection    /contact 301
+/cdn-cgi/*      / 404
+
 # Sécurité - bloquer les tentatives d'accès malveillantes
 /admin/*         / 404
 /wp-admin/*      / 404

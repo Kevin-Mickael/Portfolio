@@ -78,8 +78,8 @@ export default function Home() {
             </RevealFx>
             )}
             <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="16">
-              <Heading as="h1" wrap="balance" variant="display-strong-l" style={{position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0}}>
-              Création de mini‑apps, de sites web et de portfolios à Maurice
+              <Heading as="h1" wrap="balance" variant="display-strong-l">
+                {home.headline}
               </Heading>
             </RevealFx>
             <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="32">
@@ -376,7 +376,6 @@ export default function Home() {
           <Projects range={[1, 1]} />
         </RevealFx>
 
-        <AppIntegrationClient />
         {/* Section article épinglé */}
         {pinnedPost && (
           <RevealFx translateY="16" delay={0.7}>
@@ -418,6 +417,13 @@ export default function Home() {
           </RevealFx>
         )}
         {newsletter.display && <Mailchimp newsletter={newsletter} />}
+        
+        {/* Liens internes pour réduire les pages orphelines */}
+        <RevealFx translateY="8" delay={0.8}>
+          <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+            <InternalLinks currentPage="/" />
+          </div>
+        </RevealFx>
       </Column>
     </>
   );

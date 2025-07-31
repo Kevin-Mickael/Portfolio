@@ -305,7 +305,7 @@ export default function About() {
                   </Flex>
                 )}
 
-                <Heading as="h2" variant="display-strong-xl">
+                <Heading as="h1" variant="display-strong-xl">
                   {person.name}
                 </Heading>
                 <Text
@@ -532,6 +532,11 @@ export default function About() {
                 </section>
               )}
             </main>
+            
+            {/* Liens internes pour réduire les pages orphelines */}
+            <div style={{ marginTop: '48px' }}>
+              <InternalLinks currentPage="/about" />
+            </div>
           </Column>
         </Flex>
       </Column>

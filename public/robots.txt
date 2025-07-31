@@ -1,13 +1,10 @@
-# Robots.txt pour Creativfolio
+# Robots.txt optimisé pour Creativfolio
 # https://creativfolio.com
 
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://creativfolio.com/sitemap.xml
-
-# Pages principales
+# Pages principales à indexer en priorité
 Allow: /about
 Allow: /work
 Allow: /blog
@@ -23,25 +20,33 @@ Allow: /work/
 Allow: /confidentialite
 Allow: /cgu
 
-# Bloquer les fichiers sensibles
+# Bloquer les fichiers sensibles et techniques
 Disallow: /api/
 Disallow: /_next/
 Disallow: /functions/
 Disallow: /scripts/
+Disallow: /out/
+Disallow: /.git/
+Disallow: /node_modules/
 
 # Bloquer les fichiers de développement
 Disallow: /*.json$
 Disallow: /*.md$
 Disallow: /*.log$
+Disallow: /*.env$
+Disallow: /*~$
+
+# Bloquer la page de protection email de Cloudflare
+Disallow: /cdn-cgi/
 
 # Optimisations pour les moteurs de recherche
-# Bing
-User-agent: Bingbot
+# Google
+User-agent: Googlebot
 Allow: /
 Crawl-delay: 1
 
-# Google
-User-agent: Googlebot
+# Bing
+User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
@@ -55,8 +60,10 @@ User-agent: DuckDuckBot
 Allow: /
 Crawl-delay: 1
 
-# Respecter les bonnes pratiques
-# - Sitemap déclaré
-# - URLs principales autorisées
-# - Fichiers sensibles bloqués
-# - Délais de crawl appropriés
+# Baidu
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+# Sitemap principal
+Sitemap: https://creativfolio.com/sitemap.xml

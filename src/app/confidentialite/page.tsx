@@ -1,25 +1,47 @@
 import React from 'react';
-import Head from 'next/head';
+import { Metadata } from 'next';
 import styles from './terms.module.css';
 import { routeImages } from "@/resources/routeImages";
+import { baseURL } from "@/resources";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const title = 'Politique de confidentialité | Création de Site Web & Portfolio Maurice';
+  const description = 'Découvrez la politique de confidentialité de Création de Site Web & Portfolio Maurice : protection des données, droits des utilisateurs, cookies, sécurité et contact.';
+  const url = `${baseURL}/confidentialite`;
+  
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      url,
+      images: [{
+        url: routeImages['/confidentialite'],
+        width: 1200,
+        height: 630,
+        alt: title,
+      }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [routeImages['/confidentialite']],
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 export default function Page() {
   return (
-    <>
-      <Head>
-        <title>Politique de confidentialité | Création de Site Web & Portfolio Maurice</title>
-        <meta name="description" content="Découvrez la politique de confidentialité de Création de Site Web & Portfolio Maurice : protection des données, droits des utilisateurs, cookies, sécurité et contact." />
-        <meta property="og:title" content="Politique de confidentialité | Création de Site Web & Portfolio Maurice" />
-        <meta property="og:description" content="Découvrez la politique de confidentialité de Création de Site Web & Portfolio Maurice : protection des données, droits des utilisateurs, cookies, sécurité et contact." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://creativfolio.com/confidentialite" />
-        <meta property="og:image" content={routeImages['/confidentialite']} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Politique de confidentialité | Création de Site Web & Portfolio Maurice" />
-        <meta name="twitter:description" content="Découvrez la politique de confidentialité de Création de Site Web & Portfolio Maurice : protection des données, droits des utilisateurs, cookies, sécurité et contact." />
-        <meta name="twitter:image" content={routeImages['/confidentialite']} />
-        <link rel="canonical" href="https://creativfolio.com/confidentialite" />
-      </Head>
       <div className={styles.droipPage}>
         <div className={styles.container}>
           <div className={styles.headerContainer}>
@@ -89,7 +111,7 @@ export default function Page() {
                   <li><span className={styles.paragraph}>Droit à la portabilité</span></li>
                 </ul>
                 <p className={styles.paragraph}>
-                  Vous pouvez exercer ces droits en nous contactant à <a className={styles.link} href="mailto:contact@creativfolio.com">contact@creativfolio.com</a>
+                  Vous pouvez exercer ces droits en nous contactant à <a className={styles.link} href={`mailto:${'contact'}${'@'}${'creativfolio.com'}`}>contact@creativfolio.com</a>
                 </p>
                 <p className={styles.paragraph}>
                   En cas de litige, vous pouvez également saisir le <strong>Data Protection Commissioner of Mauritius</strong> : 🌐 <a className={styles.link} href="https://dataprotection.govmu.org/" target="_blank" rel="noopener noreferrer">https://dataprotection.govmu.org/</a>
@@ -110,13 +132,12 @@ export default function Page() {
               <div className={styles.section}>
                 <h2 className={styles.headingMedium}> Contact</h2>
                 <p className={styles.paragraph}>
-                  Pour toute question sur cette politique, écrivez-nous à <a className={styles.link} href="mailto:contact@creativfolio.com">contact@creativfolio.com</a>
+                  Pour toute question sur cette politique, écrivez-nous à <a className={styles.link} href={`mailto:${'contact'}${'@'}${'creativfolio.com'}`}>contact@creativfolio.com</a>
                 </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </>
   );
-} 
+}

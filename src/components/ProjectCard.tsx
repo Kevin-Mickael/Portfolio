@@ -215,31 +215,64 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   return (
     <Column fillWidth gap="m">
       {isIframe && (
-        <div
-          style={{
-            width: '110%',
-            height: '600px',
-            background: '#eee',
-            borderRadius: 'var(--radius-l)',
-            overflow: 'auto',
-            overflowX: 'hidden',
-            scrollbarWidth: 'none', // Firefox
-          }}
-          className="hide-scrollbar iframe-container"
-        >
-          <iframe
-            src={images[0].replace('iframe:', '')}
-            style={{ 
-              width: '100%', 
-              height: '100%', 
-              border: 'none'
+        <>
+          {/* Titre et description pour les iframes */}
+          <Column fillWidth gap="s" paddingBottom="l">
+            <Heading as="h2" variant="display-strong-l" style={{ textAlign: 'center' }}>
+              🚀 Projet Accompli
+            </Heading>
+            <Heading as="h3" variant="heading-strong-xl" style={{ textAlign: 'center', color: 'var(--accent-strong)' }}>
+              {title}
+            </Heading>
+            <Text variant="body-default-m" style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto' }} onBackground="neutral-medium">
+              Découvrez ce projet interactif directement ci-dessous. Vous pouvez naviguer et tester toutes les fonctionnalités en temps réel.
+            </Text>
+            
+            {/* Lien vers le projet - extrait de l'iframe */}
+            {isIframe && (
+              <Text variant="body-default-s" style={{ textAlign: 'center', marginTop: '16px' }} onBackground="neutral-weak">
+                Lien vers le projet : <a 
+                  href={images[0].replace('iframe:', '')} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  style={{ 
+                    color: '#007bff', 
+                    textDecoration: 'underline',
+                    cursor: 'pointer'
+                  }}
+                >
+                  {images[0].replace('iframe:', '')}
+                </a>
+              </Text>
+            )}
+          </Column>
+          
+          <div
+            style={{
+              width: '110%',
+              height: '600px',
+              background: '#eee',
+              borderRadius: 'var(--radius-l)',
+              overflow: 'auto',
+              overflowX: 'hidden',
+              scrollbarWidth: 'none', // Firefox
             }}
-            allowFullScreen
-            loading="lazy"
-            title={title}
-            sandbox="allow-scripts allow-same-origin"
-          />
-        </div>
+            className="hide-scrollbar iframe-container"
+          >
+            <iframe
+              src={images[0].replace('iframe:', '')}
+              style={{ 
+                width: '100%', 
+                height: '100%', 
+                border: 'none'
+              }}
+              allowFullScreen
+              loading="lazy"
+              title={title}
+              sandbox="allow-scripts allow-same-origin"
+            />
+          </div>
+        </>
       )}
       
       <Flex
@@ -268,34 +301,41 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               {description}
             </Text>
           )}
-          <Flex gap="24" wrap>
-            {content?.trim() && (
-              <SmartLink
-                suffixIcon="arrowRight"
-                style={{ margin: "0", width: "fit-content" }}
-                href={href}
-              >
-                <Text variant="body-default-s">Voir </Text>
-              </SmartLink>
-            )}
-            {link && (typeof link === 'object' ? (
-              <SmartLink
-                suffixIcon={link.icon || undefined}
-                style={{ margin: "0", width: "fit-content" }}
-                href={link.url}
-              >
-                <Text variant="body-default-s">{link.label || 'Visiter'}</Text>
-              </SmartLink>
-            ) : (
-              <SmartLink
-                suffixIcon="arrowUpRightFromSquare"
-                style={{ margin: "0", width: "fit-content" }}
-                href={link}
-              >
-                <Text variant="body-default-s">View project</Text>
-              </SmartLink>
-            ))}
-          </Flex>
+          {(content?.trim() || link) && (
+            <>
+              <Text variant="body-default-m" style={{ fontWeight: '500', marginTop: '16px' }}>
+                📋 Plus d&apos;informations sur ce projet :
+              </Text>
+              <Flex gap="24" wrap>
+                {content?.trim() && (
+                  <SmartLink
+                    suffixIcon="arrowRight"
+                    style={{ margin: "0", width: "fit-content" }}
+                    href={href}
+                  >
+                    <Text variant="body-default-s">Voir les détails complets</Text>
+                  </SmartLink>
+                )}
+                {link && (typeof link === 'object' ? (
+                  <SmartLink
+                    suffixIcon={link.icon || undefined}
+                    style={{ margin: "0", width: "fit-content" }}
+                    href={link.url}
+                  >
+                    <Text variant="body-default-s">{link.label || 'Visiter le projet en live'}</Text>
+                  </SmartLink>
+                ) : (
+                  <SmartLink
+                    suffixIcon="arrowUpRightFromSquare"
+                    style={{ margin: "0", width: "fit-content" }}
+                    href={link}
+                  >
+                    <Text variant="body-default-s">Visiter le projet en live</Text>
+                  </SmartLink>
+                ))}
+              </Flex>
+            </>
+          )}
         </Column>
       </Flex>
     </Column>

@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row, Meta, Schema } from "@once-ui-system/core";
 import { home, about, person, newsletter, baseURL } from "@/resources";
+import { routeImages } from "@/resources/routeImages";
 import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
@@ -43,7 +44,7 @@ export default function Home({ posts, projects }: { posts: any[], projects: any[
           path={home.path}
           title={home.title}
           description={home.description}
-          image={`/api/og/generate?title=${encodeURIComponent(home.title)}`}
+          image={routeImages['/']}
           author={{
             name: person.name,
             url: `${baseURL}${about.path}`,
@@ -56,7 +57,7 @@ export default function Home({ posts, projects }: { posts: any[], projects: any[
             {home.featured.display && (
             <RevealFx fillWidth horizontal="start" paddingTop="16" paddingBottom="32" paddingLeft="12">
               <Badge background="brand-alpha-weak" paddingX="12" paddingY="4" onBackground="neutral-strong" textVariant="label-default-s" arrow={false}
-                href={home.featured.href}>
+                href={home.featured.href} aria-label="Création de mini-apps, site web et portfolio web à Maurice">
                 <Row paddingY="2">{home.featured.title}</Row>
               </Badge>
             </RevealFx>
@@ -173,6 +174,7 @@ export default function Home({ posts, projects }: { posts: any[], projects: any[
                 variant="primary"
                 size="l"
                 weight="strong"
+                aria-label="Me contacter via WhatsApp au +230 54593145"
                 style={{
                   backgroundColor: '#25D366',
                   color: 'white',
@@ -199,7 +201,7 @@ export default function Home({ posts, projects }: { posts: any[], projects: any[
         <RevealFx translateY="8" delay={0.3} fillWidth horizontal="center" paddingTop="40" paddingBottom="32">
             <Column fillWidth horizontal="start" gap="12" style={{alignItems: 'flex-start'}}>
                 <Heading
-                  as="h1"
+                  as="h2"
                   variant="display-strong-l"
                   style={{
                     textAlign: 'left',

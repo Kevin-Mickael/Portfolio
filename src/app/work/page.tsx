@@ -4,7 +4,7 @@ import { Projects } from "@/components/work/Projects";
 import FAQ from "@/components/FAQ";
 import Avis from "@/components/Avis";
 import Breadcrumbs from '@/components/Breadcrumbs';
-import Head from "next/head";
+import { InternalLinks } from "@/components";
 import { routeImages } from "@/resources/routeImages";
 
 export async function generateMetadata() {
@@ -55,37 +55,6 @@ export default function Work() {
   };
 
   return (
-    <>
-      <Head>
-        <link rel="canonical" href={`${baseURL}${work.path}`} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta httpEquiv="Content-Language" content="fr" />
-        
-        {/* Open Graph tags manuels */}
-        <meta property="og:type" content="website" />
-        <meta property="og:locale" content="fr_FR" />
-        <meta property="og:title" content={work.title} />
-        <meta property="og:description" content={work.description} />
-        <meta property="og:url" content={`${baseURL}${work.path}`} />
-        <meta property="og:image" content={routeImages['/work']} />
-        
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={work.title} />
-        <meta name="twitter:description" content={work.description} />
-        <meta name="twitter:image" content={routeImages['/work']} />
-        
-        {/* Robots meta */}
-        <meta name="robots" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1" />
-        <meta name="googlebot" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1" />
-        
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData)
-          }}
-        />
-      </Head>
       
       <Column maxWidth="m">
         <Breadcrumbs
@@ -123,7 +92,11 @@ export default function Work() {
           <Avis />
           <FAQ />
         </main>
+        
+        {/* Liens internes pour réduire les pages orphelines - bien ajustés */}
+        <div style={{ width: '100%', maxWidth: '768px', margin: '0 auto', padding: '0 16px' }}>
+          <InternalLinks currentPage="/work" />
+        </div>
       </Column>
-    </>
   );
 }

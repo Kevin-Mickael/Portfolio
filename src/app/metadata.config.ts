@@ -262,6 +262,81 @@ const websiteJsonLd = {
   },
 };
 
+// Schéma pour la navigation du site pour les sitelinks
+const siteNavigationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SiteNavigationElement',
+  '@id': `${baseURL}#navigation`,
+  hasPart: [
+    {
+      '@type': 'WebPage',
+      '@id': `${baseURL}/about`,
+      name: 'À propos',
+      description: 'Découvrez Kevin Mickael, développeur web professionnel à Maurice',
+      url: `${baseURL}/about`,
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${baseURL}/work`,
+      name: 'Projets',
+      description: 'Portfolio de mes réalisations en développement web à Maurice',
+      url: `${baseURL}/work`,
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${baseURL}/blog`,
+      name: 'Blog',
+      description: 'Articles sur le développement web et conseils techniques',
+      url: `${baseURL}/blog`,
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${baseURL}/contact`,
+      name: 'Contact',
+      description: 'Contactez-moi pour vos projets de développement web à Maurice',
+      url: `${baseURL}/contact`,
+    },
+  ],
+};
+
+// Schéma pour les breadcrumbs
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Accueil',
+      item: baseURL,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'À propos',
+      item: `${baseURL}/about`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Projets',
+      item: `${baseURL}/work`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 4,
+      name: 'Blog',
+      item: `${baseURL}/blog`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 5,
+      name: 'Contact',
+      item: `${baseURL}/contact`,
+    },
+  ],
+};
+
 // Schéma pour les services offerts à Maurice
 const serviceJsonLd = {
   '@context': 'https://schema.org',
@@ -321,7 +396,7 @@ export const defaultMetadata: Metadata = {
   metadataBase: new URL(baseURL),
   title: {
     default: validatedHome.title,
-    template: `%s | ${validatedPerson.name} - Développeur Web Maurice`,
+    template: '%s | Kevin Mickael'
   },
   description: validatedHome.description,
   keywords: keywords,

@@ -53,11 +53,47 @@
   /*
 }*/
 
-/* Empêcher le scroll horizontal global */
-html, body {
+/* SOLUTION COMPLETE POUR SUPPRIMER LA SCROLLBAR TEMPORAIRE */
+html {
+  overflow-x: hidden;
+  /* Masquer complètement toutes les scrollbars */
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* Internet Explorer 10+ */
+}
+
+html::-webkit-scrollbar {
+  display: none !important; /* Chrome, Safari, Opera */
+  width: 0 !important;
+  height: 0 !important;
+}
+
+body {
   overflow-x: hidden;
   max-width: 100vw;
   width: 100%;
+  /* Empêcher le débordement vertical temporaire */
+  min-height: 100vh;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+body::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Supprimer TOUTES les scrollbars sur tous les éléments */
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+* {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
 }
 
 /* S'assurer que tous les conteneurs respectent la largeur */
@@ -84,12 +120,34 @@ body {
   color: var(--neutral-on-background-strong, #222);
   margin: 0;
   padding: 0;
+  /* Empêcher l'apparition de lignes grises temporaires */
+  transition: none;
+  overflow-x: hidden;
 }
 
 img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+/* Corriger les lignes grises temporaires des animations */
+[class*="RevealFx"], [data-reveal], [data-animation] {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* S'assurer qu'aucune bordure n'apparaît lors du chargement */
+.Column, .Flex, .Row {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Prévenir l'apparition de bordures temporaires */
+* {
+  transition: border 0s, outline 0s, box-shadow 0s !important;
 }
 
 /* Ajoute ici tes classes utilitaires ou styles globaux */

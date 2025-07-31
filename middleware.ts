@@ -1,6 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  // Redirection pour les liens de protection email Cloudflare
+  if (pathname.startsWith('/cdn-cgi/l/email-protection')) {
+    return NextResponse.redirect(new URL('/contact', request.url), 301);
+  }
+
+  // Bloquer tous les autres accès à cdn-cgi
+  if (pathname.startsWith('/cdn-cgi')) {
+    return NextResponse.redirect(new URL('/404', request.url), 404);
+  }
+
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
   const cspHeader = `
     default-src 'self';

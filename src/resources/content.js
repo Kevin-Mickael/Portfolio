@@ -8,7 +8,9 @@ const person = {
   },
   role: "Software Engineer",
   avatar: "/images/avatar.jpeg",
-  email: "Andriatsilavokevin@gmail.com",
+  get email() {
+    return `${'Andriatsilavokevin'}${'@'}${'gmail.com'}`;
+  },
   location: "Indian/Mauritius",
   locationDisplay: "Mauritius",
   locationLabel: "Madagascar/Maurice",
@@ -44,7 +46,7 @@ const social = [
   {
     name: "Email",
     icon: "email",
-    link: `mailto:Andriatsilavokevin@gmail.com`,
+    link: `mailto:${'Andriatsilavokevin'}${'@'}${'gmail.com'}`,
   },
   {
     name: "WhatsApp",
@@ -65,8 +67,8 @@ const home = {
   path: "/",
   image: "/favicon.png",
   label: "Accueil",
-  title: `Création de mini‑apps, de sites web et de portfolios à Maurice` ,
-  description: `Création de mini-applications, de sites web et portfolios professionnels et intuitifs à Maurice`,
+title: "Création de mini-apps, sites web et portfolios à Maurice",
+  description: "Développez votre présence en ligne avec des mini-applications, sites web, et portfolios professionnels et intuitifs en Maurice.",
   headline: <>Création de sites web et portfolio web professionnels et intuitifs</>,
   featured: {
     display: true,
@@ -84,8 +86,8 @@ const home = {
 const about = {
   path: "/about",
   label: "À propos",
-  title: `À propos de ${person.name}`,
-  description: `Découvrez Kevin Mickael, développeur web professionnel à Maurice spécialisé en création de sites internet, portfolios et mini-apps. Expert en React, Next.js avec plus de 5 ans d'expérience dans le développement web moderne et le support IT.`,
+title: "À propos | Kevin Mickael",
+  description: "Kevin Mickael : développeur web à Maurice. Spécialiste React/Next.js avec 5 ans d'expérience.",
   tableOfContent: {
     display: true,
     subItems: false,
@@ -261,8 +263,8 @@ const about = {
 const blog = {
   path: "/blog",
   label: "Blog",
-  title: "Blog - Développement Web Maurice | Kevin Mickael",
-  description: "Découvrez les dernières tendances du développement web à Maurice. Articles techniques, tutoriels React/Next.js, conseils SEO et astuces pour créer des sites web performants. Blog du développeur Kevin Mickael.",
+title: "Astuces & Aides  – Développement, Conseils et Outils Digitaux à Maurice",
+  description: "Explorez les tendances du web : articles, tutoriels React/Next.js, et conseils SEO par Kevin Mickael.",
 };
 
 const work = {
@@ -275,8 +277,8 @@ const work = {
 const contact = {
   path: "/contact",
   label: "Contact",
-  title: "Contact - Devis Site Web Maurice | Kevin Mickael",
-  description: "Contactez Kevin Mickael, développeur web à Maurice, pour votre projet de site internet. Devis gratuit pour création de sites web, portfolios et mini-apps. Réponse rapide garantie.",
+title: "Contactez Création de Site Web et Portfolio",
+  description: "Prenez contact pour vos projets de sites internet, portfolios, et mini-apps. Réponse rapide, qualité garantie !",
 };
 
 export { person, social, socialAbout, newsletter, home, about, blog, work, contact };

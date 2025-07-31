@@ -134,6 +134,9 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: false,
   },
+  // Configuration optimisée pour Cloudflare Pages
+  trailingSlash: false,
+  skipTrailingSlashRedirect: true,
 };
 
 export default withBundle(withMDX(nextConfig));
