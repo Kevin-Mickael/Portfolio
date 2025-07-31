@@ -396,7 +396,7 @@ export const defaultMetadata: Metadata = {
   metadataBase: new URL(baseURL),
   title: {
     default: validatedHome.title,
-    template: '%s | Kevin Mickael'
+    template: '%s - Kevin Mickael'
   },
   description: validatedHome.description,
   keywords: keywords,

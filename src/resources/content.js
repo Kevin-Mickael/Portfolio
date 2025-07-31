@@ -86,7 +86,7 @@ title: "Création de mini-apps, sites web et portfolios à Maurice",
 const about = {
   path: "/about",
   label: "À propos",
-title: "À propos | Kevin Mickael",
+title: "À propos de Kevin Mickael",
   description: "Kevin Mickael : développeur web à Maurice. Spécialiste React/Next.js avec 5 ans d'expérience.",
   tableOfContent: {
     display: true,

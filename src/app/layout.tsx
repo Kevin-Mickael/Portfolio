@@ -6,6 +6,7 @@ import classNames from "classnames";
 import { defaultMetadata, jsonLdSchemas } from './metadata.config';
 import { Background, Column, Flex, opacity, SpacingToken } from "@once-ui-system/core";
 import { Footer, Header, RouteGuard, Providers } from '@/components';
+import ChatBox from '@/components/ChatBox/ChatBox';
 import { CookieBanner } from '@/components/CookieBanner';
 import { effects, fonts, style, dataStyle } from '@/resources';
 import { Metadata } from 'next';
@@ -366,7 +367,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   </RouteGuard>
                 </Flex>
               </Flex>
-              <Footer/>
+      	<Footer/>
+      	<ChatBox />
               <CookieBanner />
             </Column>
           </Providers>
