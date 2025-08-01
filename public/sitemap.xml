@@ -2,55 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://creativfolio.com/</loc>
-    <lastmod>2025-07-31</lastmod>
+    <lastmod>2025-08-01</lastmod>
     <priority>1</priority>
     <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://creativfolio.com/about</loc>
-    <lastmod>2025-07-31</lastmod>
+    <lastmod>2025-08-01</lastmod>
     <priority>0.9</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://creativfolio.com/work</loc>
-    <lastmod>2025-07-31</lastmod>
+    <lastmod>2025-08-01</lastmod>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://creativfolio.com/blog</loc>
-    <lastmod>2025-07-31</lastmod>
+    <lastmod>2025-08-01</lastmod>
     <priority>0.7</priority>
     <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://creativfolio.com/contact</loc>
-    <lastmod>2025-07-31</lastmod>
+    <lastmod>2025-08-01</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://creativfolio.com/confidentialite</loc>
-    <lastmod>2025-07-31</lastmod>
+    <lastmod>2025-08-01</lastmod>
     <priority>0.5</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://creativfolio.com/cgu</loc>
-    <lastmod>2025-07-31</lastmod>
+    <lastmod>2025-08-01</lastmod>
     <priority>0.5</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://creativfolio.com/blog/binaryblog</loc>
     <lastmod>2025-07-24</lastmod>
-    <priority>0.7</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://creativfolio.com/blog/introduction</loc>
-    <lastmod>2025-06-13</lastmod>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>

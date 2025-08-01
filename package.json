@@ -12,6 +12,7 @@
     "test-sitemap": "node scripts/test-sitemap.js",
     "deploy": "./scripts/deploy.sh",
     "prebuild": "npm run sitemap && npm run validate-sitemap",
+    "postbuild": "npm run notify-indexnow",
     "preexport": "npm run sitemap && npm run validate-sitemap",
     "notify-indexnow": "node scripts/notify-indexnow.js"
   },

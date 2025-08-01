@@ -8,4 +8,4 @@ const AppIntegrationClient = dynamic(() => import('@/components/AppIntegrationCl
 
 export default function AppIntegrationClientDynamic() {
   return <AppIntegrationClient />;
-} 
+}

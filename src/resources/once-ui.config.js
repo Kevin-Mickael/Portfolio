@@ -14,7 +14,6 @@ const routes = {
   "/contact": true,
   "/confidentialite": true,
   "/cgu": true,
-  "/blog/introduction" : true,
   "/blog/presentation" : true,
   "/work/simple-portfolio-builder" : true,
   "/work/quiz-maurice" : true,

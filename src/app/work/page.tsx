@@ -1,4 +1,4 @@
-import { Column, Meta, Schema, Heading } from "@once-ui-system/core";
+import { Column, Schema, Heading } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { Projects } from "@/components/work/Projects";
 import FAQ from "@/components/FAQ";
@@ -6,15 +6,22 @@ import Avis from "@/components/Avis";
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { InternalLinks } from "@/components";
 import { routeImages } from "@/resources/routeImages";
+import { generateSEO } from "@/utils/seo";
 
 export async function generateMetadata() {
-  return Meta.generate({
+  return generateSEO({
     title: work.title,
     description: work.description,
-    baseURL: baseURL,
     image: routeImages['/work'],
-    path: work.path,
-    canonical: `${baseURL}${work.path}`,
+    url: work.path,
+    keywords: [
+      'portfolio Maurice',
+      'projets développement Maurice',
+      'réalisations web Maurice',
+      'mini-apps maurice',
+      'travaux développeur Maurice'
+    ],
+    type: 'website'
   });
 }
 
@@ -82,7 +89,7 @@ export default function Work() {
           as="h1" 
           variant="display-strong-l" 
           marginBottom="l"
-          className="sr-only"
+          style={{ textAlign: 'center' }}
         >
           {work.title}
         </Heading>
