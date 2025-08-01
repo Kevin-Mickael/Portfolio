@@ -3,7 +3,7 @@ import { getPosts } from "@/utils/utils";
 import { Meta, Schema, AvatarGroup, Button, Column, Flex, Heading, Media, Text } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
-import { ScrollToHash, CustomMDX } from "@/components";
+import { ScrollToHash, CustomMDX, InternalLinks } from "@/components";
 import { Metadata } from "next";
 import Image from "next/image";
 import Head from "next/head";
@@ -253,7 +253,13 @@ export default async function Project({
               </Text>
             </Flex>
             <CustomMDX source={post.content} />
+            
+            {/* Liens internes pour réduire les pages orphelines */}
+            <div style={{ display: 'flex', justifyContent: 'center', width: '100%', marginTop: '2rem' }}>
+              <InternalLinks currentPage={`/work/${post.slug}`} />
+            </div>
           </Column>
+          
           <ScrollToHash />
         </Column>
       </div>

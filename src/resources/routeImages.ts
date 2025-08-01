@@ -6,6 +6,7 @@ export const routeImages: Record<string, string> = {
   '/about': '/favicon.png',
   '/work': '/favicon.png',
   '/blog': '/favicon.png',
+  '/contact': '/favicon.png',
   '/cgu': '/favicon.png',
   '/confidentialite': '/favicon.png',
   // Ajouter d'autres routes si besoin

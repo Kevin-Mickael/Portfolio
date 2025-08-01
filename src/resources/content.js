@@ -69,7 +69,7 @@ const home = {
   label: "Accueil",
 title: "Création de mini-apps, sites web et portfolios à Maurice",
   description: "Développez votre présence en ligne avec des mini-applications, sites web, et portfolios professionnels et intuitifs en Maurice.",
-  headline: <>Création de sites web et portfolio web professionnels et intuitifs</>,
+  headline: "Création de sites web et portfolio web professionnels et intuitifs",
   featured: {
     display: true,
     title: <><strong>Création de mini-apps, site web et portfolio web à Maurice</strong></>,

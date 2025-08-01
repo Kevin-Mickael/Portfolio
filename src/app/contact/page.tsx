@@ -206,7 +206,7 @@ const ContactPage: React.FC = () => {
               justifyContent: 'center',
               gap: '16px'
             }}>
-              Contactez-nous
+              {contact.title}
               <span style={{fontSize: '48px', lineHeight: '1'}}>✉️</span>
             </h1>
             <p style={{

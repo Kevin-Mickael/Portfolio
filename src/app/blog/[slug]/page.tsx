@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { CustomMDX, ScrollToHash } from "@/components";
+import { CustomMDX, ScrollToHash, InternalLinks } from "@/components";
 import { Meta, Schema, AvatarGroup, Button, Column, Heading, HeadingNav, Icon, Row, Text } from "@once-ui-system/core";
 import { baseURL, about, blog, person } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
@@ -155,6 +155,12 @@ export default async function Blog({
             <Column as="article" fillWidth>
               <CustomMDX source={post.content} />
             </Column>
+            
+            {/* Liens internes pour réduire les pages orphelines */}
+            <div style={{ display: 'flex', justifyContent: 'center', width: '100%', marginTop: '2rem' }}>
+              <InternalLinks currentPage={`/blog/${post.slug}`} />
+            </div>
+            
             <ScrollToHash />
           </Column>
         </Row>

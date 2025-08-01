@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { contact } from '@/resources/content';
 import { baseURL } from '@/resources';
+import { routeImages } from '@/resources/routeImages';
 
 export const metadata: Metadata = {
   title: contact.title,
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: contact.title,
     description: contact.description,
+    images: [routeImages['/contact'] || routeImages['/']],
     type: 'website',
     url: `${baseURL}${contact.path}`,
   },
@@ -18,6 +20,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: contact.title,
     description: contact.description,
+    images: [routeImages['/contact'] || routeImages['/']],
   },
 };
 

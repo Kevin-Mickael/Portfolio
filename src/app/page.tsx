@@ -31,6 +31,7 @@ export const generateMetadata = (): Metadata => {
       description: home.description,
       images: [routeImages['/']],
       type: 'website',
+      url: baseURL,
     },
     twitter: {
       title: home.title,
@@ -79,7 +80,7 @@ export default function Home() {
             )}
             <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="16">
               <Heading as="h1" wrap="balance" variant="display-strong-l">
-                {home.headline}
+                {home.title}
               </Heading>
             </RevealFx>
             <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="32">
@@ -133,6 +134,7 @@ export default function Home() {
                       loop
                       playsInline
                       controls={false}
+                      preload="auto"
                       style={{
                         width: '100%',
                         height: 'auto',
@@ -143,7 +145,6 @@ export default function Home() {
                         maxWidth: '3840px',
                         boxShadow: 'none',
                       }}
-                      poster="/images/avatar.jpeg"
                     />
                   </div>
                 </RevealFx>
