@@ -10,6 +10,7 @@ import ChatBox from '@/components/ChatBox/ChatBox';
 import { CookieBanner } from '@/components/CookieBanner';
 import { effects, fonts, style, dataStyle } from '@/resources';
 import { Metadata } from 'next';
+import Image from 'next/image';
 import ClientErrorBoundary from '@/components/ClientErrorBoundary';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -50,19 +51,50 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {/* Script pour désactiver la protection email automatique de Cloudflare */}
           <script async src="/disable-email-protection.js" />
           
+          {/* Yandex.Metrika counter */}
+          <script
+            type="text/javascript"
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function(m,e,t,r,i,k,a){
+                    m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+                    m[i].l=1*new Date();
+                    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+                    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+                })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=103561740', 'ym');
+
+                ym(103561740, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+              `,
+            }}
+          />
+          <noscript>
+            <div>
+              <Image 
+                src="https://mc.yandex.ru/watch/103561740" 
+                width={1}
+                height={1}
+                style={{position: 'absolute', left: '-9999px'}} 
+                alt="Yandex Metrika tracking pixel" 
+                unoptimized
+              />
+            </div>
+          </noscript>
+          
           {/* URL canonique définie par page via generateMetadata */}
           
-          {/* Favicons et icônes PWA */}
-          <link rel="icon" type="image/x-icon" href="/favicon.ico?v=4" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=4" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=4" />
-          <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png?v=4" />
-          <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=4" />
-          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=4" />
-          <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png?v=4" />
-          <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png?v=4" />
-          <link rel="manifest" href="/manifest.json?v=4" />
-          <link rel="mask-icon" href="/favicon-32x32.png?v=4" color="#000000" />
+          {/* Favicons et icônes PWA - Optimisés avec support WebP */}
+          <link rel="icon" type="image/webp" sizes="512x512" href="/favicon.webp?v=5" />
+          <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png?v=5" />
+          <link rel="icon" type="image/x-icon" href="/favicon.ico?v=5" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=5" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=5" />
+          <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png?v=5" />
+          <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5" />
+          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=5" />
+          <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png?v=5" />
+          <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png?v=5" />
+          <link rel="manifest" href="/manifest.json?v=5" />
+          <link rel="mask-icon" href="/favicon-32x32.png?v=5" color="#000000" />
           
           {/* Meta tags pour PWA */}
           <meta name="application-name" content="Portfolio Kevin Mickael" />
