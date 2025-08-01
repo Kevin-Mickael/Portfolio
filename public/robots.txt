@@ -1,26 +1,25 @@
 # Robots.txt optimisé pour Creativfolio
 # https://creativfolio.com
+# Toutes les pages principales sont indexables
 
 User-agent: *
 Allow: /
 
-# Pages principales à indexer en priorité
+# Pages principales - INDEXABLES
 Allow: /about
 Allow: /work
 Allow: /blog
 Allow: /contact
-
-# Articles de blog
-Allow: /blog/
-
-# Projets
-Allow: /work/
-
-# Pages légales
 Allow: /confidentialite
 Allow: /cgu
 
-# Bloquer les fichiers sensibles et techniques
+# Articles de blog - INDEXABLES
+Allow: /blog/
+
+# Projets - INDEXABLES
+Allow: /work/
+
+# Bloquer uniquement les dossiers techniques (pas les pages publiques)
 Disallow: /api/
 Disallow: /_next/
 Disallow: /functions/
@@ -36,7 +35,7 @@ Disallow: /*.log$
 Disallow: /*.env$
 Disallow: /*~$
 
-# Bloquer la page de protection email de Cloudflare
+# Cloudflare email protection (système automatique)
 Disallow: /cdn-cgi/
 
 # Optimisations pour les moteurs de recherche

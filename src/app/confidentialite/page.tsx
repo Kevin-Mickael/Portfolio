@@ -5,7 +5,7 @@ import { routeImages } from "@/resources/routeImages";
 import { baseURL } from "@/resources";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = 'Politique de confidentialité | Création de Site Web & Portfolio Maurice';
+  const title = 'Politique de confidentialité | Création de Site Web & Portfolio';
   const description = 'Découvrez la politique de confidentialité de Création de Site Web & Portfolio Maurice : protection des données, droits des utilisateurs, cookies, sécurité et contact.';
   const url = `${baseURL}/confidentialite`;
   

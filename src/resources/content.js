@@ -51,7 +51,7 @@ const social = [
   {
     name: "WhatsApp",
     icon: "whatsapp",
-    link: "https://wa.me/23054593145",
+    link: "https://wa.me/23054593145?text=Bonjour Kevin, je vous contacte depuis votre site web. J'aimerais discuter de vos services.",
   },
 ];
 

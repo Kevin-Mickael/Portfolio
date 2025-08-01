@@ -158,8 +158,8 @@ const ChatBox: React.FC = () => {
   const handleSuggestionClick = (message: string) => {
     // Gestion spéciale pour WhatsApp
     if (message === 'Ouvrir WhatsApp') {
-      // Ouvrir WhatsApp directement
-      window.open('https://wa.me/23054593145', '_blank');
+      // Ouvrir WhatsApp directement avec message prédéfini
+      window.open('https://wa.me/23054593145?text=Bonjour Kevin, je vous contacte depuis votre chatbot. J\'aimerais discuter avec vous.', '_blank', 'noopener,noreferrer');
       
       // Ajouter le message utilisateur
       const userMessage: Message = {
@@ -321,7 +321,7 @@ const ChatBox: React.FC = () => {
             className={styles.messageLink}
             onClick={(e) => {
               e.preventDefault();
-              window.open('https://wa.me/23054593145', '_blank');
+              window.open('https://wa.me/23054593145?text=Bonjour Kevin, je vous contacte depuis votre chatbot. J\'aimerais discuter avec vous.', '_blank', 'noopener,noreferrer');
             }}
           >
             {part}

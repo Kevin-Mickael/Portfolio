@@ -226,10 +226,12 @@ export default function Home() {
                 </Text>
                 
                 <Button
-                href="https://wa.me/23054593145"
+                href="https://wa.me/23054593145?text=Bonjour Kevin, je vous contacte depuis votre site web. J'aimerais discuter d'un projet de création de site web ou portfolio."
                 variant="primary"
                 size="l"
                 weight="strong"
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   backgroundColor: '#25D366',
                   color: 'white',

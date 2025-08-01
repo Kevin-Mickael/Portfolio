@@ -5,7 +5,7 @@ import { routeImages } from "@/resources/routeImages";
 import { baseURL } from "@/resources";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = 'Conditions Générales d\'Utilisation | Création de Site Web & Portfolio Maurice';
+  const title = 'Conditions Générales d\'Utilisation | Création de Site Web & Portfolio';
   const description = 'Consultez les conditions générales d\'utilisation (CGU) de Création de Site Web & Portfolio Maurice. Découvrez les règles d\'utilisation, la propriété intellectuelle, la responsabilité et vos droits en tant qu\'utilisateur du site.';
   const url = `${baseURL}/cgu`;
   

@@ -417,6 +417,10 @@ export const defaultMetadata: Metadata = {
   },
   alternates: {
     canonical: baseURL,
+    languages: {
+      'fr-FR': baseURL,
+      'x-default': baseURL,
+    },
   },
   openGraph: {
     ...defaultOpenGraph,

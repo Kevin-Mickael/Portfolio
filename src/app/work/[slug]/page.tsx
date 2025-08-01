@@ -9,6 +9,7 @@ import Image from "next/image";
 import Head from "next/head";
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { routeImages } from "@/resources/routeImages";
+import { generateSEO } from "@/utils/seo";
 
 // Composant pour afficher les iframes
 function IframeDisplay({ src, title }: { src: string; title?: string }) {
@@ -59,12 +60,15 @@ export async function generateMetadata({
 
   if (!post) return {};
 
-  return Meta.generate({
+  return generateSEO({
     title: post.metadata.title,
     description: post.metadata.summary,
-    baseURL: baseURL,
     image: post.metadata.image || routeImages['/work'],
-    path: `${work.path}/${post.slug}`,
+    url: `${work.path}/${post.slug}`,
+    type: 'website',
+    publishedTime: post.metadata.publishedAt,
+    modifiedTime: post.metadata.publishedAt,
+    author: person.name,
   });
 }
 

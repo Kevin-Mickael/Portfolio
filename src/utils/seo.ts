@@ -124,7 +124,7 @@ export function generateSEO(config: SEOConfig): Metadata {
       canonical: fullUrl,
       languages: {
         'fr-FR': fullUrl,
-        'en-US': fullUrl,
+        'x-default': fullUrl,
       },
     },
     openGraph,

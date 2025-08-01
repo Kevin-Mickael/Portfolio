@@ -14,7 +14,10 @@
     "prebuild": "npm run sitemap && npm run validate-sitemap",
     "postbuild": "npm run notify-indexnow",
     "preexport": "npm run sitemap && npm run validate-sitemap",
-    "notify-indexnow": "node scripts/notify-indexnow.js"
+    "notify-indexnow": "node scripts/notify-indexnow.js",
+    "validate-canonical": "node scripts/validate-canonical-urls.js",
+    "optimize-images": "node scripts/optimize-images.js",
+    "optimize-images-all": "node scripts/optimize-images.js --all"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",

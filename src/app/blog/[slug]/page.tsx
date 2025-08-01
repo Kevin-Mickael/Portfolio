@@ -8,6 +8,7 @@ import { Metadata } from 'next';
 import Head from "next/head";
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { routeImages } from "@/resources/routeImages";
+import { generateSEO } from "@/utils/seo";
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const posts = getPosts(["src", "app", "blog", "posts"]);
@@ -29,12 +30,15 @@ export async function generateMetadata({
 
   if (!post) return {};
 
-  return Meta.generate({
+  return generateSEO({
     title: post.metadata.title,
     description: post.metadata.summary,
-    baseURL: baseURL,
     image: post.metadata.image || routeImages['/blog'],
-    path: `${blog.path}/${post.slug}`,
+    url: `${blog.path}/${post.slug}`,
+    type: 'article',
+    publishedTime: post.metadata.publishedAt,
+    modifiedTime: post.metadata.publishedAt,
+    author: person.name,
   });
 }
 
